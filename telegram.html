@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Essentials -->
+  <title>Telegram Bot Infrastructure | Arash Fooladi</title>
+  <meta name="description" content="High-scale Telegram bot infrastructure handling 10M+ queries with 300K total users. Technical case study by Arash Fooladi.">
+  <meta name="keywords" content="Telegram bot, infrastructure, high-scale, system architecture, 300K users, Arash Fooladi">
+  <meta name="author" content="Arash Fooladi">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#080808">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://arashfooladi.com/telegram-bot">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Telegram Bot Infrastructure | Arash Fooladi">
+  <meta property="og:description" content="High-scale Telegram bot infrastructure handling 10M+ queries with 300K total users.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arashfooladi.com/telegram-bot">
+  <meta property="og:image" content="https://arashfooladi.com/og-telegram-bot.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fa_IR">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Telegram Bot Infrastructure | Arash Fooladi">
+  <meta name="twitter:description" content="High-scale Telegram bot infrastructure handling 10M+ queries with 300K total users.">
+  <meta name="twitter:image" content="https://arashfooladi.com/og-telegram-bot.jpg">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Telegram Bot Infrastructure",
+    "description": "High-scale Telegram bot infrastructure handling 10M+ queries with 300K total users.",
+    "author": {
+      "@type": "Person",
+      "name": "Arash Fooladi"
+    },
+    "datePublished": "2024-01-01"
+  }
+  </script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Custom Properties */
+    :root {
+      --background: oklch(0.08 0 0);
+      --foreground: oklch(0.98 0 0);
+      --card: oklch(0.11 0 0);
+      --primary: oklch(0.98 0 0);
+      --primary-foreground: oklch(0.08 0 0);
+      --secondary: oklch(0.15 0 0);
+      --muted: oklch(0.18 0 0);
+      --muted-foreground: oklch(0.55 0 0);
+      --border: oklch(1 0 0 / 8%);
+      --glow-color: oklch(0.98 0 0 / 10%);
+      --accent: oklch(0.7 0.15 250);
+      
+      --space-8: 0.5rem;
+      --space-16: 1rem;
+      --space-24: 1.5rem;
+      --space-32: 2rem;
+      --space-48: 3rem;
+      --space-64: 4rem;
+      --space-96: 6rem;
+      --space-160: 10rem;
+
+      --text-display: clamp(3rem, 10vw + 1rem, 8rem);
+      --text-h1: clamp(2rem, 5vw + 1rem, 4rem);
+      --text-h2: clamp(1.5rem, 3vw + 1rem, 2.5rem);
+      --text-body: 1.125rem;
+      --text-small: 0.875rem;
+      --text-caption: 0.75rem;
+      --text-massive: clamp(4rem, 12vw, 10rem);
+
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-fa: 'Vazirmatn', sans-serif;
+    }
+
+    *, *:before, *:after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* --- Improved Farsi Typography --- */
+    html[lang="fa"] body { font-family: var(--font-fa); line-height: 1.9; }
+    html[lang="fa"] .text-body { font-size: 1.2rem; line-height: 2.2; letter-spacing: 0; }
+    html[lang="fa"] .text-h2 { font-weight: 800; letter-spacing: 0; }
+    html[lang="fa"] .project-meta-item span { letter-spacing: 0; }
+    html[lang="fa"] .nav-link { font-size: 0.9rem; letter-spacing: 0; }
+    html[lang="fa"] .stat-label { letter-spacing: 0; font-size: 0.8rem; }
+    html[lang="fa"] .stat-number { font-family: var(--font-fa); letter-spacing: 0; }
+
+    /* Noise Texture */
+    .noise-texture {
+      position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: var(--space-24) var(--space-16);
+      background: rgba(8, 8, 8, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-content { max-width: 80rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .nav-left { display: flex; gap: var(--space-32); align-items: center; }
+    .nav-link {
+      color: var(--muted-foreground); text-decoration: none;
+      font-family: var(--font-mono); font-size: var(--text-caption);
+      text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--primary); }
+    
+    .lang-toggle {
+      font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);
+      background: none; border: 1px solid var(--border); padding: 0.4rem 0.8rem;
+      cursor: pointer; transition: all 0.2s; text-transform: uppercase;
+    }
+    .lang-toggle:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* Layout */
+    .container { max-width: 80rem; margin: 0 auto; padding: 0 var(--space-16); }
+    .content-wrapper { max-width: 56rem; margin: 0 auto; padding-top: var(--space-96); }
+    .full-bleed { max-width: 100%; padding: 0; }
+
+    /* Hero - Massive Impact Style */
+    .project-hero { 
+      padding-top: calc(var(--space-64) + 80px); 
+      padding-bottom: var(--space-48);
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .project-title {
+      font-size: var(--text-display); 
+      font-weight: 800; 
+      line-height: 1.1;
+      letter-spacing: -0.04em; 
+      margin-bottom: var(--space-32);
+      background: linear-gradient(to bottom, oklch(0.98 0 0 / 0.8), oklch(0.98 0 0 / 0.4));
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent;
+      padding: 0.2em 0;
+    }
+    
+    .hero-subtitle {
+      font-size: var(--text-body);
+      color: var(--muted-foreground);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-48);
+    }
+
+    .project-meta {
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: var(--space-32);
+      border-top: 1px solid var(--border); 
+      padding-top: var(--space-24);
+    }
+    .project-meta-item { display: flex; flex-direction: column; gap: 0.5rem; }
+    .project-meta-item label {
+      font-family: var(--font-mono); 
+      font-size: var(--text-caption);
+      color: var(--muted-foreground); 
+      text-transform: uppercase; 
+      letter-spacing: 0.1em;
+    }
+    .project-meta-item span { font-size: var(--text-body); font-weight: 500; }
+
+    /* Stats Section - The Core Difference */
+    .stats-section {
+      margin: var(--space-160) 0;
+      position: relative;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    
+    @media(min-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .stat-card {
+      background: var(--background);
+      padding: var(--space-48) var(--space-24);
+      text-align: center;
+      position: relative;
+      overflow: visible;
+    }
+    
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    .stat-card:hover::before {
+      opacity: 0.5;
+    }
+    
+    .stat-number {
+      font-size: var(--text-massive);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.05em;
+      background: linear-gradient(to bottom, var(--primary), oklch(0.98 0 0 / 0.3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: var(--font-mono);
+      display: block;
+      margin-bottom: var(--space-16);
+      padding: 0.1em 0;
+    }
+    
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      color: var(--muted-foreground);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+    
+    .stat-context {
+      font-size: var(--text-small);
+      color: var(--muted-foreground);
+      margin-top: var(--space-8);
+      font-family: var(--font-mono);
+    }
+
+    /* Content Sections */
+    .section { 
+      margin-bottom: var(--space-160); 
+      opacity: 0; 
+      transform: translateY(20px); 
+      animation: fadeUp 0.8s ease forwards; 
+    }
+    .section:nth-child(2) { animation-delay: 0.1s; }
+    .section:nth-child(3) { animation-delay: 0.2s; }
+    .section:nth-child(4) { animation-delay: 0.3s; }
+    
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    .section-title {
+      font-size: var(--text-h2); 
+      font-weight: 700; 
+      margin-bottom: var(--space-24);
+      letter-spacing: -0.02em;
+    }
+    
+    .text-content p {
+      font-size: var(--text-body); 
+      color: var(--foreground); 
+      opacity: 0.85;
+      margin-bottom: var(--space-16); 
+      max-width: 65ch;
+    }
+
+    /* Scale Indicator Bar */
+    .scale-bar {
+      width: 100%;
+      height: 2px;
+      background: var(--border);
+      margin: var(--space-64) 0;
+      position: relative;
+    }
+    
+    .scale-bar::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, var(--primary) 0%, transparent 100%);
+      animation: scalePulse 3s ease-in-out infinite;
+    }
+    
+    @keyframes scalePulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* Closed Source Indicator */
+    .closed-source-banner {
+      border: 1px solid var(--border);
+      padding: var(--space-24);
+      margin: var(--space-64) 0;
+      display: flex;
+      align-items: center;
+      gap: var(--space-16);
+      background: var(--card);
+    }
+    
+    .closed-source-icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      color: var(--muted-foreground);
+      flex-shrink: 0;
+    }
+    
+    .closed-source-text h3 {
+      font-size: var(--text-body);
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    
+    .closed-source-text p {
+      font-size: var(--text-small);
+      color: var(--muted-foreground);
+      margin: 0;
+    }
+
+    /* Tech List */
+    .tech-list { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: var(--space-8); 
+      margin-top: var(--space-16); 
+    }
+    .tech-tag {
+      font-family: var(--font-mono); 
+      font-size: var(--text-caption); 
+      color: var(--muted-foreground);
+      border: 1px solid var(--border); 
+      padding: 0.25rem 0.75rem; 
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .tech-tag:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Footer */
+    .footer { 
+      border-top: 1px solid var(--border); 
+      margin-top: var(--space-160); 
+      padding: var(--space-48) 0; 
+    }
+    .footer-content { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      flex-wrap: wrap;
+      gap: var(--space-16);
+    }
+    .next-project-link {
+      font-size: var(--text-h3); 
+      font-weight: 700; 
+      text-decoration: none; 
+      color: var(--foreground);
+      display: flex; 
+      align-items: center; 
+      gap: var(--space-8);
+      transition: opacity 0.2s;
+    }
+    .next-project-link:hover { opacity: 0.6; }
+    .arrow { font-size: 1.5em; }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .project-meta { flex-direction: column; gap: var(--space-16); }
+      .section { margin-bottom: var(--space-96); }
+      .stat-number { font-size: clamp(2.5rem, 12vw, 4rem); }
+      .stat-card { padding: var(--space-32) var(--space-16); }
+      .footer-content { flex-direction: column; align-items: flex-start; }
+      .closed-source-banner { flex-direction: column; text-align: center; }
+    }
+  </style>
+<base target="_blank">
+</head>
+<body>
+
+  <!-- Noise Overlay -->
+  <div class="noise-texture"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-content">
+      <div class="nav-left">
+        <a href="index.html" class="nav-link" data-en="Back to Home" data-fa="بازگشت به خانه">Back to Home</a>
+      </div>
+      <button class="lang-toggle" id="lang-toggle">FA</button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+    
+    <!-- Hero Section -->
+    <header class="project-hero content-wrapper">
+      <div class="hero-subtitle" data-en="Infrastructure Project" data-fa="پروژه زیرساخت">Infrastructure Project</div>
+      <h1 class="project-title" data-en="Telegram Bot" data-fa="ربات تلگرام">Telegram Bot</h1>
+      
+      <div class="project-meta">
+        <div class="project-meta-item">
+          <label data-en="Role" data-fa="نقش">Role</label>
+          <span data-en="System Architect & Developer" data-fa="معمار سیستم و توسعه‌دهنده">System Architect & Developer</span>
+        </div>
+        <div class="project-meta-item">
+          <label data-en="Scale" data-fa="مقیاس">Scale</label>
+          <span data-en="300K Users" data-fa="۳۰۰ هزار کاربر">300K Users</span>
+        </div>
+        <div class="project-meta-item">
+          <label data-en="Status" data-fa="وضعیت">Status</label>
+          <span data-en="Closed Source" data-fa="متن بسته">Closed Source</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Massive Stats Grid -->
+    <section class="section full-bleed">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">300K</span>
+          <div class="stat-label" data-en="Total Users" data-fa="کل کاربران">Total Users</div>
+          <div class="stat-context" data-en="Lifetime unique users" data-fa="کاربران یکتا طول عمر">Lifetime unique users</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">40K</span>
+          <div class="stat-label" data-en="Monthly Active" data-fa="ماهانه فعال">Monthly Active</div>
+          <div class="stat-context" data-en="Peak concurrent load" data-fa="اوج بار همزمان">Peak concurrent load</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">3K</span>
+          <div class="stat-label" data-en="Daily Active" data-fa="روزانه فعال">Daily Active</div>
+          <div class="stat-context" data-en="Consistent daily engagement" data-fa="درگیری روزانه پایدار">Consistent daily engagement</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scale Indicator -->
+    <div class="content-wrapper">
+      <div class="scale-bar"></div>
+    </div>
+
+    <!-- Query Volume -->
+    <section class="section content-wrapper">
+      <div class="text-content" style="text-align: center; max-width: 100%;">
+        <h2 class="section-title" style="font-size: var(--text-massive); margin-bottom: var(--space-24); line-height: 1.2; padding: 0.1em 0;" data-en="10M+" data-fa="۱۰ میلیون+">10M+</h2>
+        <p style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted-foreground); margin: 0 auto;" data-en="Total Queries Processed" data-fa="کل درخواست‌های پردازش شده">Total Queries Processed</p>
+      </div>
+    </section>
+
+    <!-- Closed Source Documentation -->
+    <section class="section content-wrapper">
+      <div class="closed-source-banner">
+        <div class="closed-source-icon">CS</div>
+        <div class="closed-source-text">
+          <h3 data-en="Closed Source Documentation" data-fa="مستندات متن بسته">Closed Source Documentation</h3>
+          <p data-en="Due to the sensitive nature and commercial viability of this infrastructure, source code remains private. Technical architecture and scaling strategies are documented internally." data-fa="به دلیل ماهیت حساس و پتانسیل تجاری این زیرساخت، کد منبع خصوصی باقی می‌ماند. معماری فنی و استراتژی‌های مقیاس‌پذیری به صورت داخلی مستند شده‌اند.">
+            Due to the sensitive nature and commercial viability of this infrastructure, source code remains private. Technical architecture and scaling strategies are documented internally.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Context -->
+    <section class="section content-wrapper">
+      <div class="text-content">
+        <h2 class="section-title" data-en="System Scale" data-fa="مقیاس سیستم">System Scale</h2>
+        <p data-en="This project represents a high-throughput automated system designed to handle massive concurrent user interaction. Built to sustain peak loads of 40,000 monthly active users with sub-second response times across 10 million+ processed queries." data-fa="این پروژه نمایانگر یک سیستم خودکار با توان بالا است که برای مدیریت تعامل همزمان کاربران در مقیاس عظیم طراحی شده است. ساخته شده برای تحمل بار اوج ۴۰ هزار کاربر فعال ماهانه با زمان پاسخ زیر یک ثانیه در بیش از ۱۰ میلیون درخواست پردازش شده.">
+          This project represents a high-throughput automated system designed to handle massive concurrent user interaction. Built to sustain peak loads of 40,000 monthly active users with sub-second response times across 10 million+ processed queries.
+        </p>
+        <p data-en="The infrastructure was engineered for reliability at scale, maintaining 3,000+ daily active users consistently over extended operational periods." data-fa="زیرساخت برای قابلیت اطمینان در مقیاس مهندسی شده، حفظ ۳۰۰۰+ کاربر فعال روزانه به طور مداوم در دوره‌های عملیاتی طولانی.">
+          The infrastructure was engineered for reliability at scale, maintaining 3,000+ daily active users consistently over extended operational periods.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer content-wrapper">
+      <div class="footer-content">
+        <a href="index.html" class="next-project-link" data-en="Back to Projects" data-fa="بازگشت به پروژه‌ها">
+          Back to Projects <span class="arrow">→</span>
+        </a>
+        <span style="font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);" data-en="ARCHIVED 2024" data-fa="بایگانی ۲۰۲۴">ARCHIVED 2024</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Language Toggle Logic
+    let currentLang = 'en';
+    const translations = { en: { button: 'FA' }, fa: { button: 'EN' } };
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'fa' : 'en';
+      const btn = document.getElementById('lang-toggle');
+      btn.textContent = translations[currentLang].button;
+      document.documentElement.lang = currentLang;
+
+      document.querySelectorAll('[data-en][data-fa]').forEach(el => {
+        el.textContent = el.getAttribute('data-' + currentLang);
+        
+        if (currentLang === 'fa') {
+          el.style.fontFamily = 'var(--font-fa)';
+        } else {
+          el.style.fontFamily = '';
+        }
+      });
+    }
+
+    document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
+  </script>
+</body>
+</html>
