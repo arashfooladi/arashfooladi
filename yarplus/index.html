@@ -1,485 +1,517 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
- <!-- SEO Essentials -->
- <title>Yarplus | Creator Monetization Platform | Arash Fooladi</title>
- <meta name="description" content="Yarplus - A subscription-based creator monetization platform. Full-stack development case study by Arash Fooladi featuring Next.js, Node.js, PostgreSQL, and Stripe integration.">
- <meta name="keywords" content="Yarplus, creator monetization, subscription platform, full stack development, Next.js, Node.js, PostgreSQL, Stripe, Arash Fooladi">
- <meta name="author" content="Arash Fooladi">
- <meta name="robots" content="index, follow">
- <meta name="theme-color" content="#080808">
- 
- <!-- Canonical URL -->
- <link rel="canonical" href="https://arashfooladi.com/yarplus">
- 
- <!-- Open Graph -->
- <meta property="og:title" content="Yarplus | Creator Monetization Platform | Arash Fooladi">
- <meta property="og:description" content="Subscription-based creator monetization platform built with Next.js, Node.js, PostgreSQL, and Stripe.">
- <meta property="og:type" content="website">
- <meta property="og:url" content="https://arashfooladi.com/yarplus">
- <meta property="og:image" content="https://arashfooladi.com/og-yarplus.jpg">
- <meta property="og:locale" content="en_US">
- <meta property="og:locale:alternate" content="fa_IR">
- 
- <!-- Twitter Card -->
- <meta name="twitter:card" content="summary_large_image">
- <meta name="twitter:title" content="Yarplus | Creator Monetization Platform | Arash Fooladi">
- <meta name="twitter:description" content="Subscription-based creator monetization platform built with Next.js, Node.js, PostgreSQL, and Stripe.">
- <meta name="twitter:image" content="https://arashfooladi.com/og-yarplus.jpg">
- 
- <!-- Structured Data -->
- <script type="application/ld+json">
- {
-   "@context": "https://schema.org",
-   "@type": "WebPage",
-   "name": "Yarplus - Creator Monetization Platform",
-   "description": "Subscription-based creator monetization platform built with Next.js, Node.js, PostgreSQL, and Stripe.",
-   "author": {
-     "@type": "Person",
-     "name": "Arash Fooladi"
-   },
-   "datePublished": "2024-01-01"
- }
- </script>
- 
- <!-- Fonts -->
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Essentials -->
+  <title>Yarplus | Creator Monetization Platform | Arash Fooladi</title>
+  <meta name="description" content="Yarplus - A subscription-based creator monetization platform. Full-stack development case study by Arash Fooladi featuring Next.js, Node.js, PostgreSQL, and Stripe integration.">
+  <meta name="keywords" content="Yarplus, creator monetization, subscription platform, full stack development, Next.js, Node.js, PostgreSQL, Stripe, Arash Fooladi">
+  <meta name="author" content="Arash Fooladi">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#080808">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://arashfooladi.com/yarplus">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Yarplus | Creator Monetization Platform | Arash Fooladi">
+  <meta property="og:description" content="Subscription-based creator monetization platform built with Next.js, Node.js, PostgreSQL, and Stripe.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arashfooladi.com/yarplus">
+  <meta property="og:image" content="https://arashfooladi.com/og-yarplus.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fa_IR">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Yarplus | Creator Monetization Platform | Arash Fooladi">
+  <meta name="twitter:description" content="Subscription-based creator monetization platform built with Next.js, Node.js, PostgreSQL, and Stripe.">
+  <meta name="twitter:image" content="https://arashfooladi.com/og-yarplus.jpg">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Yarplus - Creator Monetization Platform",
+    "description": "Subscription-based creator monetization platform built with Next.js, Node.js, PostgreSQL, and Stripe.",
+    "author": {
+      "@type": "Person",
+      "name": "Arash Fooladi"
+    },
+    "datePublished": "2024-01-01"
+  }
+  </script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 
- <style>
-   /* CSS Custom Properties */
-   :root {
-     --background: oklch(0.08 0 0);
-     --foreground: oklch(0.98 0 0);
-     --card: oklch(0.11 0 0);
-     --primary: oklch(0.98 0 0);
-     --primary-foreground: oklch(0.08 0 0);
-     --secondary: oklch(0.15 0 0);
-     --muted: oklch(0.18 0 0);
-     --muted-foreground: oklch(0.55 0 0);
-     --border: oklch(1 0 0 / 8%);
-     --glow-color: oklch(0.98 0 0 / 10%);
-     --accent: oklch(0.7 0.2 145);
-     
-     --space-8: 0.5rem;
-     --space-16: 1rem;
-     --space-24: 1.5rem;
-     --space-32: 2rem;
-     --space-48: 3rem;
-     --space-64: 4rem;
-     --space-96: 6rem;
-     --space-160: 10rem;
+  <style>
+    /* CSS Custom Properties */
+    :root {
+      --background: oklch(0.08 0 0);
+      --foreground: oklch(0.98 0 0);
+      --card: oklch(0.11 0 0);
+      --primary: oklch(0.98 0 0);
+      --primary-foreground: oklch(0.08 0 0);
+      --secondary: oklch(0.15 0 0);
+      --muted: oklch(0.18 0 0);
+      --muted-foreground: oklch(0.55 0 0);
+      --border: oklch(1 0 0 / 8%);
+      --glow-color: oklch(0.98 0 0 / 10%);
+      --accent: oklch(0.7 0.2 145);
+      
+      --space-8: 0.5rem;
+      --space-16: 1rem;
+      --space-24: 1.5rem;
+      --space-32: 2rem;
+      --space-48: 3rem;
+      --space-64: 4rem;
+      --space-96: 6rem;
+      --space-160: 10rem;
 
-     --text-display: clamp(3rem, 10vw + 1rem, 8rem);
-     --text-h1: clamp(2rem, 5vw + 1rem, 4rem);
-     --text-h2: clamp(1.5rem, 3vw + 1rem, 2.5rem);
-     --text-body: 1.125rem;
-     --text-small: 0.875rem;
-     --text-caption: 0.75rem;
-     --text-massive: clamp(4rem, 12vw, 10rem);
+      --text-display: clamp(3rem, 10vw + 1rem, 8rem);
+      --text-h1: clamp(2rem, 5vw + 1rem, 4rem);
+      --text-h2: clamp(1.5rem, 3vw + 1rem, 2.5rem);
+      --text-body: 1.125rem;
+      --text-small: 0.875rem;
+      --text-caption: 0.75rem;
+      --text-massive: clamp(4rem, 12vw, 10rem);
 
-     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-     --font-mono: 'JetBrains Mono', monospace;
-     --font-fa: 'Vazirmatn', sans-serif;
-   }
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-fa: 'Vazirmatn', sans-serif;
+    }
 
-   *, *:before, *:after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *:before, *:after { box-sizing: border-box; margin: 0; padding: 0; }
 
-   html {
-     scroll-behavior: smooth;
-     -webkit-font-smoothing: antialiased;
-   }
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
 
-   body {
-     background-color: var(--background);
-     color: var(--foreground);
-     font-family: var(--font-sans);
-     line-height: 1.6;
-     overflow-x: hidden;
-   }
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-   /* --- Improved Farsi Typography --- */
-   html[lang="fa"] body { font-family: var(--font-fa); line-height: 1.9; }
-   html[lang="fa"] .text-body { font-size: 1.2rem; line-height: 2.2; letter-spacing: 0; }
-   html[lang="fa"] .text-h2 { font-weight: 800; letter-spacing: 0; }
-   html[lang="fa"] .project-meta-item span { letter-spacing: 0; }
-   html[lang="fa"] .nav-link { font-size: 0.9rem; letter-spacing: 0; }
+    /* --- Improved Farsi Typography --- */
+    html[lang="fa"] body { font-family: var(--font-fa); line-height: 1.9; }
+    html[lang="fa"] .text-body { font-size: 1.2rem; line-height: 2.2; letter-spacing: 0; }
+    html[lang="fa"] .text-h2 { font-weight: 800; letter-spacing: 0; }
+    html[lang="fa"] .project-meta-item span { letter-spacing: 0; }
+    html[lang="fa"] .nav-link { font-size: 0.9rem; letter-spacing: 0; }
 
-   /* Noise Texture */
-   .noise-texture {
-     position: fixed; inset: 0; pointer-events: none; z-index: 9999;
-     opacity: 0.035;
-     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-   }
+    /* Noise Texture */
+    .noise-texture {
+      position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
 
-   /* Navigation */
-   .nav {
-     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-     padding: var(--space-24) var(--space-16);
-     background: rgba(8, 8, 8, 0.85);
-     backdrop-filter: blur(8px);
-     border-bottom: 1px solid var(--border);
-   }
-   .nav-content { max-width: 80rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-   .nav-left { display: flex; gap: var(--space-32); align-items: center; }
-   .nav-link {
-     color: var(--muted-foreground); text-decoration: none;
-     font-family: var(--font-mono); font-size: var(--text-caption);
-     text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s;
-   }
-   .nav-link:hover { color: var(--primary); }
-   
-   .lang-toggle {
-     font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);
-     background: none; border: 1px solid var(--border); padding: 0.4rem 0.8rem;
-     cursor: pointer; transition: all 0.2s; text-transform: uppercase;
-   }
-   .lang-toggle:hover { border-color: var(--primary); color: var(--primary); }
+    /* Navigation */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: var(--space-24) var(--space-16);
+      background: rgba(8, 8, 8, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-content { max-width: 80rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .nav-left { display: flex; gap: var(--space-32); align-items: center; }
+    .nav-link {
+      color: var(--muted-foreground); text-decoration: none;
+      font-family: var(--font-mono); font-size: var(--text-caption);
+      text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--primary); }
+    
+    .lang-toggle {
+      font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);
+      background: none; border: 1px solid var(--border); padding: 0.4rem 0.8rem;
+      cursor: pointer; transition: all 0.2s; text-transform: uppercase;
+    }
+    .lang-toggle:hover { border-color: var(--primary); color: var(--primary); }
 
-   /* Layout */
-   .container { max-width: 80rem; margin: 0 auto; padding: 0 var(--space-16); }
-   .content-wrapper { max-width: 56rem; margin: 0 auto; padding-top: var(--space-96); }
+    /* Layout */
+    .container { max-width: 80rem; margin: 0 auto; padding: 0 var(--space-16); }
+    .content-wrapper { max-width: 56rem; margin: 0 auto; padding-top: var(--space-96); }
 
-   /* Hero */
-   .project-hero { 
-     padding-top: calc(var(--space-64) + 80px); 
-     padding-bottom: var(--space-48);
-     min-height: 70vh;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-   }
-   
-   .hero-subtitle {
-     font-size: var(--text-body);
-     color: var(--muted-foreground);
-     font-family: var(--font-mono);
-     text-transform: uppercase;
-     letter-spacing: 0.1em;
-     margin-bottom: var(--space-48);
-   }
-   
-   .project-title {
-     font-size: var(--text-display); 
-     font-weight: 800; 
-     line-height: 1.1;
-     letter-spacing: -0.04em; 
-     margin-bottom: var(--space-32);
-     background: linear-gradient(to bottom, oklch(0.98 0 0 / 0.8), oklch(0.98 0 0 / 0.4));
-     -webkit-background-clip: text; 
-     -webkit-text-fill-color: transparent;
-     padding: 0.2em 0;
-   }
-   
-   .project-meta {
-     display: flex; 
-     flex-wrap: wrap; 
-     gap: var(--space-32);
-     border-top: 1px solid var(--border); 
-     padding-top: var(--space-24);
-   }
-   .project-meta-item { display: flex; flex-direction: column; gap: 0.5rem; }
-   .project-meta-item label {
-     font-family: var(--font-mono); 
-     font-size: var(--text-caption);
-     color: var(--muted-foreground); 
-     text-transform: uppercase; 
-     letter-spacing: 0.1em;
-   }
-   .project-meta-item span { font-size: var(--text-body); font-weight: 500; }
+    /* Hero */
+    .project-hero { 
+      padding-top: calc(var(--space-64) + 80px); 
+      padding-bottom: var(--space-48);
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .hero-subtitle {
+      font-size: var(--text-body);
+      color: var(--muted-foreground);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-48);
+    }
+    
+    .project-title {
+      font-size: var(--text-display); 
+      font-weight: 800; 
+      line-height: 1.1;
+      letter-spacing: -0.04em; 
+      margin-bottom: var(--space-32);
+      background: linear-gradient(to bottom, oklch(0.98 0 0 / 0.8), oklch(0.98 0 0 / 0.4));
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent;
+      padding: 0.2em 0;
+    }
+    
+    .project-meta {
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: var(--space-32);
+      border-top: 1px solid var(--border); 
+      padding-top: var(--space-24);
+    }
+    .project-meta-item { display: flex; flex-direction: column; gap: 0.5rem; }
+    .project-meta-item label {
+      font-family: var(--font-mono); 
+      font-size: var(--text-caption);
+      color: var(--muted-foreground); 
+      text-transform: uppercase; 
+      letter-spacing: 0.1em;
+    }
+    .project-meta-item span { font-size: var(--text-body); font-weight: 500; }
 
-   /* GitHub Link - Prominent (Green accent like gesture project) */
-   .github-section {
-     margin: var(--space-96) 0;
-     padding: var(--space-48);
-     border: 1px solid var(--border);
-     text-align: center;
-     position: relative;
-     overflow: hidden;
-   }
-   
-   .github-section::before {
-     content: '';
-     position: absolute;
-     top: 0;
-     left: 0;
-     right: 0;
-     height: 2px;
-     background: linear-gradient(90deg, transparent, var(--accent), transparent);
-   }
-   
-   .github-link {
-     display: inline-flex;
-     align-items: center;
-     gap: var(--space-16);
-     text-decoration: none;
-     color: var(--foreground);
-     font-family: var(--font-mono);
-     font-size: var(--text-body);
-     border: 1px solid var(--border);
-     padding: var(--space-16) var(--space-32);
-     transition: all 0.2s;
-   }
-   
-   .github-link:hover {
-     border-color: var(--accent);
-     color: var(--accent);
-   }
+    /* GitHub Link - Prominent (Green accent like gesture project) */
+    .github-section {
+      margin: var(--space-96) 0;
+      padding: var(--space-48);
+      border: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .github-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+    
+    .github-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-16);
+      text-decoration: none;
+      color: var(--foreground);
+      font-family: var(--font-mono);
+      font-size: var(--text-body);
+      border: 1px solid var(--border);
+      padding: var(--space-16) var(--space-32);
+      transition: all 0.2s;
+    }
+    
+    .github-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
 
-   /* Content Sections */
-   .section { 
-     margin-bottom: var(--space-160); 
-     opacity: 0; 
-     transform: translateY(20px); 
-     animation: fadeUp 0.8s ease forwards; 
-   }
-   .section:nth-child(2) { animation-delay: 0.1s; }
-   .section:nth-child(3) { animation-delay: 0.2s; }
-   
-   @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    /* Content Sections */
+    .section { 
+      margin-bottom: var(--space-160); 
+      opacity: 0; 
+      transform: translateY(20px); 
+      animation: fadeUp 0.8s ease forwards; 
+    }
+    .section:nth-child(2) { animation-delay: 0.1s; }
+    .section:nth-child(3) { animation-delay: 0.2s; }
+    
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
 
-   .section-title {
-     font-size: var(--text-h2); 
-     font-weight: 700; 
-     margin-bottom: var(--space-24);
-     letter-spacing: -0.02em;
-   }
-   .text-content p {
-     font-size: var(--text-body); 
-     color: var(--foreground); 
-     opacity: 0.85;
-     margin-bottom: var(--space-16); 
-     max-width: 65ch;
-   }
+    .section-title {
+      font-size: var(--text-h2); 
+      font-weight: 700; 
+      margin-bottom: var(--space-24);
+      letter-spacing: -0.02em;
+    }
+    .text-content p {
+      font-size: var(--text-body); 
+      color: var(--foreground); 
+      opacity: 0.85;
+      margin-bottom: var(--space-16); 
+      max-width: 65ch;
+    }
 
-   /* Image Placeholders */
-   .image-placeholder {
-     width: 100%; 
-     aspect-ratio: 16/9; 
-     background: var(--secondary);
-     border-radius: 4px; 
-     border: 1px solid var(--border);
-     display: flex; 
-     justify-content: center; 
-     align-items: center;
-     color: var(--muted-foreground); 
-     font-family: var(--font-mono); 
-     font-size: var(--text-caption);
-     margin-bottom: var(--space-16); 
-     transition: border-color 0.3s;
-   }
-   .image-placeholder:hover { border-color: var(--primary); }
-   
-   .grid-2 { 
-     display: grid; 
-     grid-template-columns: 1fr; 
-     gap: var(--space-16); 
-   }
-   @media(min-width: 768px) { 
-     .grid-2 { grid-template-columns: 1fr 1fr; } 
-   }
+    /* Images - REPLACED PLACEHOLDERS */
+    .project-image {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: var(--card);
+      overflow: hidden;
+    }
+    
+    .project-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+    
+    .project-image:hover img {
+      transform: scale(1.02);
+    }
+    
+    .image-caption {
+      font-family: var(--font-mono);
+      font-size: var(--text-caption);
+      color: var(--muted-foreground);
+      padding: var(--space-16);
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    
+    .grid-2 { 
+      display: grid; 
+      grid-template-columns: 1fr; 
+      gap: var(--space-16); 
+    }
+    @media(min-width: 768px) { 
+      .grid-2 { grid-template-columns: 1fr 1fr; } 
+    }
 
-   /* Tech List */
-   .tech-list { 
-     display: flex; 
-     flex-wrap: wrap; 
-     gap: var(--space-8); 
-     margin-top: var(--space-16); 
-   }
-   .tech-tag {
-     font-family: var(--font-mono); 
-     font-size: var(--text-caption); 
-     color: var(--muted-foreground);
-     border: 1px solid var(--border); 
-     padding: 0.25rem 0.75rem; 
-     border-radius: 2px;
-     transition: all 0.2s;
-   }
-   .tech-tag:hover {
-     border-color: var(--accent);
-     color: var(--accent);
-   }
+    /* Tech List */
+    .tech-list { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: var(--space-8); 
+      margin-top: var(--space-16); 
+    }
+    .tech-tag {
+      font-family: var(--font-mono); 
+      font-size: var(--text-caption); 
+      color: var(--muted-foreground);
+      border: 1px solid var(--border); 
+      padding: 0.25rem 0.75rem; 
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .tech-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
 
-   /* Footer */
-   .footer { 
-     border-top: 1px solid var(--border); 
-     margin-top: var(--space-160); 
-     padding: var(--space-48) 0; 
-   }
-   .footer-content { 
-     display: flex; 
-     justify-content: space-between; 
-     align-items: center; 
-     flex-wrap: wrap;
-     gap: var(--space-16);
-   }
-   .next-project-link {
-     font-size: var(--text-h3); 
-     font-weight: 700; 
-     text-decoration: none; 
-     color: var(--foreground);
-     display: flex; 
-     align-items: center; 
-     gap: var(--space-8);
-     transition: opacity 0.2s;
-   }
-   .next-project-link:hover { opacity: 0.6; }
-   .arrow { font-size: 1.5em; }
+    /* Footer */
+    .footer { 
+      border-top: 1px solid var(--border); 
+      margin-top: var(--space-160); 
+      padding: var(--space-48) 0; 
+    }
+    .footer-content { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      flex-wrap: wrap;
+      gap: var(--space-16);
+    }
+    .next-project-link {
+      font-size: var(--text-h3); 
+      font-weight: 700; 
+      text-decoration: none; 
+      color: var(--foreground);
+      display: flex; 
+      align-items: center; 
+      gap: var(--space-8);
+      transition: opacity 0.2s;
+    }
+    .next-project-link:hover { opacity: 0.6; }
+    .arrow { font-size: 1.5em; }
 
-   /* Mobile */
-   @media (max-width: 640px) {
-     .project-meta { flex-direction: column; gap: var(--space-16); }
-     .section { margin-bottom: var(--space-96); }
-     .github-link { flex-direction: column; text-align: center; }
-     .footer-content { flex-direction: column; align-items: flex-start; }
-   }
- </style>
+    /* Mobile */
+    @media (max-width: 640px) {
+      .project-meta { flex-direction: column; gap: var(--space-16); }
+      .section { margin-bottom: var(--space-96); }
+      .github-link { flex-direction: column; text-align: center; }
+      .footer-content { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
 
- <!-- Noise Overlay -->
- <div class="noise-texture"></div>
+  <!-- Noise Overlay -->
+  <div class="noise-texture"></div>
 
- <!-- Navigation -->
- <nav class="nav">
-   <div class="nav-content">
-     <div class="nav-left">
-       <a href="index.html" class="nav-link" data-en="Back to Home" data-fa="بازگشت به خانه">Back to Home</a>
-     </div>
-     <button class="lang-toggle" id="lang-toggle">FA</button>
-   </div>
- </nav>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-content">
+      <div class="nav-left">
+        <a href="index.html" class="nav-link" data-en="Back to Home" data-fa="بازگشت به خانه">Back to Home</a>
+      </div>
+      <button class="lang-toggle" id="lang-toggle">FA</button>
+    </div>
+  </nav>
 
- <!-- Main Content -->
- <main class="container">
-   
-   <!-- Hero Section -->
-   <header class="project-hero content-wrapper">
-     <div class="hero-subtitle" data-en="Full Stack Project" data-fa="پروژه فول‌استک">Full Stack Project</div>
-     <h1 class="project-title" data-en="Yarplus" data-fa="یارپلاس">Yarplus</h1>
-     
-     <div class="project-meta">
-       <div class="project-meta-item">
-         <label data-en="Role" data-fa="نقش">Role</label>
-         <span data-en="Full Stack Developer" data-fa="توسعه‌دهنده فول‌استک">Full Stack Developer</span>
-       </div>
-       <div class="project-meta-item">
-         <label data-en="Year" data-fa="سال">Year</label>
-         <span>2024 - Present</span>
-       </div>
-       <div class="project-meta-item">
-         <label data-en="Status" data-fa="وضعیت">Status</label>
-         <span data-en="Live" data-fa="فعال">Live</span>
-       </div>
-     </div>
-   </header>
+  <!-- Main Content -->
+  <main class="container">
+    
+    <!-- Hero Section -->
+    <header class="project-hero content-wrapper">
+      <div class="hero-subtitle" data-en="Full Stack Project" data-fa="پروژه فول‌استک">Full Stack Project</div>
+      <h1 class="project-title" data-en="Yarplus" data-fa="یارپلاس">Yarplus</h1>
+      
+      <div class="project-meta">
+        <div class="project-meta-item">
+          <label data-en="Role" data-fa="نقش">Role</label>
+          <span data-en="Full Stack Developer" data-fa="توسعه‌دهنده فول‌استک">Full Stack Developer</span>
+        </div>
+        <div class="project-meta-item">
+          <label data-en="Year" data-fa="سال">Year</label>
+          <span>2025 - Present</span>
+        </div>
+        <div class="project-meta-item">
+          <label data-en="Status" data-fa="وضعیت">Status</label>
+          <span data-en="Live" data-fa="فعال">Live</span>
+        </div>
+      </div>
+    </header>
 
-   <!-- Main Image Placeholder -->
-   <section class="section">
-     <div class="image-placeholder">
-        [ INSERT MAIN HERO IMAGE HERE (1920x1080) ]
-     </div>
-   </section>
+    <!-- Main Hero Image (main1) -->
+    <section class="section">
+      <figure class="project-image">
+        <img src="images/main1.jpg" alt="Yarplus Platform Overview" loading="lazy">
+        <figcaption class="image-caption" data-en="Platform Dashboard" data-fa="داشبورد پلتفرم">Platform Dashboard</figcaption>
+      </figure>
+    </section>
 
-   <!-- GitHub CTA (Green accent style from gesture project) -->
-   <section class="section content-wrapper">
-     <div class="github-section">
-       <a href="https://github.com/arashfooladi/yarplus" class="github-link" target="_blank" rel="noopener">
-         <span data-en="View on GitHub" data-fa="مشاهده در گیت‌هاب">View on GitHub</span>
-         <span style="color: var(--muted-foreground);">|</span>
-         <span style="font-size: var(--text-caption); color: var(--muted-foreground);" data-en="Full Documentation" data-fa="مستندات کامل">Full Documentation</span>
-       </a>
-     </div>
-   </section>
+    <!-- GitHub CTA -->
+    <section class="section content-wrapper">
+      <div class="github-section">
+        <a href="https://github.com/arashfooladi/yarplus" class="github-link" target="_blank" rel="noopener">
+          <span data-en="View on GitHub" data-fa="مشاهده در گیت‌هاب">View on GitHub</span>
+          <span style="color: var(--muted-foreground);">|</span>
+          <span style="font-size: var(--text-caption); color: var(--muted-foreground);" data-en="Full Documentation" data-fa="مستندات کامل">Full Documentation</span>
+        </a>
+      </div>
+    </section>
 
-   <!-- Overview Text -->
-   <section class="section content-wrapper">
-     <div class="text-content">
-       <h2 class="section-title" data-en="The Problem" data-fa="مشکل">The Problem</h2>
-       <p data-en="Placeholder: Describe the initial problem you were trying to solve. Who was the target audience and what pain points did they have?" data-fa="توضیح دهید که در ابتدا چه مشکلی را می‌خواستید حل کنید. مخاطب هدف چه کسانی بودند و چه دردسرهایی داشتند؟">
-         Placeholder: Describe the initial problem you were trying to solve. Who was the target audience and what pain points did they have?
-       </p>
-     </div>
-   </section>
+    <!-- Overview Text -->
+    <section class="section content-wrapper">
+      <div class="text-content">
+        <h2 class="section-title" data-en="1) The Problem" data-fa="۱) مسئله">1) The Problem</h2>
+        <p data-en="Iranian creators are cut off from global monetization platforms due to sanctions and payment restrictions. Patreon, OnlyFans, Whop — none work. This forces them to either rely on unstable workarounds or give up on monetization entirely." data-fa="سازندگان محتوای ایرانی به دلیل تحریم‌ها و محدودیت‌های پرداخت، به پلتفرم‌های جهانی مانند پاترئون، اونلی‌فنز یا وپ دسترسی ندارند. نتیجه؟ یا سراغ راه‌حل‌های ناپایدار می‌روند یا کلاً از کسب درآمد صرف‌نظر می‌کنند.">
+          Iranian creators are cut off from global monetization platforms due to sanctions and payment restrictions. Patreon, OnlyFans, Whop — none work. This forces them to either rely on unstable workarounds or give up on monetization entirely.
+        </p>
+        <p data-en="The gap is clear: independent creators, educators, artists, and influencers need a reliable local alternative to build sustainable income without depending on shaky third-party solutions." data-fa="شکاف بازار مشخص است: سازندگان مستقل، مدرسان، هنرمندان و اینفلوئنسرها به یک جایگزین بومی و قابل اعتماد نیاز دارند تا بدون وابستگی به راه‌حل‌های موقتی، درآمد پایداری داشته باشند.">
+          The gap is clear: independent creators, educators, artists, and influencers need a reliable local alternative to build sustainable income without depending on shaky third-party solutions.
+        </p>
+      </div>
+    </section>
 
-   <!-- Solution / Features -->
-   <section class="section content-wrapper">
-     <div class="text-content">
-       <h2 class="section-title" data-en="The Solution" data-fa="راه حل">The Solution</h2>
-       <p data-en="Placeholder: Explain your approach to solving the problem. What features did you build? How does the architecture support the solution?" data-fa="رویکرد خود را برای حل مشکل توضیح دهید. چه ویژگی‌هایی ساختید؟ معماری چگونه از راه حل پشتیبانی می‌کند؟">
-         Explain your approach to solving the problem. What features did you build? How does the architecture support the solution?
-       </p>
-       
-       <!-- Tech Stack Tags -->
-       <div class="tech-list">
-         <span class="tech-tag">Next.js</span>
-         <span class="tech-tag">Node.js</span>
-         <span class="tech-tag">PostgreSQL</span>
-         <span class="tech-tag">Stripe</span>
-         <span class="tech-tag">Redis</span>
-       </div>
-     </div>
-   </section>
+    <!-- Solution / Features -->
+    <section class="section content-wrapper">
+      <div class="text-content">
+        <h2 class="section-title" data-en="2) The Solution" data-fa="۲) راه‌حل">2) The Solution</h2>
+        <p data-en="Yarplus is a creator monetization platform built specifically for the Iranian market. It allows creators to set subscription tiers, manage exclusive content, and process payments through local gateways — all in one place." data-fa="یارپلاس یک پلتفرم کسب‌درآمد مخصوص بازار ایران است. سازندگان می‌توانند سطوح اشتراک تعریف کنند، محتوای انحصاری منتشر کنند و پرداخت‌ها را از طریق درگاه‌های داخلی دریافت کنند — همه در یک جا.">
+          Yarplus is a creator monetization platform built specifically for the Iranian market. It allows creators to set subscription tiers, manage exclusive content, and process payments through local gateways — all in one place.
+        </p>
+        <p data-en="Core features include: creator dashboard with analytics, subscriber management, tiered access control, automated billing, and a discovery feed for fans. The backend uses a microservices architecture to keep things scalable and maintainable." data-fa="ویژگی‌های اصلی: داشبورد سازنده با گزارش‌گیری، مدیریت مشترکین، کنترل دسترسی سطح‌بندی‌شده، صورتحساب خودکار و فید کشف محتوا. در بخش backend هم از معماری میکروسرویس استفاده شده تا پروژه مقیاس‌پذیر و تمیز باقی بمونه.">
+          Core features include: creator dashboard with analytics, subscriber management, tiered access control, automated billing, and a discovery feed for fans. The backend uses a microservices architecture to keep things scalable and maintainable.
+        </p>
+        
+        <!-- Tech Stack Tags (Stripe and Redis removed) -->
+        <div class="tech-list">
+          <span class="tech-tag">Next.js</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">PostgreSQL</span>
+          <span class="tech-tag">TypeScript</span>
+          <span class="tech-tag">Tailwind CSS</span>
+        </div>
+      </div>
+    </section>
 
-   <!-- Gallery Grid -->
-   <section class="section">
-     <div class="grid-2">
-       <div class="image-placeholder">[ IMAGE 1 ]</div>
-       <div class="image-placeholder">[ IMAGE 2 ]</div>
-     </div>
-     <div class="image-placeholder" style="margin-top: var(--space-16);">[ FULL WIDTH IMAGE ]</div>
-   </section>
+    <!-- Gallery Grid (mini1, mini2) -->
+    <section class="section">
+      <div class="grid-2">
+        <figure class="project-image">
+          <img src="images/mini1.jpg" alt="Feature Detail 1" loading="lazy">
+          <figcaption class="image-caption" data-en="Creator Dashboard" data-fa="داشبورد سازنده">Creator Dashboard</figcaption>
+        </figure>
+        <figure class="project-image">
+          <img src="images/mini2.jpg" alt="Feature Detail 2" loading="lazy">
+          <figcaption class="image-caption" data-en="Subscription Management" data-fa="مدیریت اشتراک‌ها">Subscription Management</figcaption>
+        </figure>
+      </div>
+    </section>
 
-   <!-- Results / Reflections -->
-   <section class="section content-wrapper">
-     <div class="text-content">
-       <h2 class="section-title" data-en="Key Learnings" data-fa="آموخته‌ها">Key Learnings</h2>
-       <p data-en="Placeholder: What did you learn while building this? Did you have to overcome any specific technical challenges?" data-fa="در حین ساخت این پروژه چه چیزی یاد گرفتید؟ آیا مجبور بودید بر چالش‌های فنی خاصی غلبه کنید؟">
-         What did you learn while building this? Did you have to overcome any specific technical challenges?
-       </p>
-     </div>
-   </section>
+    <!-- Full Width Second Main Image (main2) -->
+    <section class="section">
+      <figure class="project-image">
+        <img src="images/main2.jpg" alt="Yarplus Architecture Overview" loading="lazy">
+        <figcaption class="image-caption" data-en="System Architecture" data-fa="معماری سیستم">System Architecture</figcaption>
+      </figure>
+    </section>
 
-   <!-- Footer -->
-   <footer class="footer content-wrapper">
-     <div class="footer-content">
-       <a href="index.html" class="next-project-link" data-en="Back to Projects" data-fa="بازگشت به پروژه‌ها">
-         Back to Projects <span class="arrow">→</span>
-       </a>
-       <span style="font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);" data-en="ARCHIVED 2024" data-fa="بایگانی ۲۰۲۴">ARCHIVED 2024</span>
-     </div>
-   </footer>
+    <!-- Results / Reflections -->
+    <section class="section content-wrapper">
+      <div class="text-content">
+        <h2 class="section-title" data-en="3) Key Learnings" data-fa="۳) نکات کلیدی">3) Key Learnings</h2>
+        <p data-en="This project meant tackling payment processing in a restricted environment while keeping security and user experience tight. Handling sensitive financial data required careful thought around privacy, fraud prevention, and local regulations." data-fa="این پروژه یعنی مواجهه با چالش‌های پرداخت در محیط محدود، بدون قربانی کردن امنیت یا تجربه کاربری. کار با داده‌های مالی حساس نیازمند دقت بالا در حریم خصوصی، جلوگیری از تقلب و رعایت قوانین محلی بود.">
+          This project meant tackling payment processing in a restricted environment while keeping security and user experience tight. Handling sensitive financial data required careful thought around privacy, fraud prevention, and local regulations.
+        </p>
+        <p data-en="I used AI-assisted development to speed things up — letting me focus on architecture, business logic, and UX instead of getting stuck in boilerplate. It showed how the right tooling can boost velocity without losing control over the product." data-fa="برای سرعت بخشیدن به توسعه، از ابزارهای هوش مصنوعی کمک گرفتم — اینطوری می‌تونستم روی معماری، منطق اصلی و تجربه کاربری تمرکز کنم، نه کدهای تکراری. تجربه‌ای که نشون داد با ابزار درست می‌شود سرعت را بالا برد بدون اینکه کنترل پروژه از دست بره.">
+          I used AI-assisted development to speed things up — letting me focus on architecture, business logic, and UX instead of getting stuck in boilerplate. It showed how the right tooling can boost velocity without losing control over the product.
+        </p>
+      </div>
+    </section>
 
- </main>
+    <!-- Footer -->
+    <footer class="footer content-wrapper">
+      <div class="footer-content">
+        <a href="index.html" class="next-project-link" data-en="Back to Projects" data-fa="بازگشت به پروژه‌ها">
+          Back to Projects <span class="arrow">→</span>
+        </a>
+        <span style="font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);" data-en="ARCHIVED 2024" data-fa="بایگانی 2025">ARCHIVED 2025</span>
+      </div>
+    </footer>
 
- <script>
-   // Language Toggle Logic
-   let currentLang = 'en';
-   const translations = { en: { button: 'FA' }, fa: { button: 'EN' } };
+  </main>
 
-   function toggleLanguage() {
-     currentLang = currentLang === 'en' ? 'fa' : 'en';
-     const btn = document.getElementById('lang-toggle');
-     btn.textContent = translations[currentLang].button;
-     document.documentElement.lang = currentLang;
+  <script>
+    // Language Toggle Logic
+    let currentLang = 'en';
+    const translations = { en: { button: 'FA' }, fa: { button: 'EN' } };
 
-     document.querySelectorAll('[data-en][data-fa]').forEach(el => {
-       el.textContent = el.getAttribute('data-' + currentLang);
-       
-       // Apply Farsi font family specifically when switched
-       if (currentLang === 'fa') {
-         el.style.fontFamily = 'var(--font-fa)';
-       } else {
-         el.style.fontFamily = '';
-       }
-     });
-   }
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'fa' : 'en';
+      const btn = document.getElementById('lang-toggle');
+      btn.textContent = translations[currentLang].button;
+      document.documentElement.lang = currentLang;
 
-   document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
- </script>
+      document.querySelectorAll('[data-en][data-fa]').forEach(el => {
+        el.textContent = el.getAttribute('data-' + currentLang);
+        
+        if (currentLang === 'fa') {
+          el.style.fontFamily = 'var(--font-fa)';
+        } else {
+          el.style.fontFamily = '';
+        }
+      });
+    }
+
+    document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
+  </script>
 </body>
 </html>

@@ -102,14 +102,42 @@
       overflow-x: hidden;
     }
 
-    /* --- Improved Farsi Typography --- */
-    html[lang="fa"] body { font-family: var(--font-fa); line-height: 1.9; }
-    html[lang="fa"] .text-body { font-size: 1.2rem; line-height: 2.2; letter-spacing: 0; }
-    html[lang="fa"] .text-h2 { font-weight: 800; letter-spacing: 0; }
-    html[lang="fa"] .project-meta-item span { letter-spacing: 0; }
-    html[lang="fa"] .nav-link { font-size: 0.9rem; letter-spacing: 0; }
-    html[lang="fa"] .stat-label { letter-spacing: 0; font-size: 0.8rem; }
-    html[lang="fa"] .stat-number { font-family: var(--font-fa); letter-spacing: 0; }
+
+/* --- Improved Farsi Typography --- */
+html[lang="fa"] body { 
+  font-family: var(--font-fa); 
+  line-height: 1.9; 
+}
+
+/* ONLY force numbers to use English font - nothing else */
+html[lang="fa"] .stat-number {
+  font-family: var(--font-mono);
+}
+
+html[lang="fa"] .text-body { 
+  font-size: 1.2rem; 
+  line-height: 2.2; 
+  letter-spacing: 0; 
+}
+
+html[lang="fa"] .text-h2 { 
+  font-weight: 800; 
+  letter-spacing: 0; 
+}
+
+html[lang="fa"] .project-meta-item span { 
+  letter-spacing: 0; 
+}
+
+html[lang="fa"] .nav-link { 
+  font-size: 0.9rem; 
+  letter-spacing: 0; 
+}
+
+html[lang="fa"] .stat-label { 
+  letter-spacing: 0; 
+  font-size: 0.8rem; 
+}
 
     /* Noise Texture */
     .noise-texture {
@@ -450,7 +478,7 @@
         </div>
         <div class="project-meta-item">
           <label data-en="Status" data-fa="وضعیت">Status</label>
-          <span data-en="Closed Source" data-fa="متن بسته">Closed Source</span>
+          <span data-en="Closed Source" data-fa="Closed Source">Closed Source</span>
         </div>
       </div>
     </header>
@@ -461,17 +489,17 @@
         <div class="stat-card">
           <span class="stat-number">300K</span>
           <div class="stat-label" data-en="Total Users" data-fa="کل کاربران">Total Users</div>
-          <div class="stat-context" data-en="Lifetime unique users" data-fa="کاربران یکتا طول عمر">Lifetime unique users</div>
+          <div class="stat-context" data-en="Lifetime unique users" data-fa="تعداد کاربران یکتا">Lifetime unique users</div>
         </div>
         <div class="stat-card">
           <span class="stat-number">40K</span>
-          <div class="stat-label" data-en="Monthly Active" data-fa="ماهانه فعال">Monthly Active</div>
-          <div class="stat-context" data-en="Peak concurrent load" data-fa="اوج بار همزمان">Peak concurrent load</div>
+          <div class="stat-label" data-en="Monthly Active" data-fa="کاربر فعال ماهانه">Monthly Active</div>
+          <div class="stat-context" data-en="Peak concurrent load" data-fa="">Peak concurrent load</div>
         </div>
         <div class="stat-card">
-          <span class="stat-number">3K</span>
+          <span class="stat-number">+3K</span>
           <div class="stat-label" data-en="Daily Active" data-fa="روزانه فعال">Daily Active</div>
-          <div class="stat-context" data-en="Consistent daily engagement" data-fa="درگیری روزانه پایدار">Consistent daily engagement</div>
+          <div class="stat-context" data-en="Consistent daily engagement" data-fa="به صورت پایدار">Consistent daily engagement</div>
         </div>
       </div>
     </section>
@@ -484,7 +512,7 @@
     <!-- Query Volume -->
     <section class="section content-wrapper">
       <div class="text-content" style="text-align: center; max-width: 100%;">
-        <h2 class="section-title" style="font-size: var(--text-massive); margin-bottom: var(--space-24); line-height: 1.2; padding: 0.1em 0;" data-en="10M+" data-fa="۱۰ میلیون+">10M+</h2>
+        <h2 class="section-title" style="font-size: var(--text-massive); margin-bottom: var(--space-24); line-height: 1.2; padding: 0.1em 0;" data-en="10M+" data-fa="10M+">10M+</h2>
         <p style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted-foreground); margin: 0 auto;" data-en="Total Queries Processed" data-fa="کل درخواست‌های پردازش شده">Total Queries Processed</p>
       </div>
     </section>
@@ -495,7 +523,7 @@
         <div class="closed-source-icon">CS</div>
         <div class="closed-source-text">
           <h3 data-en="Closed Source Documentation" data-fa="مستندات متن بسته">Closed Source Documentation</h3>
-          <p data-en="Due to the sensitive nature and commercial viability of this infrastructure, source code remains private. Technical architecture and scaling strategies are documented internally." data-fa="به دلیل ماهیت حساس و پتانسیل تجاری این زیرساخت، کد منبع خصوصی باقی می‌ماند. معماری فنی و استراتژی‌های مقیاس‌پذیری به صورت داخلی مستند شده‌اند.">
+          <p data-en="Due to the sensitive nature and commercial viability of this infrastructure, source code remains private." data-fa=".به دلیل ماهیت حساس و پتانسیل تجاری این زیرساخت، کد منبع خصوصی باقی می‌ماند">
             Due to the sensitive nature and commercial viability of this infrastructure, source code remains private. Technical architecture and scaling strategies are documented internally.
           </p>
         </div>
@@ -506,22 +534,22 @@
     <section class="section content-wrapper">
       <div class="text-content">
         <h2 class="section-title" data-en="System Scale" data-fa="مقیاس سیستم">System Scale</h2>
-        <p data-en="This project represents a high-throughput automated system designed to handle massive concurrent user interaction. Built to sustain peak loads of 40,000 monthly active users with sub-second response times across 10 million+ processed queries." data-fa="این پروژه نمایانگر یک سیستم خودکار با توان بالا است که برای مدیریت تعامل همزمان کاربران در مقیاس عظیم طراحی شده است. ساخته شده برای تحمل بار اوج ۴۰ هزار کاربر فعال ماهانه با زمان پاسخ زیر یک ثانیه در بیش از ۱۰ میلیون درخواست پردازش شده.">
+        <p data-en="This project represents a high-throughput automated system designed to handle massive concurrent user interaction. Built to sustain peak loads of 40,000 monthly active users with sub-second response times across 10 million+ processed queries." data-fa="یک سیستم خودکار با کارایی بالا برای مدیریت همزمان هزاران کاربر. طراحی شده برای پاسخگویی در کسری از ثانیه به بیش از ۱۰ میلیون درخواست، با پشتیبانی از ۴۰ هزار کاربر فعال ماهانه.">
           This project represents a high-throughput automated system designed to handle massive concurrent user interaction. Built to sustain peak loads of 40,000 monthly active users with sub-second response times across 10 million+ processed queries.
         </p>
-        <p data-en="The infrastructure was engineered for reliability at scale, maintaining 3,000+ daily active users consistently over extended operational periods." data-fa="زیرساخت برای قابلیت اطمینان در مقیاس مهندسی شده، حفظ ۳۰۰۰+ کاربر فعال روزانه به طور مداوم در دوره‌های عملیاتی طولانی.">
+        <p data-en="The infrastructure was engineered for reliability at scale, maintaining 3,000+ daily active users consistently over extended operational periods." data-fa="زیرساخت پایدار و مقیاس‌پذیر با حفظ روزانه ۳۰۰۰+ کاربر فعال در بازه‌های طولانی.">
           The infrastructure was engineered for reliability at scale, maintaining 3,000+ daily active users consistently over extended operational periods.
         </p>
       </div>
     </section>
-
+	
     <!-- Footer -->
     <footer class="footer content-wrapper">
       <div class="footer-content">
         <a href="index.html" class="next-project-link" data-en="Back to Projects" data-fa="بازگشت به پروژه‌ها">
           Back to Projects <span class="arrow">→</span>
         </a>
-        <span style="font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);" data-en="ARCHIVED 2024" data-fa="بایگانی ۲۰۲۴">ARCHIVED 2024</span>
+        <span style="font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);" data-en="ARCHIVED 2024" data-fa="بایگانی 2026">ARCHIVED 2026</span>
       </div>
     </footer>
 
