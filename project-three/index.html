@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Essentials -->
+  <title>Coming Soon | Arash Fooladi</title>
+  <meta name="description" content="New project coming soon. Stay tuned for the next release by Arash Fooladi.">
+  <meta name="keywords" content="Arash Fooladi, coming soon, new project, portfolio">
+  <meta name="author" content="Arash Fooladi">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#080808">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://arashfooladi.com/project-three">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Coming Soon | Arash Fooladi">
+  <meta property="og:description" content="New project coming soon. Stay tuned for the next release.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arashfooladi.com/project-three">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Coming Soon | Arash Fooladi">
+  <meta name="twitter:description" content="New project coming soon. Stay tuned for the next release.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Custom Properties */
+    :root {
+      --background: oklch(0.08 0 0);
+      --foreground: oklch(0.98 0 0);
+      --card: oklch(0.11 0 0);
+      --primary: oklch(0.98 0 0);
+      --primary-foreground: oklch(0.08 0 0);
+      --secondary: oklch(0.15 0 0);
+      --muted: oklch(0.18 0 0);
+      --muted-foreground: oklch(0.55 0 0);
+      --border: oklch(1 0 0 / 8%);
+      --glow-color: oklch(0.98 0 0 / 10%);
+      --accent: oklch(0.7 0.2 145);
+      
+      --space-8: 0.5rem;
+      --space-16: 1rem;
+      --space-24: 1.5rem;
+      --space-32: 2rem;
+      --space-48: 3rem;
+      --space-64: 4rem;
+      --space-96: 6rem;
+      --space-160: 10rem;
+
+      --text-display: clamp(3rem, 10vw + 1rem, 8rem);
+      --text-h1: clamp(2rem, 5vw + 1rem, 4rem);
+      --text-h2: clamp(1.5rem, 3vw + 1rem, 2.5rem);
+      --text-body: 1.125rem;
+      --text-small: 0.875rem;
+      --text-caption: 0.75rem;
+
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --font-fa: 'Vazirmatn', sans-serif;
+    }
+
+    *, *:before, *:after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Farsi Typography */
+    html[lang="fa"] body { font-family: var(--font-fa); line-height: 1.9; }
+    html[lang="fa"] .nav-link { font-size: 0.9rem; letter-spacing: 0; }
+
+    /* Noise Texture */
+    .noise-texture {
+      position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: var(--space-24) var(--space-16);
+      background: rgba(8, 8, 8, 0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-content { max-width: 80rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .nav-left { display: flex; gap: var(--space-32); align-items: center; }
+    .nav-link {
+      color: var(--muted-foreground); text-decoration: none;
+      font-family: var(--font-mono); font-size: var(--text-caption);
+      text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--primary); }
+    
+    .lang-toggle {
+      font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);
+      background: none; border: 1px solid var(--border); padding: 0.4rem 0.8rem;
+      cursor: pointer; transition: all 0.2s; text-transform: uppercase;
+    }
+    .lang-toggle:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* Layout */
+    .container { max-width: 80rem; margin: 0 auto; padding: 0 var(--space-16); }
+    .content-wrapper { max-width: 56rem; margin: 0 auto; padding-top: var(--space-96); }
+
+    /* Hero */
+    .project-hero { 
+      padding-top: calc(var(--space-64) + 80px); 
+      padding-bottom: var(--space-48);
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .hero-subtitle {
+      font-size: var(--text-body);
+      color: var(--muted-foreground);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-48);
+    }
+    
+    .project-title {
+      font-size: var(--text-display); 
+      font-weight: 800; 
+      line-height: 1.1;
+      letter-spacing: -0.04em; 
+      margin-bottom: var(--space-32);
+      background: linear-gradient(to bottom, oklch(0.98 0 0 / 0.8), oklch(0.98 0 0 / 0.4));
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent;
+      padding: 0.2em 0;
+    }
+
+    /* Coming Soon Content */
+    .coming-soon-content {
+      text-align: center;
+      padding: var(--space-96) 0;
+    }
+    
+    .coming-soon-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto var(--space-48);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: var(--muted-foreground);
+    }
+    
+    .coming-soon-text {
+      font-size: var(--text-h2);
+      color: var(--muted-foreground);
+      margin-bottom: var(--space-24);
+    }
+    
+    .coming-soon-desc {
+      font-size: var(--text-body);
+      color: var(--foreground);
+      opacity: 0.7;
+      max-width: 50ch;
+      margin: 0 auto;
+    }
+
+    /* Footer */
+    .footer { 
+      border-top: 1px solid var(--border); 
+      margin-top: auto;
+      padding: var(--space-48) 0; 
+    }
+    .footer-content { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      flex-wrap: wrap;
+      gap: var(--space-16);
+    }
+    .next-project-link {
+      font-size: var(--text-h3); 
+      font-weight: 700; 
+      text-decoration: none; 
+      color: var(--foreground);
+      display: flex; 
+      align-items: center; 
+      gap: var(--space-8);
+      transition: opacity 0.2s;
+    }
+    .next-project-link:hover { opacity: 0.6; }
+    .arrow { font-size: 1.5em; }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .footer-content { flex-direction: column; align-items: flex-start; }
+      .coming-soon-icon { width: 80px; height: 80px; font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Noise Overlay -->
+  <div class="noise-texture"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-content">
+      <div class="nav-left">
+        <a href="../index.html" class="nav-link" data-en="Back to Home" data-fa="بازگشت به خانه">Back to Home</a>
+        <a href="../telegram-bot" class="nav-link" data-en="← Previous" data-fa="← قبلی">← Previous</a>
+      </div>
+      <button class="lang-toggle" id="lang-toggle">FA</button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+    
+    <!-- Hero Section -->
+    <header class="project-hero content-wrapper">
+      <div class="hero-subtitle" data-en="Work in Progress" data-fa="در دست ساخت">Work in Progress</div>
+      <h1 class="project-title" data-en="Coming Soon" data-fa="به زودی">Coming Soon</h1>
+    </header>
+
+    <!-- Coming Soon Content -->
+    <section class="coming-soon-content">
+      <div class="coming-soon-icon">⚡</div>
+      <h2 class="coming-soon-text" data-en="Something Big is Coming" data-fa="چیز بزرگی در راه است">Something Big is Coming</h2>
+      <p class="coming-soon-desc" data-en="Currently experimenting with new tools and ideas. Stay tuned for the next project." data-fa="در حال آزمایش ابزارها و ایده‌های جدید. منتظر پروژه بعدی باشید.">
+        Currently experimenting with new tools and ideas. Stay tuned for the next project.
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer content-wrapper">
+      <div class="footer-content">
+        <div style="display: flex; gap: var(--space-32); align-items: center;">
+          <a href="../telegram-bot" class="next-project-link" data-en="← Previous Project" data-fa="← پروژه قبلی">
+            <span class="arrow">←</span> Previous Project
+          </a>
+          <a href="../index.html" class="next-project-link" data-en="Back to Home" data-fa="بازگشت به خانه">
+            Back to Home
+          </a>
+        </div>
+        <span style="font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);" data-en="2025" data-fa="۲۰۲۵">2025</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Language Toggle Logic
+    let currentLang = 'en';
+    const translations = { en: { button: 'FA' }, fa: { button: 'EN' } };
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'fa' : 'en';
+      const btn = document.getElementById('lang-toggle');
+      btn.textContent = translations[currentLang].button;
+      document.documentElement.lang = currentLang;
+
+      document.querySelectorAll('[data-en][data-fa]').forEach(el => {
+        el.textContent = el.getAttribute('data-' + currentLang);
+        
+        if (currentLang === 'fa') {
+          el.style.fontFamily = 'var(--font-fa)';
+        } else {
+          el.style.fontFamily = '';
+        }
+      });
+    }
+
+    document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
+  </script>
+</body>
+</html>

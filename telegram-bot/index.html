@@ -453,8 +453,11 @@ html[lang="fa"] .stat-label {
   <nav class="nav">
     <div class="nav-content">
       <div class="nav-left">
-        <a href="index.html" class="nav-link" data-en="Back to Home" data-fa="بازگشت به خانه">Back to Home</a>
+        <a href="../index.html" class="nav-link" data-en="Back to Home" data-fa="بازگشت به خانه">Back to Home</a>
+        <a href="../yarplus" class="nav-link" data-en="← Previous" data-fa="← قبلی">← Previous</a>
+        <a href="../project-three" class="nav-link" data-en="Next →" data-fa="بعدی →">Next →</a>
       </div>
+
       <button class="lang-toggle" id="lang-toggle">FA</button>
     </div>
   </nav>
@@ -546,12 +549,23 @@ html[lang="fa"] .stat-label {
     <!-- Footer -->
     <footer class="footer content-wrapper">
       <div class="footer-content">
-        <a href="index.html" class="next-project-link" data-en="Back to Projects" data-fa="بازگشت به پروژه‌ها">
-          Back to Projects <span class="arrow">→</span>
-        </a>
-        <span style="font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);" data-en="ARCHIVED 2024" data-fa="بایگانی 2026">ARCHIVED 2026</span>
+        <div style="display: flex; gap: var(--space-32); align-items: center;">
+          <a href="../yarplus" class="next-project-link" data-en="← Previous Project" data-fa="← پروژه قبلی">
+            <span class="arrow">←</span> Previous Project
+          </a>
+          <a href="../index.html" class="next-project-link" data-en="Back to Home" data-fa="بازگشت به خانه">
+            Back to Home
+          </a>
+        </div>
+        <div style="display: flex; gap: var(--space-32); align-items: center;">
+          <a href="../project-three" class="next-project-link" data-en="Next Project →" data-fa="پروژه بعدی →">
+            Next Project <span class="arrow">→</span>
+          </a>
+          <span style="font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);" data-en="ARCHIVED 2024" data-fa="بایگانی 2026">ARCHIVED 2026</span>
+        </div>
       </div>
     </footer>
+
 
   </main>
 
