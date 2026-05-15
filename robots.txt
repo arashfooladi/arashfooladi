@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://arashfooladi.ir/sitemap.xml
+
+# Crawl-delay (optional, be nice to server)
+Crawl-delay: 1
+
+# Block common bots that waste bandwidth
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Disallow the non-existent /fa path that's causing 404 errors
+User-agent: *
+Disallow: /fa
+
+# Disallow the coming-soon page that doesn't exist
+Disallow: /journal/coming-soon

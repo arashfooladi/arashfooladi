@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://arashfooladi.ir/</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arashfooladi.ir/"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://arashfooladi.ir/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arashfooladi.ir/"/>
+  </url>
+
+  <!-- Journal Page -->
+  <url>
+    <loc>https://arashfooladi.ir/journal</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arashfooladi.ir/journal"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://arashfooladi.ir/journal"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arashfooladi.ir/journal"/>
+  </url>
+
+  <!-- Yarplus Project -->
+  <url>
+    <loc>https://arashfooladi.ir/yarplus</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arashfooladi.ir/yarplus"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://arashfooladi.ir/yarplus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arashfooladi.ir/yarplus"/>
+  </url>
+
+  <!-- Telegram Bot Project -->
+  <url>
+    <loc>https://arashfooladi.ir/telegram-bot</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arashfooladi.ir/telegram-bot"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://arashfooladi.ir/telegram-bot"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arashfooladi.ir/telegram-bot"/>
+  </url>
+
+  <!-- Project Three (Coming Soon) -->
+  <url>
+    <loc>https://arashfooladi.ir/project-three</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://arashfooladi.ir/project-three"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://arashfooladi.ir/project-three"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://arashfooladi.ir/project-three"/>
+  </url>
+
+</urlset>
