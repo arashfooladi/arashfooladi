@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Prevent indexing of .html file variants (avoid duplicate content)
+Disallow: /*.html$
+
+Sitemap: https://arashfooladi.ir/sitemap.xml
