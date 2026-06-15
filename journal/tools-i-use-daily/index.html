@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- SEO Essentials -->
+  <title>Tools I Use Daily as a CS Student | Arash Fooladi</title>
+  <meta name="description" content="A practical, no-hype list of the terminal tools, editor setup, and workflows that actually stick for a CS student and backend developer — and the principle behind choosing them.">
+  <meta name="keywords" content="developer tools, CS student setup, terminal tools, developer workflow, productivity, neovim, git, backend developer tools, Arash Fooladi">
+  <meta name="author" content="Arash Fooladi">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#080808">
+  <meta name="robots" content="index, follow">
+
+  <link rel="canonical" href="https://arashfooladi.ir/journal/tools-i-use-daily/">
+
+  <meta property="og:title" content="Tools I Use Daily as a CS Student">
+  <meta property="og:description" content="The terminal tools, editors, and workflows that actually stick — not the ones that look good on paper.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://arashfooladi.ir/journal/tools-i-use-daily/">
+  <meta property="og:site_name" content="Arash Fooladi">
+  <meta property="og:image" content="https://arashfooladi.ir/yarplus/images/mini1.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="2025-04-18">
+  <meta property="article:author" content="Arash Fooladi">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@arashfooladiorg">
+  <meta name="twitter:creator" content="@arashfooladiorg">
+  <meta name="twitter:title" content="Tools I Use Daily as a CS Student">
+  <meta name="twitter:description" content="A practical list of the tools and workflows that actually stick.">
+  <meta name="twitter:image" content="https://arashfooladi.ir/yarplus/images/mini1.png">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080808'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial, sans-serif' font-size='30' font-weight='700' fill='white'%3EAF%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Tools I Use Daily as a CS Student",
+    "description": "A practical list of the terminal tools, editors, and workflows that actually stick — not the ones that look good on paper.",
+    "datePublished": "2025-04-18",
+    "dateModified": "2025-04-18",
+    "inLanguage": "en",
+    "author": { "@type": "Person", "name": "Arash Fooladi", "url": "https://arashfooladi.ir/" },
+    "publisher": { "@type": "Person", "name": "Arash Fooladi" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://arashfooladi.ir/journal/tools-i-use-daily/" },
+    "image": "https://arashfooladi.ir/yarplus/images/mini1.png",
+    "keywords": "developer tools, terminal, workflow, productivity"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://arashfooladi.ir/" },
+      { "@type": "ListItem", "position": 2, "name": "Journal", "item": "https://arashfooladi.ir/journal/" },
+      { "@type": "ListItem", "position": 3, "name": "Tools I Use Daily", "item": "https://arashfooladi.ir/journal/tools-i-use-daily/" }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --background: oklch(0.08 0 0);
+      --foreground: oklch(0.98 0 0);
+      --muted-foreground: oklch(0.62 0 0);
+      --border: oklch(1 0 0 / 8%);
+      --card: oklch(0.11 0 0);
+      --accent: oklch(0.7 0.18 250);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { background: var(--background); color: var(--foreground); font-family: var(--font-sans); line-height: 1.75; overflow-x: hidden; }
+    ::selection { background: var(--foreground); color: var(--background); }
+
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 1rem; background: rgba(8,8,8,0.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .nav-content { max-width: 48rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .nav a { color: var(--muted-foreground); text-decoration: none; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s; }
+    .nav a:hover { color: var(--foreground); }
+    .nav-left { display: flex; gap: 1.5rem; }
+
+    .article { max-width: 44rem; margin: 0 auto; padding: 9rem 1.5rem 4rem; }
+    .article-meta { display: flex; gap: 1rem; align-items: center; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted-foreground); margin-bottom: 1.5rem; }
+    .tag { border: 1px solid var(--border); padding: 0.15rem 0.6rem; }
+    h1 { font-size: clamp(2rem, 5vw + 1rem, 3.25rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+    .lede { font-size: 1.2rem; color: var(--muted-foreground); margin-bottom: 3rem; line-height: 1.7; }
+
+    .article h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; margin: 3rem 0 1rem; }
+    .article h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .article p { font-size: 1.075rem; color: oklch(0.9 0 0); margin-bottom: 1.25rem; }
+    .article ul, .article ol { margin: 0 0 1.5rem 1.25rem; }
+    .article li { font-size: 1.075rem; color: oklch(0.9 0 0); margin-bottom: 0.6rem; }
+    .article strong { color: var(--foreground); font-weight: 600; }
+    .article a { color: var(--foreground); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--muted-foreground); }
+    .article code { font-family: var(--font-mono); font-size: 0.9em; background: var(--card); border: 1px solid var(--border); padding: 0.1rem 0.4rem; border-radius: 3px; }
+    blockquote { border-left: 2px solid var(--accent); padding-left: 1.25rem; margin: 2rem 0; color: var(--muted-foreground); font-style: italic; }
+
+    .article-footer { max-width: 44rem; margin: 0 auto; padding: 2rem 1.5rem 5rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
+    .article-footer a { font-family: var(--font-mono); font-size: 0.8rem; color: var(--foreground); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; }
+    .article-footer a:hover { opacity: 0.6; }
+    .social { display: flex; gap: 1rem; }
+    .social a { font-size: 0.75rem; color: var(--muted-foreground); }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-content">
+      <div class="nav-left">
+        <a href="/">Home</a>
+        <a href="/journal/">← Journal</a>
+      </div>
+      <a href="/#projects-section">Work</a>
+    </div>
+  </nav>
+
+  <article class="article">
+    <div class="article-meta">
+      <span class="tag">Notes</span>
+      <span>Apr 18, 2025</span>
+      <span>· 4 min read</span>
+    </div>
+    <h1>Tools I Use Daily as a CS Student</h1>
+    <p class="lede">There are a thousand "my dev setup" lists, and most of them are aspirational — tools the author installed once and never opened again. This is the opposite: only the things I genuinely reach for every day, and the one rule I use to decide what stays.</p>
+
+    <h2>The one rule</h2>
+    <p>Before a tool earns a place in my daily workflow, it has to clear a single bar: <strong>does it still save me time after the novelty wears off?</strong> Plenty of tools are exciting for a week. The ones below survived months of ordinary, unglamorous use. If something needs constant fiddling to stay useful, it loses to the boring thing that just works.</p>
+
+    <h2>The terminal is home</h2>
+    <p>I live in the terminal, so the small tools that make it faster matter the most.</p>
+    <ul>
+      <li><strong>A fuzzy finder (<code>fzf</code>).</strong> The single highest-leverage tool I use. Fuzzy-finding files, command history, and git branches turns "where was that?" into two keystrokes. Once it's wired into your shell, going back feels like losing a sense.</li>
+      <li><strong>A better <code>cd</code> (<code>zoxide</code>).</strong> It learns the directories I actually visit and jumps me there by a fragment of the name. Tiny, but I use it hundreds of times a day.</li>
+      <li><strong>A faster grep (<code>ripgrep</code>).</strong> Searching a whole codebase in milliseconds changes how you explore unfamiliar code. It's also the backbone of search inside my editor.</li>
+      <li><strong><code>tmux</code>.</strong> Persistent sessions mean my layout survives a disconnect, and on a remote server it's the difference between "my work is gone" and "pick up exactly where I left off."</li>
+    </ul>
+
+    <h2>Editor</h2>
+    <p>I use Neovim as my daily driver, but I want to be clear about why — and it's not the reason people assume.</p>
+    <p>It isn't about looking like a hacker or shaving milliseconds. It's that a keyboard-driven, modal editor keeps my hands in one place and my attention on the code instead of the cursor. The investment is real and the learning curve is steep; I wouldn't push it on anyone who's fighting it. <strong>The best editor is the one that disappears while you work</strong> — for some people that's VS Code, and that's a completely valid answer.</p>
+    <blockquote>Tooling is personal. Copying someone else's setup wholesale usually gives you their friction without their reasons.</blockquote>
+
+    <h2>Git, used deliberately</h2>
+    <p>Everyone uses git; fewer use it on purpose. The habits that actually help:</p>
+    <ul>
+      <li><strong>Small, atomic commits</strong> with messages that explain <em>why</em>, not <em>what</em>. The diff already says what changed.</li>
+      <li><strong>Branch per piece of work</strong>, even solo. It keeps half-finished ideas from contaminating something that works.</li>
+      <li><strong><code>git log</code> and <code>git diff</code> as reading tools.</strong> Most of my git time is spent understanding history, not writing it.</li>
+    </ul>
+
+    <h2>Things deliberately kept simple</h2>
+    <p>I run plain, well-documented databases locally instead of elaborate setups. I keep a single notes file instead of a knowledge-management cathedral. I reach for the standard library before a dependency. Every one of these is a choice to spend my attention on the problem rather than the tooling around it.</p>
+
+    <h2>The actual takeaway</h2>
+    <p>The specific tools matter less than the principle: <strong>optimize for the operations you repeat hundreds of times a day, and ignore the rest.</strong> A fuzzy finder I use constantly is worth more than a beautiful dashboard I open twice a month. Audit where your time actually goes, sharpen those few things, and let the rest stay boring.</p>
+  </article>
+
+  <footer class="article-footer">
+    <a href="/journal/">← All entries</a>
+    <div class="social">
+      <a href="https://github.com/arashfooladi" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://twitter.com/arashfooladiorg" target="_blank" rel="noopener noreferrer">Twitter</a>
+      <a href="https://linkedin.com/in/arashfooladi" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </footer>
+
+</body>
+</html>

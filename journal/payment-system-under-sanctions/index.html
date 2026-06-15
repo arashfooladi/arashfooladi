@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- SEO Essentials -->
+  <title>What I Learned Building a Payment System Under Sanctions | Arash Fooladi</title>
+  <meta name="description" content="Building a payment system for Iranian creators when Stripe, Patreon and PayPal are all off the table. Lessons on gateway selection, idempotency, reconciliation, and designing for trust under sanctions.">
+  <meta name="keywords" content="payment system sanctions, Iranian payment gateway, idempotency, payment reconciliation, fintech engineering, Yarplus, Arash Fooladi">
+  <meta name="author" content="Arash Fooladi">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#080808">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://arashfooladi.ir/journal/payment-system-under-sanctions/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="What I Learned Building a Payment System Under Sanctions">
+  <meta property="og:description" content="Processing payments in a sanctioned economy means rethinking everything — from gateway selection to trust and fraud prevention.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://arashfooladi.ir/journal/payment-system-under-sanctions/">
+  <meta property="og:site_name" content="Arash Fooladi">
+  <meta property="og:image" content="https://arashfooladi.ir/yarplus/images/main.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="2025-07-10">
+  <meta property="article:author" content="Arash Fooladi">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@arashfooladiorg">
+  <meta name="twitter:creator" content="@arashfooladiorg">
+  <meta name="twitter:title" content="What I Learned Building a Payment System Under Sanctions">
+  <meta name="twitter:description" content="Lessons on gateway selection, idempotency, reconciliation, and designing for trust under sanctions.">
+  <meta name="twitter:image" content="https://arashfooladi.ir/yarplus/images/main.png">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080808'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial, sans-serif' font-size='30' font-weight='700' fill='white'%3EAF%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Article Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "What I Learned Building a Payment System Under Sanctions",
+    "description": "Processing payments in a sanctioned economy means rethinking everything — from gateway selection to trust and fraud prevention.",
+    "datePublished": "2025-07-10",
+    "dateModified": "2025-07-10",
+    "inLanguage": "en",
+    "author": { "@type": "Person", "name": "Arash Fooladi", "url": "https://arashfooladi.ir/" },
+    "publisher": { "@type": "Person", "name": "Arash Fooladi" },
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://arashfooladi.ir/journal/payment-system-under-sanctions/" },
+    "image": "https://arashfooladi.ir/yarplus/images/main.png",
+    "keywords": "payment system, sanctions, idempotency, reconciliation, fintech, Yarplus"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://arashfooladi.ir/" },
+      { "@type": "ListItem", "position": 2, "name": "Journal", "item": "https://arashfooladi.ir/journal/" },
+      { "@type": "ListItem", "position": 3, "name": "Payment System Under Sanctions", "item": "https://arashfooladi.ir/journal/payment-system-under-sanctions/" }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --background: oklch(0.08 0 0);
+      --foreground: oklch(0.98 0 0);
+      --muted-foreground: oklch(0.62 0 0);
+      --border: oklch(1 0 0 / 8%);
+      --card: oklch(0.11 0 0);
+      --accent: oklch(0.7 0.18 250);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { background: var(--background); color: var(--foreground); font-family: var(--font-sans); line-height: 1.75; overflow-x: hidden; }
+    ::selection { background: var(--foreground); color: var(--background); }
+
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 1rem; background: rgba(8,8,8,0.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
+    .nav-content { max-width: 48rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .nav a { color: var(--muted-foreground); text-decoration: none; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s; }
+    .nav a:hover { color: var(--foreground); }
+    .nav-left { display: flex; gap: 1.5rem; }
+
+    .article { max-width: 44rem; margin: 0 auto; padding: 9rem 1.5rem 4rem; }
+    .article-meta { display: flex; gap: 1rem; align-items: center; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted-foreground); margin-bottom: 1.5rem; }
+    .tag { border: 1px solid var(--border); padding: 0.15rem 0.6rem; }
+    h1 { font-size: clamp(2rem, 5vw + 1rem, 3.25rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+    .lede { font-size: 1.2rem; color: var(--muted-foreground); margin-bottom: 3rem; line-height: 1.7; }
+
+    .article h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; margin: 3rem 0 1rem; }
+    .article h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
+    .article p { font-size: 1.075rem; color: oklch(0.9 0 0); margin-bottom: 1.25rem; }
+    .article ul, .article ol { margin: 0 0 1.5rem 1.25rem; }
+    .article li { font-size: 1.075rem; color: oklch(0.9 0 0); margin-bottom: 0.6rem; }
+    .article strong { color: var(--foreground); font-weight: 600; }
+    .article a { color: var(--foreground); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--muted-foreground); }
+    .article code { font-family: var(--font-mono); font-size: 0.9em; background: var(--card); border: 1px solid var(--border); padding: 0.1rem 0.4rem; border-radius: 3px; }
+    blockquote { border-left: 2px solid var(--accent); padding-left: 1.25rem; margin: 2rem 0; color: var(--muted-foreground); font-style: italic; }
+
+    .article-footer { max-width: 44rem; margin: 0 auto; padding: 2rem 1.5rem 5rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
+    .article-footer a { font-family: var(--font-mono); font-size: 0.8rem; color: var(--foreground); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; }
+    .article-footer a:hover { opacity: 0.6; }
+    .social { display: flex; gap: 1rem; }
+    .social a { font-size: 0.75rem; color: var(--muted-foreground); }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-content">
+      <div class="nav-left">
+        <a href="/">Home</a>
+        <a href="/journal/">← Journal</a>
+      </div>
+      <a href="/#projects-section">Work</a>
+    </div>
+  </nav>
+
+  <article class="article">
+    <div class="article-meta">
+      <span class="tag">Building</span>
+      <span>Jul 10, 2025</span>
+      <span>· 6 min read</span>
+    </div>
+    <h1>What I Learned Building a Payment System Under Sanctions</h1>
+    <p class="lede">Most payment tutorials assume Stripe. Mine started with a constraint: nothing built outside the country would work. Here's what building <a href="/yarplus/">Yarplus</a> taught me about engineering money flows when the easy options are simply gone.</p>
+
+    <h2>The constraint that defined everything</h2>
+    <p>When you build for creators in Iran, the first architectural decision is made for you. Stripe, Patreon, PayPal, Whop — every global monetization rail is blocked by sanctions and payment restrictions. There is no "just add Stripe Checkout" step. The entire money layer has to run on <strong>domestic payment gateways</strong>, settle in Rial, and survive an environment where the tooling you'd reach for in a tutorial doesn't exist.</p>
+    <p>That constraint turned out to be the most useful teacher I've had. When you can't outsource trust to a brand-name processor, you have to understand what that processor was actually doing for you — and rebuild it yourself.</p>
+
+    <h2>Gateways are not interchangeable</h2>
+    <p>Domestic gateways follow a redirect-and-callback model: you create a payment request, send the user to the gateway's hosted page, and the gateway calls you back (and the user returns) with a result you then have to <strong>verify</strong> in a second server-to-server request. That verify step is non-negotiable — the return redirect alone is never proof of payment.</p>
+    <p>The practical lessons:</p>
+    <ul>
+      <li><strong>Never trust the client redirect.</strong> A user landing back on your success URL means nothing until your backend independently confirms the transaction with the gateway.</li>
+      <li><strong>Treat the callback as hostile input.</strong> Validate the amount, the order reference, and the status against what you stored when you created the request — not against what the callback claims.</li>
+      <li><strong>Abstract the gateway behind an interface.</strong> I wrapped each provider in a common <code>PaymentProvider</code> contract so the rest of the system never knows which gateway handled a charge. When one provider has an outage, you want to reroute, not rewrite.</li>
+    </ul>
+
+    <h2>Idempotency is the whole game</h2>
+    <p>The single most important thing I built was idempotency. Networks fail mid-callback. Users double-click. Gateways retry. Without protection, a single payment can get recorded twice — or a subscription can get granted twice for one charge.</p>
+    <p>Every payment intent got a unique key generated at creation time. The verify-and-fulfill step was wrapped so that processing the same key twice is a no-op that returns the original result. In SQL terms, the fulfillment write is guarded by a unique constraint on the transaction reference, and the handler is written to expect — and swallow — the duplicate-key collision gracefully.</p>
+    <blockquote>If your payment handler isn't safe to call twice with the same input, it's not finished. It just hasn't failed yet.</blockquote>
+
+    <h2>Reconciliation, because callbacks lie by omission</h2>
+    <p>Callbacks don't always arrive. The user closes the tab, the network drops, the gateway has a hiccup. So the money in the gateway's ledger and the state in your database drift apart. The fix is a <strong>reconciliation job</strong>: a scheduled process that walks every pending transaction older than a few minutes, asks the gateway "what actually happened here?", and reconciles your records to the source of truth.</p>
+    <p>This job caught real money. Subscriptions that should have activated but didn't, payments that succeeded at the gateway but never fulfilled on my side — reconciliation closed that gap. If I were starting again, I'd build it on day one instead of day thirty.</p>
+
+    <h2>Trust without chargebacks</h2>
+    <p>Global processors give you a fraud and dispute apparatus for free. Domestic rails mostly don't. There's no Stripe Radar, and the chargeback mechanics are different. So fraud prevention becomes <em>your</em> problem: rate-limiting payment attempts, watching for suspicious subscription churn, keeping an auditable trail of every state transition on a transaction.</p>
+    <p>I leaned on a simple principle — <strong>every change to a payment's state is an append-only event</strong>, never an in-place update. When something looks wrong, you can replay exactly what happened and when. That audit log was worth more than any clever heuristic.</p>
+
+    <h2>What I'd tell my earlier self</h2>
+    <ul>
+      <li><strong>Model failure states first.</strong> "Pending," "verifying," "failed," "refunded," "reconciled" — the happy path is the easy 20%.</li>
+      <li><strong>Store money as integers.</strong> Smallest currency unit, always. Floating point and money don't mix.</li>
+      <li><strong>Log the boring stuff.</strong> The audit trail is your debugger, your fraud tool, and your customer-support tool all at once.</li>
+      <li><strong>Constraints are a gift.</strong> Being cut off from Stripe forced me to actually learn payments instead of gluing an SDK together.</li>
+    </ul>
+    <p>Building money infrastructure under sanctions is harder than it should be. But it stripped the problem down to fundamentals, and those fundamentals — idempotency, verification, reconciliation, auditability — are exactly the things that matter on <em>any</em> payment system, Stripe or not.</p>
+  </article>
+
+  <footer class="article-footer">
+    <a href="/journal/">← All entries</a>
+    <div class="social">
+      <a href="https://github.com/arashfooladi" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://twitter.com/arashfooladiorg" target="_blank" rel="noopener noreferrer">Twitter</a>
+      <a href="https://linkedin.com/in/arashfooladi" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+  </footer>
+
+</body>
+</html>
