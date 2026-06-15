@@ -1,9 +1,11 @@
-# https://arashfooladi.ir
-# Allow all crawlers. Duplicate/variant URLs are handled with
-# rel=canonical tags and noindex meta — NOT with robots.txt blocks,
-# because blocking a URL prevents Google from reading those signals.
-
 User-agent: *
 Allow: /
 
+# Prevent indexing of .html file variants (avoid duplicate content)
+Disallow: /*.html$
+
+# Block known problematic paths
+Disallow: /fa
+
+# Sitemap location
 Sitemap: https://arashfooladi.ir/sitemap.xml

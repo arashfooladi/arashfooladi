@@ -15,8 +15,11 @@
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="NsWZ1pAImBkgleF3IXDSqw1f2FXsYW2e8Sn0uN_mX50" />
 
-  <!-- Canonical (bilingual page, single URL via in-page toggle) -->
+  <!-- Canonical & Hreflang -->
   <link rel="canonical" href="https://arashfooladi.ir/journal/">
+  <link rel="alternate" hreflang="en" href="https://arashfooladi.ir/journal/">
+  <link rel="alternate" hreflang="fa" href="https://arashfooladi.ir/journal/">
+  <link rel="alternate" hreflang="x-default" href="https://arashfooladi.ir/journal/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Journal | Arash Fooladi">
@@ -52,11 +55,11 @@
     "@type": "Blog",
     "name": "Arash Fooladi Journal",
     "description": "Writings on backend architecture, development workflows, and lessons from building real-world software.",
-    "url": "https://arashfooladi.ir/journal/",
+    "url": "https://arashfooladi.ir/journal",
     "author": {
       "@type": "Person",
       "name": "Arash Fooladi",
-      "url": "https://arashfooladi.ir/"
+      "url": "https://arashfooladi.ir"
     },
     "publisher": {
       "@type": "Person",
@@ -69,7 +72,7 @@
         "datePublished": "2025-07-10",
         "description": "Processing payments in a sanctioned economy means rethinking everything — from gateway selection to trust and fraud prevention.",
         "author": { "@type": "Person", "name": "Arash Fooladi" },
-        "url": "https://arashfooladi.ir/journal/payment-system-under-sanctions/"
+        "url": "https://arashfooladi.ir/journal/payment-system-under-sanctions"
       },
       {
         "@type": "BlogPosting",
@@ -77,7 +80,7 @@
         "datePublished": "2025-06-22",
         "description": "How I use AI-assisted development to stay focused on architecture and logic instead of boilerplate — and where it falls short.",
         "author": { "@type": "Person", "name": "Arash Fooladi" },
-        "url": "https://arashfooladi.ir/journal/ai-pair-programmer/"
+        "url": "https://arashfooladi.ir/journal/ai-pair-programmer"
       },
       {
         "@type": "BlogPosting",
@@ -85,15 +88,7 @@
         "datePublished": "2025-05-08",
         "description": "Most solo projects don't need microservices. Here's why I went against the grain — and what I'd change next time.",
         "author": { "@type": "Person", "name": "Arash Fooladi" },
-        "url": "https://arashfooladi.ir/journal/microservices-solo-project/"
-      },
-      {
-        "@type": "BlogPosting",
-        "headline": "Tools I Use Daily as a CS Student",
-        "datePublished": "2025-04-18",
-        "description": "A practical list of the terminal tools, editors, and workflows that actually stick — not the ones that look good on paper.",
-        "author": { "@type": "Person", "name": "Arash Fooladi" },
-        "url": "https://arashfooladi.ir/journal/tools-i-use-daily/"
+        "url": "https://arashfooladi.ir/journal/microservices-solo-project"
       }
     ]
   }
@@ -109,13 +104,13 @@
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://arashfooladi.ir/"
+        "item": "https://arashfooladi.ir"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Journal",
-        "item": "https://arashfooladi.ir/journal/"
+        "item": "https://arashfooladi.ir/journal"
       }
     ]
   }
@@ -430,6 +425,7 @@
       border-color: var(--border);
     }
 
+    .filter-btn[data-filter="all"],
     .filter-btn[data-filter="engineering"] {
       display: none;
     }
@@ -837,9 +833,9 @@
     <div class="nav-content">
       <div class="nav-left">
         <div class="nav-links">
-          <a href="/#projects-section" class="nav-link" data-en="Work" data-fa="کارها">Work</a>
-          <a href="/journal/" class="nav-link active" data-en="Journal" data-fa="ژورنال">Journal</a>
-          <a href="/#about-section" class="nav-link" data-en="About" data-fa="درباره">About</a>
+          <a href="../index.html#projects-section" class="nav-link" data-en="Work" data-fa="کارها">Work</a>
+          <a href="index.html" class="nav-link active" data-en="Journal" data-fa="ژورنال">Journal</a>
+          <a href="../index.html#about-section" class="nav-link" data-en="About" data-fa="درباره">About</a>
         </div>
       </div>
       <button class="lang-toggle" id="lang-toggle">FA</button>
@@ -863,6 +859,7 @@
       <!-- Filter Bar -->
       <div class="filter-bar fade-in-up">
         <button class="filter-btn active" data-filter="all" data-en="All" data-fa="همه">All</button>
+        <button class="filter-btn" data-filter="engineering" data-en="Engineering" data-fa="مهندسی">Engineering</button>
         <button class="filter-btn" data-filter="building" data-en="Building" data-fa="ساختن">Building</button>
         <button class="filter-btn" data-filter="notes" data-en="Notes" data-fa="یادداشت">Notes</button>
       </div>
@@ -871,7 +868,7 @@
       <ol class="journal-entries">
 
         <li class="journal-entry fade-in-up" data-category="building">
-          <a href="/journal/payment-system-under-sanctions/" class="journal-entry-link">
+          <a href="/journal/payment-system-under-sanctions" class="journal-entry-link">
             <span class="journal-entry-number">01</span>
             <div class="journal-entry-content">
               <h3 class="journal-entry-title" data-en="What I Learned Building a Payment System Under Sanctions" data-fa="چیزی که از ساختن سیستم پرداخت زیر تحریم یاد گرفتم">What I Learned Building a Payment System Under Sanctions</h3>
@@ -885,7 +882,7 @@
         </li>
 
         <li class="journal-entry fade-in-up" data-category="building">
-          <a href="/journal/ai-pair-programmer/" class="journal-entry-link">
+          <a href="/journal/ai-pair-programmer" class="journal-entry-link">
             <span class="journal-entry-number">02</span>
             <div class="journal-entry-content">
               <h3 class="journal-entry-title" data-en="AI as a Pair Programmer, Not a Replacement" data-fa="هوش مصنوعی به عنوان جفت‌برنامه‌نویس، نه جایگزین">AI as a Pair Programmer, Not a Replacement</h3>
@@ -899,7 +896,7 @@
         </li>
 
         <li class="journal-entry fade-in-up" data-category="building">
-          <a href="/journal/microservices-solo-project/" class="journal-entry-link">
+          <a href="/journal/microservices-solo-project" class="journal-entry-link">
             <span class="journal-entry-number">03</span>
             <div class="journal-entry-content">
               <h3 class="journal-entry-title" data-en="Why I Chose Microservices for a Solo Project" data-fa="چرا برای پروژه تک‌نفره مایکروسرویس انتخاب کردم">Why I Chose Microservices for a Solo Project</h3>
@@ -913,7 +910,7 @@
         </li>
 
         <li class="journal-entry fade-in-up" data-category="notes">
-          <a href="/journal/tools-i-use-daily/" class="journal-entry-link">
+          <a href="/journal/tools-i-use-daily" class="journal-entry-link">
             <span class="journal-entry-number">04</span>
             <div class="journal-entry-content">
               <h3 class="journal-entry-title" data-en="Tools I Use Daily as a CS Student" data-fa="ابزارهایی که روزانه به عنوان دانشجوی CS استفاده می‌کنم">Tools I Use Daily as a CS Student</h3>
@@ -1032,7 +1029,7 @@
       });
     });
 
-    applyFilter('all');
+    applyFilter('building');
 
     // Intersection Observer for fade-in animations
     const observerOptions = {

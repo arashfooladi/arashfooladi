@@ -15,9 +15,12 @@
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="NsWZ1pAImBkgleF3IXDSqw1f2FXsYW2e8Sn0uN_mX50" />
   
-  <!-- Canonical (bilingual page, single URL via in-page toggle) -->
+  <!-- Canonical & Hreflang -->
   <link rel="canonical" href="https://arashfooladi.ir/">
-
+  <link rel="alternate" hreflang="en" href="https://arashfooladi.ir/">
+  <link rel="alternate" hreflang="fa" href="https://arashfooladi.ir/">
+  <link rel="alternate" hreflang="x-default" href="https://arashfooladi.ir/">
+  
   <!-- Open Graph -->
   <meta property="og:title" content="Arash Fooladi | Backend Developer, Builder, and CS Student">
   <meta property="og:description" content="Portfolio, projects, and journal entries by Arash Fooladi. Backend systems, product building, and practical software for real-world use.">
@@ -53,32 +56,23 @@
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Arash Fooladi",
-    "alternateName": ["ارش فولادی", "آرش فولادی"],
+    "name": ["Arash Fooladi", "ارش فولادی"],
     "url": "https://arashfooladi.ir/",
     "image": "https://arashfooladi.ir/yarplus/images/main.png",
-    "description": "Computer Science student and backend developer building practical digital tools. Creator of Yarplus.",
-    "jobTitle": "Backend Developer",
-    "knowsLanguage": ["en", "fa"],
-    "knowsAbout": ["Backend Development", "Software Architecture", "Payment Systems", "Microservices", "Node.js"],
     "sameAs": [
       "https://github.com/arashfooladi",
       "https://linkedin.com/in/arashfooladi",
       "https://twitter.com/arashfooladiorg",
       "https://dev.to/arashfooladi",
       "https://hashnode.com/@arashfooladi",
-      "https://instagram.com/arashfooladi_"
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Arash Fooladi",
-    "url": "https://arashfooladi.ir/",
-    "inLanguage": ["en", "fa"],
-    "author": { "@type": "Person", "name": "Arash Fooladi" }
+      "https://instagram.com/arashfooladi"
+    ],
+    "jobTitle": "CS Major Student",
+    "knowsLanguage": ["en", "fa"],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Computer Science Student"
+    }
   }
   </script>
 
@@ -149,6 +143,8 @@
       --easing-out: cubic-bezier(0.215, 0.61, 0.355, 1);
       --easing-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
 
+      --z-video: 0;
+      --z-readability-overlay: 1;
       --z-content: 10;
       --z-tooltip: 50;
       --z-dropdown: 100;
@@ -349,6 +345,37 @@
       background-color: var(--primary);
       color: var(--primary-foreground);
       text-shadow: none;
+    }
+
+    .video-background {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: var(--z-video);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 4s ease-out;
+    }
+
+    .video-background.loaded {
+      opacity: 0.15;
+    }
+
+    .readability-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: var(--z-readability-overlay);
+      background: linear-gradient(
+        180deg,
+        rgba(8, 8, 8, 0.5) 0%,
+        rgba(8, 8, 8, 0.7) 100%
+      );
+      backdrop-filter: blur(0.5px);
     }
 
     .noise-texture {
@@ -907,7 +934,7 @@
     }
 
     @media print {
-      .noise-texture, .nav {
+      .video-background, .readability-overlay, .noise-texture, .nav {
         display: none;
       }
       body {
@@ -918,6 +945,26 @@
   </style>
 </head>
 <body>
+
+  <!-- Video Background -->
+  <video
+    id="background-video"
+    autoplay
+    loop
+    muted
+    playsinline
+    class="video-background"
+    crossorigin="anonymous"
+    poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect width='1' height='1' fill='%23080808'/%3E%3C/svg%3E"
+  >
+    <source
+      src="https://persian21.asset.aparat.com/aparat-video/c64782e6bb517f50ed89e42fed80a6e868202114-144p.mp4?wmsAuthSign=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImM4ZDVmODQ0YmRiMzJlNjZlNjg0NWUwMTc4NWRhNzMwIiwiZXhwIjoxNzcwOTg5NzExLCJpc3MiOiJTYWJhIElkZWEgR1NJRyJ9.RrPKo5GXqXeQqh2o-eVNUbjrv8ex-twVG3gUQ7wQNm8"
+      type="video/mp4"
+    >
+  </video>
+
+  <!-- Readability Overlay -->
+  <div id="readability-overlay" class="readability-overlay"></div>
 
   <!-- Noise Texture -->
   <div class="noise-texture"></div>
@@ -964,7 +1011,7 @@
         <div class="horizontal-scroll">
           
           <!-- Project 1: Yarplus -->
-          <a href="/yarplus/" class="project-card">
+          <a href="/yarplus" class="project-card">
             <div class="card-inner">
               <div class="project-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:100%;height:100%">
@@ -979,7 +1026,7 @@
           </a>
 
           <!-- Project 2: Telegram Bot -->
-          <a href="/telegram-bot/" class="project-card">
+          <a href="/telegram-bot" class="project-card">
             <div class="card-inner">
               <div class="project-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:100%;height:100%">
@@ -993,7 +1040,7 @@
           </a>
 
           <!-- Project 3: Coming Soon -->
-          <a href="/project-three/" class="project-card">
+          <a href="/project-three" class="project-card">
             <div class="card-inner">
               <div class="project-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:100%;height:100%">
@@ -1187,6 +1234,23 @@
           }
         }
       }, { passive: false });
+    }
+
+    // Video optimization
+    const video = document.getElementById('background-video');
+    if (video) {
+      video.playbackRate = 0.75;
+      
+      video.addEventListener('canplay', () => {
+        video.play().catch(() => {
+          video.style.opacity = '0';
+        });
+        video.classList.add('loaded');
+      });
+      
+      video.addEventListener('loadeddata', () => {
+        video.classList.add('loaded');
+      });
     }
 
     // Reduced motion preference
