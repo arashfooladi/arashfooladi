@@ -20,19 +20,23 @@
   <meta property="og:url" content="https://arashfooladi.ir/">
   <meta property="og:site_name" content="آرش فولادی">
   <meta property="og:locale" content="fa_IR">
-  <meta property="og:image" content="https://arashfooladi.ir/yarplus/images/main.png">
-  <meta property="og:image:alt" content="نمایی از پروژه‌های نرم‌افزاری آرش فولادی">
+  <meta property="og:image" content="https://arashfooladi.ir/assets/images/arash-fooladi-logo.jpg">
+  <meta property="og:image:width" content="460">
+  <meta property="og:image:height" content="460">
+  <meta property="og:image:alt" content="نشان شخصی آرش فولادی">
 
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="آرش فولادی | توسعه‌دهنده بک‌اند">
   <meta name="twitter:description" content="پروژه‌ها و نوشته‌های فنی فارسی آرش فولادی.">
-  <meta name="twitter:image" content="https://arashfooladi.ir/yarplus/images/main.png">
+  <meta name="twitter:image" content="https://arashfooladi.ir/assets/images/arash-fooladi-logo.jpg">
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080808'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='white'%3EAF%3C/text%3E%3C/svg%3E">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Vazirmatn:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/home.css">
 
   <script type="application/ld+json">
   {
@@ -63,6 +67,7 @@
         "name": "آرش فولادی",
         "alternateName": ["Arash Fooladi", "ارش فولادی"],
         "url": "https://arashfooladi.ir/",
+        "image": "https://arashfooladi.ir/assets/images/arash-fooladi-logo.jpg",
         "jobTitle": "توسعه‌دهنده بک‌اند",
         "description": "دانشجوی علوم کامپیوتر و توسعه‌دهنده بک‌اند با تمرکز بر معماری نرم‌افزار، سیستم‌های مقیاس‌پذیر و ابزارهای کاربردی.",
         "knowsLanguage": ["Persian", "English"],
@@ -80,11 +85,15 @@
   }
   </script>
 </head>
-<body>
+<body class="home">
+  <div class="home-grain" aria-hidden="true"></div>
   <a class="skip-link" href="#content">رفتن به محتوای اصلی</a>
   <header class="site-header">
     <nav class="container nav" aria-label="ناوبری اصلی">
-      <a class="brand" href="/">آرش فولادی</a>
+      <a class="brand" href="/" aria-label="صفحه اصلی آرش فولادی">
+        <img src="/assets/images/favicon-48.png" width="40" height="40" alt="">
+        <span>آرش فولادی</span>
+      </a>
       <ul>
         <li><a href="#about">درباره</a></li>
         <li><a href="#projects">پروژه‌ها</a></li>
@@ -95,12 +104,20 @@
 
   <main id="content">
     <section class="hero">
-      <div class="container">
+      <div class="hero-aura" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <div class="hero-logo" aria-hidden="true">
+          <img src="/assets/images/icon-192.png" width="144" height="144" alt="">
+        </div>
         <p class="eyebrow">وب‌سایت رسمی</p>
-        <h1>آرش فولادی</h1>
-        <span class="latin-name" lang="en">ARASH FOOLADI</span>
+        <h1>
+          <span class="hero-name-fa">آرش فولادی</span>
+          <span class="hero-name-latin" lang="en"><span>ARASH</span> <span>FOOLADI</span></span>
+        </h1>
         <p class="lead">دانشجوی علوم کامپیوتر و توسعه‌دهنده بک‌اند؛ علاقه‌مند به معماری نرم‌افزار، سیستم‌های مقیاس‌پذیر و ساخت محصولاتی که یک مسئله واقعی را حل می‌کنند.</p>
+        <a class="hero-journal-link" href="/journal/">مشاهده نوشته‌ها <span aria-hidden="true">←</span></a>
       </div>
+      <span class="scroll-cue" aria-hidden="true"><i></i> SCROLL</span>
     </section>
 
     <section class="section" id="about">
