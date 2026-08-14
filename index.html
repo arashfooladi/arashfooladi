@@ -1,1291 +1,208 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
+<!doctype html>
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="format-detection" content="telephone=no">
-  
-  <!-- SEO Essentials -->
-  <title>Arash Fooladi | Backend Developer, Builder, and CS Student</title>
-  <meta name="description" content="Arash Fooladi (ارش فولادی) is a Computer Science student and developer focused on backend architecture and building practical digital tools. Creator of Yarplus.">
-  <meta name="keywords" content="Arash Fooladi, ارش فولادی, آرش فولادی, CS student, developer, portfolio, backend developer">
-  <meta name="author" content="Arash Fooladi">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>آرش فولادی | توسعه‌دهنده بک‌اند و دانشجوی علوم کامپیوتر</title>
+  <meta name="description" content="وب‌سایت رسمی آرش فولادی؛ توسعه‌دهنده بک‌اند و دانشجوی علوم کامپیوتر. معرفی پروژه‌های یارپلاس، زیرساخت ربات تلگرام و نوشته‌های فنی فارسی.">
+  <meta name="author" content="آرش فولادی">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="theme-color" content="#080808">
-  <meta name="robots" content="index, follow">
-  <meta name="google-site-verification" content="NsWZ1pAImBkgleF3IXDSqw1f2FXsYW2e8Sn0uN_mX50" />
-  
-  <!-- Canonical & Hreflang -->
+  <meta name="google-site-verification" content="NsWZ1pAImBkgleF3IXDSqw1f2FXsYW2e8Sn0uN_mX50">
+
   <link rel="canonical" href="https://arashfooladi.ir/">
-  <link rel="alternate" hreflang="en" href="https://arashfooladi.ir/">
-  <link rel="alternate" hreflang="fa" href="https://arashfooladi.ir/">
-  <link rel="alternate" hreflang="x-default" href="https://arashfooladi.ir/">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Arash Fooladi | Backend Developer, Builder, and CS Student">
-  <meta property="og:description" content="Portfolio, projects, and journal entries by Arash Fooladi. Backend systems, product building, and practical software for real-world use.">
+  <link rel="alternate" type="application/rss+xml" title="نوشته‌های آرش فولادی" href="https://arashfooladi.ir/feed.xml">
+
   <meta property="og:type" content="profile">
+  <meta property="og:title" content="آرش فولادی | توسعه‌دهنده بک‌اند">
+  <meta property="og:description" content="پروفایل رسمی، پروژه‌ها و نوشته‌های فنی فارسی آرش فولادی.">
   <meta property="og:url" content="https://arashfooladi.ir/">
-  <meta property="og:site_name" content="Arash Fooladi">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="fa_IR">
+  <meta property="og:site_name" content="آرش فولادی">
+  <meta property="og:locale" content="fa_IR">
   <meta property="og:image" content="https://arashfooladi.ir/yarplus/images/main.png">
-  <meta property="og:image:alt" content="Preview of Arash Fooladi portfolio work">
-  <meta property="profile:first_name" content="Arash">
-  <meta property="profile:last_name" content="Fooladi">
-  <meta property="profile:username" content="arashfooladi">
-  
-  <!-- Twitter Card -->
+  <meta property="og:image:alt" content="نمایی از پروژه‌های نرم‌افزاری آرش فولادی">
+
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@arashfooladiorg">
-  <meta name="twitter:creator" content="@arashfooladiorg">
-  <meta name="twitter:title" content="Arash Fooladi | Backend Developer, Builder, and CS Student">
-  <meta name="twitter:description" content="Portfolio, projects, and journal entries by Arash Fooladi.">
+  <meta name="twitter:title" content="آرش فولادی | توسعه‌دهنده بک‌اند">
+  <meta name="twitter:description" content="پروژه‌ها و نوشته‌های فنی فارسی آرش فولادی.">
   <meta name="twitter:image" content="https://arashfooladi.ir/yarplus/images/main.png">
 
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080808'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial, sans-serif' font-size='30' font-weight='700' fill='white'%3EAF%3C/text%3E%3C/svg%3E">
-  
-  <!-- Google Fonts -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080808'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial,sans-serif' font-size='30' font-weight='700' fill='white'%3EAF%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Schema.org -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Vazirmatn:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": ["Arash Fooladi", "ارش فولادی"],
-    "url": "https://arashfooladi.ir/",
-    "image": "https://arashfooladi.ir/yarplus/images/main.png",
-    "sameAs": [
-      "https://github.com/arashfooladi",
-      "https://linkedin.com/in/arashfooladi",
-      "https://twitter.com/arashfooladiorg",
-      "https://dev.to/arashfooladi",
-      "https://hashnode.com/@arashfooladi",
-      "https://instagram.com/arashfooladi"
-    ],
-    "jobTitle": "CS Major Student",
-    "knowsLanguage": ["en", "fa"],
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "Computer Science Student"
-    }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://arashfooladi.ir/#website",
+        "url": "https://arashfooladi.ir/",
+        "name": "آرش فولادی",
+        "alternateName": "Arash Fooladi",
+        "inLanguage": "fa"
+      },
+      {
+        "@type": "ProfilePage",
+        "@id": "https://arashfooladi.ir/#profile",
+        "url": "https://arashfooladi.ir/",
+        "name": "آرش فولادی؛ توسعه‌دهنده بک‌اند و دانشجوی علوم کامپیوتر",
+        "description": "صفحه رسمی معرفی آرش فولادی، پروژه‌ها و نوشته‌های فنی او.",
+        "inLanguage": "fa",
+        "isPartOf": { "@id": "https://arashfooladi.ir/#website" },
+        "mainEntity": { "@id": "https://arashfooladi.ir/#arash-fooladi" },
+        "dateModified": "2026-08-14"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://arashfooladi.ir/#arash-fooladi",
+        "name": "آرش فولادی",
+        "alternateName": ["Arash Fooladi", "ارش فولادی"],
+        "url": "https://arashfooladi.ir/",
+        "jobTitle": "توسعه‌دهنده بک‌اند",
+        "description": "دانشجوی علوم کامپیوتر و توسعه‌دهنده بک‌اند با تمرکز بر معماری نرم‌افزار، سیستم‌های مقیاس‌پذیر و ابزارهای کاربردی.",
+        "knowsLanguage": ["Persian", "English"],
+        "knowsAbout": ["توسعه بک‌اند", "معماری نرم‌افزار", "سیستم‌های توزیع‌شده", "ربات تلگرام", "سامانه‌های پرداخت"],
+        "sameAs": [
+          "https://github.com/arashfooladi",
+          "https://www.linkedin.com/in/arashfooladi",
+          "https://x.com/arashfooladiorg",
+          "https://dev.to/arashfooladi",
+          "https://hashnode.com/@arashfooladi",
+          "https://www.instagram.com/arashfooladi_/"
+        ]
+      }
+    ]
   }
   </script>
-
-  <style>
-    /* CSS Custom Properties - Design Tokens */
-    :root {
-      --background: oklch(0.08 0 0);
-      --foreground: oklch(0.98 0 0);
-      --card: oklch(0.11 0 0);
-      --popover: oklch(0.11 0 0);
-      --card-foreground: oklch(0.98 0 0);
-      --popover-foreground: oklch(0.98 0 0);
-      --primary: oklch(0.98 0 0);
-      --primary-foreground: oklch(0.08 0 0);
-      --secondary: oklch(0.15 0 0);
-      --secondary-foreground: oklch(0.98 0 0);
-      --muted: oklch(0.18 0 0);
-      --muted-foreground: oklch(0.55 0 0);
-      --accent: oklch(0.20 0 0);
-      --accent-foreground: oklch(0.98 0 0);
-      --destructive: oklch(0.60 0.20 25);
-      --destructive-foreground: oklch(0.98 0 0);
-      --border: oklch(1 0 0 / 8%);
-      --input: oklch(1 0 0 / 12%);
-      --ring: oklch(0.98 0 0);
-      --glow-color: oklch(0.98 0 0 / 15%);
-      --glow-size: 35px;
-
-      --space-4: 0.25rem;
-      --space-6: 0.375rem;
-      --space-8: 0.5rem;
-      --space-12: 0.75rem;
-      --space-16: 1rem;
-      --space-20: 1.25rem;
-      --space-24: 1.5rem;
-      --space-32: 2rem;
-      --space-40: 2.5rem;
-      --space-48: 3rem;
-      --space-64: 4rem;
-      --space-80: 5rem;
-      --space-96: 6rem;
-      --space-120: 7.5rem;
-      --space-144: 9rem;
-      --space-160: 10rem;
-      --space-192: 12rem;
-      --space-224: 14rem;
-      --space-256: 16rem;
-      --space-320: 20rem;
-
-      --text-display: clamp(4rem, 12vw + 2rem, 12rem);
-      --text-h1: clamp(2.5rem, 6vw + 1rem, 5rem);
-      --text-h2: clamp(2rem, 4vw + 1rem, 4rem);
-      --text-h3: clamp(1.5rem, 2vw + 1rem, 2rem);
-      --text-body: 1rem;
-      --text-small: 0.875rem;
-      --text-caption: 0.75rem;
-
-      --radius-sm: 0.25rem;
-      --radius-md: 0.375rem;
-      --radius-lg: 0.5rem;
-      --radius-xl: 0.75rem;
-      --radius-full: 9999px;
-
-      --duration-fast: 150ms;
-      --duration-base: 220ms;
-      --duration-slow: 300ms;
-      --duration-slower: 500ms;
-      --easing-out: cubic-bezier(0.215, 0.61, 0.355, 1);
-      --easing-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
-
-      --z-video: 0;
-      --z-readability-overlay: 1;
-      --z-content: 10;
-      --z-tooltip: 50;
-      --z-dropdown: 100;
-      --z-modal: 100;
-      --z-toast: 100;
-      --z-custom-cursor: 9998;
-      --z-noise-texture: 9997;
-
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, sans-serif;
-      --font-mono: 'JetBrains Mono', Courier New, monospace, Liberation Mono, Consolas, SF Mono, Menlo, Monaco, monospace;
-      --font-fa: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    }
-
-    *, :before, :after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-      -webkit-text-size-adjust: 100%;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      background-color: var(--background);
-      color: var(--foreground);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    /* CRITICAL: Base typography that doesn't change between languages */
-    .text-display {
-      font-family: var(--font-sans);
-      font-size: var(--text-display);
-      font-weight: 800;
-      line-height: 0.9;
-      letter-spacing: -0.04em;
-      background: linear-gradient(
-        to bottom,
-        oklch(0.98 0 0 / 0.6) 0%,
-        oklch(0.98 0 0 / 0.1) 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .text-h1 {
-      font-family: var(--font-sans);
-      font-size: var(--text-h1);
-      font-weight: 700;
-      line-height: 1;
-      letter-spacing: -0.03em;
-      color: var(--muted-foreground);
-    }
-
-    .text-h2 {
-      font-family: var(--font-sans);
-      font-size: var(--text-h2);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: var(--foreground);
-    }
-
-    .text-h3 {
-      font-family: var(--font-sans);
-      font-size: var(--text-h3);
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      color: var(--foreground);
-    }
-
-    .text-body {
-      font-family: var(--font-sans);
-      font-size: var(--text-body);
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--foreground);
-      max-width: 65ch;
-    }
-
-    .text-small {
-      font-family: var(--font-sans);
-      font-size: var(--text-small);
-      font-weight: 400;
-      line-height: 1.5;
-      color: var(--foreground);
-    }
-
-    .text-caption {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--muted-foreground);
-    }
-
-    /* HERO TITLE - LOCKED STYLING - NEVER CHANGES */
-    .hero-title {
-      font-family: var(--font-sans) !important;
-      font-size: var(--text-display) !important;
-      font-weight: 800 !important;
-      line-height: 0.9 !important;
-      letter-spacing: -0.04em !important;
-      background: linear-gradient(
-        to bottom,
-        oklch(0.98 0 0 / 0.6) 0%,
-        oklch(0.98 0 0 / 0.1) 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: block;
-      width: 100%;
-      /* Fixed height to prevent layout shift */
-      height: 1.1em;
-      overflow: hidden;
-    }
-
-    /* OVERRIDE: Force hero title to stay exactly the same in Farsi mode */
-    html[lang="fa"] .hero-title {
-      font-family: var(--font-sans) !important;
-      font-size: var(--text-display) !important;
-      line-height: 0.9 !important;
-      letter-spacing: -0.04em !important;
-      height: 1.1em;
-    }
-
-    /* TAGLINE - LOCKED HEIGHT AND SPACING */
-    .tagline {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--muted-foreground);
-      letter-spacing: 0.15em;
-      margin-top: var(--space-24);
-      /* Fixed height container */
-      height: 1.5em;
-      line-height: 1.5em;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    /* FARSI MODE OVERRIDES - Only apply to specific elements, not layout-critical ones */
-    html[lang="fa"] body {
-      font-family: var(--font-fa);
-      font-size: 1.05rem;
-      font-weight: 500;
-      line-height: 1.95;
-    }
-
-    /* Only apply Farsi font to body text, NOT to locked components */
-    html[lang="fa"] .text-body:not(.hero-title):not(.tagline) {
-      font-family: var(--font-fa);
-      font-size: 1.18rem;
-      font-weight: 500;
-      line-height: 2.15;
-      letter-spacing: 0;
-    }
-
-    html[lang="fa"] .text-caption:not(.hero-title):not(.tagline) {
-      font-family: var(--font-fa);
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0;
-    }
-
-    html[lang="fa"] .text-small:not(.hero-title):not(.tagline) {
-      font-family: var(--font-fa);
-      font-size: 1rem;
-      font-weight: 500;
-    }
-
-    html[lang="fa"] .nav-link,
-    html[lang="fa"] .project-title,
-    html[lang="fa"] .journal-title,
-    html[lang="fa"] .magnetic-link {
-      font-family: var(--font-fa);
-      font-weight: 600;
-      letter-spacing: 0;
-    }
-
-    /* Special styling for the 'i' in the title */
-    .special-i {
-      color: transparent;
-      -webkit-text-stroke: 1.5px oklch(0.98 0 0 / 0.8);
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
-    }
-
-    ::selection {
-      background-color: var(--primary);
-      color: var(--primary-foreground);
-      text-shadow: none;
-    }
-
-    .video-background {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: var(--z-video);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 4s ease-out;
-    }
-
-    .video-background.loaded {
-      opacity: 0.15;
-    }
-
-    .readability-overlay {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: var(--z-readability-overlay);
-      background: linear-gradient(
-        180deg,
-        rgba(8, 8, 8, 0.5) 0%,
-        rgba(8, 8, 8, 0.7) 100%
-      );
-      backdrop-filter: blur(0.5px);
-    }
-
-    .noise-texture {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: var(--z-noise-texture);
-      opacity: 0.04;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-
-    /* Navigation - LOCKED LAYOUT */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 9998;
-      padding: var(--space-24) var(--space-16);
-      background: linear-gradient(to bottom, var(--background) 0%, transparent 100%);
-      pointer-events: auto;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
-      /* Fixed height to prevent jump */
-      height: 80px;
-    }
-
-    .nav-content {
-      max-width: 80rem;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      pointer-events: auto;
-      height: 100%;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: var(--space-32);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: var(--space-32);
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      /* Fixed height container */
-      height: 2em;
-      align-items: center;
-    }
-
-    .nav-link {
-      color: var(--muted-foreground);
-      text-decoration: none;
-      transition: color var(--duration-base);
-      position: relative;
-      /* Prevent layout shift on hover */
-      display: inline-block;
-      height: 1.5em;
-      line-height: 1.5em;
-    }
-
-    .nav-link:hover {
-      color: var(--primary);
-    }
-
-    .nav-link:after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: var(--primary);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s var(--easing-out);
-    }
-
-    .nav-link:hover:after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    .lang-toggle {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--muted-foreground);
-      background: none;
-      border: 1px solid var(--border);
-      padding: var(--space-8) var(--space-16);
-      cursor: pointer;
-      transition: all var(--duration-base);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      /* Fixed dimensions */
-      width: 60px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lang-toggle:hover {
-      color: var(--primary);
-      border-color: var(--primary);
-    }
-
-    .max-w-7xl {
-      max-width: 80rem;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: var(--space-16);
-      padding-right: var(--space-16);
-    }
-
-    .max-w-4xl {
-      max-width: 56rem;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: var(--space-24);
-      padding-right: var(--space-24);
-    }
-
-    .text-center {
-      text-align: center;
-    }
-
-    .space-y-6 > * + * {
-      margin-top: var(--space-6);
-    }
-
-    .mb-8 { margin-bottom: var(--space-8); }
-    .mb-12 { margin-bottom: var(--space-12); }
-    .mb-4 { margin-bottom: var(--space-4); }
-    .mt-4 { margin-top: var(--space-4); }
-
-    main {
-      position: relative;
-      z-index: var(--z-content);
-    }
-
-    /* Hero Section - LOCKED LAYOUT */
-    .hero-section {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: var(--space-32) 0 var(--space-96);
-      position: relative;
-      /* Prevent any layout shift */
-      contain: layout;
-    }
-
-    .hero-container {
-      text-align: center;
-      margin-bottom: var(--space-48);
-      width: 100%;
-      max-width: 100%;
-      /* Fixed dimensions container */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-container h1 {
-      margin-bottom: var(--space-8);
-      overflow: visible;
-      display: block;
-      /* Prevent any height changes */
-      height: 1.1em;
-    }
-
-    /* About Section */
-    .about-section {
-      padding: var(--space-96) 0;
-      margin-top: var(--space-48);
-      border-top: 1px solid var(--border);
-    }
-
-    .about-container h2 {
-      margin-bottom: var(--space-8);
-    }
-
-    /* Projects Section */
-    .projects-section {
-      padding: var(--space-96) 0 var(--space-64);
-      margin-top: var(--space-48);
-      overflow: hidden;
-      border-top: 1px solid var(--border);
-    }
-    
-    #about-section,
-    #projects-section,
-    #journal-section {
-      scroll-margin-top: 80px;
-    }
-
-    .projects-container h2 {
-      margin-bottom: var(--space-12);
-    }
-
-    .horizontal-scroll {
-      display: flex;
-      gap: var(--space-32);
-      overflow-x: auto;
-      overflow-y: hidden;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-      padding-bottom: var(--space-8);
-      /* ADDED: Right padding to ensure last card is fully visible */
-      padding-right: var(--space-16);
-    }
-
-    .horizontal-scroll::-webkit-scrollbar {
-      display: none;
-    }
-
-    .project-card {
-      position: relative;
-      flex-shrink: 0;
-      width: min(400px, 85vw);
-      height: min(550px, 120vw);
-      scroll-snap-align: start;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    .card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      border-radius: var(--radius-sm);
-      background: var(--card);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      transition: border-color 0.3s ease-out, box-shadow 0.4s var(--easing-out);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: var(--space-32);
-    }
-
-    .project-card:hover .card-inner {
-      border-color: var(--primary);
-      box-shadow: 0 0 var(--glow-size) var(--glow-color);
-    }
-
-    .project-icon {
-      width: 80px;
-      height: 80px;
-      margin-bottom: var(--space-24);
-      opacity: 0.6;
-      transition: opacity 0.3s;
-    }
-
-    .project-card:hover .project-icon {
-      opacity: 1;
-    }
-
-    .project-title {
-      font-family: var(--font-sans);
-      font-size: var(--text-h3);
-      font-weight: 700;
-      margin-bottom: var(--space-12);
-      text-align: center;
-      /* Fixed height to prevent shift */
-      height: 1.5em;
-      line-height: 1.5em;
-      overflow: hidden;
-    }
-
-    .project-desc {
-      font-family: var(--font-sans);
-      font-size: var(--text-small);
-      color: var(--muted-foreground);
-      text-align: center;
-      line-height: 1.5;
-      max-width: 280px;
-      /* Fixed height with overflow handling */
-      height: 4.5em;
-      overflow: hidden;
-    }
-
-    .project-arrow {
-      position: absolute;
-      bottom: var(--space-32);
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--muted-foreground);
-      transition: color 0.3s;
-      /* Fixed height */
-      height: 1.5em;
-      line-height: 1.5em;
-    }
-
-    .project-card:hover .project-arrow {
-      color: var(--primary);
-    }
-
-    /* Footer */
-    .footer {
-      margin-top: auto;
-      padding: var(--space-48) 0 var(--space-24);
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-32);
-      align-items: start;
-    }
-
-    @media (min-width: 768px) {
-      .footer-content {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-16);
-      }
-      .footer-right {
-        align-items: flex-end;
-        text-align: right;
-      }
-    }
-
-    .footer-left {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-4);
-    }
-
-    .footer-right {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-12);
-    }
-
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-16);
-    }
-
-    @media (min-width: 768px) {
-      .social-links {
-        justify-content: flex-end;
-      }
-    }
-
-    .magnetic-link {
-      position: relative;
-      display: inline-block;
-      color: var(--foreground);
-      text-decoration: none;
-      font-family: var(--font-mono);
-      font-size: var(--text-small);
-      transition: color var(--duration-base) ease-out;
-      padding: var(--space-2) 0;
-    }
-
-    .magnetic-link:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background-color: var(--primary);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.4s var(--easing-in-out);
-    }
-
-    .magnetic-link:hover:after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    .magnetic-link:hover {
-      color: var(--primary);
-    }
-
-    .copyright {
-      grid-column: 1 / -1;
-      margin-top: var(--space-48);
-      padding-top: var(--space-24);
-      text-align: center;
-      border-top: 1px solid var(--border);
-    }
-
-    /* Journal Preview Section */
-    .journal-section {
-      padding: var(--space-96) 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .journal-list {
-      margin-top: var(--space-32);
-    }
-
-    .journal-item {
-      padding: var(--space-24) 0;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      text-decoration: none;
-      color: inherit;
-      transition: opacity 0.3s;
-    }
-
-    .journal-item:hover {
-      opacity: 0.7;
-    }
-
-    .journal-title {
-      font-family: var(--font-sans);
-      font-size: var(--text-body);
-      font-weight: 500;
-      /* Fixed height */
-      height: 1.5em;
-      line-height: 1.5em;
-      overflow: hidden;
-      flex: 1;
-      margin-right: var(--space-16);
-    }
-
-    .journal-date {
-      font-family: var(--font-mono);
-      font-size: var(--text-small);
-      color: var(--muted-foreground);
-      white-space: nowrap;
-    }
-
-    /* Scroll Animations */
-    .fade-in-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity var(--duration-slower) var(--easing-out),
-                  transform var(--duration-slower) var(--easing-out);
-    }
-
-    .fade-in-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Reduced Motion */
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-      .fade-in-up, .project-card, .card-inner, .magnetic-link, .hero-logo {
-        animation: none !important;
-        transition: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-      }
-      .noise-texture {
-        display: none;
-      }
-    }
-
-    /* Mobile Adjustments */
-    @media (max-width: 640px) {
-      .hero-title, html[lang="fa"] .hero-title {
-        font-size: clamp(3rem, 14vw + 1rem, 4rem);
-        height: auto;
-        line-height: 1.1;
-      }
-
-      .hero-container h1 {
-        height: auto;
-      }
-
-      .text-h1 {
-
-        font-size: clamp(1.5rem, 6vw + 0.5rem, 2rem);
-      }
-      .horizontal-scroll {
-        gap: var(--space-16);
-        padding: 0 var(--space-4);
-        /* ADDED: Ensure right padding on mobile too */
-        padding-right: var(--space-16);
-      }
-      .project-card {
-        width: 85vw;
-        height: 120vw;
-      }
-      .max-w-4xl {
-        padding-left: var(--space-16);
-        padding-right: var(--space-16);
-      }
-      .footer-content {
-        text-align: center;
-      }
-      .footer-right {
-        align-items: center;
-      }
-      .social-links {
-        justify-content: center;
-      }
-      .magnetic-link:after {
-        display: none;
-      }
-      .nav-links {
-        gap: var(--space-16);
-      }
-      .nav-left {
-        gap: var(--space-16);
-      }
-      .nav {
-        height: 70px;
-        padding: var(--space-16);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-title, html[lang="fa"] .hero-title {
-        font-size: clamp(2.5rem, 12vw + 1rem, 3.5rem);
-        letter-spacing: -0.03em;
-        height: auto;
-        line-height: 1.1;
-      }
-
-      .hero-container h1 {
-        height: auto;
-      }
-
-      .text-caption {
-
-        font-size: 0.6875rem;
-        letter-spacing: 0.15em;
-      }
-      .projects-section, .about-section, .journal-section {
-        padding: var(--space-48) 0;
-      }
-      .tagline {
-        font-size: 0.65rem;
-        letter-spacing: 0.1em;
-      }
-    }
-
-    @media print {
-      .video-background, .readability-overlay, .noise-texture, .nav {
-        display: none;
-      }
-      body {
-        background: white;
-        color: black;
-      }
-    }
-  </style>
 </head>
 <body>
+  <a class="skip-link" href="#content">رفتن به محتوای اصلی</a>
+  <header class="site-header">
+    <nav class="container nav" aria-label="ناوبری اصلی">
+      <a class="brand" href="/">آرش فولادی</a>
+      <ul>
+        <li><a href="#about">درباره</a></li>
+        <li><a href="#projects">پروژه‌ها</a></li>
+        <li><a href="#journal">نوشته‌ها</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Video Background -->
-  <video
-    id="background-video"
-    autoplay
-    loop
-    muted
-    playsinline
-    class="video-background"
-    crossorigin="anonymous"
-    poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect width='1' height='1' fill='%23080808'/%3E%3C/svg%3E"
-  >
-    <source
-      src="https://persian21.asset.aparat.com/aparat-video/c64782e6bb517f50ed89e42fed80a6e868202114-144p.mp4?wmsAuthSign=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbiI6ImM4ZDVmODQ0YmRiMzJlNjZlNjg0NWUwMTc4NWRhNzMwIiwiZXhwIjoxNzcwOTg5NzExLCJpc3MiOiJTYWJhIElkZWEgR1NJRyJ9.RrPKo5GXqXeQqh2o-eVNUbjrv8ex-twVG3gUQ7wQNm8"
-      type="video/mp4"
-    >
-  </video>
-
-  <!-- Readability Overlay -->
-  <div id="readability-overlay" class="readability-overlay"></div>
-
-  <!-- Noise Texture -->
-  <div class="noise-texture"></div>
-
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-content">
-      <div class="nav-left">
-        <div class="nav-links">
-          <a href="#projects-section" class="nav-link" data-en="Work" data-fa="کارها">Work</a>
-          <a href="#journal-section" class="nav-link" data-en="Journal" data-fa="ژورنال">Journal</a>
-          <a href="#about-section" class="nav-link" data-en="About" data-fa="درباره">About</a>
-        </div>
-      </div>
-      <button class="lang-toggle" id="lang-toggle">FA</button>
-    </div>
-  </nav>
-
-  <!-- Main Content -->
-  <main>
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="hero-container max-w-7xl">
-        <!-- ARASH FOOLADI - EXACT SAME IN BOTH LANGUAGES -->
-        <h1 class="hero-title">Arash Foolad<span class="special-i">i</span></h1>
-        <p class="tagline" data-en="CS student  building things" data-fa="دانشجوی علوم کامپیوتر">CS student  building things</p>
+  <main id="content">
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow">وب‌سایت رسمی</p>
+        <h1>آرش فولادی</h1>
+        <span class="latin-name" lang="en">ARASH FOOLADI</span>
+        <p class="lead">دانشجوی علوم کامپیوتر و توسعه‌دهنده بک‌اند؛ علاقه‌مند به معماری نرم‌افزار، سیستم‌های مقیاس‌پذیر و ساخت محصولاتی که یک مسئله واقعی را حل می‌کنند.</p>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section" id="about-section">
-      <div class="about-container max-w-4xl">
-        <h2 class="text-caption mb-8" data-en="About" data-fa="درباره">About</h2>
-        <div class="text-body space-y-6 fade-in-up">
-          <p data-en="CS student and developer. I build functional software with a focus on backend logic and architecture." data-fa="  . دانشجوی علوم کامپیوتر و توسعه دهنده با تمرکز بر روی بک اند">CS student and developer. I build functional software with a focus on backend logic and architecture. Creator of Yarplus.</p>
+    <section class="section" id="about">
+      <div class="container section-heading">
+        <h2>درباره من</h2>
+        <div class="copy">
+          <p>من آرش فولادی هستم؛ دانشجوی علوم کامپیوتر و توسعه‌دهنده‌ای با تمرکز اصلی روی منطق بک‌اند و معماری سیستم. در پروژه‌هایم تلاش می‌کنم میان طراحی فنی، قابلیت نگهداری و نیاز واقعی کاربر تعادل ایجاد کنم.</p>
+          <p>تجربه من شامل طراحی زیرساخت ربات‌های پرترافیک تلگرام، معماری میکروسرویس، کنترل دسترسی مبتنی بر نقش و کار روی فرایندهای پرداخت در محدودیت‌های بازار ایران است. این وب‌سایت مرجع رسمی فارسی برای پروژه‌ها و نوشته‌های من است.</p>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects-section" id="projects-section">
-      <div class="projects-container max-w-7xl">
-        <h2 class="text-caption mb-12" data-en="Selected Work" data-fa="کارهای منتخب">Selected Work</h2>
-        <div class="horizontal-scroll">
-          
-          <!-- Project 1: Yarplus -->
-          <a href="/yarplus" class="project-card">
-            <div class="card-inner">
-              <div class="project-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:100%;height:100%">
-                  <rect x="3" y="3" width="18" height="18" rx="2"/>
-                  <path d="M3 9h18M9 21V9"/>
-                </svg>
-              </div>
-              <h3 class="project-title" data-en="Yarplus" data-fa="یارپلاس">Yarplus</h3>
-              <p class="project-desc" data-en="Subscription-based creator monetization platform with full backend architecture, payments, and role-based access control." data-fa="پلتفرم کسب درآمد سازندگان محتوا با اشتراک، معماری بک‌اند کامل، پرداخت‌ها و کنترل دسترسی مبتنی بر نقش.">Subscription-based creator monetization platform with full backend architecture, payments, and role-based access control.</p>
-              <span class="project-arrow" data-en="View Project →" data-fa="مشاهده پروژه →">View Project →</span>
-            </div>
-          </a>
-
-          <!-- Project 2: Telegram Bot -->
-          <a href="/telegram-bot" class="project-card">
-            <div class="card-inner">
-              <div class="project-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:100%;height:100%">
-                  <path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.5 6.498a2.25 2.25 0 0 0 .126 4.27l3.9 1.296a1.5 1.5 0 0 1 1.024 1.146l.622 4.347a1.5 1.5 0 0 0 2.625.804l2.475-3.037a1.5 1.5 0 0 1 1.146-.538h4.5a2.25 2.25 0 0 0 2.25-2.25V4.5a2.25 2.25 0 0 0-2.046-2.067zM8.25 12a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5z"/>
-                </svg>
-              </div>
-             <h3 class="project-title" data-en="Inline Utility Bot" data-fa="ربات ابزاری اینلاین">Inline Utility Bot</h3>
-<p class="project-desc" data-en="Lightweight Telegram bot leveraging inline mode for instant query responses. Featured a popular group slash command that served thousands of daily active users with minimal overhead." data-fa=".ربات تلگرامی فوق‌سبک با حالت اینلاین و دستور اسلش محبوب در گروه‌ها با هزاران کاربر فعال روزانه">Lightweight Telegram bot leveraging inline mode for instant query responses. Featured a popular group slash command that served thousands of daily active users with minimal overhead.</p>
-<span class="project-arrow" data-en="View Project →" data-fa="مشاهده پروژه →">View Project →</span>
-            </div>
-          </a>
-
-          <!-- Project 3: Coming Soon -->
-          <a href="/project-three" class="project-card">
-            <div class="card-inner">
-              <div class="project-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:100%;height:100%">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 6v6l4 2"/>
-                </svg>
-              </div>
-              <h3 class="project-title" data-en="Coming Soon" data-fa="به زودی">Coming Soon</h3>
-              <p class="project-desc" data-en="Currently experimenting with new tools and ideas." data-fa=".در حال آزمایش ابزارها و ایده‌های جدید">Currently experimenting with new tools and ideas. Stay tuned for the next project.</p>
-              <span class="project-arrow" data-en="Explore →" data-fa="coming soon →">coming soon →</span>
-            </div>
-          </a>
-
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <h2>پروژه‌های منتخب</h2>
+          <p class="copy">مطالعه موردی دو محصول و زیرساختی که بخش مهمی از تجربه فنی من را ساخته‌اند.</p>
         </div>
+        <div class="cards">
+          <a class="card" href="/yarplus/">
+            <small>پلتفرم فول‌استک</small>
+            <h3>یارپلاس</h3>
+            <p>پلتفرم اشتراکی کسب درآمد برای تولیدکنندگان محتوا با بک‌اند کامل، پرداخت داخلی و دسترسی نقش‌محور.</p>
+            <span class="arrow">مطالعه پروژه ←</span>
+          </a>
+          <a class="card" href="/telegram-bot/">
+            <small>زیرساخت نرم‌افزاری</small>
+            <h3>زیرساخت ربات تلگرام</h3>
+            <p>سامانه‌ای برای پاسخ سریع به درخواست‌های پرتعداد و مدیریت پایدار صدها هزار کاربر.</p>
+            <span class="arrow">مطالعه پروژه ←</span>
+          </a>
+        </div>
+        <ul class="facts" aria-label="آمار زیرساخت ربات تلگرام">
+          <li><strong>+۳۰۰ هزار</strong><span>کاربر یکتا</span></li>
+          <li><strong>+۱۰ میلیون</strong><span>درخواست پردازش‌شده</span></li>
+          <li><strong>+۳ هزار</strong><span>کاربر فعال روزانه</span></li>
+        </ul>
       </div>
     </section>
 
-    <!-- Journal Preview Section -->
-    <section class="journal-section" id="journal-section">
-      <div class="max-w-4xl">
-        <h2 class="text-caption mb-8" data-en="Journal" data-fa="ژورنال">Journal</h2>
-        <div class="journal-list fade-in-up">
-          <a href="/journal/" class="journal-item">
-            <span class="journal-title" data-en="Latest Updates" data-fa="آخرین به‌روزرسانی‌ها">Latest Updates</span>
-            <span class="journal-date">2026</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="max-w-7xl">
-        <div class="footer-content">
-          <div class="footer-left fade-in-up">
-            <h3 class="text-h3 mb-4" data-en="Let's Connect" data-fa="اماده همکاری و برقراری ارتباط">Let's Connect</h3>
-            <p class="text-small" style="color: var(--muted-foreground);" data-en="Open to collaborations and interesting projects." data-fa="راه ارتباطی با من">Open to collaborations and interesting projects.</p>
-            <p class="text-small mt-4" style="color: var(--muted-foreground);">
-              <span data-en="Telegram" data-fa="تلگرام">Telegram</span> <a href="https://t.me/onewith_aklilighalb" class="magnetic-link" target="_blank" rel="noopener">@onewith_aklilighalb</a>
-            </p>
+    <section class="section" id="journal">
+      <div class="container">
+        <div class="section-heading">
+          <h2>آخرین نوشته‌ها</h2>
+          <div class="copy">
+            <p>یادداشت‌هایی بر اساس تجربه واقعی ساخت نرم‌افزار؛ از ابزارهای کدنویسی در ترمینال تا معماری، پرداخت و هوش مصنوعی.</p>
+            <a class="button" href="/journal/">مشاهده آرشیو نوشته‌ها</a>
           </div>
+        </div>
+        <div class="post-grid">
+          <a class="post-card" href="/journal/cli-tools-i-use/">
+            <small><time datetime="2026-08-14">۲۳ مرداد ۱۴۰۵</time> · ابزار توسعه</small>
+            <h2>ابزارهای کدنویسی در ترمینال که استفاده می‌کنم</h2>
+            <p>تجربه من با Reasonix، Codex و OpenCode و اینکه هرکدام کجای گردش کار روزانه‌ام قرار می‌گیرند.</p>
+            <span class="arrow">خواندن نوشته ←</span>
+          </a>
+          <a class="post-card" href="/journal/payment-system-under-sanctions/">
+            <small><time datetime="2025-07-10">۱۹ تیر ۱۴۰۴</time> · پرداخت</small>
+            <h2>چیزهایی که از ساخت سیستم پرداخت در شرایط تحریم یاد گرفتم</h2>
+            <p>درباره درگاه‌های داخلی، idempotency، تطبیق تراکنش و طراحی برای اعتماد.</p>
+            <span class="arrow">خواندن نوشته ←</span>
+          </a>
+          <a class="post-card" href="/journal/ai-pair-programmer/">
+            <small><time datetime="2025-06-22">۱ تیر ۱۴۰۴</time> · هوش مصنوعی</small>
+            <h2>هوش مصنوعی به‌عنوان همکار برنامه‌نویس، نه جایگزین</h2>
+            <p>کجا واقعاً سرعت کار را بالا می‌برد و کجا قضاوت مهندسی همچنان تعیین‌کننده است.</p>
+            <span class="arrow">خواندن نوشته ←</span>
+          </a>
+          <a class="post-card" href="/journal/microservices-solo-project/">
+            <small><time datetime="2025-05-08">۱۸ اردیبهشت ۱۴۰۴</time> · معماری</small>
+            <h2>چرا برای یک پروژه تک‌نفره سراغ میکروسرویس رفتم</h2>
+            <p>حساب صادقانه هزینه‌ها، مزایا و تصمیمی که امروز متفاوت می‌گرفتم.</p>
+            <span class="arrow">خواندن نوشته ←</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
-          <div class="footer-right fade-in-up">
-            <div class="social-links">
-              <a href="https://github.com/arashfooladi" target="_blank" rel="noopener noreferrer" class="magnetic-link">GitHub</a>
-              <a href="https://linkedin.com/in/arashfooladi" target="_blank" rel="noopener noreferrer" class="magnetic-link">LinkedIn</a>
-              <a href="https://twitter.com/arashfooladiorg" target="_blank" rel="noopener noreferrer" class="magnetic-link">Twitter(X)</a>
-              <a href="https://dev.to/arashfooladi" target="_blank" rel="noopener noreferrer" class="magnetic-link">Dev.to</a>
-              <a href="https://hashnode.com/@arashfooladi" target="_blank" rel="noopener noreferrer" class="magnetic-link">Hashnode</a>
-              <a href="https://instagram.com/arashfooladi_" target="_blank" rel="noopener noreferrer" class="magnetic-link">Instagram</a>
-            </div>
-          </div>
-
-          <div class="copyright">
-            <p class="text-caption">
-              © <span id="year">2025</span> Arash Fooladi. <span style="display: inline;">ارش فولادی</span>
-            </p>
+    <section class="section" id="contact">
+      <div class="container section-heading">
+        <h2>ارتباط با من</h2>
+        <div class="copy">
+          <p>برای همکاری، گفت‌وگوی فنی یا دنبال کردن پروژه‌ها می‌توانید از پروفایل‌های رسمی زیر استفاده کنید.</p>
+          <div class="social-links" aria-label="پروفایل‌های رسمی آرش فولادی">
+            <a href="https://github.com/arashfooladi" rel="me noopener noreferrer">گیت‌هاب</a>
+            <a href="https://www.linkedin.com/in/arashfooladi" rel="me noopener noreferrer">لینکدین</a>
+            <a href="https://x.com/arashfooladiorg" rel="me noopener noreferrer">ایکس</a>
+            <a href="https://dev.to/arashfooladi" rel="me noopener noreferrer">Dev.to</a>
+            <a href="https://hashnode.com/@arashfooladi" rel="me noopener noreferrer">Hashnode</a>
+            <a href="https://www.instagram.com/arashfooladi_/" rel="me noopener noreferrer">اینستاگرام</a>
+            <a href="https://t.me/onewith_aklilighalb" rel="me noopener noreferrer">تلگرام</a>
           </div>
         </div>
       </div>
-    </footer>
+    </section>
   </main>
 
-  <script>
-    // Update copyright year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Language Toggle - OPTIMIZED FOR ZERO LAYOUT SHIFT
-    let currentLang = 'en';
-    
-    const translations = {
-      en: { button: 'FA' },
-      fa: { button: 'EN' }
-    };
-
-    function toggleLanguage() {
-      currentLang = currentLang === 'en' ? 'fa' : 'en';
-      const btn = document.getElementById('lang-toggle');
-      btn.textContent = translations[currentLang].button;
-      
-      // Update HTML lang attribute
-      document.documentElement.lang = currentLang;
-      
-      // Batch DOM updates to prevent multiple reflows
-      requestAnimationFrame(() => {
-        // Update all elements with data-en and data-fa attributes
-        document.querySelectorAll('[data-en][data-fa]').forEach(el => {
-          // Store original dimensions if not already stored
-          if (!el.dataset.originalHeight) {
-            el.dataset.originalHeight = el.offsetHeight + 'px';
-          }
-          
-          el.textContent = el.getAttribute('data-' + currentLang);
-          
-          // Apply appropriate font based on language, but preserve layout
-          if (currentLang === 'fa') {
-            el.style.fontFamily = 'Vazirmatn, sans-serif';
-            // Ensure line-height consistency
-            el.style.lineHeight = '1.5';
-          } else {
-            el.style.fontFamily = '';
-            el.style.lineHeight = '';
-          }
-        });
-        
-        // Handle the tagline specially - it has fixed height
-        const tagline = document.querySelector('.tagline');
-        if (tagline) {
-          tagline.textContent = tagline.getAttribute('data-' + currentLang);
-          if (currentLang === 'fa') {
-            tagline.style.fontFamily = 'Vazirmatn, sans-serif';
-          } else {
-            tagline.style.fontFamily = '';
-          }
-        }
-        
-        // Handle the special case for mixed content in footer
-        const footerText = document.querySelector('.footer-left p:last-child');
-        if (footerText) {
-          const label = currentLang === 'en' ? 'Telegram' : 'تلگرام';
-          const link = footerText.querySelector('a');
-          if (link) {
-            // Use innerHTML carefully to preserve link
-            const span = document.createElement('span');
-            span.textContent = label + ' ';
-            if (currentLang === 'fa') {
-              span.style.fontFamily = 'Vazirmatn, sans-serif';
-            }
-            footerText.innerHTML = '';
-            footerText.appendChild(span);
-            footerText.appendChild(link);
-          }
-        }
-      });
-    }
-
-    // Initialize the page
-    function initializeLanguage() {
-      const btn = document.getElementById('lang-toggle');
-      btn.textContent = translations[currentLang].button;
-      
-      // Apply initial font settings based on current language
-      if (currentLang === 'fa') {
-        document.querySelectorAll('[data-fa]').forEach(el => {
-          el.style.fontFamily = 'Vazirmatn, sans-serif';
-        });
-      }
-    }
-    
-    // Run initialization when DOM is loaded
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initializeLanguage);
-    } else {
-      initializeLanguage();
-    }
-
-    // Intersection Observer for fade-in animations
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-in-up').forEach((el) => observer.observe(el));
-
-    // Smooth scroll for horizontal gallery
-    const horizontalScroll = document.querySelector('.horizontal-scroll');
-    if (horizontalScroll) {
-      horizontalScroll.addEventListener('wheel', (e) => {
-        const isScrollable = horizontalScroll.scrollWidth > horizontalScroll.clientWidth;
-        
-        if (isScrollable && Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-          e.preventDefault();
-          horizontalScroll.scrollLeft += e.deltaX;
-        } else if (isScrollable && Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-          const isAtStart = horizontalScroll.scrollLeft === 0;
-          const isAtEnd = horizontalScroll.scrollLeft + horizontalScroll.clientWidth >= horizontalScroll.scrollWidth;
-          
-          if (!isAtStart && !isAtEnd) {
-            e.preventDefault();
-            horizontalScroll.scrollLeft += e.deltaY;
-          }
-        }
-      }, { passive: false });
-    }
-
-    // Video optimization
-    const video = document.getElementById('background-video');
-    if (video) {
-      video.playbackRate = 0.75;
-      
-      video.addEventListener('canplay', () => {
-        video.play().catch(() => {
-          video.style.opacity = '0';
-        });
-        video.classList.add('loaded');
-      });
-      
-      video.addEventListener('loadeddata', () => {
-        video.classList.add('loaded');
-      });
-    }
-
-    // Reduced motion preference
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.documentElement.style.scrollBehavior = 'auto';
-    }
-    
-    // Event listeners
-    document.addEventListener('DOMContentLoaded', function() {
-      const langToggle = document.getElementById('lang-toggle');
-      if (langToggle) {
-        langToggle.addEventListener('click', toggleLanguage);
-      }
-      
-      // Smooth scrolling for navigation links
-      const navLinks = document.querySelectorAll('.nav-link');
-      navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          
-          if (href.startsWith('#')) {
-            e.preventDefault();
-            
-            const targetId = href.substring(1);
-            const targetElement = document.getElementById(targetId);
-            
-            if (targetElement) {
-              targetElement.scrollIntoView({
-                behavior: 'smooth'
-              });
-            }
-          }
-        });
-      });
-    });
-  </script>
+  <footer class="site-footer">
+    <div class="container">
+      <span>© ۱۴۰۵ آرش فولادی</span>
+      <a href="/feed.xml">خوراک RSS نوشته‌ها</a>
+    </div>
+  </footer>
 </body>
 </html>

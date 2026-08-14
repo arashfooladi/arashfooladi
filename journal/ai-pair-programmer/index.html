@@ -1,178 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="format-detection" content="telephone=no">
-
-  <!-- SEO Essentials -->
-  <title>AI as a Pair Programmer, Not a Replacement | Arash Fooladi</title>
-  <meta name="description" content="How I use AI-assisted development to stay focused on architecture and logic instead of boilerplate — where it accelerates real work, and exactly where it falls short.">
-  <meta name="keywords" content="AI pair programming, AI-assisted development, LLM coding, developer productivity, software architecture, Arash Fooladi">
-  <meta name="author" content="Arash Fooladi">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>هوش مصنوعی به‌عنوان همکار برنامه‌نویس، نه جایگزین | آرش فولادی</title>
+  <meta name="description" content="تجربه آرش فولادی از استفاده هوش مصنوعی در برنامه‌نویسی؛ کارهایی که سرعت می‌گیرند، خطاهایی که باید مراقبشان بود و گردش کاری که جواب می‌دهد.">
+  <meta name="author" content="آرش فولادی">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="theme-color" content="#080808">
-  <meta name="robots" content="index, follow">
-
   <link rel="canonical" href="https://arashfooladi.ir/journal/ai-pair-programmer/">
-
-  <meta property="og:title" content="AI as a Pair Programmer, Not a Replacement">
-  <meta property="og:description" content="How I use AI-assisted development to stay focused on architecture and logic instead of boilerplate — and where it falls short.">
+  <link rel="alternate" type="application/rss+xml" title="نوشته‌های آرش فولادی" href="https://arashfooladi.ir/feed.xml">
   <meta property="og:type" content="article">
+  <meta property="og:title" content="هوش مصنوعی به‌عنوان همکار برنامه‌نویس، نه جایگزین">
+  <meta property="og:description" content="کجا سرعت کار را بالا می‌برد و کجا قضاوت مهندسی همچنان تعیین‌کننده است.">
   <meta property="og:url" content="https://arashfooladi.ir/journal/ai-pair-programmer/">
-  <meta property="og:site_name" content="Arash Fooladi">
-  <meta property="og:image" content="https://arashfooladi.ir/yarplus/images/main2.png">
-  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="آرش فولادی">
+  <meta property="og:locale" content="fa_IR">
   <meta property="article:published_time" content="2025-06-22">
-  <meta property="article:author" content="Arash Fooladi">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@arashfooladiorg">
-  <meta name="twitter:creator" content="@arashfooladiorg">
-  <meta name="twitter:title" content="AI as a Pair Programmer, Not a Replacement">
-  <meta name="twitter:description" content="Where AI accelerates real work, and exactly where it falls short.">
-  <meta name="twitter:image" content="https://arashfooladi.ir/yarplus/images/main2.png">
-
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080808'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial, sans-serif' font-size='30' font-weight='700' fill='white'%3EAF%3C/text%3E%3C/svg%3E">
-
+  <meta property="article:modified_time" content="2026-08-14">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Vazirmatn:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "AI as a Pair Programmer, Not a Replacement",
-    "description": "How I use AI-assisted development to stay focused on architecture and logic instead of boilerplate — and where it falls short.",
+    "headline": "هوش مصنوعی به‌عنوان همکار برنامه‌نویس، نه جایگزین",
+    "description": "تجربه استفاده از هوش مصنوعی برای سرعت دادن به توسعه بدون واگذاری قضاوت مهندسی.",
+    "url": "https://arashfooladi.ir/journal/ai-pair-programmer/",
+    "mainEntityOfPage": "https://arashfooladi.ir/journal/ai-pair-programmer/",
     "datePublished": "2025-06-22",
-    "dateModified": "2025-06-22",
-    "inLanguage": "en",
-    "author": { "@type": "Person", "name": "Arash Fooladi", "url": "https://arashfooladi.ir/" },
-    "publisher": { "@type": "Person", "name": "Arash Fooladi" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://arashfooladi.ir/journal/ai-pair-programmer/" },
-    "image": "https://arashfooladi.ir/yarplus/images/main2.png",
-    "keywords": "AI pair programming, AI-assisted development, LLM, productivity"
+    "dateModified": "2026-08-14",
+    "inLanguage": "fa",
+    "author": { "@type": "Person", "@id": "https://arashfooladi.ir/#arash-fooladi", "name": "آرش فولادی", "url": "https://arashfooladi.ir/" },
+    "publisher": { "@id": "https://arashfooladi.ir/#arash-fooladi" }
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://arashfooladi.ir/" },
-      { "@type": "ListItem", "position": 2, "name": "Journal", "item": "https://arashfooladi.ir/journal/" },
-      { "@type": "ListItem", "position": 3, "name": "AI as a Pair Programmer", "item": "https://arashfooladi.ir/journal/ai-pair-programmer/" }
-    ]
-  }
-  </script>
-
-  <style>
-    :root {
-      --background: oklch(0.08 0 0);
-      --foreground: oklch(0.98 0 0);
-      --muted-foreground: oklch(0.62 0 0);
-      --border: oklch(1 0 0 / 8%);
-      --card: oklch(0.11 0 0);
-      --accent: oklch(0.7 0.18 250);
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body { background: var(--background); color: var(--foreground); font-family: var(--font-sans); line-height: 1.75; overflow-x: hidden; }
-    ::selection { background: var(--foreground); color: var(--background); }
-
-    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 1rem; background: rgba(8,8,8,0.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
-    .nav-content { max-width: 48rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .nav a { color: var(--muted-foreground); text-decoration: none; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s; }
-    .nav a:hover { color: var(--foreground); }
-    .nav-left { display: flex; gap: 1.5rem; }
-
-    .article { max-width: 44rem; margin: 0 auto; padding: 9rem 1.5rem 4rem; }
-    .article-meta { display: flex; gap: 1rem; align-items: center; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted-foreground); margin-bottom: 1.5rem; }
-    .tag { border: 1px solid var(--border); padding: 0.15rem 0.6rem; }
-    h1 { font-size: clamp(2rem, 5vw + 1rem, 3.25rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
-    .lede { font-size: 1.2rem; color: var(--muted-foreground); margin-bottom: 3rem; line-height: 1.7; }
-
-    .article h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; margin: 3rem 0 1rem; }
-    .article h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
-    .article p { font-size: 1.075rem; color: oklch(0.9 0 0); margin-bottom: 1.25rem; }
-    .article ul, .article ol { margin: 0 0 1.5rem 1.25rem; }
-    .article li { font-size: 1.075rem; color: oklch(0.9 0 0); margin-bottom: 0.6rem; }
-    .article strong { color: var(--foreground); font-weight: 600; }
-    .article a { color: var(--foreground); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--muted-foreground); }
-    .article code { font-family: var(--font-mono); font-size: 0.9em; background: var(--card); border: 1px solid var(--border); padding: 0.1rem 0.4rem; border-radius: 3px; }
-    blockquote { border-left: 2px solid var(--accent); padding-left: 1.25rem; margin: 2rem 0; color: var(--muted-foreground); font-style: italic; }
-
-    .article-footer { max-width: 44rem; margin: 0 auto; padding: 2rem 1.5rem 5rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
-    .article-footer a { font-family: var(--font-mono); font-size: 0.8rem; color: var(--foreground); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; }
-    .article-footer a:hover { opacity: 0.6; }
-    .social { display: flex; gap: 1rem; }
-    .social a { font-size: 0.75rem; color: var(--muted-foreground); }
-  </style>
 </head>
 <body>
-
-  <nav class="nav">
-    <div class="nav-content">
-      <div class="nav-left">
-        <a href="/">Home</a>
-        <a href="/journal/">← Journal</a>
+  <a class="skip-link" href="#article">رفتن به متن نوشته</a>
+  <header class="site-header">
+    <nav class="container nav" aria-label="ناوبری اصلی">
+      <a class="brand" href="/">آرش فولادی</a>
+      <ul><li><a href="/">خانه</a></li><li><a href="/journal/">نوشته‌ها</a></li><li><a href="/#projects">پروژه‌ها</a></li></ul>
+    </nav>
+  </header>
+  <main>
+    <header class="article-header">
+      <div class="inner">
+        <p class="kicker">توسعه با هوش مصنوعی</p>
+        <h1>هوش مصنوعی به‌عنوان همکار برنامه‌نویس، نه جایگزین</h1>
+        <div class="article-meta"><span>نوشته آرش فولادی</span><time datetime="2025-06-22">۱ تیر ۱۴۰۴</time><span>۶ دقیقه مطالعه</span></div>
       </div>
-      <a href="/#projects-section">Work</a>
-    </div>
-  </nav>
+    </header>
+    <article class="article-body prose" id="article">
+      <p class="lede">مفیدترین شکل استفاده از هوش مصنوعی برای من این نیست که بگویم «اپلیکیشن را کامل بساز». آن را مثل یک همکار سریع و خستگی‌ناپذیر می‌بینم که در کارهای تکراری عالی است و در تصمیم‌های مهم به نظارت نیاز دارد.</p>
 
-  <article class="article">
-    <div class="article-meta">
-      <span class="tag">Building</span>
-      <span>Jun 22, 2025</span>
-      <span>· 5 min read</span>
-    </div>
-    <h1>AI as a Pair Programmer, Not a Replacement</h1>
-    <p class="lede">The most useful way I've found to work with AI isn't "write my app for me." It's treating it like a fast, tireless pair programmer who's brilliant at the boring parts and needs supervision on the parts that matter.</p>
+      <h2>کجا واقعاً خوب عمل می‌کند؟</h2>
+      <p>هنگام ساخت <a href="/yarplus/">یارپلاس</a>، بخش‌هایی که بیشترین زمان را می‌گرفتند لزوماً جذاب‌ترین بخش‌ها نبودند: migrationها، اعتبارسنجی فرم، endpointهای تکراری، اسکلت تست‌ها و کدهای واسطی که یک ساختار داده را به ساختار دیگر تبدیل می‌کنند.</p>
+      <p>وقتی ابزار درست استفاده شود، می‌توانم زمان بیشتری را روی معماری، منطق کسب‌وکار و تجربه کاربر بگذارم. چند استفاده‌ای که مرتب برای من جواب داده‌اند:</p>
+      <ul>
+        <li><strong>ساخت boilerplate:</strong> ایجاد اسکلت یک ماژول، route یا DTO از روی schema.</li>
+        <li><strong>فکر کردن با صدای بلند:</strong> توضیح مسئله باعث می‌شود فرض‌های اشتباه خودم زودتر مشخص شوند.</li>
+        <li><strong>ورود به موضوع ناآشنا:</strong> یک توضیح اولیه از API یا قابلیت زبان که بعداً با مستندات اصلی بررسی می‌کنم.</li>
+        <li><strong>refactor مکانیکی:</strong> تغییر نام یک مفهوم یا تبدیل الگوهای تکراری بدون اتلاف وقت.</li>
+      </ul>
 
-    <h2>What it's genuinely good at</h2>
-    <p>When I built <a href="/yarplus/">Yarplus</a>, the parts that would have eaten my time weren't the interesting ones. They were the migrations, the form validation, the fortieth CRUD endpoint, the test scaffolding, the "translate this shape into that shape" glue. That's exactly where AI shines.</p>
-    <p>Used well, it lets me stay at the altitude where I actually add value — <strong>architecture, business logic, and UX</strong> — instead of drowning in boilerplate. A few patterns that consistently pay off:</p>
-    <ul>
-      <li><strong>Boilerplate generation.</strong> Scaffolding a module, wiring up a route, generating a DTO from a schema. Mechanical work it does in seconds.</li>
-      <li><strong>Rubber-ducking.</strong> Explaining a problem out loud to something that talks back surfaces my own wrong assumptions before I write a line.</li>
-      <li><strong>Unfamiliar terrain.</strong> A first-pass explanation of an API or a language feature I haven't used, which I then verify against the real docs.</li>
-      <li><strong>Mechanical refactors.</strong> "Rename this concept everywhere," "convert these callbacks to async/await." Tedious, low-risk, high-toil.</li>
-    </ul>
+      <h2>کجا کم می‌آورد؟</h2>
+      <h3>کل سیستم را در ذهن ندارد</h3>
+      <p>یک مدل همان contextی را می‌بیند که در اختیارش قرار گرفته، نه لزوماً سه سرویس دیگری که پایگاه داده مشترک دارند یا قراردادی که دو هفته قبل در پروژه تثبیت شده است. ممکن است راه‌حلی پیشنهاد کند که در یک فایل درست و در سطح کل سیستم اشتباه باشد. مسئولیت معماری همچنان با من است.</p>
 
-    <h2>Where it falls short — every time</h2>
-    <p>The failures are predictable, and knowing them is what makes the tool safe to use.</p>
-    <h3>It doesn't hold your system in its head</h3>
-    <p>An AI sees the snippet you give it, not the three other services that share the same database, not the invariant you established two weeks ago. It will happily suggest something locally correct and globally wrong. <strong>Architecture is still mine to own.</strong></p>
-    <h3>It's confidently wrong about the subtle stuff</h3>
-    <p>The dangerous bugs aren't syntax errors — those don't compile. They're the off-by-one in a billing calculation, the missing <code>await</code> that only fails under load, the auth check that looks right and isn't. AI produces these with total confidence, which is precisely why you can't outsource judgment to it.</p>
-    <h3>Security can't be delegated</h3>
-    <p>On a payment system, "looks plausible" is not a security model. I review anything touching auth, money, or user data line by line. The AI is a draftsman here, never the approver.</p>
-    <blockquote>The faster the AI writes, the more important it is that I read. Velocity without review is just shipping bugs sooner.</blockquote>
+      <h3>در خطاهای ظریف با اعتمادبه‌نفس اشتباه می‌کند</h3>
+      <p>باگ خطرناک معمولاً syntax error نیست؛ محاسبه اشتباه مبلغ، یک <code>await</code> فراموش‌شده که فقط زیر بار خودش را نشان می‌دهد یا کنترل دسترسی‌ای است که ظاهراً درست به نظر می‌رسد. خروجی روان نباید با خروجی صحیح اشتباه گرفته شود.</p>
 
-    <h2>The workflow that actually works for me</h2>
-    <ol>
-      <li><strong>I decide the design.</strong> Boundaries, data model, and the contract between components are mine. I don't ask the AI what to build, only to help build what I've decided.</li>
-      <li><strong>I scope tasks tightly.</strong> "Write this one function with this signature" beats "build the payments module." Small, verifiable units.</li>
-      <li><strong>I read every line.</strong> If I can't explain why a generated line is there, it doesn't get committed.</li>
-      <li><strong>I let tests be the referee.</strong> Generated code earns trust by passing tests I understand, not by looking right.</li>
-    </ol>
+      <h3>امنیت قابل واگذاری نیست</h3>
+      <p>در سیستم پرداخت، «به‌نظر درست می‌آید» مدل امنیتی نیست. هر تغییری که به authentication، پول یا داده کاربر مربوط باشد باید خط‌به‌خط بررسی شود. ابزار می‌تواند پیش‌نویس بسازد، اما تأییدکننده نهایی نیست.</p>
 
-    <h2>The honest takeaway</h2>
-    <p>AI made me meaningfully faster — but only because I treat it as an accelerator on top of skills I already have, not a substitute for them. It's leverage. And leverage multiplies whatever you point it at: good judgment gets amplified, and so do bad habits. The engineer still has to be the engineer.</p>
-  </article>
+      <blockquote>هرچه ابزار سریع‌تر کد می‌نویسد، اهمیت خواندن و بررسی من بیشتر می‌شود. سرعت بدون review فقط باگ را زودتر منتشر می‌کند.</blockquote>
 
-  <footer class="article-footer">
-    <a href="/journal/">← All entries</a>
-    <div class="social">
-      <a href="https://github.com/arashfooladi" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://twitter.com/arashfooladiorg" target="_blank" rel="noopener noreferrer">Twitter</a>
-      <a href="https://linkedin.com/in/arashfooladi" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    </div>
-  </footer>
+      <h2>گردش کاری که برای من جواب می‌دهد</h2>
+      <ol>
+        <li><strong>طراحی را خودم مشخص می‌کنم.</strong> مرزها، مدل داده و قرارداد میان اجزا قبل از تولید کد روشن می‌شوند.</li>
+        <li><strong>task را کوچک نگه می‌دارم.</strong> یک تابع با ورودی و خروجی مشخص بهتر از «کل ماژول پرداخت را بساز» است.</li>
+        <li><strong>هر خط را می‌خوانم.</strong> اگر نتوانم دلیل وجود یک خط را توضیح بدهم، آن خط آماده commit نیست.</li>
+        <li><strong>تست داور نهایی است.</strong> کد با ظاهر خوب قابل اعتماد نمی‌شود؛ باید از تست‌هایی عبور کند که خودم منطقشان را می‌فهمم.</li>
+      </ol>
 
+      <h2>نتیجه صادقانه</h2>
+      <p>هوش مصنوعی من را سریع‌تر کرده، اما فقط چون آن را روی مهارتی قرار داده‌ام که از قبل در حال ساختنش بوده‌ام. این ابزار یک اهرم است؛ قضاوت خوب را تقویت می‌کند و عادت بد را هم به همان اندازه بزرگ‌تر می‌کند. در پایان، مهندس همچنان باید مسئول تصمیم و خروجی باشد.</p>
+
+      <nav class="article-nav" aria-label="نوشته‌های مرتبط">
+        <a href="/journal/cli-tools-i-use/">→ نوشته قبلی: ابزارهای CLI</a>
+        <a href="/journal/microservices-solo-project/">نوشته بعدی: میکروسرویس ←</a>
+      </nav>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><span>© ۱۴۰۵ آرش فولادی</span><a href="/journal/">همه نوشته‌ها</a></div></footer>
 </body>
 </html>

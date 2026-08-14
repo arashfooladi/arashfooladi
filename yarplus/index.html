@@ -1,535 +1,78 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
+<!doctype html>
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="format-detection" content="telephone=no">
-  
-  <!-- SEO Essentials -->
-  <title>Yarplus | Creator Monetization Platform | Arash Fooladi</title>
-  <meta name="description" content="Yarplus - A subscription-based creator monetization platform. Full-stack development case study by Arash Fooladi featuring Next.js, Node.js, PostgreSQL, and Stripe integration.">
-  <meta name="keywords" content="Yarplus, creator monetization, subscription platform, full stack development, Next.js, Node.js, PostgreSQL, Stripe, Arash Fooladi">
-  <meta name="author" content="Arash Fooladi">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="robots" content="index, follow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>یارپلاس؛ پلتفرم درآمدزایی تولیدکنندگان محتوا | آرش فولادی</title>
+  <meta name="description" content="مطالعه موردی فارسی یارپلاس، پلتفرم اشتراک و درآمدزایی تولیدکنندگان محتوا؛ معماری بک‌اند، پرداخت داخلی و کنترل دسترسی نقش‌محور توسط آرش فولادی.">
+  <meta name="author" content="آرش فولادی">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="theme-color" content="#080808">
-  <meta name="google-site-verification" content="NsWZ1pAImBkgleF3IXDSqw1f2FXsYW2e8Sn0uN_mX50" />
-
-  <!-- Canonical URL & Hreflang -->
   <link rel="canonical" href="https://arashfooladi.ir/yarplus/">
-  <link rel="alternate" hreflang="en" href="https://arashfooladi.ir/yarplus/">
-  <link rel="alternate" hreflang="fa" href="https://arashfooladi.ir/yarplus/">
-  <link rel="alternate" hreflang="x-default" href="https://arashfooladi.ir/yarplus/">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Yarplus | Creator Monetization Platform | Arash Fooladi">
-  <meta property="og:description" content="Subscription-based creator monetization platform built with Next.js, Node.js, PostgreSQL, and Stripe.">
   <meta property="og:type" content="article">
+  <meta property="og:title" content="یارپلاس؛ پلتفرم درآمدزایی تولیدکنندگان محتوا">
+  <meta property="og:description" content="مطالعه موردی معماری، پرداخت و توسعه فول‌استک یارپلاس.">
   <meta property="og:url" content="https://arashfooladi.ir/yarplus/">
-  <meta property="og:site_name" content="Arash Fooladi">
+  <meta property="og:site_name" content="آرش فولادی">
+  <meta property="og:locale" content="fa_IR">
   <meta property="og:image" content="https://arashfooladi.ir/yarplus/images/main.png">
-  <meta property="og:image:alt" content="Yarplus creator monetization platform preview">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="fa_IR">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@arashfooladiorg">
-  <meta name="twitter:creator" content="@arashfooladiorg">
-  <meta name="twitter:title" content="Yarplus | Creator Monetization Platform | Arash Fooladi">
-  <meta name="twitter:description" content="Subscription-based creator monetization platform built with Next.js, Node.js, PostgreSQL, and Stripe.">
-  <meta name="twitter:image" content="https://arashfooladi.ir/yarplus/images/main.png">
-  
-  <!-- Structured Data -->
+  <meta property="og:image:alt" content="نمای کلی پلتفرم یارپلاس ساخته آرش فولادی">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Vazirmatn:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
-    "name": "Yarplus - Creator Monetization Platform",
-    "description": "Subscription-based creator monetization platform built with Next.js, Node.js, PostgreSQL, and Stripe.",
-    "url": "https://arashfooladi.ir/yarplus",
-    "inLanguage": ["en", "fa"],
-    "author": {
-      "@type": "Person",
-      "name": "Arash Fooladi"
-    },
-    "datePublished": "2024-01-01"
+    "name": "یارپلاس؛ پلتفرم درآمدزایی تولیدکنندگان محتوا",
+    "description": "پلتفرم اشتراک و درآمدزایی برای بازار ایران با پرداخت داخلی و دسترسی نقش‌محور.",
+    "url": "https://arashfooladi.ir/yarplus/",
+    "inLanguage": "fa",
+    "image": "https://arashfooladi.ir/yarplus/images/main.png",
+    "author": { "@type": "Person", "@id": "https://arashfooladi.ir/#arash-fooladi", "name": "آرش فولادی", "url": "https://arashfooladi.ir/" }
   }
   </script>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    /* CSS Custom Properties */
-    :root {
-      --background: oklch(0.08 0 0);
-      --foreground: oklch(0.98 0 0);
-      --card: oklch(0.11 0 0);
-      --primary: oklch(0.98 0 0);
-      --primary-foreground: oklch(0.08 0 0);
-      --secondary: oklch(0.15 0 0);
-      --muted: oklch(0.18 0 0);
-      --muted-foreground: oklch(0.55 0 0);
-      --border: oklch(1 0 0 / 8%);
-      --glow-color: oklch(0.98 0 0 / 10%);
-      --accent: oklch(0.7 0.2 145);
-      
-      --space-8: 0.5rem;
-      --space-16: 1rem;
-      --space-24: 1.5rem;
-      --space-32: 2rem;
-      --space-48: 3rem;
-      --space-64: 4rem;
-      --space-96: 6rem;
-      --space-160: 10rem;
-
-      --text-display: clamp(3rem, 10vw + 1rem, 8rem);
-      --text-h1: clamp(2rem, 5vw + 1rem, 4rem);
-      --text-h2: clamp(1.5rem, 3vw + 1rem, 2.5rem);
-      --text-body: 1.125rem;
-      --text-small: 0.875rem;
-      --text-caption: 0.75rem;
-      --text-massive: clamp(4rem, 12vw, 10rem);
-
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --font-fa: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    }
-
-    *, *:before, *:after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body {
-      background-color: var(--background);
-      color: var(--foreground);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* --- Improved Farsi Typography --- */
-    html[lang="fa"] body { font-family: var(--font-fa); font-size: 1.05rem; font-weight: 500; line-height: 1.95; }
-    html[lang="fa"] .text-body { font-size: 1.22rem; font-weight: 500; line-height: 2.15; letter-spacing: 0; }
-    html[lang="fa"] .text-h2 { font-family: var(--font-fa); font-weight: 600; letter-spacing: 0; }
-    html[lang="fa"] .project-meta-item span { font-family: var(--font-fa); font-weight: 600; letter-spacing: 0; }
-    html[lang="fa"] .nav-link { font-family: var(--font-fa); font-size: 0.98rem; font-weight: 600; letter-spacing: 0; }
-
-    /* Noise Texture */
-    .noise-texture {
-      position: fixed; inset: 0; pointer-events: none; z-index: 9999;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-
-    /* Navigation */
-    .nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: var(--space-24) var(--space-16);
-      background: rgba(8, 8, 8, 0.85);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-content { max-width: 80rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .nav-left { display: flex; gap: var(--space-32); align-items: center; }
-    .nav-link {
-      color: var(--muted-foreground); text-decoration: none;
-      font-family: var(--font-mono); font-size: var(--text-caption);
-      text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s;
-    }
-    .nav-link:hover { color: var(--primary); }
-    
-    .lang-toggle {
-      font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);
-      background: none; border: 1px solid var(--border); padding: 0.4rem 0.8rem;
-      cursor: pointer; transition: all 0.2s; text-transform: uppercase;
-    }
-    .lang-toggle:hover { border-color: var(--primary); color: var(--primary); }
-
-    /* Layout */
-    .container { max-width: 80rem; margin: 0 auto; padding: 0 var(--space-16); }
-    .content-wrapper { max-width: 56rem; margin: 0 auto; padding-top: var(--space-96); }
-
-    /* Hero */
-    .project-hero { 
-      padding-top: calc(var(--space-64) + 80px); 
-      padding-bottom: var(--space-48);
-      min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    
-    .hero-subtitle {
-      font-size: var(--text-body);
-      color: var(--muted-foreground);
-      font-family: var(--font-mono);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-48);
-    }
-    
-    .project-title {
-      font-size: var(--text-display); 
-      font-weight: 800; 
-      line-height: 1.1;
-      letter-spacing: -0.04em; 
-      margin-bottom: var(--space-32);
-      background: linear-gradient(to bottom, oklch(0.98 0 0 / 0.8), oklch(0.98 0 0 / 0.4));
-      -webkit-background-clip: text; 
-      -webkit-text-fill-color: transparent;
-      padding: 0.2em 0;
-    }
-    
-    .project-meta {
-      display: flex; 
-      flex-wrap: wrap; 
-      gap: var(--space-32);
-      border-top: 1px solid var(--border); 
-      padding-top: var(--space-24);
-    }
-    .project-meta-item { display: flex; flex-direction: column; gap: 0.5rem; }
-    .project-meta-item label {
-      font-family: var(--font-mono); 
-      font-size: var(--text-caption);
-      color: var(--muted-foreground); 
-      text-transform: uppercase; 
-      letter-spacing: 0.1em;
-    }
-    .project-meta-item span { font-size: var(--text-body); font-weight: 500; }
-
-    /* GitHub Link - Prominent (Green accent like gesture project) */
-    .github-section {
-      margin: var(--space-96) 0;
-      padding: var(--space-48);
-      border: 1px solid var(--border);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .github-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    }
-    
-    .github-link {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-16);
-      text-decoration: none;
-      color: var(--foreground);
-      font-family: var(--font-mono);
-      font-size: var(--text-body);
-      border: 1px solid var(--border);
-      padding: var(--space-16) var(--space-32);
-      transition: all 0.2s;
-    }
-    
-    .github-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* Content Sections */
-    .section { 
-      margin-bottom: var(--space-160); 
-      opacity: 0; 
-      transform: translateY(20px); 
-      animation: fadeUp 0.8s ease forwards; 
-    }
-    .section:nth-child(2) { animation-delay: 0.1s; }
-    .section:nth-child(3) { animation-delay: 0.2s; }
-    
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-
-    .section-title {
-      font-size: var(--text-h2); 
-      font-weight: 700; 
-      margin-bottom: var(--space-24);
-      letter-spacing: -0.02em;
-    }
-    .text-content p {
-      font-size: var(--text-body); 
-      color: var(--foreground); 
-      opacity: 0.85;
-      margin-bottom: var(--space-16); 
-      max-width: 65ch;
-    }
-
-    /* Images - REPLACED PLACEHOLDERS */
-    .project-image {
-      width: 100%;
-      border: 1px solid var(--border);
-      background: var(--card);
-      overflow: hidden;
-    }
-    
-    .project-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.3s ease;
-    }
-    
-    .project-image:hover img {
-      transform: scale(1.02);
-    }
-    
-    .image-caption {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--muted-foreground);
-      padding: var(--space-16);
-      border-top: 1px solid var(--border);
-      text-align: center;
-    }
-    
-    .grid-2 { 
-      display: grid; 
-      grid-template-columns: 1fr; 
-      gap: var(--space-16); 
-    }
-    @media(min-width: 768px) { 
-      .grid-2 { grid-template-columns: 1fr 1fr; } 
-    }
-
-    /* Tech List */
-    .tech-list { 
-      display: flex; 
-      flex-wrap: wrap; 
-      gap: var(--space-8); 
-      margin-top: var(--space-16); 
-    }
-    .tech-tag {
-      font-family: var(--font-mono); 
-      font-size: var(--text-caption); 
-      color: var(--muted-foreground);
-      border: 1px solid var(--border); 
-      padding: 0.25rem 0.75rem; 
-      border-radius: 2px;
-      transition: all 0.2s;
-    }
-    .tech-tag:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* Footer */
-    .footer { 
-      border-top: 1px solid var(--border); 
-      margin-top: var(--space-160); 
-      padding: var(--space-48) 0; 
-    }
-    .footer-content { 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      flex-wrap: wrap;
-      gap: var(--space-16);
-    }
-    .next-project-link {
-      font-size: var(--text-h3); 
-      font-weight: 700; 
-      text-decoration: none; 
-      color: var(--foreground);
-      display: flex; 
-      align-items: center; 
-      gap: var(--space-8);
-      transition: opacity 0.2s;
-    }
-    .next-project-link:hover { opacity: 0.6; }
-    .arrow { font-size: 1.5em; }
-
-    /* Mobile */
-    @media (max-width: 640px) {
-      .project-meta { flex-direction: column; gap: var(--space-16); }
-      .section { margin-bottom: var(--space-96); }
-      .github-link { flex-direction: column; text-align: center; }
-      .footer-content { flex-direction: column; align-items: flex-start; }
-    }
-  </style>
 </head>
 <body>
-
-  <!-- Noise Overlay -->
-  <div class="noise-texture"></div>
-
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-content">
-      <div class="nav-left">
-        <a href="../index.html" class="nav-link" data-en="Back to Home" data-fa="بازگشت به خانه">Back to Home</a>
-        <a href="../telegram-bot" class="nav-link" data-en="Next Project" data-fa="پروژه بعدی">Next Project →</a>
-
-      </div>
-      <button class="lang-toggle" id="lang-toggle">FA</button>
-    </div>
-  </nav>
-
-  <!-- Main Content -->
-  <main class="container">
-    
-    <!-- Hero Section -->
-    <header class="project-hero content-wrapper">
-      <div class="hero-subtitle" data-en="Full Stack Project" data-fa="پروژه فول‌استک">Full Stack Project</div>
-      <h1 class="project-title" data-en="Yarplus" data-fa="یارپلاس">Yarplus</h1>
-      
-      <div class="project-meta">
-        <div class="project-meta-item">
-          <label data-en="Role" data-fa="نقش">Role</label>
-          <span data-en="Full Stack Developer" data-fa="توسعه‌دهنده فول‌استک">Full Stack Developer</span>
-        </div>
-        <div class="project-meta-item">
-          <label data-en="Year" data-fa="سال">Year</label>
-          <span>2025 - Present</span>
-        </div>
-        <div class="project-meta-item">
-          <label data-en="Status" data-fa="وضعیت">Status</label>
-          <span data-en="Live" data-fa="فعال">Live</span>
-        </div>
+  <a class="skip-link" href="#project">رفتن به متن پروژه</a>
+  <header class="site-header"><nav class="container nav" aria-label="ناوبری اصلی"><a class="brand" href="/">آرش فولادی</a><ul><li><a href="/">خانه</a></li><li><a href="/#projects" aria-current="page">پروژه‌ها</a></li><li><a href="/journal/">نوشته‌ها</a></li></ul></nav></header>
+  <main>
+    <header class="article-header">
+      <div class="inner">
+        <p class="kicker">مطالعه موردی محصول</p>
+        <h1>یارپلاس</h1>
+        <p class="lead">پلتفرم اشتراک و درآمدزایی برای تولیدکنندگان محتوای ایرانی، با بک‌اند کامل، پرداخت داخلی و کنترل دسترسی نقش‌محور.</p>
+        <ul class="tag-list"><li>Next.js</li><li>Node.js</li><li>PostgreSQL</li><li>TypeScript</li><li>Microservices</li></ul>
+        <img class="project-hero-image" src="/yarplus/images/main.png" width="1600" height="900" alt="نمای کلی داشبورد پلتفرم یارپلاس" fetchpriority="high">
       </div>
     </header>
+    <article class="article-body prose" id="project">
+      <h2>مسئله</h2>
+      <p>تولیدکنندگان محتوای ایرانی به‌دلیل تحریم و محدودیت پرداخت به پلتفرم‌های جهانی درآمدزایی دسترسی پایدار ندارند. استفاده از راه‌حل‌های موقت هم ریسک بسته شدن حساب، مشکل تسویه و تجربه نامطمئن برای مخاطب را ایجاد می‌کند.</p>
+      <p>نیاز مشخص بود: یک جایگزین بومی که سازنده بتواند سطح اشتراک تعریف کند، محتوای انحصاری منتشر کند، پرداخت داخلی بگیرد و ارتباط خود با مشترکان را مدیریت کند.</p>
 
-    <!-- Main Hero Image (main1) -->
-    <section class="section">
-      <figure class="project-image">
-        <img src="images/main.png" alt="Yarplus Platform Overview" loading="lazy">
-      </figure>
-    </section>
+      <h2>راه‌حل</h2>
+      <p>یارپلاس این جریان را در یک محصول جمع می‌کند. داشبورد سازنده، مدیریت مشترکان، دسترسی سطح‌بندی‌شده، صورتحساب و feed کشف محتوا اجزای اصلی آن هستند. در بک‌اند، دامنه‌های مهم مانند پرداخت، احراز هویت و محتوا مرز مشخص دارند.</p>
+      <p>پرداخت به‌شکلی طراحی شده که providerهای داخلی پشت یک interface مشترک قرار بگیرند. این تصمیم امکان جابه‌جایی یا fallback میان درگاه‌ها را بدون تغییر منطق اصلی subscription فراهم می‌کند.</p>
+      <img class="content-image" src="/yarplus/images/mini1.png" width="1600" height="900" loading="lazy" alt="بخشی از رابط کاربری و امکانات یارپلاس">
 
-    <!-- GitHub CTA -->
-    <section class="section content-wrapper">
-      <div class="github-section">
-        <a href="https://github.com/arashfooladi/yarplus" class="github-link" target="_blank" rel="noopener">
-          <span data-en="View on GitHub" data-fa="مشاهده در گیت‌هاب">View on GitHub</span>
-          <span style="color: var(--muted-foreground);">|</span>
-          <span style="font-size: var(--text-caption); color: var(--muted-foreground);" data-en="Full Documentation" data-fa="مستندات کامل">Full Documentation</span>
-        </a>
-      </div>
-    </section>
+      <h2>معماری و کنترل دسترسی</h2>
+      <p>دسترسی به محتوا فقط یک شرط ساده در رابط کاربری نیست. سطح اشتراک، مالکیت محتوا و وضعیت پرداخت در بک‌اند بررسی می‌شوند. مدل نقش‌محور نیز مسئولیت سازنده، مشترک و مدیریت سیستم را از هم جدا می‌کند.</p>
+      <p>در طول توسعه، معماری میکروسرویس امکان جداسازی failureها را فراهم کرد اما سربار عملیاتی واقعی داشت. تجربه همین پروژه باعث شد بعدها درباره شروع با <a href="/journal/microservices-solo-project/">مونولیت ماژولار و استخراج تدریجی سرویس‌ها</a> نگاه دقیق‌تری داشته باشم.</p>
 
-    <!-- Overview Text -->
-    <section class="section content-wrapper">
-      <div class="text-content">
-        <h2 class="section-title" data-en="1) The Problem" data-fa="۱) مسئله">1) The Problem</h2>
-        <p data-en="Iranian creators are cut off from global monetization platforms due to sanctions and payment restrictions. Patreon, OnlyFans, Whop — none work. This forces them to either rely on unstable workarounds or give up on monetization entirely." data-fa="سازندگان محتوای ایرانی به دلیل تحریم‌ها و محدودیت‌های پرداخت، به پلتفرم‌های جهانی مانند پاترئون، اونلی‌فنز یا وپ دسترسی ندارند. نتیجه؟ یا سراغ راه‌حل‌های ناپایدار می‌روند یا کلاً از کسب درآمد صرف‌نظر می‌کنند.">
-          Iranian creators are cut off from global monetization platforms due to sanctions and payment restrictions. Patreon, OnlyFans, Whop — none work. This forces them to either rely on unstable workarounds or give up on monetization entirely.
-        </p>
-        <p data-en="The gap is clear: independent creators, educators, artists, and influencers need a reliable local alternative to build sustainable income without depending on shaky third-party solutions." data-fa="شکاف بازار مشخص است: سازندگان مستقل، مدرسان، هنرمندان و اینفلوئنسرها به یک جایگزین بومی و قابل اعتماد نیاز دارند تا بدون وابستگی به راه‌حل‌های موقتی، درآمد پایداری داشته باشند.">
-          The gap is clear: independent creators, educators, artists, and influencers need a reliable local alternative to build sustainable income without depending on shaky third-party solutions.
-        </p>
-      </div>
-    </section>
+      <h2>درس‌های اصلی</h2>
+      <ul>
+        <li>سیستم پرداخت باید از ابتدا برای retry، duplicate callback و reconciliation طراحی شود.</li>
+        <li>مرزهای معماری فقط وقتی ارزش دارند که یک ریسک یا نیاز مقیاس‌پذیری مشخص را حل کنند.</li>
+        <li>کنترل دسترسی باید در سرور enforce شود، نه فقط در رابط کاربری.</li>
+        <li>ابزارهای توسعه می‌توانند سرعت را بالا ببرند، اما تصمیم‌های مربوط به پول و امنیت نیازمند review دقیق‌اند.</li>
+      </ul>
 
-    <!-- Solution / Features -->
-    <section class="section content-wrapper">
-      <div class="text-content">
-        <h2 class="section-title" data-en="2) The Solution" data-fa="۲) راه‌حل">2) The Solution</h2>
-        <p data-en="Yarplus is a creator monetization platform built specifically for the Iranian market. It allows creators to set subscription tiers, manage exclusive content, and process payments through local gateways — all in one place." data-fa="یارپلاس یک پلتفرم کسب‌درآمد مخصوص بازار ایران است. سازندگان می‌توانند سطوح اشتراک تعریف کنند، محتوای انحصاری منتشر کنند و پرداخت‌ها را از طریق درگاه‌های داخلی دریافت کنند — همه در یک جا.">
-          Yarplus is a creator monetization platform built specifically for the Iranian market. It allows creators to set subscription tiers, manage exclusive content, and process payments through local gateways — all in one place.
-        </p>
-        <p data-en="Core features include: creator dashboard with analytics, subscriber management, tiered access control, automated billing, and a discovery feed for fans. The backend uses a microservices architecture to keep things scalable and maintainable." data-fa="ویژگی‌های اصلی: داشبورد سازنده با گزارش‌گیری، مدیریت مشترکین، کنترل دسترسی سطح‌بندی‌شده، صورتحساب خودکار و فید کشف محتوا. در بخش backend هم از معماری میکروسرویس استفاده شده تا پروژه مقیاس‌پذیر و تمیز باقی بمونه.">
-          Core features include: creator dashboard with analytics, subscriber management, tiered access control, automated billing, and a discovery feed for fans. The backend uses a microservices architecture to keep things scalable and maintainable.
-        </p>
-        
-        <!-- Tech Stack Tags (Stripe and Redis removed) -->
-        <div class="tech-list">
-          <span class="tech-tag">Next.js</span>
-          <span class="tech-tag">Node.js</span>
-          <span class="tech-tag">PostgreSQL</span>
-          <span class="tech-tag">TypeScript</span>
-          <span class="tech-tag">Tailwind CSS</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Gallery Grid (mini1, mini2) -->
-    <section class="section">
-      <div class="grid-2">
-        <figure class="project-image">
-          <img src="images/mini1.png" alt="Feature Detail 1" loading="lazy">
-        </figure>
-        <figure class="project-image">
-          <img src="images/mini2.png" alt="Feature Detail 2" loading="lazy">
-        </figure>
-      </div>
-    </section>
-
-    <!-- Full Width Second Main Image (main2) -->
-    <section class="section">
-      <figure class="project-image">
-        <img src="images/main2.png" alt="Yarplus Architecture Overview" loading="lazy">
-      </figure>
-    </section>
-
-    <!-- Results / Reflections -->
-    <section class="section content-wrapper">
-      <div class="text-content">
-        <h2 class="section-title" data-en="3) Key Learnings" data-fa="۳) نکات کلیدی">3) Key Learnings</h2>
-        <p data-en="This project meant tackling payment processing in a restricted environment while keeping security and user experience tight. Handling sensitive financial data required careful thought around privacy, fraud prevention, and local regulations." data-fa="این پروژه یعنی مواجهه با چالش‌های پرداخت در محیط محدود، بدون قربانی کردن امنیت یا تجربه کاربری. کار با داده‌های مالی حساس نیازمند دقت بالا در حریم خصوصی، جلوگیری از تقلب و رعایت قوانین محلی بود.">
-          This project meant tackling payment processing in a restricted environment while keeping security and user experience tight. Handling sensitive financial data required careful thought around privacy, fraud prevention, and local regulations.
-        </p>
-        <p data-en="I used AI-assisted development to speed things up — letting me focus on architecture, business logic, and UX instead of getting stuck in boilerplate. It showed how the right tooling can boost velocity without losing control over the product." data-fa="برای سرعت بخشیدن به توسعه، از ابزارهای هوش مصنوعی کمک گرفتم — اینطوری می‌تونستم روی معماری، منطق اصلی و تجربه کاربری تمرکز کنم، نه کدهای تکراری. تجربه‌ای که نشون داد با ابزار درست می‌شود سرعت را بالا برد بدون اینکه کنترل پروژه از دست بره.">
-          I used AI-assisted development to speed things up — letting me focus on architecture, business logic, and UX instead of getting stuck in boilerplate. It showed how the right tooling can boost velocity without losing control over the product.
-        </p>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer content-wrapper">
-      <div class="footer-content">
-        <div>
-          <a href="../index.html" class="next-project-link" data-en="← Back to Home" data-fa="← بازگشت به خانه">
-            <span class="arrow">←</span> Back to Home
-          </a>
-        </div>
-        <div style="display: flex; gap: var(--space-32); align-items: center;">
-          <a href="../telegram-bot" class="next-project-link" data-en="Next Project →" data-fa="پروژه بعدی →">
-            Next Project <span class="arrow">→</span>
-          </a>
-          <span style="font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);" data-en="ARCHIVED 2024" data-fa="بایگانی 2025">ARCHIVED 2025</span>
-        </div>
-      </div>
-    </footer>
-
-
+      <p><a class="button" href="https://github.com/arashfooladi/yarplus">مشاهده مخزن یارپلاس در گیت‌هاب</a></p>
+      <nav class="article-nav" aria-label="پروژه‌ها"><a href="/">→ بازگشت به خانه</a><a href="/telegram-bot/">پروژه بعدی: زیرساخت ربات تلگرام ←</a></nav>
+    </article>
   </main>
-
-  <script>
-    // Language Toggle Logic
-    let currentLang = 'en';
-    const translations = { en: { button: 'FA' }, fa: { button: 'EN' } };
-
-    function toggleLanguage() {
-      currentLang = currentLang === 'en' ? 'fa' : 'en';
-      const btn = document.getElementById('lang-toggle');
-      btn.textContent = translations[currentLang].button;
-      document.documentElement.lang = currentLang;
-
-      document.querySelectorAll('[data-en][data-fa]').forEach(el => {
-        el.textContent = el.getAttribute('data-' + currentLang);
-        
-        if (currentLang === 'fa') {
-          el.style.fontFamily = 'var(--font-fa)';
-        } else {
-          el.style.fontFamily = '';
-        }
-      });
-    }
-
-    document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
-  </script>
+  <footer class="site-footer"><div class="container"><span>© ۱۴۰۵ آرش فولادی</span><a href="/journal/">نوشته‌های فنی</a></div></footer>
 </body>
 </html>

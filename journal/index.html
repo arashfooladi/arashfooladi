@@ -1,1076 +1,135 @@
-<!DOCTYPE html>
-<html lang="en" class="no-js">
+<!doctype html>
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="format-detection" content="telephone=no">
-
-  <!-- SEO Essentials -->
-  <title>Journal | Arash Fooladi — Thoughts on Code, Architecture & Building</title>
-  <meta name="description" content="Writings on backend architecture, development workflows, and lessons from building real-world software. By Arash Fooladi, CS student and developer.">
-  <meta name="keywords" content="Arash Fooladi journal, backend development blog, CS student blog, programming articles, software architecture, developer journal, ارش فولادی ژورنال">
-  <meta name="author" content="Arash Fooladi">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>نوشته‌های فنی آرش فولادی | بک‌اند، معماری و ابزار توسعه</title>
+  <meta name="description" content="نوشته‌های فارسی آرش فولادی درباره توسعه بک‌اند، معماری نرم‌افزار، سیستم‌های پرداخت، ابزارهای CLI و تجربه ساخت محصولات واقعی.">
+  <meta name="author" content="آرش فولادی">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="theme-color" content="#080808">
-  <meta name="robots" content="index, follow">
-  <meta name="google-site-verification" content="NsWZ1pAImBkgleF3IXDSqw1f2FXsYW2e8Sn0uN_mX50" />
-
-  <!-- Canonical & Hreflang -->
   <link rel="canonical" href="https://arashfooladi.ir/journal/">
-  <link rel="alternate" hreflang="en" href="https://arashfooladi.ir/journal/">
-  <link rel="alternate" hreflang="fa" href="https://arashfooladi.ir/journal/">
-  <link rel="alternate" hreflang="x-default" href="https://arashfooladi.ir/journal/">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Journal | Arash Fooladi">
-  <meta property="og:description" content="Writings on backend architecture, development workflows, and lessons from building real-world software.">
-  <meta property="og:type" content="blog">
+  <link rel="alternate" type="application/rss+xml" title="نوشته‌های آرش فولادی" href="https://arashfooladi.ir/feed.xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="نوشته‌های فنی آرش فولادی">
+  <meta property="og:description" content="یادداشت‌هایی درباره بک‌اند، معماری نرم‌افزار و ابزارهای توسعه.">
   <meta property="og:url" content="https://arashfooladi.ir/journal/">
-  <meta property="og:site_name" content="Arash Fooladi">
+  <meta property="og:site_name" content="آرش فولادی">
+  <meta property="og:locale" content="fa_IR">
   <meta property="og:image" content="https://arashfooladi.ir/yarplus/images/main2.png">
-  <meta property="og:image:alt" content="Journal page preview from Arash Fooladi's website">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:locale:alternate" content="fa_IR">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@arashfooladiorg">
-  <meta name="twitter:creator" content="@arashfooladiorg">
-  <meta name="twitter:title" content="Journal | Arash Fooladi">
-  <meta name="twitter:description" content="Writings on backend architecture, development workflows, and lessons from building real-world software.">
-  <meta name="twitter:image" content="https://arashfooladi.ir/yarplus/images/main2.png">
-
-  <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080808'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial, sans-serif' font-size='30' font-weight='700' fill='white'%3EAF%3C/text%3E%3C/svg%3E">
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Schema.org - Blog -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Vazirmatn:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Blog",
-    "name": "Arash Fooladi Journal",
-    "description": "Writings on backend architecture, development workflows, and lessons from building real-world software.",
-    "url": "https://arashfooladi.ir/journal",
-    "author": {
-      "@type": "Person",
-      "name": "Arash Fooladi",
-      "url": "https://arashfooladi.ir"
-    },
-    "publisher": {
-      "@type": "Person",
-      "name": "Arash Fooladi"
-    },
+    "@id": "https://arashfooladi.ir/journal/#blog",
+    "name": "نوشته‌های فنی آرش فولادی",
+    "url": "https://arashfooladi.ir/journal/",
+    "description": "نوشته‌های فارسی درباره توسعه بک‌اند، معماری نرم‌افزار و ابزارهای برنامه‌نویسی.",
+    "inLanguage": "fa",
+    "author": { "@id": "https://arashfooladi.ir/#arash-fooladi" },
     "blogPost": [
       {
         "@type": "BlogPosting",
-        "headline": "What I Learned Building a Payment System Under Sanctions",
+        "headline": "ابزارهای کدنویسی در ترمینال که استفاده می‌کنم",
+        "url": "https://arashfooladi.ir/journal/cli-tools-i-use/",
+        "datePublished": "2026-08-14",
+        "author": { "@id": "https://arashfooladi.ir/#arash-fooladi" }
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "چیزهایی که از ساخت سیستم پرداخت در شرایط تحریم یاد گرفتم",
+        "url": "https://arashfooladi.ir/journal/payment-system-under-sanctions/",
         "datePublished": "2025-07-10",
-        "description": "Processing payments in a sanctioned economy means rethinking everything — from gateway selection to trust and fraud prevention.",
-        "author": { "@type": "Person", "name": "Arash Fooladi" },
-        "url": "https://arashfooladi.ir/journal/payment-system-under-sanctions"
+        "author": { "@id": "https://arashfooladi.ir/#arash-fooladi" }
       },
       {
         "@type": "BlogPosting",
-        "headline": "AI as a Pair Programmer, Not a Replacement",
+        "headline": "هوش مصنوعی به‌عنوان همکار برنامه‌نویس، نه جایگزین",
+        "url": "https://arashfooladi.ir/journal/ai-pair-programmer/",
         "datePublished": "2025-06-22",
-        "description": "How I use AI-assisted development to stay focused on architecture and logic instead of boilerplate — and where it falls short.",
-        "author": { "@type": "Person", "name": "Arash Fooladi" },
-        "url": "https://arashfooladi.ir/journal/ai-pair-programmer"
+        "author": { "@id": "https://arashfooladi.ir/#arash-fooladi" }
       },
       {
         "@type": "BlogPosting",
-        "headline": "Why I Chose Microservices for a Solo Project",
+        "headline": "چرا برای یک پروژه تک‌نفره سراغ میکروسرویس رفتم",
+        "url": "https://arashfooladi.ir/journal/microservices-solo-project/",
         "datePublished": "2025-05-08",
-        "description": "Most solo projects don't need microservices. Here's why I went against the grain — and what I'd change next time.",
-        "author": { "@type": "Person", "name": "Arash Fooladi" },
-        "url": "https://arashfooladi.ir/journal/microservices-solo-project"
+        "author": { "@id": "https://arashfooladi.ir/#arash-fooladi" }
       }
     ]
   }
   </script>
-
-  <!-- BreadcrumbList Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://arashfooladi.ir"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Journal",
-        "item": "https://arashfooladi.ir/journal"
-      }
+      { "@type": "ListItem", "position": 1, "name": "خانه", "item": "https://arashfooladi.ir/" },
+      { "@type": "ListItem", "position": 2, "name": "نوشته‌ها", "item": "https://arashfooladi.ir/journal/" }
     ]
   }
   </script>
-
-  <style>
-    /* CSS Custom Properties - Design Tokens */
-    :root {
-      --background: oklch(0.08 0 0);
-      --foreground: oklch(0.98 0 0);
-      --card: oklch(0.11 0 0);
-      --card-foreground: oklch(0.98 0 0);
-      --primary: oklch(0.98 0 0);
-      --primary-foreground: oklch(0.08 0 0);
-      --secondary: oklch(0.15 0 0);
-      --secondary-foreground: oklch(0.98 0 0);
-      --muted: oklch(0.18 0 0);
-      --muted-foreground: oklch(0.55 0 0);
-      --accent: oklch(0.20 0 0);
-      --accent-foreground: oklch(0.98 0 0);
-      --border: oklch(1 0 0 / 8%);
-      --input: oklch(1 0 0 / 12%);
-      --glow-color: oklch(0.98 0 0 / 15%);
-      --glow-size: 35px;
-
-      --space-4: 0.25rem;
-      --space-6: 0.375rem;
-      --space-8: 0.5rem;
-      --space-12: 0.75rem;
-      --space-16: 1rem;
-      --space-20: 1.25rem;
-      --space-24: 1.5rem;
-      --space-32: 2rem;
-      --space-40: 2.5rem;
-      --space-48: 3rem;
-      --space-64: 4rem;
-      --space-80: 5rem;
-      --space-96: 6rem;
-      --space-120: 7.5rem;
-      --space-160: 10rem;
-
-      --text-display: clamp(3.5rem, 10vw + 2rem, 10rem);
-      --text-h1: clamp(2.5rem, 6vw + 1rem, 5rem);
-      --text-h2: clamp(2rem, 4vw + 1rem, 4rem);
-      --text-h3: clamp(1.5rem, 2vw + 1rem, 2rem);
-      --text-body: 1rem;
-      --text-small: 0.875rem;
-      --text-caption: 0.75rem;
-
-      --radius-sm: 0.25rem;
-      --radius-md: 0.375rem;
-      --radius-lg: 0.5rem;
-      --radius-xl: 0.75rem;
-      --radius-full: 9999px;
-
-      --duration-fast: 150ms;
-      --duration-base: 220ms;
-      --duration-slow: 300ms;
-      --duration-slower: 500ms;
-      --easing-out: cubic-bezier(0.215, 0.61, 0.355, 1);
-      --easing-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
-
-      --z-video: 0;
-      --z-readability-overlay: 1;
-      --z-content: 10;
-      --z-tooltip: 50;
-      --z-dropdown: 100;
-      --z-custom-cursor: 9998;
-      --z-noise-texture: 9997;
-
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, sans-serif;
-      --font-mono: 'JetBrains Mono', Courier New, monospace, Liberation Mono, Consolas, SF Mono, Menlo, Monaco, monospace;
-      --font-fa: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    }
-
-    *, :before, :after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-      -webkit-text-size-adjust: 100%;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      background-color: var(--background);
-      color: var(--foreground);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    ::selection {
-      background-color: var(--primary);
-      color: var(--primary-foreground);
-      text-shadow: none;
-    }
-
-    /* Noise Texture */
-    .noise-texture {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: var(--z-noise-texture);
-      opacity: 0.04;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-
-    /* Navigation */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 9998;
-      padding: var(--space-24) var(--space-16);
-      background: linear-gradient(to bottom, var(--background) 0%, transparent 100%);
-      pointer-events: auto;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
-      height: 80px;
-    }
-
-    .nav-content {
-      max-width: 80rem;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      pointer-events: auto;
-      height: 100%;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: var(--space-32);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: var(--space-32);
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      height: 2em;
-      align-items: center;
-    }
-
-    .nav-link {
-      color: var(--muted-foreground);
-      text-decoration: none;
-      transition: color var(--duration-base);
-      position: relative;
-      display: inline-block;
-      height: 1.5em;
-      line-height: 1.5em;
-    }
-
-    .nav-link:hover {
-      color: var(--primary);
-    }
-
-    .nav-link:after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: var(--primary);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.3s var(--easing-out);
-    }
-
-    .nav-link:hover:after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    .nav-link.active {
-      color: var(--primary);
-    }
-
-    .nav-link.active:after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    .lang-toggle {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--muted-foreground);
-      background: none;
-      border: 1px solid var(--border);
-      padding: var(--space-8) var(--space-16);
-      cursor: pointer;
-      transition: all var(--duration-base);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      width: 60px;
-      height: 36px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lang-toggle:hover {
-      color: var(--primary);
-      border-color: var(--primary);
-    }
-
-    /* Layout */
-    .max-w-7xl {
-      max-width: 80rem;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: var(--space-16);
-      padding-right: var(--space-16);
-    }
-
-    .max-w-4xl {
-      max-width: 56rem;
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: var(--space-24);
-      padding-right: var(--space-24);
-    }
-
-    main {
-      position: relative;
-      z-index: var(--z-content);
-    }
-
-    /* Hero Section */
-    .journal-hero {
-      min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: var(--space-120) 0 var(--space-64);
-      position: relative;
-    }
-
-    .journal-hero-title {
-      font-family: var(--font-sans) !important;
-      font-size: var(--text-display) !important;
-      font-weight: 800 !important;
-      line-height: 0.9 !important;
-      letter-spacing: -0.04em !important;
-      background: linear-gradient(
-        to bottom,
-        oklch(0.98 0 0 / 0.6) 0%,
-        oklch(0.98 0 0 / 0.1) 100%
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      display: block;
-      width: 100%;
-    }
-
-    .journal-hero-subtitle {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--muted-foreground);
-      letter-spacing: 0.15em;
-      margin-top: var(--space-24);
-      text-transform: uppercase;
-    }
-
-    /* Filter Bar */
-    .filter-bar {
-      display: flex;
-      gap: var(--space-16);
-      padding: var(--space-32) 0;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: var(--space-16);
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--muted-foreground);
-      background: none;
-      border: 1px solid transparent;
-      padding: var(--space-8) var(--space-16);
-      cursor: pointer;
-      transition: all var(--duration-base);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .filter-btn:hover {
-      color: var(--foreground);
-    }
-
-    .filter-btn.active {
-      color: var(--primary);
-      border-color: var(--border);
-    }
-
-    .filter-btn[data-filter="all"],
-    .filter-btn[data-filter="engineering"] {
-      display: none;
-    }
-
-    /* Journal Entries List */
-    .journal-entries {
-      list-style: none;
-    }
-
-    .journal-entry {
-      border-bottom: 1px solid var(--border);
-    }
-
-    .journal-entry-link {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: var(--space-24);
-      align-items: center;
-      padding: var(--space-32) 0;
-      text-decoration: none;
-      color: inherit;
-      transition: opacity var(--duration-slow);
-      position: relative;
-    }
-
-    .journal-entry-link:hover {
-      opacity: 0.7;
-    }
-
-    .journal-entry-number {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--muted-foreground);
-      min-width: 2.5rem;
-      text-align: right;
-      opacity: 0.4;
-    }
-
-    .journal-entry-content {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .journal-entry-title {
-      font-family: var(--font-sans);
-      font-size: var(--text-body);
-      font-weight: 500;
-      line-height: 1.4;
-      margin-bottom: var(--space-8);
-      color: var(--foreground);
-    }
-
-    .journal-entry-excerpt {
-      font-family: var(--font-sans);
-      font-size: var(--text-small);
-      color: var(--muted-foreground);
-      line-height: 1.5;
-      max-width: 55ch;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .journal-entry-meta {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: var(--space-8);
-      white-space: nowrap;
-    }
-
-    .journal-entry-date {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      color: var(--muted-foreground);
-      letter-spacing: 0.05em;
-    }
-
-    .journal-entry-tag {
-      font-family: var(--font-mono);
-      font-size: 0.625rem;
-      color: var(--muted-foreground);
-      border: 1px solid var(--border);
-      padding: 0.125rem 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    /* Empty State */
-    .journal-empty {
-      padding: var(--space-96) 0;
-      text-align: center;
-    }
-
-    .journal-empty-icon {
-      font-size: 2rem;
-      margin-bottom: var(--space-24);
-      opacity: 0.3;
-    }
-
-    .journal-empty-text {
-      font-family: var(--font-mono);
-      font-size: var(--text-small);
-      color: var(--muted-foreground);
-      letter-spacing: 0.05em;
-    }
-
-    /* Footer */
-    .footer {
-      margin-top: var(--space-160);
-      padding: var(--space-48) 0 var(--space-24);
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-32);
-      align-items: start;
-    }
-
-    @media (min-width: 768px) {
-      .footer-content {
-        grid-template-columns: 1fr 1fr;
-        gap: var(--space-16);
-      }
-      .footer-right {
-        align-items: flex-end;
-        text-align: right;
-      }
-    }
-
-    .footer-left {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-4);
-    }
-
-    .footer-right {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-12);
-    }
-
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-16);
-    }
-
-    @media (min-width: 768px) {
-      .social-links {
-        justify-content: flex-end;
-      }
-    }
-
-    .magnetic-link {
-      position: relative;
-      display: inline-block;
-      color: var(--foreground);
-      text-decoration: none;
-      font-family: var(--font-mono);
-      font-size: var(--text-small);
-      transition: color var(--duration-base) ease-out;
-      padding: var(--space-2) 0;
-    }
-
-    .magnetic-link:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background-color: var(--primary);
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.4s var(--easing-in-out);
-    }
-
-    .magnetic-link:hover:after {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-
-    .magnetic-link:hover {
-      color: var(--primary);
-    }
-
-    .copyright {
-      grid-column: 1 / -1;
-      margin-top: var(--space-48);
-      padding-top: var(--space-24);
-      text-align: center;
-      border-top: 1px solid var(--border);
-    }
-
-    .text-caption {
-      font-family: var(--font-mono);
-      font-size: var(--text-caption);
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--muted-foreground);
-    }
-
-    .text-small {
-      font-family: var(--font-sans);
-      font-size: var(--text-small);
-      font-weight: 400;
-      line-height: 1.5;
-      color: var(--foreground);
-    }
-
-    .text-h3 {
-      font-family: var(--font-sans);
-      font-size: var(--text-h3);
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      color: var(--foreground);
-    }
-
-    .mb-4 { margin-bottom: var(--space-4); }
-    .mb-8 { margin-bottom: var(--space-8); }
-    .mb-12 { margin-bottom: var(--space-12); }
-
-    /* Scroll Animations */
-    .fade-in-up {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity var(--duration-slower) var(--easing-out),
-                  transform var(--duration-slower) var(--easing-out);
-    }
-
-    .fade-in-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Farsi Overrides */
-    html[lang="fa"] body {
-      font-family: var(--font-fa);
-      font-size: 1.05rem;
-      font-weight: 500;
-      line-height: 1.95;
-    }
-
-    html[lang="fa"] .text-caption:not(.journal-hero-subtitle):not(.journal-entry-number):not(.journal-entry-date):not(.journal-entry-tag) {
-      font-family: var(--font-fa);
-      font-size: 0.96rem;
-      font-weight: 600;
-      letter-spacing: 0;
-    }
-
-    html[lang="fa"] .text-small,
-    html[lang="fa"] .journal-entry-excerpt {
-      font-family: var(--font-fa);
-      font-size: 1.16rem;
-      font-weight: 500;
-      line-height: 2.05;
-      letter-spacing: 0;
-    }
-
-    html[lang="fa"] .journal-entry-title {
-      font-family: var(--font-fa);
-      font-weight: 600;
-      letter-spacing: 0;
-    }
-
-    html[lang="fa"] .nav-link {
-      font-family: var(--font-fa);
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0;
-    }
-
-    html[lang="fa"] .filter-btn {
-      font-family: var(--font-fa);
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0;
-    }
-
-    /* Reduced Motion */
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-      .fade-in-up, .magnetic-link {
-        animation: none !important;
-        transition: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-      }
-      .noise-texture {
-        display: none;
-      }
-    }
-
-    /* Mobile Adjustments */
-    @media (max-width: 768px) {
-      .journal-entry-link {
-        grid-template-columns: 1fr;
-        gap: var(--space-8);
-        padding: var(--space-24) 0;
-      }
-
-      .journal-entry-number {
-        display: none;
-      }
-
-      .journal-entry-meta {
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        gap: var(--space-12);
-      }
-    }
-
-    @media (max-width: 640px) {
-      .journal-hero-title {
-        font-size: clamp(3rem, 14vw + 1rem, 5rem);
-      }
-
-      .max-w-4xl {
-        padding-left: var(--space-16);
-        padding-right: var(--space-16);
-      }
-
-      .footer-content {
-        text-align: center;
-      }
-      .footer-right {
-        align-items: center;
-      }
-      .social-links {
-        justify-content: center;
-      }
-      .magnetic-link:after {
-        display: none;
-      }
-      .nav-links {
-        gap: var(--space-16);
-      }
-      .nav-left {
-        gap: var(--space-16);
-      }
-      .nav {
-        height: 70px;
-        padding: var(--space-16);
-      }
-      .filter-bar {
-        gap: var(--space-8);
-      }
-      .filter-btn {
-        font-size: 0.625rem;
-        padding: var(--space-4) var(--space-12);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .journal-hero-title {
-        font-size: clamp(2.5rem, 12vw + 1rem, 3.5rem);
-        letter-spacing: -0.03em;
-      }
-
-      .journal-hero {
-        min-height: 50vh;
-        padding: var(--space-96) 0 var(--space-48);
-      }
-
-      .journal-entry-title {
-        font-size: var(--text-small);
-      }
-
-      .text-caption {
-        font-size: 0.6875rem;
-        letter-spacing: 0.15em;
-      }
-    }
-
-    @media print {
-      .noise-texture, .nav {
-        display: none;
-      }
-      body {
-        background: white;
-        color: black;
-      }
-      .journal-entry-link {
-        color: black;
-      }
-    }
-  </style>
 </head>
 <body>
+  <a class="skip-link" href="#content">رفتن به محتوای اصلی</a>
+  <header class="site-header">
+    <nav class="container nav" aria-label="ناوبری اصلی">
+      <a class="brand" href="/">آرش فولادی</a>
+      <ul>
+        <li><a href="/">خانه</a></li>
+        <li><a href="/journal/" aria-current="page">نوشته‌ها</a></li>
+        <li><a href="/#projects">پروژه‌ها</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Noise Texture -->
-  <div class="noise-texture"></div>
-
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-content">
-      <div class="nav-left">
-        <div class="nav-links">
-          <a href="../index.html#projects-section" class="nav-link" data-en="Work" data-fa="کارها">Work</a>
-          <a href="index.html" class="nav-link active" data-en="Journal" data-fa="ژورنال">Journal</a>
-          <a href="../index.html#about-section" class="nav-link" data-en="About" data-fa="درباره">About</a>
-        </div>
+  <main id="content">
+    <header class="archive-header">
+      <div class="container">
+        <p class="kicker">ژورنال فنی</p>
+        <h1>یادداشت‌هایی از ساختن و یاد گرفتن</h1>
+        <p>تجربه‌های واقعی من از توسعه بک‌اند، طراحی سیستم، پرداخت و ابزارهایی که در مسیر ساخت نرم‌افزار استفاده می‌کنم.</p>
       </div>
-      <button class="lang-toggle" id="lang-toggle">FA</button>
-    </div>
-  </nav>
-
-  <!-- Main Content -->
-  <main>
-
-    <!-- Hero Section -->
-    <section class="journal-hero">
-      <div class="max-w-4xl">
-        <h1 class="journal-hero-title" data-en="Journal" data-fa="ژورنال">Journal</h1>
-        <p class="journal-hero-subtitle" data-en="Thoughts on code, architecture & building" data-fa="اندیش‌هایی درباره کد، معماری و ساختن">Thoughts on code, architecture & building</p>
+    </header>
+    <section class="archive">
+      <div class="container post-grid">
+        <a class="post-card" href="/journal/cli-tools-i-use/">
+          <small><time datetime="2026-08-14">۲۳ مرداد ۱۴۰۵</time> · ابزار توسعه</small>
+          <h2>ابزارهای کدنویسی در ترمینال که استفاده می‌کنم</h2>
+          <p>تجربه من با Reasonix، Codex و OpenCode و اینکه هرکدام برای چه نوع کاری مناسب‌ترند.</p>
+          <span class="arrow">خواندن نوشته ←</span>
+        </a>
+        <a class="post-card" href="/journal/payment-system-under-sanctions/">
+          <small><time datetime="2025-07-10">۱۹ تیر ۱۴۰۴</time> · پرداخت</small>
+          <h2>چیزهایی که از ساخت سیستم پرداخت در شرایط تحریم یاد گرفتم</h2>
+          <p>درگاه‌های داخلی، idempotency، تطبیق تراکنش و طراحی یک جریان مالی قابل اعتماد.</p>
+          <span class="arrow">خواندن نوشته ←</span>
+        </a>
+        <a class="post-card" href="/journal/ai-pair-programmer/">
+          <small><time datetime="2025-06-22">۱ تیر ۱۴۰۴</time> · هوش مصنوعی</small>
+          <h2>هوش مصنوعی به‌عنوان همکار برنامه‌نویس، نه جایگزین</h2>
+          <p>کجا سرعت کار را بالا می‌برد و کجا قضاوت، بررسی و مسئولیت مهندسی همچنان ضروری است.</p>
+          <span class="arrow">خواندن نوشته ←</span>
+        </a>
+        <a class="post-card" href="/journal/microservices-solo-project/">
+          <small><time datetime="2025-05-08">۱۸ اردیبهشت ۱۴۰۴</time> · معماری</small>
+          <h2>چرا برای یک پروژه تک‌نفره سراغ میکروسرویس رفتم</h2>
+          <p>دلایل انتخاب، هزینه‌های پنهان و اینکه چرا امروز ابتدا یک مونولیت ماژولار می‌ساختم.</p>
+          <span class="arrow">خواندن نوشته ←</span>
+        </a>
       </div>
     </section>
-
-    <!-- Entries Section -->
-    <section class="max-w-4xl" style="padding-bottom: var(--space-96);">
-
-      <!-- Filter Bar -->
-      <div class="filter-bar fade-in-up">
-        <button class="filter-btn active" data-filter="all" data-en="All" data-fa="همه">All</button>
-        <button class="filter-btn" data-filter="engineering" data-en="Engineering" data-fa="مهندسی">Engineering</button>
-        <button class="filter-btn" data-filter="building" data-en="Building" data-fa="ساختن">Building</button>
-        <button class="filter-btn" data-filter="notes" data-en="Notes" data-fa="یادداشت">Notes</button>
-      </div>
-
-      <!-- Entry List -->
-      <ol class="journal-entries">
-
-        <li class="journal-entry fade-in-up" data-category="building">
-          <a href="/journal/payment-system-under-sanctions" class="journal-entry-link">
-            <span class="journal-entry-number">01</span>
-            <div class="journal-entry-content">
-              <h3 class="journal-entry-title" data-en="What I Learned Building a Payment System Under Sanctions" data-fa="چیزی که از ساختن سیستم پرداخت زیر تحریم یاد گرفتم">What I Learned Building a Payment System Under Sanctions</h3>
-              <p class="journal-entry-excerpt" data-en="Processing payments in a sanctioned economy means rethinking everything — from gateway selection to trust and fraud prevention. Here's what building Yarplus taught me about constraints." data-fa="پردازش پرداخت در اقتصاد تحریمی یعنی بازاندیشی در همه چیز — از انتخاب درگاه گرفته تا اعتماد و جلوگیری از تقلب. اینجا چیزهایی که ساختن یارپلاس درباره محدودیت‌ها بهم یاد داد رو نوشتم.">Processing payments in a sanctioned economy means rethinking everything — from gateway selection to trust and fraud prevention. Here's what building Yarplus taught me about constraints.</p>
-            </div>
-            <div class="journal-entry-meta">
-              <span class="journal-entry-date">Jul 2025</span>
-              <span class="journal-entry-tag">Building</span>
-            </div>
-          </a>
-        </li>
-
-        <li class="journal-entry fade-in-up" data-category="building">
-          <a href="/journal/ai-pair-programmer" class="journal-entry-link">
-            <span class="journal-entry-number">02</span>
-            <div class="journal-entry-content">
-              <h3 class="journal-entry-title" data-en="AI as a Pair Programmer, Not a Replacement" data-fa="هوش مصنوعی به عنوان جفت‌برنامه‌نویس، نه جایگزین">AI as a Pair Programmer, Not a Replacement</h3>
-              <p class="journal-entry-excerpt" data-en="How I use AI-assisted development to stay focused on architecture and logic instead of boilerplate — and where it falls short." data-fa="چطور از توسعه با کمک هوش مصنوعی استفاده می‌کنم تا روی معماری و منطق تمرکز کنم نه کد تکراری — و کجا کم می‌آورد.">How I use AI-assisted development to stay focused on architecture and logic instead of boilerplate — and where it falls short.</p>
-            </div>
-            <div class="journal-entry-meta">
-              <span class="journal-entry-date">Jun 2025</span>
-              <span class="journal-entry-tag">Building</span>
-            </div>
-          </a>
-        </li>
-
-        <li class="journal-entry fade-in-up" data-category="building">
-          <a href="/journal/microservices-solo-project" class="journal-entry-link">
-            <span class="journal-entry-number">03</span>
-            <div class="journal-entry-content">
-              <h3 class="journal-entry-title" data-en="Why I Chose Microservices for a Solo Project" data-fa="چرا برای پروژه تک‌نفره مایکروسرویس انتخاب کردم">Why I Chose Microservices for a Solo Project</h3>
-              <p class="journal-entry-excerpt" data-en="Most solo projects don't need microservices. Here's why I went against the grain — and what I'd change next time." data-fa="بیشتر پروژه‌های تک‌نفره به مایکروسرویس نیاز ندارند. اینجا دلیل رفتن خلاف جریان و چیزایی که دفعه بعد تغییر میدم رو نوشتم.">Most solo projects don't need microservices. Here's why I went against the grain — and what I'd change next time.</p>
-            </div>
-            <div class="journal-entry-meta">
-              <span class="journal-entry-date">May 2025</span>
-              <span class="journal-entry-tag">Building</span>
-            </div>
-          </a>
-        </li>
-
-        <li class="journal-entry fade-in-up" data-category="notes">
-          <a href="/journal/tools-i-use-daily" class="journal-entry-link">
-            <span class="journal-entry-number">04</span>
-            <div class="journal-entry-content">
-              <h3 class="journal-entry-title" data-en="Tools I Use Daily as a CS Student" data-fa="ابزارهایی که روزانه به عنوان دانشجوی CS استفاده می‌کنم">Tools I Use Daily as a CS Student</h3>
-              <p class="journal-entry-excerpt" data-en="A practical list of the terminal tools, editors, and workflows that actually stick — not the ones that look good on paper." data-fa="لیست عملی از ابزارهای ترمینال، ویرایشگرها و روند کاری که واقعاً کاربرد دارند — نه صرفاً روی کاغذ خوب به نظر برسند.">A practical list of the terminal tools, editors, and workflows that actually stick — not the ones that look good on paper.</p>
-            </div>
-            <div class="journal-entry-meta">
-              <span class="journal-entry-date">Apr 2025</span>
-              <span class="journal-entry-tag">Notes</span>
-            </div>
-          </a>
-        </li>
-
-      </ol>
-
-      <!-- More Entries Hint -->
-      <div style="padding-top: var(--space-48); text-align: center;" class="fade-in-up">
-        <p class="text-caption" style="opacity: 0.4;" data-en="More entries coming soon" data-fa="نوشته‌های بیشتر به زودی">More entries coming soon</p>
-      </div>
-
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="max-w-7xl">
-        <div class="footer-content">
-          <div class="footer-left fade-in-up">
-            <h3 class="text-h3 mb-4" data-en="Let's Connect" data-fa="آماده همکاری و ارتباط">Let's Connect</h3>
-            <p class="text-small" style="color: var(--muted-foreground);" data-en="Open to collaborations and interesting projects." data-fa="راه ارتباطی با من">Open to collaborations and interesting projects.</p>
-            <p class="text-small mt-4" style="color: var(--muted-foreground); margin-top: var(--space-8);">
-              <span data-en="Telegram" data-fa="تلگرام">Telegram</span> <a href="https://t.me/onewith_aklilighalb" class="magnetic-link" target="_blank" rel="noopener">@onewith_aklilighalb</a>
-            </p>
-          </div>
-
-          <div class="footer-right fade-in-up">
-            <div class="social-links">
-              <a href="https://github.com/arashfooladi" target="_blank" rel="noopener noreferrer" class="magnetic-link">GitHub</a>
-              <a href="https://linkedin.com/in/arashfooladi" target="_blank" rel="noopener noreferrer" class="magnetic-link">LinkedIn</a>
-              <a href="https://twitter.com/arashfooladiorg" target="_blank" rel="noopener noreferrer" class="magnetic-link">Twitter(X)</a>
-              <a href="https://dev.to/arashfooladi" target="_blank" rel="noopener noreferrer" class="magnetic-link">Dev.to</a>
-              <a href="https://hashnode.com/@arashfooladi" target="_blank" rel="noopener noreferrer" class="magnetic-link">Hashnode</a>
-              <a href="https://instagram.com/arashfooladi_" target="_blank" rel="noopener noreferrer" class="magnetic-link">Instagram</a>
-            </div>
-          </div>
-
-          <div class="copyright">
-            <p class="text-caption">
-              © <span id="year">2025</span> Arash Fooladi. <span style="display: inline;">ارش فولادی</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
   </main>
 
-  <script>
-    // Update copyright year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Language Toggle
-    let currentLang = 'en';
-    const translations = { en: { button: 'FA' }, fa: { button: 'EN' } };
-
-    function toggleLanguage() {
-      currentLang = currentLang === 'en' ? 'fa' : 'en';
-      const btn = document.getElementById('lang-toggle');
-      btn.textContent = translations[currentLang].button;
-      document.documentElement.lang = currentLang;
-
-      requestAnimationFrame(() => {
-        document.querySelectorAll('[data-en][data-fa]').forEach(el => {
-          el.textContent = el.getAttribute('data-' + currentLang);
-          if (currentLang === 'fa') {
-            el.style.fontFamily = 'Vazirmatn, sans-serif';
-            el.style.lineHeight = '1.5';
-          } else {
-            el.style.fontFamily = '';
-            el.style.lineHeight = '';
-          }
-        });
-
-        // Handle footer mixed content
-        const footerText = document.querySelector('.footer-left p:last-child');
-        if (footerText) {
-          const label = currentLang === 'en' ? 'Telegram' : 'تلگرام';
-          const link = footerText.querySelector('a');
-          if (link) {
-            const span = document.createElement('span');
-            span.textContent = label + ' ';
-            if (currentLang === 'fa') span.style.fontFamily = 'Vazirmatn, sans-serif';
-            footerText.innerHTML = '';
-            footerText.appendChild(span);
-            footerText.appendChild(link);
-          }
-        }
-      });
-    }
-
-    // Filter functionality
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const entries = document.querySelectorAll('.journal-entry');
-
-    function applyFilter(filter) {
-      filterBtns.forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-filter') === filter);
-      });
-
-      entries.forEach(entry => {
-        const category = entry.getAttribute('data-category');
-        entry.style.display = (filter === 'all' || category === filter) ? '' : 'none';
-      });
-    }
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        applyFilter(btn.getAttribute('data-filter'));
-      });
-    });
-
-    applyFilter('building');
-
-    // Intersection Observer for fade-in animations
-    const observerOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
-
-    // Language toggle event
-    document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
-
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          e.preventDefault();
-          const targetId = href.substring(1);
-          const targetElement = document.getElementById(targetId);
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-          }
-        }
-      });
-    });
-
-    // Reduced motion preference
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.documentElement.style.scrollBehavior = 'auto';
-    }
-  </script>
+  <footer class="site-footer">
+    <div class="container">
+      <span>© ۱۴۰۵ آرش فولادی</span>
+      <a href="/feed.xml">خوراک RSS</a>
+    </div>
+  </footer>
 </body>
 </html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>نوشته‌های آرش فولادی</title>
+    <link>https://arashfooladi.ir/journal/</link>
+    <description>نوشته‌های فنی فارسی درباره توسعه بک‌اند، معماری نرم‌افزار و ابزارهای برنامه‌نویسی</description>
+    <language>fa</language>
+    <lastBuildDate>Fri, 14 Aug 2026 10:00:00 +0330</lastBuildDate>
+    <item>
+      <title>ابزارهای کدنویسی در ترمینال که استفاده می‌کنم</title>
+      <link>https://arashfooladi.ir/journal/cli-tools-i-use/</link>
+      <guid isPermaLink="true">https://arashfooladi.ir/journal/cli-tools-i-use/</guid>
+      <pubDate>Fri, 14 Aug 2026 10:00:00 +0330</pubDate>
+      <description>تجربه من با Reasonix، Codex و OpenCode و جای هرکدام در گردش کار روزانه.</description>
+    </item>
+    <item>
+      <title>چیزهایی که از ساخت سیستم پرداخت در شرایط تحریم یاد گرفتم</title>
+      <link>https://arashfooladi.ir/journal/payment-system-under-sanctions/</link>
+      <guid isPermaLink="true">https://arashfooladi.ir/journal/payment-system-under-sanctions/</guid>
+      <pubDate>Thu, 10 Jul 2025 12:00:00 +0330</pubDate>
+      <description>درس‌هایی درباره درگاه‌های داخلی، idempotency، تطبیق تراکنش و اعتماد.</description>
+    </item>
+    <item>
+      <title>هوش مصنوعی به‌عنوان همکار برنامه‌نویس، نه جایگزین</title>
+      <link>https://arashfooladi.ir/journal/ai-pair-programmer/</link>
+      <guid isPermaLink="true">https://arashfooladi.ir/journal/ai-pair-programmer/</guid>
+      <pubDate>Sun, 22 Jun 2025 12:00:00 +0330</pubDate>
+      <description>کجا ابزارهای هوش مصنوعی مفیدند و کجا قضاوت مهندسی تعیین‌کننده است.</description>
+    </item>
+    <item>
+      <title>چرا برای یک پروژه تک‌نفره سراغ میکروسرویس رفتم</title>
+      <link>https://arashfooladi.ir/journal/microservices-solo-project/</link>
+      <guid isPermaLink="true">https://arashfooladi.ir/journal/microservices-solo-project/</guid>
+      <pubDate>Thu, 08 May 2025 12:00:00 +0330</pubDate>
+      <description>هزینه‌ها، مزایا و درس‌های معماری میکروسرویس در یک پروژه تک‌نفره.</description>
+    </item>
+  </channel>
+</rss>

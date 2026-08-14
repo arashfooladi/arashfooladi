@@ -1,11 +1,4 @@
 User-agent: *
 Allow: /
 
-# Prevent indexing of .html file variants (avoid duplicate content)
-Disallow: /*.html$
-
-# Block known problematic paths
-Disallow: /fa
-
-# Sitemap location
 Sitemap: https://arashfooladi.ir/sitemap.xml

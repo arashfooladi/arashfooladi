@@ -1,176 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="format-detection" content="telephone=no">
-
-  <!-- SEO Essentials -->
-  <title>Why I Chose Microservices for a Solo Project | Arash Fooladi</title>
-  <meta name="description" content="Conventional wisdom says a solo developer should build a monolith. Here's why I went against the grain with microservices on Yarplus — what it bought me, what it cost, and what I'd change.">
-  <meta name="keywords" content="microservices solo project, monolith vs microservices, software architecture, modular monolith, backend architecture, Arash Fooladi">
-  <meta name="author" content="Arash Fooladi">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>چرا برای یک پروژه تک‌نفره سراغ میکروسرویس رفتم | آرش فولادی</title>
+  <meta name="description" content="تجربه آرش فولادی از انتخاب معماری میکروسرویس برای یارپلاس؛ مزایا، هزینه‌های عملیاتی و اینکه چرا امروز از مونولیت ماژولار شروع می‌کرد.">
+  <meta name="author" content="آرش فولادی">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <meta name="theme-color" content="#080808">
-  <meta name="robots" content="index, follow">
-
   <link rel="canonical" href="https://arashfooladi.ir/journal/microservices-solo-project/">
-
-  <meta property="og:title" content="Why I Chose Microservices for a Solo Project">
-  <meta property="og:description" content="Most solo projects don't need microservices. Here's why I went against the grain — and what I'd change next time.">
+  <link rel="alternate" type="application/rss+xml" title="نوشته‌های آرش فولادی" href="https://arashfooladi.ir/feed.xml">
   <meta property="og:type" content="article">
+  <meta property="og:title" content="چرا برای یک پروژه تک‌نفره سراغ میکروسرویس رفتم">
+  <meta property="og:description" content="هزینه‌ها، مزایا و درس‌های معماری میکروسرویس در یک پروژه تک‌نفره.">
   <meta property="og:url" content="https://arashfooladi.ir/journal/microservices-solo-project/">
-  <meta property="og:site_name" content="Arash Fooladi">
-  <meta property="og:image" content="https://arashfooladi.ir/yarplus/images/mini2.png">
-  <meta property="og:locale" content="en_US">
+  <meta property="og:site_name" content="آرش فولادی">
+  <meta property="og:locale" content="fa_IR">
   <meta property="article:published_time" content="2025-05-08">
-  <meta property="article:author" content="Arash Fooladi">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@arashfooladiorg">
-  <meta name="twitter:creator" content="@arashfooladiorg">
-  <meta name="twitter:title" content="Why I Chose Microservices for a Solo Project">
-  <meta name="twitter:description" content="What going against the grain bought me — and what it cost.">
-  <meta name="twitter:image" content="https://arashfooladi.ir/yarplus/images/mini2.png">
-
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080808'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial, sans-serif' font-size='30' font-weight='700' fill='white'%3EAF%3C/text%3E%3C/svg%3E">
-
+  <meta property="article:modified_time" content="2026-08-14">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Vazirmatn:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "Why I Chose Microservices for a Solo Project",
-    "description": "Most solo projects don't need microservices. Here's why I went against the grain — and what I'd change next time.",
+    "headline": "چرا برای یک پروژه تک‌نفره سراغ میکروسرویس رفتم",
+    "description": "حساب صادقانه انتخاب معماری میکروسرویس برای یارپلاس و درس‌هایی که از آن گرفتم.",
+    "url": "https://arashfooladi.ir/journal/microservices-solo-project/",
+    "mainEntityOfPage": "https://arashfooladi.ir/journal/microservices-solo-project/",
     "datePublished": "2025-05-08",
-    "dateModified": "2025-05-08",
-    "inLanguage": "en",
-    "author": { "@type": "Person", "name": "Arash Fooladi", "url": "https://arashfooladi.ir/" },
-    "publisher": { "@type": "Person", "name": "Arash Fooladi" },
-    "mainEntityOfPage": { "@type": "WebPage", "@id": "https://arashfooladi.ir/journal/microservices-solo-project/" },
-    "image": "https://arashfooladi.ir/yarplus/images/mini2.png",
-    "keywords": "microservices, monolith, architecture, solo developer"
+    "dateModified": "2026-08-14",
+    "inLanguage": "fa",
+    "author": { "@type": "Person", "@id": "https://arashfooladi.ir/#arash-fooladi", "name": "آرش فولادی", "url": "https://arashfooladi.ir/" },
+    "publisher": { "@id": "https://arashfooladi.ir/#arash-fooladi" }
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://arashfooladi.ir/" },
-      { "@type": "ListItem", "position": 2, "name": "Journal", "item": "https://arashfooladi.ir/journal/" },
-      { "@type": "ListItem", "position": 3, "name": "Microservices for a Solo Project", "item": "https://arashfooladi.ir/journal/microservices-solo-project/" }
-    ]
-  }
-  </script>
-
-  <style>
-    :root {
-      --background: oklch(0.08 0 0);
-      --foreground: oklch(0.98 0 0);
-      --muted-foreground: oklch(0.62 0 0);
-      --border: oklch(1 0 0 / 8%);
-      --card: oklch(0.11 0 0);
-      --accent: oklch(0.7 0.18 250);
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body { background: var(--background); color: var(--foreground); font-family: var(--font-sans); line-height: 1.75; overflow-x: hidden; }
-    ::selection { background: var(--foreground); color: var(--background); }
-
-    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.25rem 1rem; background: rgba(8,8,8,0.85); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); }
-    .nav-content { max-width: 48rem; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .nav a { color: var(--muted-foreground); text-decoration: none; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s; }
-    .nav a:hover { color: var(--foreground); }
-    .nav-left { display: flex; gap: 1.5rem; }
-
-    .article { max-width: 44rem; margin: 0 auto; padding: 9rem 1.5rem 4rem; }
-    .article-meta { display: flex; gap: 1rem; align-items: center; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted-foreground); margin-bottom: 1.5rem; }
-    .tag { border: 1px solid var(--border); padding: 0.15rem 0.6rem; }
-    h1 { font-size: clamp(2rem, 5vw + 1rem, 3.25rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
-    .lede { font-size: 1.2rem; color: var(--muted-foreground); margin-bottom: 3rem; line-height: 1.7; }
-
-    .article h2 { font-size: 1.6rem; font-weight: 700; letter-spacing: -0.02em; margin: 3rem 0 1rem; }
-    .article h3 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 0.75rem; }
-    .article p { font-size: 1.075rem; color: oklch(0.9 0 0); margin-bottom: 1.25rem; }
-    .article ul, .article ol { margin: 0 0 1.5rem 1.25rem; }
-    .article li { font-size: 1.075rem; color: oklch(0.9 0 0); margin-bottom: 0.6rem; }
-    .article strong { color: var(--foreground); font-weight: 600; }
-    .article a { color: var(--foreground); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--muted-foreground); }
-    .article code { font-family: var(--font-mono); font-size: 0.9em; background: var(--card); border: 1px solid var(--border); padding: 0.1rem 0.4rem; border-radius: 3px; }
-    blockquote { border-left: 2px solid var(--accent); padding-left: 1.25rem; margin: 2rem 0; color: var(--muted-foreground); font-style: italic; }
-
-    .article-footer { max-width: 44rem; margin: 0 auto; padding: 2rem 1.5rem 5rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; }
-    .article-footer a { font-family: var(--font-mono); font-size: 0.8rem; color: var(--foreground); text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; }
-    .article-footer a:hover { opacity: 0.6; }
-    .social { display: flex; gap: 1rem; }
-    .social a { font-size: 0.75rem; color: var(--muted-foreground); }
-  </style>
 </head>
 <body>
+  <a class="skip-link" href="#article">رفتن به متن نوشته</a>
+  <header class="site-header"><nav class="container nav" aria-label="ناوبری اصلی"><a class="brand" href="/">آرش فولادی</a><ul><li><a href="/">خانه</a></li><li><a href="/journal/">نوشته‌ها</a></li><li><a href="/#projects">پروژه‌ها</a></li></ul></nav></header>
+  <main>
+    <header class="article-header"><div class="inner"><p class="kicker">معماری نرم‌افزار</p><h1>چرا برای یک پروژه تک‌نفره سراغ میکروسرویس رفتم</h1><div class="article-meta"><span>نوشته آرش فولادی</span><time datetime="2025-05-08">۱۸ اردیبهشت ۱۴۰۴</time><span>۷ دقیقه مطالعه</span></div></div></header>
+    <article class="article-body prose" id="article">
+      <p class="lede">تقریباً تمام توصیه‌های منطقی می‌گویند یک توسعه‌دهنده تنها باید کار را با مونولیت شروع کند. من این توصیه‌ها را خواندم و بعد <a href="/yarplus/">یارپلاس</a> را با میکروسرویس ساختم. این حساب صادقانه همان تصمیم است؛ از دلایلی که درست بودند تا بخش‌هایی که اشتباه کردم.</p>
 
-  <nav class="nav">
-    <div class="nav-content">
-      <div class="nav-left">
-        <a href="/">Home</a>
-        <a href="/journal/">← Journal</a>
-      </div>
-      <a href="/#projects-section">Work</a>
-    </div>
-  </nav>
+      <h2>توصیه‌ای که عمداً نادیده گرفتم</h2>
+      <p>برای یک نفر، مونولیت معمولاً سریع‌تر ساخته می‌شود، استقرار ساده‌تری دارد، راحت‌تر debug می‌شود و هزینه اجرای کمتری دارد. میکروسرویس شبکه، خطای توزیع‌شده، پیچیدگی deployment و مسئله هماهنگی داده را وارد پروژه می‌کند؛ هزینه‌هایی که معمولاً وقتی چند تیم مستقل داریم توجیه می‌شوند.</p>
+      <p>من چند تیم نداشتم. پس چرا این مسیر را انتخاب کردم؟</p>
 
-  <article class="article">
-    <div class="article-meta">
-      <span class="tag">Building</span>
-      <span>May 8, 2025</span>
-      <span>· 6 min read</span>
-    </div>
-    <h1>Why I Chose Microservices for a Solo Project</h1>
-    <p class="lede">Every sensible piece of advice says a solo developer should build a monolith. I read all of it, and then I built <a href="/yarplus/">Yarplus</a> as microservices anyway. This is the honest accounting of that decision — including the parts I got wrong.</p>
+      <h2>دلایلی که واقعاً خوب بودند</h2>
+      <h3>دامنه‌ها شکل متفاوتی داشتند</h3>
+      <p>یارپلاس شامل بخش‌هایی با رفتار بسیار متفاوت بود: سرویس پرداخت باید محتاط، قابل audit و کم‌تغییر باشد؛ سرویس محتوا مرتب عوض می‌شود و تحمل خطای متفاوتی دارد؛ authentication هم زیربنای همه بخش‌هاست. جدا نگه داشتن پرداخت از کدی که هر روز تغییر می‌کرد برای من نوعی مدیریت ریسک بود.</p>
 
-    <h2>The advice I deliberately ignored</h2>
-    <p>The standard wisdom is correct: for one developer, a monolith is faster to build, easier to deploy, simpler to debug, and cheaper to run. Microservices introduce network calls, distributed failure, deployment complexity, and data-consistency headaches — all costs usually justified only when you have multiple teams that need to ship independently.</p>
-    <p>I had none of those reasons. So why did I do it?</p>
+      <h3>جدا کردن شکست‌ها</h3>
+      <p>اگر feed از کار می‌افتد، پرداخت و subscription نباید متوقف شوند. مرزهای سخت کمک کردند مشکل یک قسمت به جریان مالی سرایت نکند. برای محصولی که وعده اصلی آن دریافت مطمئن پول است، این جداسازی اهمیت داشت.</p>
 
-    <h2>The reasons that were actually good</h2>
-    <h3>1. The domains genuinely wanted to be separate</h3>
-    <p>Yarplus had pieces with very different shapes: a <strong>payments service</strong> that has to be cautious, auditable, and rarely changed; a <strong>content/feed service</strong> that changes constantly and can tolerate looser guarantees; and <strong>auth</strong> that everything depends on. Keeping payments isolated from the part of the codebase I touch every day wasn't architecture astronautics — it was risk management. I didn't want a careless change to the feed to ever ship next to billing code.</p>
-    <h3>2. Failure isolation</h3>
-    <p>If the discovery feed falls over, payments and subscriptions should keep working. Drawing hard boundaries meant a problem in one area couldn't cascade into taking money flows down with it. For a product whose entire value proposition is "creators can reliably get paid," that isolation mattered.</p>
-    <h3>3. I wanted to actually learn it</h3>
-    <p>I'll be honest: part of the motivation was that this was a project to learn on. Reading about service boundaries, message passing, and eventual consistency is nothing like living with the consequences of your own boundary decisions. I learned more about distributed systems in a few months of <em>maintaining</em> this than in everything I'd read before.</p>
-    <blockquote>You don't understand the cost of a network boundary until you've debugged a bug that only exists because of one.</blockquote>
+      <h3>می‌خواستم واقعاً یاد بگیرم</h3>
+      <p>بخشی از انگیزه من آموزشی بود. خواندن درباره service boundary، message passing و eventual consistency با زندگی کردن کنار نتیجه تصمیم‌های خودت فرق دارد. چند ماه نگهداری این معماری بیشتر از مطالعه صرف، هزینه واقعی سیستم توزیع‌شده را به من نشان داد.</p>
 
-    <h2>What it actually cost</h2>
-    <p>The bill came due quickly, and it was steeper than I expected.</p>
-    <ul>
-      <li><strong>Operational overhead.</strong> Several services means several things to deploy, monitor, and keep alive. As one person, every additional moving part is a tax on the time I have to build features.</li>
-      <li><strong>Distributed debugging.</strong> A request that crosses three services is three times as hard to trace. I had to invest in logging and correlation IDs far earlier than a monolith would have forced me to.</li>
-      <li><strong>Data consistency.</strong> The moment your data lives in more than one service, "just use a transaction" stops being available. I spent real effort on patterns to keep state coherent across boundaries that a single database would have handled for free.</li>
-      <li><strong>I split things too early.</strong> Some boundaries I drew were guesses, and a few were wrong. Moving a responsibility from one service to another after the fact is far more painful than moving a module inside one codebase.</li>
-    </ul>
+      <blockquote>تا وقتی باگی را debug نکرده‌ای که فقط به‌خاطر یک مرز شبکه به وجود آمده، هزینه واقعی آن مرز را نمی‌شناسی.</blockquote>
 
-    <h2>What I'd do differently</h2>
-    <p>If I started Yarplus today, I'd reach for a <strong>modular monolith</strong> first: one deployable unit, but with strict internal module boundaries and no shared database tables across modules. That gives you most of the conceptual benefits — clear domains, enforced separation — without the operational tax. Then I'd extract a service only when a specific, measured pressure demanded it: payments needing an independent deploy cadence, or one component needing to scale separately.</p>
-    <p>That's the real lesson. Microservices weren't wrong because the idea is bad; they were premature. The right sequence is <strong>well-separated modules now, separate services later, and only when something concrete forces the split.</strong></p>
+      <h2>هزینه واقعی چه بود؟</h2>
+      <ul>
+        <li><strong>سربار عملیاتی:</strong> چند سرویس یعنی چند واحد برای deploy، monitor و زنده نگه داشتن. برای یک نفر هر جزء اضافه مالیات روی زمان توسعه feature است.</li>
+        <li><strong>debug توزیع‌شده:</strong> ردیابی درخواستی که از سه سرویس عبور می‌کند سخت‌تر است. مجبور شدم خیلی زود سراغ logging منظم و correlation ID بروم.</li>
+        <li><strong>هماهنگی داده:</strong> وقتی داده در بیش از یک سرویس قرار می‌گیرد، transaction ساده دیگر همیشه در دسترس نیست و باید برای سازگاری state طراحی کرد.</li>
+        <li><strong>تقسیم زودهنگام:</strong> بعضی مرزها حدس بودند و تعدادی از آن‌ها اشتباه از آب درآمدند. جابه‌جا کردن مسئولیت میان سرویس‌ها بسیار پرهزینه‌تر از انتقال یک module داخل همان codebase است.</li>
+      </ul>
 
-    <h2>Would I take it back?</h2>
-    <p>As a product decision, partly. As a learning decision, not for a second. Building it the "wrong" way taught me exactly <em>why</em> the conventional advice exists — and now when I say "start with a monolith," I'm not repeating a rule I read. I'm repeating one I paid for.</p>
-  </article>
+      <h2>امروز چه کار متفاوتی انجام می‌دادم؟</h2>
+      <p>اگر امروز یارپلاس را از ابتدا شروع می‌کردم، ابتدا یک <strong>مونولیت ماژولار</strong> می‌ساختم: یک واحد قابل استقرار با مرزهای داخلی سخت و بدون دسترسی بی‌قاعده ماژول‌ها به داده یکدیگر. این روش بیشتر مزایای مفهومی جداسازی را بدون هزینه عملیاتی چند سرویس فراهم می‌کند.</p>
+      <p>بعد فقط زمانی یک سرویس را جدا می‌کردم که فشار مشخص و اندازه‌گیری‌شده‌ای وجود داشته باشد؛ مثلاً پرداخت به چرخه استقرار مستقل نیاز داشته باشد یا یک component واقعاً مقیاس جداگانه بخواهد.</p>
 
-  <footer class="article-footer">
-    <a href="/journal/">← All entries</a>
-    <div class="social">
-      <a href="https://github.com/arashfooladi" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="https://twitter.com/arashfooladiorg" target="_blank" rel="noopener noreferrer">Twitter</a>
-      <a href="https://linkedin.com/in/arashfooladi" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    </div>
-  </footer>
+      <h2>آیا از آن تصمیم پشیمانم؟</h2>
+      <p>به‌عنوان تصمیم محصول، تا حدی. به‌عنوان تصمیم آموزشی، نه. ساختن سیستم به روشی که برای مرحله پروژه زود بود دقیقاً به من نشان داد چرا توصیه «از مونولیت شروع کن» وجود دارد. حالا وقتی این توصیه را تکرار می‌کنم، فقط قانونی را که جایی خوانده‌ام نقل نمی‌کنم؛ هزینه‌اش را تجربه کرده‌ام.</p>
 
+      <nav class="article-nav" aria-label="نوشته‌های مرتبط"><a href="/journal/ai-pair-programmer/">→ نوشته قبلی: همکار برنامه‌نویس</a><a href="/journal/payment-system-under-sanctions/">نوشته بعدی: سیستم پرداخت ←</a></nav>
+    </article>
+  </main>
+  <footer class="site-footer"><div class="container"><span>© ۱۴۰۵ آرش فولادی</span><a href="/journal/">همه نوشته‌ها</a></div></footer>
 </body>
 </html>

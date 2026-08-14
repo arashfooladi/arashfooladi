@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ابزارهای کدنویسی در ترمینال که استفاده می‌کنم | آرش فولادی</title>
+  <meta name="description" content="تجربه آرش فولادی از کار با Reasonix، Codex و OpenCode در ترمینال؛ از ۸۰۰ میلیون توکن با حدود ۴ دلار تا انتخاب ابزار مناسب برای هر پروژه.">
+  <meta name="author" content="آرش فولادی">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://arashfooladi.ir/journal/cli-tools-i-use/">
+  <link rel="alternate" type="application/rss+xml" title="نوشته‌های آرش فولادی" href="https://arashfooladi.ir/feed.xml">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="ابزارهای کدنویسی در ترمینال که استفاده می‌کنم">
+  <meta property="og:description" content="تجربه من با Reasonix، Codex و OpenCode و جای هرکدام در گردش کار توسعه.">
+  <meta property="og:url" content="https://arashfooladi.ir/journal/cli-tools-i-use/">
+  <meta property="og:site_name" content="آرش فولادی">
+  <meta property="og:locale" content="fa_IR">
+  <meta property="article:published_time" content="2026-08-14">
+  <meta property="article:modified_time" content="2026-08-14">
+  <meta property="article:author" content="آرش فولادی">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ابزارهای کدنویسی در ترمینال که استفاده می‌کنم">
+  <meta name="twitter:description" content="Reasonix، Codex و OpenCode در یک گردش کار واقعی توسعه نرم‌افزار.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Vazirmatn:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "ابزارهای کدنویسی در ترمینال که استفاده می‌کنم",
+    "description": "تجربه آرش فولادی از کار با Reasonix، Codex و OpenCode در ترمینال.",
+    "url": "https://arashfooladi.ir/journal/cli-tools-i-use/",
+    "mainEntityOfPage": "https://arashfooladi.ir/journal/cli-tools-i-use/",
+    "datePublished": "2026-08-14",
+    "dateModified": "2026-08-14",
+    "inLanguage": "fa",
+    "keywords": ["ابزار CLI", "Reasonix", "Codex", "OpenCode", "برنامه‌نویسی در ترمینال"],
+    "author": {
+      "@type": "Person",
+      "@id": "https://arashfooladi.ir/#arash-fooladi",
+      "name": "آرش فولادی",
+      "alternateName": "Arash Fooladi",
+      "url": "https://arashfooladi.ir/"
+    },
+    "publisher": { "@id": "https://arashfooladi.ir/#arash-fooladi" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "خانه", "item": "https://arashfooladi.ir/" },
+      { "@type": "ListItem", "position": 2, "name": "نوشته‌ها", "item": "https://arashfooladi.ir/journal/" },
+      { "@type": "ListItem", "position": 3, "name": "ابزارهای کدنویسی در ترمینال", "item": "https://arashfooladi.ir/journal/cli-tools-i-use/" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#article">رفتن به متن نوشته</a>
+  <header class="site-header">
+    <nav class="container nav" aria-label="ناوبری اصلی">
+      <a class="brand" href="/">آرش فولادی</a>
+      <ul>
+        <li><a href="/">خانه</a></li>
+        <li><a href="/journal/" aria-current="page">نوشته‌ها</a></li>
+        <li><a href="/#projects">پروژه‌ها</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <header class="article-header">
+      <div class="inner">
+        <p class="kicker">ابزار توسعه</p>
+        <h1>ابزارهای کدنویسی در ترمینال که استفاده می‌کنم</h1>
+        <div class="article-meta">
+          <span>نوشته آرش فولادی</span>
+          <time datetime="2026-08-14">۲۳ مرداد ۱۴۰۵</time>
+          <span>حدود ۸ دقیقه مطالعه</span>
+        </div>
+      </div>
+    </header>
+
+    <article class="article-body prose" id="article">
+      <p class="lede">بخش زیادی از کار روزانه من داخل ترمینال می‌گذرد. نه به این دلیل که رابط گرافیکی بد است؛ ترمینال برای من سریع‌تر، قابل تکرارتر و نزدیک‌تر به خود پروژه است. در ماه‌های اخیر سه ابزار بیشتر از بقیه در این جریان حضور داشته‌اند: Reasonix، Codex و OpenCode.</p>
+
+      <p>این سه ابزار یک کار واحد را به سه شکل متفاوت انجام می‌دهند. هر سه می‌توانند کد را بخوانند، فایل تغییر دهند و دستور اجرا کنند، اما تفاوت واقعی در مدیریت context، مدل‌های قابل استفاده، هزینه و میزان کنترلی است که روی روند کار می‌دهند. برای همین به‌جای انتخاب یک «برنده»، هرکدام را برای نوع مشخصی از کار نگه داشته‌ام.</p>
+
+      <h2>Reasonix؛ وقتی جلسه طولانی و هزینه مهم است</h2>
+      <p><a href="https://reasonix.io/">Reasonix</a> یک عامل کدنویسی terminal-first است که طراحی آن حول مدل‌های DeepSeek و prefix cache شکل گرفته. ایده اصلی ساده است: بخش ثابت context باید تا حد ممکن بدون تغییر باقی بماند تا در هر درخواست دوباره با قیمت کامل پردازش نشود.</p>
+
+      <p>Reasonix تاریخچه را به‌شکل append-only نگه می‌دارد و تلاش می‌کند prefix قبلی دقیقاً قابل استفاده بماند. نتیجه در جلسه‌های طولانی محسوس است؛ هرچه گفتگو و نقشه پروژه بزرگ‌تر می‌شود، بخش بیشتری از ورودی از cache برمی‌گردد. برای refactorهای طولانی، بررسی یک codebase بزرگ یا کاری که چند ساعت ادامه دارد، این رفتار تفاوت زیادی ایجاد می‌کند.</p>
+
+      <blockquote>در یکی از بازه‌های کاری من، آمار مصرف به حدود ۸۰۰ میلیون توکن رسید و هزینه کل تقریباً ۴ دلار شد. مدلی که استفاده می‌کردم <code>dsv4flash0731</code> بود.</blockquote>
+
+      <p>این عدد یک benchmark عمومی نیست. قسمت بزرگی از آن ۸۰۰ میلیون توکن، prefixهای تکراری و cache‌شده بود؛ یعنی تعداد خام توکن با مقدار محاسبه تازه برابر نیست. نرخ API، مدل و درصد cache-hit مستقیماً روی هزینه اثر می‌گذارند. بااین‌حال برای من نشان داد که یک loop درست طراحی‌شده چقدر می‌تواند هزینه جلسه‌های طولانی را پایین بیاورد.</p>
+
+      <p>Reasonix را بیشتر زمانی باز می‌کنم که قرار است مدت زیادی در یک مخزن بمانم، context مرتب رشد کند و نخواهم برای هر دور دوباره هزینه کامل همان اطلاعات ثابت را بدهم.</p>
+
+      <h2>Codex؛ برای کار جدی روی کل مخزن</h2>
+      <p><a href="https://developers.openai.com/codex/">Codex</a> را برای کارهایی ترجیح می‌دهم که فقط تولید یک snippet نیستند: پیدا کردن مسیر یک قابلیت در codebase، ایجاد تغییر در چند فایل، اجرای تست‌ها، بررسی diff و رساندن کار به نقطه‌ای که واقعاً قابل تحویل باشد.</p>
+
+      <p>مزیت اصلی برای من این است که می‌توانم هدف را در سطح feature یا bug توضیح بدهم و روند کار همچنان حول خود مخزن بماند. Codex فایل‌ها را بررسی می‌کند، تغییرات را اعمال می‌کند و نتیجه را با تست یا بررسی‌های مرتبط می‌سنجد. برای taskهایی که نیاز به دقت، پیگیری چندمرحله‌ای و کنترل تغییرات دارند، این مدل کار از یک چت ساده مفیدتر است.</p>
+
+      <p>البته همچنان diff نهایی را خودم می‌خوانم. هرچه ابزار مستقل‌تر عمل کند، اهمیت review بیشتر می‌شود؛ مخصوصاً برای authentication، پرداخت و هر چیزی که با داده کاربر درگیر است.</p>
+
+      <h2>OpenCode؛ انعطاف در انتخاب مدل و provider</h2>
+      <p><a href="https://opencode.ai/">OpenCode</a> یک عامل کدنویسی متن‌باز است که در ترمینال، IDE و دسکتاپ قابل استفاده است. چیزی که آن را برای من جذاب می‌کند انعطاف آن در اتصال به providerها و مدل‌های مختلف است. لازم نیست کل گردش کار را با عوض شدن مدل کنار بگذارم.</p>
+
+      <p>OpenCode برای مقایسه مدل‌ها، راه‌اندازی سریع یک TUI تمیز و پروژه‌هایی که می‌خواهم provider را خودم انتخاب کنم مناسب است. امکان داشتن sessionهای مختلف و agentهای جدا برای build، plan یا review نیز باعث می‌شود یک ابزار عمومی‌تر باشد.</p>
+
+      <p>در عمل اگر بخواهم یک مدل تازه را روی همان پروژه امتحان کنم، OpenCode معمولاً سریع‌ترین مسیر من است. اگر هزینه و cache در یک جلسه بسیار طولانی اولویت اصلی باشد سراغ Reasonix می‌روم، و برای اجرای دقیق یک کار سرتاسری روی مخزن بیشتر به Codex تکیه می‌کنم.</p>
+
+      <h2>مقایسه کوتاه</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ابزار</th>
+              <th>نقطه قوت اصلی</th>
+              <th>جایی که بیشتر استفاده می‌کنم</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Reasonix</td>
+              <td>prefix cache و جلسه‌های طولانی کم‌هزینه</td>
+              <td>بررسی طولانی codebase و refactorهای پیوسته</td>
+            </tr>
+            <tr>
+              <td>Codex</td>
+              <td>کار چندمرحله‌ای روی مخزن، تست و review</td>
+              <td>feature، رفع باگ و آماده‌سازی تغییر قابل تحویل</td>
+            </tr>
+            <tr>
+              <td>OpenCode</td>
+              <td>متن‌باز بودن و آزادی انتخاب provider</td>
+              <td>آزمایش مدل‌ها و گردش کار قابل تنظیم</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>ابزارهای کوچک‌تری که این جریان را کامل می‌کنند</h2>
+      <p>عامل کدنویسی به‌تنهایی کافی نیست. چند ابزار ساده تقریباً در تمام جلسه‌ها کنار آن‌ها هستند:</p>
+      <ul>
+        <li><code>git</code> برای اینکه هر تغییر قابل مشاهده و قابل برگشت باشد.</li>
+        <li><code>rg</code> یا ripgrep برای جست‌وجوی سریع متن و مسیرها در مخزن.</li>
+        <li><code>gh</code> برای بررسی issue، pull request و وضعیت repository بدون خروج از ترمینال.</li>
+        <li><code>curl</code> برای تست مستقیم endpointها و دیدن پاسخ واقعی API.</li>
+        <li><code>jq</code> برای خواندن و فیلتر کردن JSON در pipelineهای کوچک.</li>
+      </ul>
+
+      <p>ترکیب این ابزارها مهم‌تر از تعدادشان است. مثلاً یک agent می‌تواند مسیر مرتبط را با <code>rg</code> پیدا کند، تغییر را بسازد، تست را اجرا کند و در پایان با <code>git diff</code> دقیقاً نشان دهد چه اتفاقی افتاده است. این جریان هم سریع است و هم قابل بررسی.</p>
+
+      <h2>روشی که برای من بهتر جواب داده</h2>
+      <ol>
+        <li><strong>هدف را محدود می‌کنم.</strong> یک feature یا یک باگ مشخص، نه «کل پروژه را بهتر کن».</li>
+        <li><strong>اول وضعیت موجود را می‌خوانم.</strong> ساختار مخزن و تست‌های فعلی قبل از هر edit مشخص می‌شوند.</li>
+        <li><strong>ابزار را بر اساس task انتخاب می‌کنم.</strong> هزینه، طول جلسه و آزادی مدل سه معیار اصلی‌اند.</li>
+        <li><strong>تست و diff داور نهایی‌اند.</strong> پاسخ خوب در ترمینال جای کد درست و تست‌شده را نمی‌گیرد.</li>
+        <li><strong>context را بی‌دلیل شلوغ نمی‌کنم.</strong> فایل و توضیح مرتبط بهتر از ریختن کل پروژه در یک prompt است.</li>
+      </ol>
+
+      <h2>جمع‌بندی</h2>
+      <p>برای من CLI فقط شکل دیگری از یک ویرایشگر نیست؛ جایی است که کد، تست، version control و agent در یک جریان واحد کنار هم قرار می‌گیرند. Reasonix هزینه جلسه‌های طولانی را قابل کنترل کرده، Codex برای کار سرتاسری روی مخزن قابل اتکاست و OpenCode آزادی انتخاب مدل را حفظ می‌کند.</p>
+
+      <p>بهترین ابزار همان ابزاری است که خروجی‌اش را بتوانم بفهمم، تست کنم و مسئولیتش را بپذیرم. سرعت مهم است، اما کنترل روی تغییرات مهم‌تر است.</p>
+
+      <nav class="article-nav" aria-label="نوشته‌های مرتبط">
+        <a href="/journal/">← همه نوشته‌ها</a>
+        <a href="/journal/ai-pair-programmer/">نوشته بعدی: هوش مصنوعی به‌عنوان همکار ←</a>
+      </nav>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© ۱۴۰۵ آرش فولادی</span>
+      <a href="/">صفحه اصلی</a>
+    </div>
+  </footer>
+</body>
+</html>
