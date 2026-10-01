@@ -354,7 +354,7 @@
   .home .brand img { width: 36px; height: 36px; }
   .home .nav ul { gap: 16px; }
   .home .hero { min-height: 820px; padding: 112px 0 92px; }
-  .home .hero-name-latin { font-size: clamp(3rem, calc(10vw + 1rem), 4.9rem); line-height: 0.9; letter-spacing: -0.04em; white-space: nowrap; }
+  .home .hero-name-latin { font-size: clamp(2.25rem, calc(10vw + 0.5rem), 4.9rem); line-height: 0.9; letter-spacing: -0.04em; white-space: nowrap; }
   .home .lead { margin-top: 34px; }
   .home .scroll-cue { display: none; }
   .home .section::before { width: calc(100% - 28px); }
@@ -370,8 +370,15 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .home-grain { animation: none; }
   .home-grain,
   .home .hero-journal-link,
-  .home .card { transition: none; }
+  .home .card,
+  .home .nav ul a::after,
+  .home #journal .post-card,
+  .home .button,
+  .home .social-links a { transition: none; }
+  .home .hero-journal-link:hover,
+  .home .card:hover { transform: none; }
   .home .card::after { display: none; }
 }

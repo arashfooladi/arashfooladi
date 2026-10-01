@@ -7,7 +7,7 @@
   
   <!-- SEO Essentials -->
   <title>Coming Soon | Arash Fooladi</title>
-  <meta name="description" content="New project coming soon. Stay tuned for the next release by Arash Fooladi.">
+  <meta name="description" content="Notes for this project have not been published yet.">
   <meta name="keywords" content="Arash Fooladi, coming soon, new project, portfolio">
   <meta name="author" content="Arash Fooladi">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -16,13 +16,10 @@
 
   <!-- Canonical URL & Hreflang -->
   <link rel="canonical" href="https://arashfooladi.ir/project-three/">
-  <link rel="alternate" hreflang="en" href="https://arashfooladi.ir/project-three/">
-  <link rel="alternate" hreflang="fa" href="https://arashfooladi.ir/project-three/">
-  <link rel="alternate" hreflang="x-default" href="https://arashfooladi.ir/project-three/">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Coming Soon | Arash Fooladi">
-  <meta property="og:description" content="New project coming soon. Stay tuned for the next release.">
+  <meta property="og:description" content="Notes for this project have not been published yet.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://arashfooladi.ir/project-three/">
   <meta property="og:site_name" content="Arash Fooladi">
@@ -34,7 +31,7 @@
   <meta name="twitter:site" content="@arashfooladiorg">
   <meta name="twitter:creator" content="@arashfooladiorg">
   <meta name="twitter:title" content="Coming Soon | Arash Fooladi">
-  <meta name="twitter:description" content="New project coming soon. Stay tuned for the next release.">
+  <meta name="twitter:description" content="Notes for this project have not been published yet.">
   <meta name="twitter:image" content="https://arashfooladi.ir/yarplus/images/mini1.png">
   
   <!-- Fonts -->
@@ -241,7 +238,7 @@
   <nav class="nav">
     <div class="nav-content">
       <div class="nav-left">
-        <a href="../index.html" class="nav-link" data-en="Back to Home" data-fa="بازگشت به خانه">Back to Home</a>
+        <a href="/" class="nav-link" data-en="Back to Home" data-fa="بازگشت به خانه">Back to Home</a>
         <a href="../telegram-bot" class="nav-link" data-en="← Previous" data-fa="← قبلی">← Previous</a>
       </div>
       <button class="lang-toggle" id="lang-toggle">FA</button>
@@ -260,9 +257,9 @@
     <!-- Coming Soon Content -->
     <section class="coming-soon-content">
       <div class="coming-soon-icon">⚡</div>
-      <h2 class="coming-soon-text" data-en="Something Big is Coming" data-fa="چیز بزرگی در راه است">Something Big is Coming</h2>
-      <p class="coming-soon-desc" data-en="Currently experimenting with new tools and ideas. Stay tuned for the next project." data-fa="در حال آزمایش ابزارها و ایده‌های جدید. منتظر پروژه بعدی باشید.">
-        Currently experimenting with new tools and ideas. Stay tuned for the next project.
+      <h2 class="coming-soon-text" data-en="Not published yet" data-fa="هنوز منتشر نشده">Not published yet</h2>
+      <p class="coming-soon-desc" data-en="Notes for this project are not available yet." data-fa="توضیحات این پروژه هنوز آماده نیست.">
+        Notes for this project are not available yet.
       </p>
     </section>
 
@@ -273,7 +270,7 @@
           <a href="../telegram-bot" class="next-project-link" data-en="← Previous Project" data-fa="← پروژه قبلی">
             <span class="arrow">←</span> Previous Project
           </a>
-          <a href="../index.html" class="next-project-link" data-en="Back to Home" data-fa="بازگشت به خانه">
+          <a href="/" class="next-project-link" data-en="Back to Home" data-fa="بازگشت به خانه">
             Back to Home
           </a>
         </div>
@@ -293,6 +290,7 @@
       const btn = document.getElementById('lang-toggle');
       btn.textContent = translations[currentLang].button;
       document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === 'fa' ? 'rtl' : 'ltr';
 
       document.querySelectorAll('[data-en][data-fa]').forEach(el => {
         el.textContent = el.getAttribute('data-' + currentLang);

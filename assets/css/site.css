@@ -16,6 +16,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 100px;
   overflow-x: hidden;
 }
 
@@ -345,6 +346,7 @@ img {
 
 .prose code {
   direction: ltr;
+  unicode-bidi: isolate;
   display: inline-block;
   padding: 0.1em 0.42em;
   background: var(--surface-2);
@@ -394,6 +396,7 @@ img {
 
 .tag-list {
   display: flex;
+  direction: ltr;
   flex-wrap: wrap;
   gap: 8px;
   margin: 25px 0 0;
@@ -463,4 +466,6 @@ img {
   html { scroll-behavior: auto; }
   .card,
   .post-card { transition: none; }
+  .card:hover,
+  .post-card:hover { transform: none; }
 }
