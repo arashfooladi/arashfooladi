@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
-  
+
   <!-- SEO Essentials -->
   <title>Coming Soon | Arash Fooladi</title>
   <meta name="description" content="Notes for this project have not been published yet.">
@@ -25,7 +25,7 @@
   <meta property="og:site_name" content="Arash Fooladi">
   <meta property="og:image" content="https://arashfooladi.ir/yarplus/images/mini1.png">
   <meta property="og:image:alt" content="Preview card for an upcoming project by Arash Fooladi">
-  
+
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@arashfooladiorg">
@@ -33,11 +33,8 @@
   <meta name="twitter:title" content="Coming Soon | Arash Fooladi">
   <meta name="twitter:description" content="Notes for this project have not been published yet.">
   <meta name="twitter:image" content="https://arashfooladi.ir/yarplus/images/mini1.png">
-  
+
   <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     /* CSS Custom Properties */
@@ -53,7 +50,7 @@
       --border: oklch(1 0 0 / 8%);
       --glow-color: oklch(0.98 0 0 / 10%);
       --accent: oklch(0.7 0.2 145);
-      
+
       --space-8: 0.5rem;
       --space-16: 1rem;
       --space-24: 1.5rem;
@@ -118,7 +115,7 @@
       text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.2s;
     }
     .nav-link:hover { color: var(--primary); }
-    
+
     .lang-toggle {
       font-family: var(--font-mono); font-size: var(--text-caption); color: var(--muted-foreground);
       background: none; border: 1px solid var(--border); padding: 0.4rem 0.8rem;
@@ -131,8 +128,8 @@
     .content-wrapper { max-width: 56rem; margin: 0 auto; padding-top: var(--space-96); }
 
     /* Hero */
-    .project-hero { 
-      padding-top: calc(var(--space-64) + 80px); 
+    .project-hero {
+      padding-top: calc(var(--space-64) + 80px);
       padding-bottom: var(--space-48);
       min-height: 60vh;
       display: flex;
@@ -141,7 +138,7 @@
       align-items: center;
       text-align: center;
     }
-    
+
     .hero-subtitle {
       font-size: var(--text-body);
       color: var(--muted-foreground);
@@ -150,15 +147,15 @@
       letter-spacing: 0.1em;
       margin-bottom: var(--space-48);
     }
-    
+
     .project-title {
-      font-size: var(--text-display); 
-      font-weight: 800; 
+      font-size: var(--text-display);
+      font-weight: 800;
       line-height: 1.1;
-      letter-spacing: -0.04em; 
+      letter-spacing: -0.04em;
       margin-bottom: var(--space-32);
       background: linear-gradient(to bottom, oklch(0.98 0 0 / 0.8), oklch(0.98 0 0 / 0.4));
-      -webkit-background-clip: text; 
+      -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       padding: 0.2em 0;
     }
@@ -168,7 +165,7 @@
       text-align: center;
       padding: var(--space-96) 0;
     }
-    
+
     .coming-soon-icon {
       width: 120px;
       height: 120px;
@@ -181,13 +178,13 @@
       font-size: 3rem;
       color: var(--muted-foreground);
     }
-    
+
     .coming-soon-text {
       font-size: var(--text-h2);
       color: var(--muted-foreground);
       margin-bottom: var(--space-24);
     }
-    
+
     .coming-soon-desc {
       font-size: var(--text-body);
       color: var(--foreground);
@@ -197,25 +194,25 @@
     }
 
     /* Footer */
-    .footer { 
-      border-top: 1px solid var(--border); 
+    .footer {
+      border-top: 1px solid var(--border);
       margin-top: auto;
-      padding: var(--space-48) 0; 
+      padding: var(--space-48) 0;
     }
-    .footer-content { 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
       gap: var(--space-16);
     }
     .next-project-link {
-      font-size: var(--text-h3); 
-      font-weight: 700; 
-      text-decoration: none; 
+      font-size: var(--text-h3);
+      font-weight: 700;
+      text-decoration: none;
       color: var(--foreground);
-      display: flex; 
-      align-items: center; 
+      display: flex;
+      align-items: center;
       gap: var(--space-8);
       transition: opacity 0.2s;
     }
@@ -228,6 +225,7 @@
       .coming-soon-icon { width: 80px; height: 80px; font-size: 2rem; }
     }
   </style>
+<link rel="stylesheet" href="/assets/css/fonts.css">
 </head>
 <body>
 
@@ -247,7 +245,7 @@
 
   <!-- Main Content -->
   <main class="container">
-    
+
     <!-- Hero Section -->
     <header class="project-hero content-wrapper">
       <div class="hero-subtitle" data-en="Work in Progress" data-fa="در دست ساخت">Work in Progress</div>
@@ -294,7 +292,7 @@
 
       document.querySelectorAll('[data-en][data-fa]').forEach(el => {
         el.textContent = el.getAttribute('data-' + currentLang);
-        
+
         if (currentLang === 'fa') {
           el.style.fontFamily = 'var(--font-fa)';
         } else {

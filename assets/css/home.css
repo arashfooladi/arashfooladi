@@ -32,7 +32,6 @@
   z-index: 99;
   opacity: 0.035;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");
-  animation: home-grain 0.22s steps(2) infinite;
   pointer-events: none;
 }
 
@@ -217,68 +216,6 @@
 
 .home #about .copy { max-width: 800px; }
 
-.home .cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 64px;
-}
-
-.home .card {
-  position: relative;
-  min-height: 430px;
-  justify-content: center;
-  align-items: center;
-  padding: 52px;
-  overflow: hidden;
-  border-color: var(--home-line);
-  border-radius: 4px;
-  background:
-    radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.065), transparent 42%),
-    var(--home-card);
-  text-align: center;
-  transition: border-color 300ms ease, box-shadow 300ms ease, transform 300ms ease;
-}
-
-.home .card::before {
-  position: absolute;
-  inset: 24px 26px auto auto;
-  color: rgba(255, 255, 255, 0.22);
-  font: 500 0.68rem/1 "JetBrains Mono", monospace;
-  content: "0" counter(home-card);
-}
-
-.home .cards { counter-reset: home-card; }
-.home .card { counter-increment: home-card; }
-
-.home .card::after {
-  position: absolute;
-  inset: -60% -20%;
-  background: linear-gradient(100deg, transparent 42%, rgba(255, 255, 255, 0.08), transparent 58%);
-  content: "";
-  transform: translateX(75%) rotate(10deg);
-  transition: transform 700ms ease;
-  pointer-events: none;
-}
-
-.home .card:hover {
-  border-color: rgba(217, 255, 91, 0.7);
-  box-shadow: 0 0 60px rgba(255, 255, 255, 0.055);
-  transform: translateY(-6px);
-}
-
-.home .card:hover::after { transform: translateX(-75%) rotate(10deg); }
-.home .card small { color: var(--home-accent); font-family: "JetBrains Mono", Vazirmatn, monospace; }
-.home .card h3 { margin: 20px 0 14px; font-size: clamp(1.8rem, 3vw, 2.7rem); }
-.home .card p { max-width: 410px; color: #9f9f99; }
-.home .card .arrow { margin-top: 38px; padding: 0; color: #e7e7e1; }
-
-.home .card .project-numbers {
-  margin-top: 20px;
-  color: #c0c0ba;
-  font-size: 0.88rem;
-}
-
 .home .work-summary {
   padding-inline-start: 1.2em;
   margin: 24px 0 0;
@@ -286,24 +223,6 @@
 
 .home .work-summary li { margin-bottom: 18px; }
 .home .work-summary strong { color: var(--text); font-weight: 500; }
-
-.home .facts {
-  margin-top: 24px;
-  gap: 0;
-  padding: 0;
-  border-block: 1px solid var(--home-line);
-  background: transparent;
-}
-
-.home .facts li {
-  padding: 34px 28px;
-  border-inline-start: 1px solid var(--home-line);
-  background: transparent;
-  text-align: center;
-}
-
-.home .facts li:first-child { border-inline-start: 0; }
-.home .facts strong { font-size: clamp(1.8rem, 3vw, 2.8rem); }
 
 .home #journal .post-grid { display: block; margin-top: 64px; border-top: 1px solid var(--home-line); }
 
@@ -355,13 +274,7 @@
 
 .home .site-footer { padding-block: 48px; border-top: 1px solid var(--home-line); }
 
-@keyframes home-grain {
-  0% { background-position: 0 0; }
-  25% { background-position: 12px -8px; }
-  50% { background-position: -7px 14px; }
-  75% { background-position: 9px 6px; }
-  100% { background-position: -11px -5px; }
-}
+
 
 @media (max-width: 900px) {
   .home .hero-name-latin { font-size: clamp(3rem, calc(10vw + 1rem), 6.5rem); }
@@ -382,10 +295,6 @@
   .home .lead { margin-top: 34px; }
   .home .scroll-cue { display: none; }
   .home .section::before { width: calc(100% - 28px); }
-  .home .cards { grid-template-columns: 1fr; margin-top: 42px; }
-  .home .card { min-height: 360px; padding: 40px 26px; }
-  .home .facts li { border-inline-start: 0; border-top: 1px solid var(--home-line); }
-  .home .facts li:first-child { border-top: 0; }
   .home #journal .post-grid { margin-top: 42px; }
   .home #journal .post-card { grid-template-columns: 1fr auto; gap: 14px; padding: 25px 2px; }
   .home #journal .post-card small { grid-column: 1 / -1; }
@@ -394,15 +303,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-grain { animation: none; }
-  .home-grain,
   .home .hero-journal-link,
-  .home .card,
   .home .nav ul a::after,
   .home #journal .post-card,
   .home .button,
   .home .social-links a { transition: none; }
-  .home .hero-journal-link:hover,
-  .home .card:hover { transform: none; }
-  .home .card::after { display: none; }
+  .home .hero-journal-link:hover { transform: none; }
 }

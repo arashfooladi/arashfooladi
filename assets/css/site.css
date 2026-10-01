@@ -469,3 +469,7 @@ img {
   .card:hover,
   .post-card:hover { transform: none; }
 }
+
+.article-meta a { text-underline-offset: 4px; }
+.breadcrumbs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; color: var(--muted); font-size: 0.82rem; line-height: 1.8; }
+.breadcrumbs a { text-underline-offset: 4px; }
