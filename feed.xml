@@ -7,32 +7,32 @@
     <language>fa</language>
     <lastBuildDate>Thu, 01 Oct 2026 12:00:00 +0330</lastBuildDate>
     <item>
-      <title>ابزارهای کدنویسی در ترمینال که استفاده می‌کنم</title>
+      <title>سه ابزار کدنویسی که در ترمینال استفاده می‌کنم</title>
       <link>https://arashfooladi.ir/journal/cli-tools-i-use/</link>
       <guid isPermaLink="true">https://arashfooladi.ir/journal/cli-tools-i-use/</guid>
       <pubDate>Fri, 14 Aug 2026 10:00:00 +0330</pubDate>
-      <description>تجربه من با Reasonix، Codex و OpenCode و جای هرکدام در گردش کار روزانه.</description>
+      <description>Reasonix، Codex و OpenCode؛ چند یادداشت درباره استفاده روزانه، هزینه و انتخاب مدل.</description>
     </item>
     <item>
-      <title>چیزهایی که از ساخت سیستم پرداخت در شرایط تحریم یاد گرفتم</title>
+      <title>یادداشت‌هایی از اتصال یارپلاس به درگاه پرداخت</title>
       <link>https://arashfooladi.ir/journal/payment-system-under-sanctions/</link>
       <guid isPermaLink="true">https://arashfooladi.ir/journal/payment-system-under-sanctions/</guid>
       <pubDate>Thu, 10 Jul 2025 12:00:00 +0330</pubDate>
-      <description>درس‌هایی درباره درگاه‌های داخلی، idempotency، تطبیق تراکنش و اعتماد.</description>
+      <description>تأیید پرداخت، درخواست‌های تکراری و تطبیق تراکنش‌ها در یارپلاس با درگاه‌های داخلی.</description>
     </item>
     <item>
-      <title>هوش مصنوعی به‌عنوان همکار برنامه‌نویس، نه جایگزین</title>
+      <title>یادداشت‌هایی درباره کدنویسی با هوش مصنوعی</title>
       <link>https://arashfooladi.ir/journal/ai-pair-programmer/</link>
       <guid isPermaLink="true">https://arashfooladi.ir/journal/ai-pair-programmer/</guid>
       <pubDate>Sun, 22 Jun 2025 12:00:00 +0330</pubDate>
-      <description>کجا ابزارهای هوش مصنوعی مفیدند و کجا قضاوت مهندسی تعیین‌کننده است.</description>
+      <description>کارهایی که با ابزارهای هوش مصنوعی انجام می‌دهم و چیزهایی که در خروجی آن‌ها بررسی می‌کنم.</description>
     </item>
     <item>
-      <title>چرا برای یک پروژه تک‌نفره سراغ میکروسرویس رفتم</title>
+      <title>میکروسرویس در یارپلاس؛ چه چیزی را عوض می‌کردم</title>
       <link>https://arashfooladi.ir/journal/microservices-solo-project/</link>
       <guid isPermaLink="true">https://arashfooladi.ir/journal/microservices-solo-project/</guid>
       <pubDate>Thu, 08 May 2025 12:00:00 +0330</pubDate>
-      <description>هزینه‌ها، مزایا و درس‌های معماری میکروسرویس در یک پروژه تک‌نفره.</description>
+      <description>دلایل جدا کردن سرویس‌های یارپلاس، هزینه نگهداری آن‌ها و شروع با مونولیت ماژولار.</description>
     </item>
   </channel>
 </rss>

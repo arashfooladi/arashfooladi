@@ -273,6 +273,20 @@
 .home .card p { max-width: 410px; color: #9f9f99; }
 .home .card .arrow { margin-top: 38px; padding: 0; color: #e7e7e1; }
 
+.home .card .project-numbers {
+  margin-top: 20px;
+  color: #c0c0ba;
+  font-size: 0.88rem;
+}
+
+.home .work-summary {
+  padding-inline-start: 1.2em;
+  margin: 24px 0 0;
+}
+
+.home .work-summary li { margin-bottom: 18px; }
+.home .work-summary strong { color: var(--text); font-weight: 500; }
+
 .home .facts {
   margin-top: 24px;
   gap: 0;
@@ -328,6 +342,16 @@
 
 .home .button:hover,
 .home .social-links a:hover { border-color: var(--home-accent); background: var(--home-accent); color: #080808; }
+
+.home .social-links .contact-primary {
+  gap: 10px;
+  border-color: var(--home-accent);
+  background: var(--home-accent);
+  color: #080808;
+  font-weight: 600;
+}
+
+.home .social-links .contact-primary:hover { background: #e5ff94; }
 
 .home .site-footer { padding-block: 48px; border-top: 1px solid var(--home-line); }
 
