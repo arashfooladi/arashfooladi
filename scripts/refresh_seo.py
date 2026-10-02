@@ -26,7 +26,7 @@ PAGE_COPY = {
     '/computermelli/': ('ساخت فروشگاه کامپیوتر ملی | آرش فولادی', 'سابقه طراحی و ساخت کامل فروشگاه قطعات کامپیوتر ملی توسط آرش فولادی؛ قالب اختصاصی، جست‌وجوی محصول و اتصال WooCommerce. سایت اکنون غیرفعال است.'),
     '/telegram-bot/': ('زیرساخت ربات تلگرام با ۳۰۰ هزار کاربر | آرش فولادی', 'پروژه ربات تلگرام آرش فولادی با بیش از ۳۰۰ هزار کاربر و ۱۰ میلیون درخواست پردازش‌شده؛ صف کارها، کش، مدیریت درخواست و پایش.'),
     '/yarplus/': ('یارپلاس؛ اشتراک محتوا و پرداخت | آرش فولادی', 'پروژه یارپلاس آرش فولادی؛ پلتفرم اشتراک محتوا و حمایت مالی، با بک‌اند، درگاه پرداخت داخلی و کنترل دسترسی کاربران.'),
-    '/journal/': ('نوشته‌های آرش فولادی | نرم‌افزار و ابزار توسعه', 'یادداشت‌های آرش فولادی درباره ساخت نرم‌افزار، درگاه پرداخت، معماری یارپلاس و ابزارهای کدنویسی در ترمینال.'),
+    '/journal/': ('نوشته‌های آرش فولادی | نرم‌افزار و هوش مصنوعی', 'یادداشت‌های آرش فولادی درباره نرم‌افزار، مدل‌های هوش مصنوعی، ابزارهای کدنویسی، درگاه پرداخت و تجربه ساخت یارپلاس.'),
 }
 
 def plain(text):
@@ -101,7 +101,7 @@ for route,p in pages.items():
         graph.append(breadcrumb); page['breadcrumb']={'@id':breadcrumb['@id']}
         visible='<nav class="breadcrumbs" aria-label="مسیر صفحه">'+''.join((f'<a href="{item.removeprefix(BASE)}">{escape(name)}</a><span aria-hidden="true">/</span>' if i<len(crumbs)-1 else f'<span aria-current="page">{escape(name)}</span>') for i,(name,item) in enumerate(crumbs))+'</nav>'
         text=re.sub(r'\s*<nav class="breadcrumbs".*?</nav>','',text,flags=re.S)
-        header=r'(<header class="(?:article-header[^"]*|archive-header)">\s*<div class="(?:inner|container)">)'
+        header=r'(<header class="(?:article-header|archive-header)[^"]*">\s*<div class="(?:inner|container)">)'
         text=re.sub(header,lambda m:m[1]+'\n      '+visible,text,count=1)
     if route in ('/','/projects/'):
         graph.append(project_list)
