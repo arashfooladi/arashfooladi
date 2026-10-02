@@ -12,6 +12,11 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://arashfooladi.ir'
 MODIFIED = '2026-10-01'
+PAGE_MODIFIED = {
+    '/': '2026-10-02',
+    '/journal/': '2026-10-02',
+    '/journal/sonnet-5-5-opus-5-5-gpt-6-1-sol/': '2026-10-02',
+}
 ORDER = ['gandishiraz', 'daruham', 'computermelli', 'telegram-bot', 'yarplus']
 PAGE_COPY = {
     '/': ('آرش فولادی | طراحی وب و توسعه نرم‌افزار', 'آرش فولادی؛ طراحی و ساخت فروشگاه‌های گاندی شیراز، داروهام و کامپیوتر ملی، توسعه بک‌اند، ربات تلگرام و یادداشت‌هایی درباره نرم‌افزار.'),
@@ -55,7 +60,7 @@ for path in sorted(ROOT.rglob('*.html')):
     title = unescape(re.search(r'<title>(.*?)</title>', text)[1])
     description = unescape(re.search(r'<meta name="description" content="([^"]*)">', text)[1])
     title, description = PAGE_COPY.get(route, (title, description))
-    published = re.search(r'<time datetime="([^"]+)"', text)
+    published = re.search(r'<time datetime="([^"]+)"', text) if route.startswith('/journal/') and route != '/journal/' else None
     image_slug = 'home' if route == '/' else route.strip('/').replace('/', '-')
     pages[route] = dict(path=path,text=text,url=url,headline=headline,title=title,description=description,published=published[1] if published else None,image=BASE+'/assets/images/social/'+image_slug+'.png')
 
@@ -64,6 +69,7 @@ articles = sorted((p for route,p in pages.items() if route.startswith('/journal/
 
 for route,p in pages.items():
     text,url = p['text'],p['url']
+    modified = PAGE_MODIFIED.get(route, MODIFIED)
     text = re.sub(r'<title>.*?</title>', '<title>'+escape(p['title'])+'</title>',text)
     text = re.sub(r'\s*<script type="application/ld\+json">.*?</script>', '',text,flags=re.S)
     for key,value in [('description',p['description']),('author','آرش فولادی'),('robots','index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'),('twitter:card','summary_large_image'),('twitter:title',p['title']),('twitter:description',p['description']),('twitter:image',p['image']),('twitter:image:alt',p['headline']+' — آرش فولادی')]:
@@ -73,14 +79,16 @@ for route,p in pages.items():
         text = meta(text,key,value,'property')
     if is_article:
         text = meta(text,'article:published_time',p['published'],'property')
-        text = meta(text,'article:modified_time',MODIFIED,'property')
+        text = meta(text,'article:modified_time',modified,'property')
         text = meta(text,'article:author',BASE+'/','property')
+    else:
+        text = re.sub(r'\s*<meta property="article:[^"]+"[^>]*>', '', text)
     if 'rel="icon"' not in text:
         text = text.replace('</head>','  <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48.png">\n  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">\n</head>')
     if 'type="application/rss+xml"' not in text:
         text=text.replace('</head>','  <link rel="alternate" type="application/rss+xml" title="نوشته‌های آرش فولادی" href="/feed.xml">\n</head>')
     graph=[website,person]
-    page={'@type':'ProfilePage' if route=='/' else 'CollectionPage' if route in ('/projects/','/journal/') else 'WebPage','@id':url+'#webpage','url':url,'name':p['title'],'description':p['description'],'inLanguage':'fa','isPartOf':{'@id':website['@id']},'dateModified':MODIFIED,'primaryImageOfPage':{'@id':url+'#image'}}
+    page={'@type':'ProfilePage' if route=='/' else 'CollectionPage' if route in ('/projects/','/journal/') else 'WebPage','@id':url+'#webpage','url':url,'name':p['title'],'description':p['description'],'inLanguage':'fa','isPartOf':{'@id':website['@id']},'dateModified':modified,'primaryImageOfPage':{'@id':url+'#image'}}
     graph.append({'@type':'ImageObject','@id':url+'#image','url':p['image'],'contentUrl':p['image'],'width':1200,'height':630,'caption':p['headline']})
     crumbs=[('خانه',BASE+'/')]
     if route in ('/projects/','/journal/'):
@@ -107,7 +115,7 @@ for route,p in pages.items():
     elif is_article:
         article_body=re.search(r'<article[^>]*>(.*?)<nav class="article-nav"',text,re.S)[1]
         count=len(plain(article_body).split())
-        article={'@type':'BlogPosting','@id':url+'#article','headline':p['headline'],'description':p['description'],'url':url,'mainEntityOfPage':{'@id':page['@id']},'datePublished':p['published'],'dateModified':MODIFIED,'inLanguage':'fa','author':{'@id':person['@id']},'publisher':{'@id':person['@id']},'image':{'@id':url+'#image'},'wordCount':count,'isAccessibleForFree':True}
+        article={'@type':'BlogPosting','@id':url+'#article','headline':p['headline'],'description':p['description'],'url':url,'mainEntityOfPage':{'@id':page['@id']},'datePublished':p['published'],'dateModified':modified,'inLanguage':'fa','author':{'@id':person['@id']},'publisher':{'@id':person['@id']},'image':{'@id':url+'#image'},'wordCount':count,'isAccessibleForFree':True}
         graph.append(article);page['mainEntity']={'@id':article['@id']}
     else:
         work={'@type':'CreativeWork','@id':url+'#work','name':p['headline'],'description':p['description'],'url':url,'inLanguage':'fa','creator':{'@id':person['@id']},'author':{'@id':person['@id']},'image':{'@id':url+'#image'},'mainEntityOfPage':{'@id':page['@id']}}
@@ -122,7 +130,7 @@ sitemap=ET.Element('{'+ns+'}urlset')
 for route in sorted(pages):
     node=ET.SubElement(sitemap,'{'+ns+'}url')
     ET.SubElement(node,'{'+ns+'}loc').text=pages[route]['url']
-    ET.SubElement(node,'{'+ns+'}lastmod').text=MODIFIED
+    ET.SubElement(node,'{'+ns+'}lastmod').text=PAGE_MODIFIED.get(route, MODIFIED)
 ET.indent(sitemap,space='  ')
 ET.ElementTree(sitemap).write(ROOT/'sitemap.xml',encoding='utf-8',xml_declaration=True)
 

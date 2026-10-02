@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://arashfooladi.ir/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-02</lastmod>
   </url>
   <url>
     <loc>https://arashfooladi.ir/computermelli/</loc>
@@ -18,7 +18,7 @@
   </url>
   <url>
     <loc>https://arashfooladi.ir/journal/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-02</lastmod>
   </url>
   <url>
     <loc>https://arashfooladi.ir/journal/ai-pair-programmer/</loc>
@@ -35,6 +35,10 @@
   <url>
     <loc>https://arashfooladi.ir/journal/payment-system-under-sanctions/</loc>
     <lastmod>2026-10-01</lastmod>
+  </url>
+  <url>
+    <loc>https://arashfooladi.ir/journal/sonnet-5-5-opus-5-5-gpt-6-1-sol/</loc>
+    <lastmod>2026-10-02</lastmod>
   </url>
   <url>
     <loc>https://arashfooladi.ir/projects/</loc>
