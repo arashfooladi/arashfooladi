@@ -86,3 +86,15 @@
  .work-meta { gap: 18px; }
 }
 @media (prefers-reduced-motion: reduce) { .work-entry, .work-icon { transition: none; } }
+
+/* The archive uses the original 400 x 550 horizontal project cards too. */
+.projects-page .work-list { display: flex; gap: 32px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 0 16px; }
+.projects-page .work-list > li { flex: 0 0 400px; scroll-snap-align: start; }
+.projects-page .work-entry { min-height: 550px; padding: 32px; background: var(--surface); border-radius: 4px; }
+.projects-page .work-entry:hover { border-color: var(--text); box-shadow: 0 0 35px oklch(0.98 0 0 / 15%); }
+.projects-page .work-icon { width: 80px; height: 80px; margin-bottom: 24px; opacity: .6; }
+.projects-page .work-title :is(h2,h3) { font-size: 2rem; font-weight: 700; }
+.projects-page .work-entry > p { font-size: .875rem; line-height: 1.5; max-width: 280px; color: var(--muted); }
+.projects-page .work-meta { position: absolute; bottom: 32px; width: calc(100% - 64px); gap: 16px; }
+.projects-page .work-arrow { color: var(--muted); }
+@media (max-width: 640px) { .projects-page .work-list { gap: 16px; } .projects-page .work-list > li { flex-basis: 85vw; } .projects-page .work-entry { min-height: max(450px,120vw); } }

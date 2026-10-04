@@ -168,163 +168,82 @@
   </script>
 </head>
 <body class="home">
-  <div class="home-grain" aria-hidden="true"></div>
-  <a class="skip-link" href="#content">رفتن به محتوای اصلی</a>
-  <header class="site-header">
-    <nav class="container nav" aria-label="ناوبری اصلی">
-      <a class="brand" href="/" aria-label="صفحه اصلی آرش فولادی">
-        <img src="/assets/images/icon-192.png" width="40" height="40" alt="">
-        <span>آرش فولادی</span>
-      </a>
-      <ul>
-        <li><a href="#about">درباره</a></li>
-        <li><a href="#projects">پروژه‌ها</a></li>
-        <li><a href="#journal">نوشته‌ها</a></li>
-      </ul>
-    </nav>
-  </header>
+<!-- Noise Texture -->
+<div aria-hidden="true" class="noise-texture"></div>
+<!-- Navigation -->
+<nav aria-label="ناوبری اصلی" class="nav">
+<div class="nav-content">
+<div class="nav-left">
+<div class="nav-links">
+<a class="nav-link" href="#projects">Work</a>
+<a class="nav-link" href="#journal">Journal</a>
+<a class="nav-link" href="#about">About</a>
+</div>
+</div>
 
-  <main id="content">
-    <section class="hero">
-      <div class="container hero-content">
-        <h1>
-          <span class="hero-name-latin" lang="en">Arash Foolad<span class="hero-special-i">i</span></span>
-        </h1>
-        <p class="lead">نرم‌افزار می‌سازم؛ بیشتر برای وب و گاهی برای ایده‌های کوچک.</p>
-        <a class="hero-journal-link" href="/journal/">مشاهده نوشته‌ها <span aria-hidden="true">←</span></a>
-      </div>
-      <span class="scroll-cue" aria-hidden="true"><i></i> SCROLL</span>
-    </section>
+</div>
+</nav>
+<!-- Main Content -->
+<a class="skip-link" href="#content">رفتن به محتوای اصلی</a><main id="content">
+<!-- Hero Section -->
+<section class="hero-section">
+<div class="hero-container max-w-7xl">
+<!-- ARASH FOOLADI - EXACT SAME IN BOTH LANGUAGES -->
+<h1 class="hero-title" dir="ltr" lang="en">Arash Foolad<span class="special-i">i</span></h1>
+<p class="tagline">نرم‌افزار می‌سازم؛ بیشتر برای وب و گاهی برای ایده‌های کوچک.</p>
+</div>
+</section>
+<!-- About Section -->
+<section class="about-section" id="about">
+<div class="about-container max-w-4xl">
+<h2 class="text-caption mb-8">درباره من</h2>
+<div class="text-body space-y-6"><p>من آرشم. علوم کامپیوتر می‌خوانم و بیشتر وقتم را صرف ساختن چیزهایی روی اینترنت می‌کنم.</p><p>این روزها به زیرساخت نرم‌افزار، ابزارهای توسعه و ایده‌های کوچکی که کم‌کم به محصول تبدیل می‌شوند علاقه دارم.</p></div>
+</div>
+</section>
+<!-- Projects Section -->
+<section class="projects-section" id="projects">
+<div class="projects-container max-w-7xl">
+<h2 class="text-caption mb-12">پروژه‌های منتخب</h2><p class="text-small project-intro">چند چیز که ساخته‌ام.</p>
+<div aria-label="پروژه‌های منتخب" class="horizontal-scroll" dir="ltr" tabindex="0"><a class="project-card" dir="rtl" href="/gandishiraz/"><div class="card-inner"><div aria-hidden="true" class="project-icon"><svg aria-hidden="true" fill="none" focusable="false" height="64" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" style="width:100%;height:100%" viewbox="0 0 64 64" width="64"><path d="M18 24h28l4 30H14l4-30Z"></path><path d="M24 26v-8a8 8 0 0 1 16 0v8"></path></svg></div><h3 class="project-title">گاندی شیراز</h3><p class="project-desc">فروشگاه آنلاین کیف و کفش؛ طراحی و ساخت کامل روی پایه اختصاصی خودم.</p><div class="project-details"><span class="project-kind">فروشگاه</span><span class="project-tech" dir="ltr" lang="en">WordPress / WooCommerce</span></div><span class="project-arrow">جزئیات <span aria-hidden="true">←</span></span></div></a><a class="project-card" dir="rtl" href="/daruham/"><div class="card-inner"><div aria-hidden="true" class="project-icon"><svg aria-hidden="true" fill="none" focusable="false" height="64" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" style="width:100%;height:100%" viewbox="0 0 64 64" width="64"><path d="M26 12h12v14h14v12H38v14H26V38H12V26h14V12Z"></path></svg></div><h3 class="project-title">داروهام</h3><p class="project-desc">فروشگاه سلامت و زیبایی؛ ساخت کامل سایت، فروشگاه و امکانات اختصاصی.</p><div class="project-details"><span class="project-kind">فروشگاه</span><span class="project-tech" dir="ltr" lang="en">WordPress / WooCommerce</span></div><span class="project-arrow">جزئیات <span aria-hidden="true">←</span></span></div></a><a class="project-card" dir="rtl" href="/computermelli/"><div class="card-inner"><div aria-hidden="true" class="project-icon"><svg aria-hidden="true" fill="none" focusable="false" height="64" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" style="width:100%;height:100%" viewbox="0 0 64 64" width="64"><rect height="32" rx="3" width="46" x="9" y="12"></rect><path d="M24 54h16M32 44v10M15 37h34"></path></svg></div><h3 class="project-title">کامپیوتر ملی</h3><p class="project-desc">فروشگاه قطعات کامپیوتر؛ ساخت کامل قالب و فروشگاه.</p><div class="project-details"><span class="project-kind">سایت غیرفعال</span><span class="project-tech" dir="ltr" lang="en">WordPress / WooCommerce</span></div><span class="project-arrow">جزئیات <span aria-hidden="true">←</span></span></div></a><a class="project-card" dir="rtl" href="/telegram-bot/"><div class="card-inner"><div aria-hidden="true" class="project-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" style="width:100%;height:100%" viewbox="0 0 24 24">
+<path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.5 6.498a2.25 2.25 0 0 0 .126 4.27l3.9 1.296a1.5 1.5 0 0 1 1.024 1.146l.622 4.347a1.5 1.5 0 0 0 2.625.804l2.475-3.037a1.5 1.5 0 0 1 1.146-.538h4.5a2.25 2.25 0 0 0 2.25-2.25V4.5a2.25 2.25 0 0 0-2.046-2.067zM8.25 12a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5z"></path>
+</svg></div><h3 class="project-title">ربات تلگرام</h3><p class="project-desc">۳۰۰ هزار+ کاربر · ۱۰ میلیون+ درخواست پردازش‌شده</p><div class="project-details"><span class="project-kind">زیرساخت</span><span class="project-tech" dir="ltr" lang="en">Backend / Queues / Monitoring</span></div><span class="project-arrow">جزئیات <span aria-hidden="true">←</span></span></div></a><a class="project-card" dir="rtl" href="/yarplus/"><div class="card-inner"><div aria-hidden="true" class="project-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" style="width:100%;height:100%" viewbox="0 0 24 24">
+<rect height="18" rx="2" width="18" x="3" y="3"></rect>
+<path d="M3 9h18M9 21V9"></path>
+</svg></div><h3 class="project-title">یارپلاس</h3><p class="project-desc">اشتراک محتوا و حمایت مالی برای تولیدکنندگان محتوا.</p><div class="project-details"><span class="project-kind">محصول</span><span class="project-tech" dir="ltr" lang="en">Product / Backend / Payments</span></div><span class="project-arrow">جزئیات <span aria-hidden="true">←</span></span></div></a></div><p class="archive-link"><a href="/projects/">همه پروژه‌ها ←</a></p>
+</div>
+</section><section class="about-section" id="experience">
+<div class="about-container max-w-4xl">
+<h2 class="text-caption mb-8">خلاصه کارها</h2>
+<div class="text-body experience-copy">
+<p>کارهایم تا اینجا بیشتر در دو مسیر بوده: فروشگاه‌های آنلاین و بک‌اند محصولات وب.</p>
+<ul class="work-summary">
+<li><strong>فروشگاه‌ها:</strong> ساخت کامل گاندی شیراز، داروهام و کامپیوتر ملی؛ از پایه و قالب اختصاصی تا صفحات محصول، جست‌وجو، سبد خرید و راه‌اندازی.</li>
+<li><strong>ربات تلگرام:</strong> دریافت و پردازش درخواست‌ها، صف کارها، کش و پایش.</li>
+<li><strong>یارپلاس:</strong> بک‌اند، اشتراک محتوا، پرداخت و کنترل دسترسی.</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Journal Preview Section -->
+<section class="journal-section" id="journal">
+<div class="max-w-4xl">
+<h2 class="text-caption mb-8">آخرین نوشته‌ها</h2>
+<p class="text-body journal-intro">گاهی درباره نرم‌افزار، چیزهایی که یاد گرفته‌ام و ابزارهایی که استفاده می‌کنم می‌نویسم.</p><div class="journal-list"><a class="journal-item" href="/journal/sonnet-5-5-opus-5-5-gpt-6-1-sol/"><div class="journal-copy"><h2 class="journal-title">سونت ۵.۵، اپوس ۵.۵ و انتخاب روزمره من</h2><p class="text-small journal-excerpt">سونت را باحوصله‌تر می‌دانم؛ Sol گاهی به ساده‌ترین راه‌حل بسنده می‌کند.</p><span class="journal-read">خواندن نوشته ←</span></div><small class="journal-date"><time datetime="2026-10-02">۱۰ مهر ۱۴۰۵</time> · هوش مصنوعی</small></a><a class="journal-item" href="/journal/cli-tools-i-use/"><div class="journal-copy"><h2 class="journal-title">سه ابزار کدنویسی که در ترمینال استفاده می‌کنم</h2><p class="text-small journal-excerpt">Reasonix، Codex و OpenCode؛ چند یادداشت درباره استفاده روزانه، هزینه و انتخاب مدل.</p><span class="journal-read">خواندن نوشته ←</span></div><small class="journal-date"><time datetime="2026-08-14">۲۳ مرداد ۱۴۰۵</time> · ابزار توسعه</small></a><a class="journal-item" href="/journal/payment-system-under-sanctions/"><div class="journal-copy"><h2 class="journal-title">یادداشت‌هایی از اتصال یارپلاس به درگاه پرداخت</h2><p class="text-small journal-excerpt">تأیید پرداخت، درخواست‌های تکراری و تطبیق تراکنش‌ها در یارپلاس با درگاه‌های داخلی.</p><span class="journal-read">خواندن نوشته ←</span></div><small class="journal-date"><time datetime="2025-07-10">۱۹ تیر ۱۴۰۴</time> · پرداخت</small></a></div><a class="magnetic-link archive-link" href="/journal/">مشاهده آرشیو نوشته‌ها</a>
+</div>
+</section>
+<!-- Footer -->
+<footer class="footer" id="contact">
+<div class="max-w-7xl">
+<div class="footer-content">
+<div class="footer-left"><h2 class="text-h3 mb-4">ارتباط با من</h2><p class="text-small">در گیت‌هاب و تلگرام می‌توانید پیدایم کنید.</p></div>
+<div class="footer-right">
+<div class="social-links"><a class="magnetic-link" href="https://t.me/onewith_aklilighalb" rel="me noopener noreferrer">تلگرام <span aria-hidden="true">↗</span></a><a class="magnetic-link" href="https://github.com/arashfooladi" rel="me noopener noreferrer">گیت‌هاب</a><a class="magnetic-link" href="https://www.linkedin.com/in/arashfooladi" rel="me noopener noreferrer">لینکدین</a><a class="magnetic-link" href="https://x.com/arashfooladiorg" rel="me noopener noreferrer">ایکس</a><a class="magnetic-link" href="https://dev.to/arashfooladi" rel="me noopener noreferrer">Dev.to</a><a class="magnetic-link" href="https://hashnode.com/@arashfooladi" rel="me noopener noreferrer">Hashnode</a><a class="magnetic-link" href="https://www.instagram.com/arashfooladi_/" rel="me noopener noreferrer">اینستاگرام</a></div>
+</div>
+<div class="copyright"><span class="text-caption">© ۱۴۰۵ آرش فولادی</span><a class="magnetic-link rss-link" href="/feed.xml">خوراک RSS نوشته‌ها</a></div>
+</div>
+</div>
+</footer>
+</main>
 
-    <section class="section" id="about">
-      <div class="container section-heading">
-        <h2>درباره من</h2>
-        <div class="copy">
-          <p>من آرشم. علوم کامپیوتر می‌خوانم و بیشتر وقتم را صرف ساختن چیزهایی روی اینترنت می‌کنم.</p>
-          <p>این روزها به زیرساخت نرم‌افزار، ابزارهای توسعه و ایده‌های کوچکی که کم‌کم به محصول تبدیل می‌شوند علاقه دارم.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section-heading">
-          <h2>پروژه‌های منتخب</h2>
-          <p class="copy">چند چیز که ساخته‌ام.</p>
-        </div>
-        <ol class="work-list">
-          <li><a class="work-entry" href="/gandishiraz/">
-            <span class="work-index" aria-hidden="true">01</span>
-            <svg class="work-icon" viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M18 24h28l4 30H14l4-30Z"/><path d="M24 26v-8a8 8 0 0 1 16 0v8"/></svg>
-            <div class="work-title"><h3>گاندی شیراز</h3><span>فروشگاه</span></div>
-            <p>فروشگاه آنلاین کیف و کفش؛ طراحی و ساخت کامل روی پایه اختصاصی خودم.</p>
-            <div class="work-meta"><span lang="en" dir="ltr">WordPress / WooCommerce</span><span class="work-arrow">جزئیات <span aria-hidden="true">←</span></span></div>
-          </a></li>
-          <li><a class="work-entry" href="/daruham/">
-            <span class="work-index" aria-hidden="true">02</span>
-            <svg class="work-icon" viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M26 12h12v14h14v12H38v14H26V38H12V26h14V12Z"/></svg>
-            <div class="work-title"><h3>داروهام</h3><span>فروشگاه</span></div>
-            <p>فروشگاه سلامت و زیبایی؛ ساخت کامل سایت، فروشگاه و امکانات اختصاصی.</p>
-            <div class="work-meta"><span lang="en" dir="ltr">WordPress / WooCommerce</span><span class="work-arrow">جزئیات <span aria-hidden="true">←</span></span></div>
-          </a></li>
-          <li><a class="work-entry" href="/computermelli/">
-            <span class="work-index" aria-hidden="true">03</span>
-            <svg class="work-icon" viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="12" width="46" height="32" rx="3"/><path d="M24 54h16M32 44v10M15 37h34"/></svg>
-            <div class="work-title"><h3>کامپیوتر ملی</h3><span>سایت غیرفعال</span></div>
-            <p>فروشگاه قطعات کامپیوتر؛ ساخت کامل قالب و فروشگاه.</p>
-            <div class="work-meta"><span lang="en" dir="ltr">WordPress / WooCommerce</span><span class="work-arrow">جزئیات <span aria-hidden="true">←</span></span></div>
-          </a></li>
-          <li><a class="work-entry" href="/telegram-bot/">
-            <span class="work-index" aria-hidden="true">04</span>
-            <svg class="work-icon" viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="12" y="21" width="40" height="30" rx="6"/><path d="M32 21V10M27 10h10M6 32v9M58 32v9M24 42h16"/><circle cx="23" cy="32" r="2"/><circle cx="41" cy="32" r="2"/></svg>
-            <div class="work-title"><h3>ربات تلگرام</h3><span>زیرساخت</span></div>
-            <p>۳۰۰ هزار+ کاربر · ۱۰ میلیون+ درخواست پردازش‌شده</p>
-            <div class="work-meta"><span lang="en" dir="ltr">Backend / Queues / Monitoring</span><span class="work-arrow">جزئیات <span aria-hidden="true">←</span></span></div>
-          </a></li>
-          <li><a class="work-entry" href="/yarplus/">
-            <span class="work-index" aria-hidden="true">05</span>
-            <svg class="work-icon" viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="9" y="12" width="46" height="40" rx="4"/><path d="M9 23h46M18 17h2m5 0h2M20 32h10m-10 7h7"/><path d="m39 32 7 6-7 6V32Z"/></svg>
-            <div class="work-title"><h3>یارپلاس</h3><span>محصول</span></div>
-            <p>اشتراک محتوا و حمایت مالی برای تولیدکنندگان محتوا.</p>
-            <div class="work-meta"><span lang="en" dir="ltr">Product / Backend / Payments</span><span class="work-arrow">جزئیات <span aria-hidden="true">←</span></span></div>
-          </a></li>
-        </ol>
-        <p class="work-all"><a href="/projects/">همه پروژه‌ها ←</a></p>
-
-      </div>
-    </section>
-
-
-    <section class="section" id="experience">
-      <div class="container section-heading">
-        <h2>خلاصه کارها</h2>
-        <div class="copy">
-          <p>کارهایم تا اینجا بیشتر در دو مسیر بوده: فروشگاه‌های آنلاین و بک‌اند محصولات وب.</p>
-          <ul class="work-summary">
-            <li><strong>فروشگاه‌ها:</strong> ساخت کامل گاندی شیراز، داروهام و کامپیوتر ملی؛ از پایه و قالب اختصاصی تا صفحات محصول، جست‌وجو، سبد خرید و راه‌اندازی.</li>
-            <li><strong>ربات تلگرام:</strong> دریافت و پردازش درخواست‌ها، صف کارها، کش و پایش.</li>
-            <li><strong>یارپلاس:</strong> بک‌اند، اشتراک محتوا، پرداخت و کنترل دسترسی.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="journal">
-      <div class="container">
-        <div class="section-heading">
-          <h2>آخرین نوشته‌ها</h2>
-          <div class="copy">
-            <p>گاهی درباره نرم‌افزار، چیزهایی که یاد گرفته‌ام و ابزارهایی که استفاده می‌کنم می‌نویسم.</p>
-            <a class="button" href="/journal/">مشاهده آرشیو نوشته‌ها</a>
-          </div>
-        </div>
-        <div class="post-grid">
-          <a class="post-card" href="/journal/sonnet-5-5-opus-5-5-gpt-6-1-sol/">
-            <small><time datetime="2026-10-02">۱۰ مهر ۱۴۰۵</time> · هوش مصنوعی</small>
-            <h2>سونت ۵.۵، اپوس ۵.۵ و انتخاب روزمره من</h2>
-            <p>سونت را باحوصله‌تر می‌دانم؛ Sol گاهی به ساده‌ترین راه‌حل بسنده می‌کند.</p>
-            <span class="arrow">خواندن نوشته ←</span>
-          </a>
-        <a class="post-card" href="/journal/cli-tools-i-use/">
-            <small><time datetime="2026-08-14">۲۳ مرداد ۱۴۰۵</time> · ابزار توسعه</small>
-            <h2>سه ابزار کدنویسی که در ترمینال استفاده می‌کنم</h2>
-            <p>Reasonix، Codex و OpenCode؛ چند یادداشت درباره استفاده روزانه، هزینه و انتخاب مدل.</p>
-            <span class="arrow">خواندن نوشته ←</span>
-          </a>
-          <a class="post-card" href="/journal/payment-system-under-sanctions/">
-            <small><time datetime="2025-07-10">۱۹ تیر ۱۴۰۴</time> · پرداخت</small>
-            <h2>یادداشت‌هایی از اتصال یارپلاس به درگاه پرداخت</h2>
-            <p>تأیید پرداخت، درخواست‌های تکراری و تطبیق تراکنش‌ها در یارپلاس با درگاه‌های داخلی.</p>
-            <span class="arrow">خواندن نوشته ←</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="container section-heading">
-        <h2>ارتباط با من</h2>
-        <div class="copy">
-          <p>در گیت‌هاب و تلگرام می‌توانید پیدایم کنید.</p>
-          <div class="social-links" aria-label="راه‌های ارتباط با آرش فولادی">
-            <a class="contact-primary" href="https://t.me/onewith_aklilighalb" rel="me noopener noreferrer">تلگرام <span aria-hidden="true">↗</span></a>
-            <a href="https://github.com/arashfooladi" rel="me noopener noreferrer">گیت‌هاب</a>
-            <a href="https://www.linkedin.com/in/arashfooladi" rel="me noopener noreferrer">لینکدین</a>
-            <a href="https://x.com/arashfooladiorg" rel="me noopener noreferrer">ایکس</a>
-            <a href="https://dev.to/arashfooladi" rel="me noopener noreferrer">Dev.to</a>
-            <a href="https://hashnode.com/@arashfooladi" rel="me noopener noreferrer">Hashnode</a>
-            <a href="https://www.instagram.com/arashfooladi_/" rel="me noopener noreferrer">اینستاگرام</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <span>© ۱۴۰۵ آرش فولادی</span>
-      <a href="/feed.xml">خوراک RSS نوشته‌ها</a>
-    </div>
-  </footer>
 </body>
 </html>

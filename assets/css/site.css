@@ -1,12 +1,12 @@
 :root {
   color-scheme: dark;
-  --bg: #080808;
-  --surface: #0e0e0e;
-  --surface-2: #171717;
-  --text: #f3f3f3;
-  --muted: #9b9b9b;
-  --line: rgba(255, 255, 255, 0.09);
-  --accent: #eeeeee;
+  --bg: oklch(0.08 0 0);
+  --surface: oklch(0.11 0 0);
+  --surface-2: oklch(0.15 0 0);
+  --text: oklch(0.98 0 0);
+  --muted: oklch(0.55 0 0);
+  --line: oklch(1 0 0 / 8%);
+  --accent: oklch(0.98 0 0);
   --accent-dark: #131313;
   --max: 1280px;
   --reading: 760px;
