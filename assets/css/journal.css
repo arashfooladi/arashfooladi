@@ -42,28 +42,3 @@
   .journal-older .journal-entry { padding-block: 13px; }
   .ai-note-header { padding-block: 32px 26px; }
 }
-
-
-.journal-archive-header { padding-block:62px 42px; }
-.journal-archive-header h1 { margin-bottom:12px; }
-.journal-archive { padding-block:32px 76px; }
-.journal-section-heading { margin-bottom:18px; }
-.journal-list { border-top-color:rgba(238,236,230,.15); }
-.journal-entry { grid-template-columns:150px minmax(0,1fr) 25px; gap:22px; padding-block:23px; transition:background 160ms ease,padding 160ms ease; }
-.journal-entry:hover { padding-inline:10px; background:rgba(255,255,255,.025); }
-.journal-entry h3 { color:#e9e8e3; font-size:1.12rem; font-weight:600; line-height:1.75; }
-.journal-entry p { color:#afb3b8; font-size:.88rem; }
-.journal-entry-arrow { color:#b7bac0; transition:transform 160ms ease,color 160ms ease; }
-.journal-entry:hover .journal-entry-arrow { color:#f0eee8; transform:translateX(-3px); }
-.journal-older { margin-top:30px; }
-.journal-older summary { padding-block:15px; }
-.ai-note-header { padding-block:64px 46px; }
-.ai-note-header h1 { max-width:900px; font-size:clamp(2.15rem,5.7vw,4.2rem); line-height:1.4; }
-@media(max-width:760px) {
- .journal-entry { gap:7px 14px; padding-block:18px; }
- .journal-entry:hover { padding-inline:5px; }
- .journal-entry h3 { font-size:1.02rem; }
- .journal-entry p { font-size:.84rem; }
- .ai-note-header { padding-block:44px 34px; }
-}
-@media(prefers-reduced-motion:reduce) { .journal-entry,.journal-entry-arrow { transition:none; } }
