@@ -1,4 +1,4 @@
-# SEO maintenance
+
 
 The site serves complete static HTML. Existing project and article URLs are preserved.
 The projects archive is `/projects/`; Persian remains the only published locale.
