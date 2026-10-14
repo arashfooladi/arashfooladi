@@ -1,4 +1,4 @@
-/* Only the two archive openings animate. The rest of the site remains calm. */
+/* Fullscreen openings for the homepage and the two archives. */
 .cinematic-page .site-header { position: absolute; inset: 0 0 auto; }
 .cinematic-page .nav ul a { color: #d0cccf; }
 .cinematic-page .nav ul a:hover { color: #fff; }
@@ -15,7 +15,11 @@
 .hero-role { margin: 18px 0 0; font-size: 1.05rem; color: #ddd9dd; }
 .journal-page .hero { background: #080b12; }
 .journal-page .sea-picture :is(img,canvas) { transform: none; object-position: 0% center; }
-.journal-page .hero::before { background: linear-gradient(270deg,rgba(5,8,15,.62),rgba(5,8,15,.08) 65%),linear-gradient(180deg,rgba(5,8,15,.15),transparent 55%,rgba(5,8,15,.55)); }
+.journal-page .hero::before { background: linear-gradient(270deg,rgba(5,8,15,.92),rgba(5,8,15,.86) 30%,rgba(5,8,15,.28) 60%,rgba(5,8,15,.08) 75%),linear-gradient(180deg,rgba(5,8,15,.15),transparent 55%,rgba(5,8,15,.55)); }
+.journal-page .hero-content { text-shadow: 0 2px 12px rgba(5,8,15,.7); }
+.journal-page .hero-role { color: #f0edf1; }
+.projects-page .sea-picture :is(img,canvas) { transform: none; object-position: 20% center; }
+.projects-page .hero::before { background: linear-gradient(270deg,rgba(5,8,15,.94),rgba(5,8,15,.78) 35%,rgba(5,8,15,.08) 70%),linear-gradient(180deg,rgba(5,8,15,.25),transparent 55%,rgba(5,8,15,.65)); }
 @media(max-width:1100px) { .hero h1 { font-size: clamp(4rem,8.6vw,6rem); } .hero-content { width: min(100%,520px); } }
 @media(max-width:800px) {
   .hero-layout { align-items: flex-start; padding-block: 165px 200px; }
@@ -24,7 +28,9 @@
   .sea-picture :is(img,canvas) { transform: none; object-position: 82% center; }
   .hero::before { background: linear-gradient(180deg,rgba(8,8,8,.35),rgba(8,8,8,.68) 25%,rgba(8,8,8,.1) 55%,rgba(8,8,8,.14) 75%,rgba(8,8,8,.75)); }
   .journal-page .sea-picture :is(img,canvas) { object-position: 14% center; }
-  .journal-page .hero::before { background: linear-gradient(180deg,rgba(5,8,15,.6),rgba(5,8,15,.48) 30%,rgba(5,8,15,.05) 65%,rgba(5,8,15,.58)); }
+  .journal-page .hero::before { background: linear-gradient(180deg,rgba(5,8,15,.65),rgba(5,8,15,.9) 20%,rgba(5,8,15,.9) 36%,rgba(5,8,15,.3) 50%,rgba(5,8,15,.05) 65%,rgba(5,8,15,.58)); }
+  .projects-page .sea-picture :is(img,canvas) { object-position: 22% center; }
+  .projects-page .hero::before { background: linear-gradient(180deg,rgba(5,8,15,.65),rgba(5,8,15,.9) 20%,rgba(5,8,15,.9) 36%,rgba(5,8,15,.18) 60%,rgba(5,8,15,.6)); }
 }
 @media(max-width:600px) {
   .hero-layout { min-height: max(700px,100svh); padding-block: 145px 200px; }

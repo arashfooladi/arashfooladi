@@ -1,15 +1,15 @@
 import { createSeaRenderer } from './sea-renderer.js';
 
-// The page stays readable without JavaScript. Only the decorative sea animates.
+// Pages stay readable without JavaScript. Only the decorative scene animates.
 const canvas = document.querySelector('.sea-canvas');
 const poster = document.querySelector('.sea-poster');
-const toggle = document.querySelector('.motion-toggle');
 const sea = document.querySelector('.sea');
 
-if (canvas && poster && toggle && sea) {
+if (canvas && poster && sea) {
   const sceneLoaders = {
     'cloud-sea': () => import('./vendor/cloud-sea.js'),
     'night-coast': () => import('./vendor/night-coast.js'),
+    'edge-orbit': () => import('./vendor/edge-orbit.js'),
   };
   const sceneName = sceneLoaders[sea.dataset.scene] ? sea.dataset.scene : 'cloud-sea';
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -28,11 +28,6 @@ if (canvas && poster && toggle && sea) {
   const context = offscreen ? null : canvas.getContext('2d', { alpha: false });
   const canAnimate = offscreen || context;
   let paint = null;
-
-  function updateButton() {
-    toggle.setAttribute('aria-pressed', String(!paused));
-    toggle.textContent = paused ? 'پخش حرکت' : 'توقف حرکت';
-  }
 
   function stop() {
     cancelAnimationFrame(animationId);
@@ -71,7 +66,7 @@ if (canvas && poster && toggle && sea) {
         worker = new Worker(new URL('./scene-worker.js', import.meta.url), { type: 'module' });
         worker.onerror = event => {
           event.preventDefault();
-          reject(new Error('Cloud sea worker unavailable'));
+          reject(new Error('Scene worker unavailable'));
         };
         worker.onmessage = event => {
           if (event.data.error) {
@@ -110,8 +105,7 @@ if (canvas && poster && toggle && sea) {
       poster.hidden = true;
       return true;
     }).catch(() => {
-      // Keep the local still image and hide an unavailable animation control.
-      toggle.hidden = true;
+      // Keep the local still image if the animation cannot load.
       worker?.terminate();
       worker = null;
       return false;
@@ -131,16 +125,8 @@ if (canvas && poster && toggle && sea) {
 
   if (canAnimate) {
     paused = reducedMotion.matches;
-    toggle.hidden = false;
-    updateButton();
-    toggle.addEventListener('click', () => {
-      paused = !paused;
-      updateButton();
-      sync();
-    });
     reducedMotion.addEventListener('change', event => {
       paused = event.matches;
-      updateButton();
       sync();
     });
     document.addEventListener('visibilitychange', sync);

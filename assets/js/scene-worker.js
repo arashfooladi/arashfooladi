@@ -3,6 +3,7 @@ import { createSeaRenderer } from './sea-renderer.js';
 const sceneLoaders = {
   'cloud-sea': () => import('./vendor/cloud-sea.js'),
   'night-coast': () => import('./vendor/night-coast.js'),
+  'edge-orbit': () => import('./vendor/edge-orbit.js'),
 };
 let frame = null;
 let colors = null;
