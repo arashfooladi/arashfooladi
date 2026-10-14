@@ -4,7 +4,7 @@ This redesign is saved on `design/ascii-home`, based on public `master` commit `
 
 Only the homepage presentation changes. The project pages, journal pages, shared styles, published URLs, sitemap, robots file, feed, redirects, and hosting settings are unchanged. Existing homepage search metadata, Google verification, canonical URL, Open Graph, Twitter cards, and JSON-LD are preserved exactly.
 
-The direction is charcoal and silver, Persian typography using the existing locally hosted Vazirmatn font, and ASCII details. Cloud Sea supplies the warm sunset in the hero. Project illustrations use text characters; the website itself has a small showcase section with a source link.
+The direction is charcoal and silver with Persian typography using the existing locally hosted Vazirmatn font. Cloud Sea fills the entire opening viewport. Desktop text sits beside the sunset; mobile cropping keeps the sun visible. Decorative project illustrations, terminal-style labels, and bracket ornaments have been removed. Product and backend work come first, followed by a separate, concise list of the three stores. The website itself retains a small showcase section with a source link.
 
 ## Preview
 
@@ -18,9 +18,9 @@ Open `http://127.0.0.1:8814/`. Stop the preview with Ctrl+C. Opening `index.html
 
 ## Animation
 
-Cloud Sea is self-hosted, with no npm installation or external runtime request. Its calculation runs in a module worker while the canvas renders at up to 12 frames per second. The animation pauses offscreen and when the browser tab is hidden. A visible button pauses or resumes it. Reduced-motion visitors initially receive the static WebP image and can explicitly opt into animation. The still image also remains available without JavaScript or if the animation module cannot load.
+Cloud Sea is self-hosted, with no npm installation or external runtime request. A module worker calculates and, where OffscreenCanvas is supported, renders the animation at up to 12 frames per second. The shared renderer also supports browsers without OffscreenCanvas or workers. The animation pauses offscreen and when the browser tab is hidden. A visible button pauses or resumes it. Reduced-motion visitors initially receive the static WebP image and can explicitly opt into animation. The still image also remains available without JavaScript or if the animation module cannot load.
 
-Source: [Cloud Sea](https://ascii.rest/cloud-sea/) by [bas3line](https://github.com/bas3line/ascii). The bundled original generator and its MIT license are in `assets/js/vendor/`. The dot renderer, playback controls, worker wrapper, page layout, and project illustrations are local additions.
+Source: [Cloud Sea](https://ascii.rest/cloud-sea/) by [bas3line](https://github.com/bas3line/ascii). The bundled original generator and its MIT license are in `assets/js/vendor/`. The dot renderer, playback controls, worker wrapper, and page layout are local additions.
 
 ## Verification
 
@@ -33,4 +33,4 @@ Source: [Cloud Sea](https://ascii.rest/cloud-sea/) by [bas3line](https://github.
 - A 4× CPU slowdown simulation showed no recurring main-thread long tasks during steady animation after moving calculation into the worker. Startup long tasks remain; this is a local simulation, not a production performance score.
 - JavaScript syntax checks and `git diff --check` passed.
 
-Screenshots and machine-readable QA results are stored outside the source checkout in `../arashfooladi-ascii-preview/`. These browser checks emulate viewport sizes; they are not physical-device or cross-browser certification.
+The current screenshots and machine-readable QA results are stored outside the source checkout in `../arashfooladi-ascii-preview/fullscreen/`. These browser checks emulate viewport sizes; they are not physical-device or cross-browser certification.

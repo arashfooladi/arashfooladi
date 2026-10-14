@@ -1,3 +1,5 @@
+import { createSeaRenderer } from './sea-renderer.js';
+
 // The page stays readable without JavaScript. Only the decorative sea animates.
 const canvas = document.querySelector('.sea-canvas');
 const poster = document.querySelector('.sea-poster');
@@ -17,46 +19,14 @@ if (canvas && poster && toggle && sea) {
   let animationId = 0;
   let lastPaint = 0;
   let sceneTime = 0;
-  const context = canvas.getContext('2d', { alpha: false });
-  const columns = 200;
-  const rows = 100;
-  const size = canvas.width / columns;
-  const dotRadius = { '·': .65, '•': 1.4, '●': 2.35 };
-
-  function paint(characters, cellColors) {
-    const lines = characters.split('\n');
-    context.fillStyle = '#0e0e0f';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    // One path per palette entry avoids thousands of separate canvas draws.
-    for (let shade = 1; shade < palette.length; shade++) {
-      context.beginPath();
-      let populated = false;
-      for (let y = 0; y < rows; y++) {
-        for (let x = 0; x < columns; x++) {
-          if (cellColors[y * columns + x] !== shade) continue;
-          const radius = dotRadius[lines[y][x]];
-          if (!radius) continue;
-          const cx = (x + .5) * size;
-          const cy = (y + .5) * size;
-          context.moveTo(cx + radius, cy);
-          context.arc(cx, cy, radius, 0, Math.PI * 2);
-          populated = true;
-        }
-      }
-      if (populated) {
-        context.fillStyle = palette[shade];
-        context.fill();
-      }
-    }
-  }
+  const offscreen = typeof Worker === 'function' && typeof canvas.transferControlToOffscreen === 'function';
+  const context = offscreen ? null : canvas.getContext('2d', { alpha: false });
+  const canAnimate = offscreen || context;
+  let paint = null;
 
   function updateButton() {
     toggle.setAttribute('aria-pressed', String(!paused));
-    toggle.replaceChildren(
-      document.createTextNode(paused ? 'پخش حرکت ' : 'توقف حرکت '),
-      Object.assign(document.createElement('span'), { textContent: paused ? '[>]' : '[‖]', dir: 'ltr' }),
-    );
-    toggle.lastChild.setAttribute('aria-hidden', 'true');
+    toggle.textContent = paused ? 'پخش حرکت' : 'توقف حرکت';
   }
 
   function stop() {
@@ -88,7 +58,7 @@ if (canvas && poster && toggle && sea) {
   }
 
   async function loadScene() {
-    if (!context) return false;
+    if (!canAnimate) return false;
     if (loading) return loading;
     if (frame || worker) return true;
     const initialize = typeof Worker === 'function'
@@ -103,17 +73,27 @@ if (canvas && poster && toggle && sea) {
           pendingFrame = false;
           if (scenePalette) {
             palette = scenePalette;
-            paint(characters, new Uint8Array(colorBuffer));
+            if (!offscreen) {
+              paint = createSeaRenderer(context, palette, canvas.width, canvas.height);
+              paint(characters, new Uint8Array(colorBuffer));
+            }
             resolve();
-          } else if (!paused && visible && !document.hidden) {
+          } else if (!offscreen && !paused && visible && !document.hidden) {
             paint(characters, new Uint8Array(colorBuffer));
           }
         };
+        if (offscreen) {
+          const surface = canvas.transferControlToOffscreen();
+          worker.postMessage({ canvas: surface }, [surface]);
+        } else {
+          worker.postMessage({ canvas: null });
+        }
       })
       : import('./vendor/cloud-sea.js').then(module => {
         frame = module.default();
         palette = module.meta.palette;
-        colors = new Uint8Array(columns * rows);
+        colors = new Uint8Array(module.meta.cols * module.meta.rows);
+        paint = createSeaRenderer(context, palette, canvas.width, canvas.height);
         paint(frame(sceneTime, { color: colors }), colors);
       });
     loading = initialize.then(() => {
@@ -140,7 +120,7 @@ if (canvas && poster && toggle && sea) {
     }
   }
 
-  if (context) {
+  if (canAnimate) {
     paused = reducedMotion.matches;
     toggle.hidden = false;
     updateButton();
