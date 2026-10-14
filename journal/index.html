@@ -18,8 +18,8 @@
   <meta property="og:locale" content="fa_IR">
   <meta property="og:image" content="https://arashfooladi.ir/assets/images/social/journal.png">
   <link rel="preload" href="/assets/fonts/vazirmatn-arabic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/fonts.css">
-  <link rel="stylesheet" href="/assets/css/site.css">
+
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="نوشته‌های آرش فولادی | نرم‌افزار و هوش مصنوعی">
   <meta name="twitter:description" content="یادداشت‌های آرش فولادی درباره نرم‌افزار، مدل‌های هوش مصنوعی، ابزارهای کدنویسی، درگاه پرداخت و تجربه ساخت یارپلاس.">
@@ -32,7 +32,7 @@
   <meta property="og:image:alt" content="نوشته‌ها — آرش فولادی">
   <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
-  <link rel="stylesheet" href="/assets/css/journal.css">
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -187,68 +187,19 @@
   ]
 }
   </script>
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/scenes.css">
+  <link rel="stylesheet" href="/assets/css/journal.css">
+  <script type="module" src="/assets/js/home.js"></script>
 </head>
-<body>
-  <a class="skip-link" href="#content">رفتن به محتوای اصلی</a>
-  <header class="site-header">
-    <nav class="container nav" aria-label="ناوبری اصلی">
-      <a class="brand" href="/">آرش فولادی</a>
-      <ul>
-        <li><a href="/">خانه</a></li>
-        <li><a href="/journal/" aria-current="page">نوشته‌ها</a></li>
-        <li><a href="/projects/">پروژه‌ها</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main id="content">
-    <header class="archive-header journal-archive-header">
-      <div class="container">
-      <nav class="breadcrumbs" aria-label="مسیر صفحه"><a href="/">خانه</a><span aria-hidden="true">/</span><span aria-current="page">نوشته‌ها</span></nav>
-
-
-        <p class="kicker">یادداشت‌های آرش فولادی</p>
-        <h1>نوشته‌ها</h1>
-        <p>گاهی درباره نرم‌افزار، چیزهایی که یاد گرفته‌ام و ابزارهایی که استفاده می‌کنم می‌نویسم.</p>
-      </div>
-    </header>
-    <section class="archive journal-archive" aria-labelledby="recent-posts">
-      <div class="container">
-        <div class="journal-section-heading"><h2 id="recent-posts">تازه‌ترین نوشته‌ها</h2><a href="/feed.xml">خوراک RSS ↗</a></div>
-        <ul class="journal-list"><li><a class="journal-entry" href="/journal/sonnet-5-5-opus-5-5-gpt-6-1-sol/">
-          <span class="journal-entry-meta"><time datetime="2026-10-02">۱۰ مهر ۱۴۰۵</time> · هوش مصنوعی</span>
-          <div class="journal-entry-copy"><h3>سونت ۵.۵، اپوس ۵.۵ و انتخاب روزمره من</h3><p>سونت را باحوصله‌تر می‌دانم؛ Sol گاهی با وجود توانایی‌اش به ساده‌ترین راه‌حل بسنده می‌کند.</p></div>
-          <span class="journal-entry-arrow" aria-hidden="true">←</span>
-        </a></li><li><a class="journal-entry" href="/journal/cli-tools-i-use/">
-          <span class="journal-entry-meta"><time datetime="2026-08-14">۲۳ مرداد ۱۴۰۵</time> · ابزار توسعه</span>
-          <div class="journal-entry-copy"><h3>سه ابزار کدنویسی که در ترمینال استفاده می‌کنم</h3><p>Reasonix، Codex و OpenCode؛ چند یادداشت درباره استفاده روزانه، هزینه و انتخاب مدل.</p></div>
-          <span class="journal-entry-arrow" aria-hidden="true">←</span>
-        </a></li></ul>
-        <details class="journal-older">
-          <summary><span>نوشته‌های قبلی <span class="journal-count">۳ نوشته</span></span><span class="journal-toggle" aria-hidden="true">+</span></summary>
-          <ul class="journal-list"><li><a class="journal-entry" href="/journal/payment-system-under-sanctions/">
-          <span class="journal-entry-meta"><time datetime="2025-07-10">۱۹ تیر ۱۴۰۴</time> · پرداخت</span>
-          <div class="journal-entry-copy"><h3>یادداشت‌هایی از اتصال یارپلاس به درگاه پرداخت</h3></div>
-          <span class="journal-entry-arrow" aria-hidden="true">←</span>
-        </a></li><li><a class="journal-entry" href="/journal/ai-pair-programmer/">
-          <span class="journal-entry-meta"><time datetime="2025-06-22">۱ تیر ۱۴۰۴</time> · هوش مصنوعی</span>
-          <div class="journal-entry-copy"><h3>یادداشت‌هایی درباره کدنویسی با هوش مصنوعی</h3></div>
-          <span class="journal-entry-arrow" aria-hidden="true">←</span>
-        </a></li><li><a class="journal-entry" href="/journal/microservices-solo-project/">
-          <span class="journal-entry-meta"><time datetime="2025-05-08">۱۸ اردیبهشت ۱۴۰۴</time> · معماری</span>
-          <div class="journal-entry-copy"><h3>میکروسرویس در یارپلاس؛ چه چیزی را عوض می‌کردم</h3></div>
-          <span class="journal-entry-arrow" aria-hidden="true">←</span>
-        </a></li></ul>
-        </details>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <span>© ۱۴۰۵ آرش فولادی</span>
-      <a href="/feed.xml">خوراک RSS</a>
-    </div>
-  </footer>
+<body class="journal-page cinematic-page">
+<a class="skip-link" href="#content">رفتن به محتوای اصلی</a><header class="site-header"><nav class="container nav" aria-label="ناوبری اصلی"><a class="brand" href="/" aria-label="صفحه اصلی آرش فولادی"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"></a><ul><li><a href="/">خانه</a></li><li><a href="/projects/">پروژه‌ها</a></li><li><a href="/journal/" aria-current="page">نوشته‌ها</a></li></ul></nav></header><main id="content" tabindex="-1"><section class="hero" aria-labelledby="hero-title">
+      <figure class="sea" data-scene="night-coast" aria-hidden="true"><div class="sea-picture">
+        <img class="sea-poster" src="/assets/images/night-coast.webp" width="1200" height="600" alt="" fetchpriority="high">
+        <canvas class="sea-canvas" width="1600" height="800" hidden></canvas>
+      </div></figure>
+      <div class="container hero-layout"><div class="hero-content"><p class="latin-signature" lang="en" dir="ltr" translate="no">Notes by Arash Fooladi</p><h1 id="hero-title">نوشته‌ها</h1><p class="hero-role">یادداشت‌هایی از میان ساختن و یاد گرفتن.</p></div></div>
+    </section><section class="section journal-archive" aria-labelledby="journal-list-title"><div class="container"><div class="section-intro"><div><h2 id="journal-list-title">از دفتر یادداشت.</h2><p>درباره نرم‌افزار، ابزارها و تجربه ساخت محصول.</p></div><a class="text-link" href="/feed.xml">خوراک RSS <span aria-hidden="true">↗</span></a></div><ul class="journal-list" role="list"><li><a class="journal-link featured-note" href="/journal/sonnet-5-5-opus-5-5-gpt-6-1-sol/"><span class="journal-date"><time datetime="2026-10-02">۱۰ مهر ۱۴۰۵</time></span><div><h3>سونت ۵.۵، اپوس ۵.۵ و انتخاب روزمره من</h3><p>سونت را باحوصله‌تر می‌دانم؛ Sol گاهی با وجود توانایی‌اش به ساده‌ترین راه‌حل بسنده می‌کند.</p></div><span class="journal-arrow" aria-hidden="true">↗</span></a></li><li><a class="journal-link" href="/journal/cli-tools-i-use/"><span class="journal-date"><time datetime="2026-08-14">۲۳ مرداد ۱۴۰۵</time></span><div><h3>سه ابزار کدنویسی که در ترمینال استفاده می‌کنم</h3><p>Reasonix، Codex و OpenCode؛ چند یادداشت درباره استفاده روزانه، هزینه و انتخاب مدل.</p></div><span class="journal-arrow" aria-hidden="true">↗</span></a></li><li><a class="journal-link" href="/journal/payment-system-under-sanctions/"><span class="journal-date"><time datetime="2025-07-10">۱۹ تیر ۱۴۰۴</time></span><div><h3>یادداشت‌هایی از اتصال یارپلاس به درگاه پرداخت</h3></div><span class="journal-arrow" aria-hidden="true">↗</span></a></li><li><a class="journal-link" href="/journal/ai-pair-programmer/"><span class="journal-date"><time datetime="2025-06-22">۱ تیر ۱۴۰۴</time></span><div><h3>یادداشت‌هایی درباره کدنویسی با هوش مصنوعی</h3></div><span class="journal-arrow" aria-hidden="true">↗</span></a></li><li><a class="journal-link" href="/journal/microservices-solo-project/"><span class="journal-date"><time datetime="2025-05-08">۱۸ اردیبهشت ۱۴۰۴</time></span><div><h3>میکروسرویس در یارپلاس؛ چه چیزی را عوض می‌کردم</h3></div><span class="journal-arrow" aria-hidden="true">↗</span></a></li></ul></div></section></main><footer class="site-footer"><div class="container footer-main"><a class="footer-brand" href="/"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"><span>آرش فولادی</span></a><div class="footer-links"><a href="https://github.com/arashfooladi" rel="me noopener noreferrer">گیت‌هاب</a><a href="https://t.me/onewith_aklilighalb" rel="me noopener noreferrer">تلگرام</a><a href="/feed.xml">RSS</a><button class="motion-toggle" type="button" aria-pressed="false" hidden>توقف حرکت</button></div></div><div class="container footer-bottom"><span>طراحی وب و توسعه نرم‌افزار</span><span>© ۱۴۰۵ آرش فولادی</span></div></footer>
 </body>
 </html>

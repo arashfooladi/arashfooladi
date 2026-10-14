@@ -19,8 +19,8 @@
   <meta property="article:published_time" content="2025-07-10">
   <meta property="article:modified_time" content="2026-10-01">
   <link rel="preload" href="/assets/fonts/vazirmatn-arabic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/fonts.css">
-  <link rel="stylesheet" href="/assets/css/site.css">
+
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="یادداشت‌هایی از اتصال یارپلاس به درگاه پرداخت | آرش فولادی">
   <meta name="twitter:description" content="تأیید پرداخت، درخواست‌های تکراری و تطبیق تراکنش‌ها در یارپلاس با درگاه‌های داخلی.">
@@ -156,35 +156,30 @@
   ]
 }
   </script>
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/journal.css">
 </head>
-<body>
-  <a class="skip-link" href="#article">رفتن به متن نوشته</a>
-  <header class="site-header"><nav class="container nav" aria-label="ناوبری اصلی"><a class="brand" href="/">آرش فولادی</a><ul><li><a href="/">خانه</a></li><li><a href="/journal/">نوشته‌ها</a></li><li><a href="/projects/">پروژه‌ها</a></li></ul></nav></header>
-  <main>
-    <header class="article-header"><div class="inner">
-      <nav class="breadcrumbs" aria-label="مسیر صفحه"><a href="/">خانه</a><span aria-hidden="true">/</span><a href="/journal/">نوشته‌ها</a><span aria-hidden="true">/</span><span aria-current="page">یادداشت‌هایی از اتصال یارپلاس به درگاه پرداخت</span></nav>
-
-      <p class="kicker">مهندسی پرداخت</p><h1>یادداشت‌هایی از اتصال یارپلاس به درگاه پرداخت</h1><div class="article-meta"><a href="/#about" rel="author">نوشته آرش فولادی</a><time datetime="2025-07-10">۱۹ تیر ۱۴۰۴</time><span>حدود ۲ دقیقه مطالعه</span></div></div></header>
-    <article class="article-body prose" id="article">
-      <p class="lede">پرداخت <a href="/yarplus/">یارپلاس</a> را با درگاه‌های داخلی پیاده کردم. بعد از اتصال اولیه، بیشتر کار به وضعیت‌های نامشخص مربوط بود: پرداختی که پاسخش نرسیده، درخواست تکراری و اشتراکی که باید فعال شود.</p>
-      <h2>تأیید تراکنش</h2>
-      <p>برگشتن کاربر از درگاه برای ثبت پرداخت کافی نبود. سرور باید نتیجه را از درگاه استعلام می‌کرد و مبلغ و شناسه سفارش را با درخواست اولیه تطبیق می‌داد.</p>
-      <p>درگاه‌ها را پشت رابط مشترک <code>PaymentProvider</code> قرار دادم تا منطق اشتراک به جزئیات یک درگاه وابسته نباشد.</p>
-      <h2>درخواست تکراری</h2>
-      <p>یک درخواست ممکن است به‌دلیل قطع شبکه یا ارسال دوباره، بیش از یک بار برسد. برای هر درخواست پرداخت شناسه یکتا نگه داشتم. تأیید و فعال‌سازی اشتراک باید با اجرای دوباره همان درخواست، نتیجه قبلی را برگرداند؛ بدون ثبت پرداخت یا دسترسی جدید. این همان رفتار <code>idempotency</code> است.</p>
-      <p>شناسه تراکنش در پایگاه داده هم یکتا بود. برخورد با رکورد تکراری بخشی از مسیر پردازش بود.</p>
-      <h2>وقتی پاسخ نمی‌رسد</h2>
-      <p>گاهی پرداخت در درگاه انجام شده، اما وضعیت داخلی هنوز در انتظار می‌ماند. یک کار زمان‌بندی‌شده تراکنش‌های قدیمی را پیدا می‌کرد، وضعیتشان را از درگاه می‌پرسید و رکورد داخلی را تطبیق می‌داد.</p>
-      <p>این فرایند برای پیدا کردن پرداخت‌های موفقی بود که اشتراک متناظرشان فعال نشده بود.</p>
-      <h2>تاریخچه و مبلغ</h2>
-      <p>برای تغییر وضعیت‌ها رویداد جدا ثبت کردم: زمان ساخت درخواست، دریافت پاسخ، نتیجه تأیید و فعال‌سازی اشتراک. این تاریخچه برای بررسی مغایرت‌ها و پاسخ به کاربر به کار می‌آمد.</p>
-      <p>مبلغ را به‌صورت عدد صحیح و با واحد مشخص نگه می‌داشتم. تفاوت ریال و تومان باید در مرز اتصال به درگاه روشن باشد.</p>
-      <h2>چیزی که زودتر اضافه می‌کردم</h2>
-      <p>تطبیق تراکنش‌ها را از شروع پروژه اضافه می‌کردم. رسیدگی دستی به وضعیت‌های نامشخص وقت می‌گیرد و بررسی دوباره هر مورد هم آسان نیست.</p>
-
-      <nav class="article-nav" aria-label="نوشته‌های مرتبط"><a href="/journal/microservices-solo-project/">→ نوشته قبلی: میکروسرویس</a><a href="/journal/cli-tools-i-use/">نوشته جدید: ابزارهای CLI ←</a></nav>
-    </article>
-  </main>
-  <footer class="site-footer"><div class="container"><span>© ۱۴۰۵ آرش فولادی</span><a href="/journal/">همه نوشته‌ها</a></div></footer>
+<body class="note-page">
+<a class="skip-link" href="#article">رفتن به متن نوشته</a><header class="site-header"><nav class="container nav" aria-label="ناوبری اصلی"><a class="brand" href="/" aria-label="صفحه اصلی آرش فولادی"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"></a><ul><li><a href="/">خانه</a></li><li><a href="/projects/">پروژه‌ها</a></li><li><a href="/journal/" aria-current="page">نوشته‌ها</a></li></ul></nav></header><main><header class="page-heading note-heading"><div class="reading-container">
+<nav aria-label="مسیر صفحه" class="breadcrumbs"><a href="/">خانه</a><span aria-hidden="true">/</span><a href="/journal/">نوشته‌ها</a><span aria-hidden="true">/</span><span aria-current="page">یادداشت‌هایی از اتصال یارپلاس به درگاه پرداخت</span></nav>
+<p class="kicker">مهندسی پرداخت</p><h1>یادداشت‌هایی از اتصال یارپلاس به درگاه پرداخت</h1><div class="article-meta"><a href="/#about" rel="author">نوشته آرش فولادی</a><time datetime="2025-07-10">۱۹ تیر ۱۴۰۴</time><span>حدود ۲ دقیقه مطالعه</span></div></div></header><div class="container reading-layout note-layout"><aside class="reading-sidebar"><nav aria-label="فهرست صفحه"><p>در این صفحه</p><ul><li><a href="#section-1">تأیید تراکنش</a></li><li><a href="#section-2">درخواست تکراری</a></li><li><a href="#section-3">وقتی پاسخ نمی‌رسد</a></li><li><a href="#section-4">تاریخچه و مبلغ</a></li><li><a href="#section-5">چیزی که زودتر اضافه می‌کردم</a></li></ul></nav></aside><article class="prose note-copy" id="article" tabindex="-1">
+<p class="lede">پرداخت <a href="/yarplus/">یارپلاس</a> را با درگاه‌های داخلی پیاده کردم. بعد از اتصال اولیه، بیشتر کار به وضعیت‌های نامشخص مربوط بود: پرداختی که پاسخش نرسیده، درخواست تکراری و اشتراکی که باید فعال شود.</p>
+<h2 id="section-1">تأیید تراکنش</h2>
+<p>برگشتن کاربر از درگاه برای ثبت پرداخت کافی نبود. سرور باید نتیجه را از درگاه استعلام می‌کرد و مبلغ و شناسه سفارش را با درخواست اولیه تطبیق می‌داد.</p>
+<p>درگاه‌ها را پشت رابط مشترک <code>PaymentProvider</code> قرار دادم تا منطق اشتراک به جزئیات یک درگاه وابسته نباشد.</p>
+<h2 id="section-2">درخواست تکراری</h2>
+<p>یک درخواست ممکن است به‌دلیل قطع شبکه یا ارسال دوباره، بیش از یک بار برسد. برای هر درخواست پرداخت شناسه یکتا نگه داشتم. تأیید و فعال‌سازی اشتراک باید با اجرای دوباره همان درخواست، نتیجه قبلی را برگرداند؛ بدون ثبت پرداخت یا دسترسی جدید. این همان رفتار <code>idempotency</code> است.</p>
+<p>شناسه تراکنش در پایگاه داده هم یکتا بود. برخورد با رکورد تکراری بخشی از مسیر پردازش بود.</p>
+<h2 id="section-3">وقتی پاسخ نمی‌رسد</h2>
+<p>گاهی پرداخت در درگاه انجام شده، اما وضعیت داخلی هنوز در انتظار می‌ماند. یک کار زمان‌بندی‌شده تراکنش‌های قدیمی را پیدا می‌کرد، وضعیتشان را از درگاه می‌پرسید و رکورد داخلی را تطبیق می‌داد.</p>
+<p>این فرایند برای پیدا کردن پرداخت‌های موفقی بود که اشتراک متناظرشان فعال نشده بود.</p>
+<h2 id="section-4">تاریخچه و مبلغ</h2>
+<p>برای تغییر وضعیت‌ها رویداد جدا ثبت کردم: زمان ساخت درخواست، دریافت پاسخ، نتیجه تأیید و فعال‌سازی اشتراک. این تاریخچه برای بررسی مغایرت‌ها و پاسخ به کاربر به کار می‌آمد.</p>
+<p>مبلغ را به‌صورت عدد صحیح و با واحد مشخص نگه می‌داشتم. تفاوت ریال و تومان باید در مرز اتصال به درگاه روشن باشد.</p>
+<h2 id="section-5">چیزی که زودتر اضافه می‌کردم</h2>
+<p>تطبیق تراکنش‌ها را از شروع پروژه اضافه می‌کردم. رسیدگی دستی به وضعیت‌های نامشخص وقت می‌گیرد و بررسی دوباره هر مورد هم آسان نیست.</p>
+<nav aria-label="نوشته‌های مرتبط" class="article-nav"><a href="/journal/microservices-solo-project/">→ نوشته قبلی: میکروسرویس</a><a href="/journal/cli-tools-i-use/">نوشته جدید: ابزارهای CLI ←</a></nav>
+</article></div></main><footer class="site-footer"><div class="container footer-main"><a class="footer-brand" href="/"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"><span>آرش فولادی</span></a><div class="footer-links"><a href="https://github.com/arashfooladi" rel="me noopener noreferrer">گیت‌هاب</a><a href="https://t.me/onewith_aklilighalb" rel="me noopener noreferrer">تلگرام</a><a href="/feed.xml">RSS</a></div></div><div class="container footer-bottom"><span>طراحی وب و توسعه نرم‌افزار</span><span>© ۱۴۰۵ آرش فولادی</span></div></footer>
 </body>
 </html>

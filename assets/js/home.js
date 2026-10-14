@@ -7,6 +7,11 @@ const toggle = document.querySelector('.motion-toggle');
 const sea = document.querySelector('.sea');
 
 if (canvas && poster && toggle && sea) {
+  const sceneLoaders = {
+    'cloud-sea': () => import('./vendor/cloud-sea.js'),
+    'night-coast': () => import('./vendor/night-coast.js'),
+  };
+  const sceneName = sceneLoaders[sea.dataset.scene] ? sea.dataset.scene : 'cloud-sea';
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let paused = true;
   let visible = false;
@@ -63,18 +68,22 @@ if (canvas && poster && toggle && sea) {
     if (frame || worker) return true;
     const initialize = typeof Worker === 'function'
       ? new Promise((resolve, reject) => {
-        worker = new Worker(new URL('./cloud-sea-worker.js', import.meta.url), { type: 'module' });
+        worker = new Worker(new URL('./scene-worker.js', import.meta.url), { type: 'module' });
         worker.onerror = event => {
           event.preventDefault();
           reject(new Error('Cloud sea worker unavailable'));
         };
         worker.onmessage = event => {
-          const { characters, colorBuffer, scenePalette } = event.data;
+          if (event.data.error) {
+            reject(new Error(event.data.error));
+            return;
+          }
+          const { characters, colorBuffer, scenePalette, ground } = event.data;
           pendingFrame = false;
           if (scenePalette) {
             palette = scenePalette;
             if (!offscreen) {
-              paint = createSeaRenderer(context, palette, canvas.width, canvas.height);
+              paint = createSeaRenderer(context, palette, canvas.width, canvas.height, ground);
               paint(characters, new Uint8Array(colorBuffer));
             }
             resolve();
@@ -84,16 +93,16 @@ if (canvas && poster && toggle && sea) {
         };
         if (offscreen) {
           const surface = canvas.transferControlToOffscreen();
-          worker.postMessage({ canvas: surface }, [surface]);
+          worker.postMessage({ canvas: surface, sceneName }, [surface]);
         } else {
-          worker.postMessage({ canvas: null });
+          worker.postMessage({ canvas: null, sceneName });
         }
       })
-      : import('./vendor/cloud-sea.js').then(module => {
+      : sceneLoaders[sceneName]().then(module => {
         frame = module.default();
         palette = module.meta.palette;
         colors = new Uint8Array(module.meta.cols * module.meta.rows);
-        paint = createSeaRenderer(context, palette, canvas.width, canvas.height);
+        paint = createSeaRenderer(context, palette, canvas.width, canvas.height, module.meta.ground);
         paint(frame(sceneTime, { color: colors }), colors);
       });
     loading = initialize.then(() => {

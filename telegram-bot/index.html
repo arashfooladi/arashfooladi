@@ -18,8 +18,8 @@
   <meta property="og:image" content="https://arashfooladi.ir/assets/images/social/telegram-bot.png">
   <meta property="og:image:alt" content="زیرساخت ربات تلگرام — آرش فولادی">
   <link rel="preload" href="/assets/fonts/vazirmatn-arabic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/fonts.css">
-  <link rel="stylesheet" href="/assets/css/site.css">
+
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="زیرساخت ربات تلگرام با ۳۰۰ هزار کاربر | آرش فولادی">
   <meta name="twitter:description" content="پروژه ربات تلگرام آرش فولادی با بیش از ۳۰۰ هزار کاربر و ۱۰ میلیون درخواست پردازش‌شده؛ صف کارها، کش، مدیریت درخواست و پایش.">
@@ -149,50 +149,40 @@
   ]
 }
   </script>
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/projects.css">
 </head>
-<body>
-  <a class="skip-link" href="#project">رفتن به متن پروژه</a>
-  <header class="site-header"><nav class="container nav" aria-label="ناوبری اصلی"><a class="brand" href="/">آرش فولادی</a><ul><li><a href="/">خانه</a></li><li><a href="/projects/" aria-current="page">پروژه‌ها</a></li><li><a href="/journal/">نوشته‌ها</a></li></ul></nav></header>
-  <main>
-    <header class="article-header">
-      <div class="inner">
-      <nav class="breadcrumbs" aria-label="مسیر صفحه"><a href="/">خانه</a><span aria-hidden="true">/</span><a href="/projects/">پروژه‌ها</a><span aria-hidden="true">/</span><span aria-current="page">زیرساخت ربات تلگرام</span></nav>
-
-
-        <p class="kicker">مطالعه موردی زیرساخت</p>
-        <h1>زیرساخت ربات تلگرام</h1>
-        <p class="lead">بیش از ۳۰۰ هزار کاربر و ۱۰ میلیون درخواست پردازش‌شده.</p>
-        <ul class="tag-list"><li>Backend</li><li>Telegram Bot</li><li>Queues</li><li>Monitoring</li></ul>
-      </div>
-    </header>
-    <article class="article-body prose" id="project">
-      <ul class="facts" aria-label="آمار پروژه"><li><strong>+۳۰۰ هزار</strong><span>کاربر یکتا</span></li><li><strong>۴۰ هزار</strong><span>کاربر فعال ماهانه در اوج</span></li><li><strong>+۳ هزار</strong><span>کاربر فعال روزانه</span></li></ul>
-
-      <h2>بیش از ۱۰ میلیون درخواست</h2>
-      <p>این ربات باید در دوره‌های پرترافیک هم به درخواست‌ها پاسخ می‌داد. زمان پاسخ و وضعیت صف‌ها معیارهای اصلی برای بررسی عملکرد بودند.</p>
-      <p>در طول فعالیت سامانه بیش از ۱۰ میلیون درخواست پردازش شد. زیر بار واقعی، صف‌های انباشته، پایان مهلت پاسخ سرویس‌های وابسته و تلاش‌های مجدد هم‌زمان از مسائل اصلی بودند.</p>
-
-      <h2>طراحی برای بار واقعی</h2>
-      <p>مسیر دریافت update از پردازش اصلی جدا شد تا ورود ناگهانی درخواست‌ها باعث قفل شدن workerها نشود. کارهای سنگین‌تر به صف منتقل شدند و عملیات کوتاه با کمترین وابستگی پاسخ داده می‌شدند.</p>
-      <p>برای عملیات تکرارشونده cache در نظر گرفته شد و timeoutها مرز مشخص داشتند. retry بدون backoff می‌تواند یک اختلال کوچک را به موج درخواست تبدیل کند؛ بنابراین تلاش مجدد باید محدود، قابل مشاهده و همراه با فاصله افزایشی باشد.</p>
-
-      <h2>پایش و ردیابی درخواست‌ها</h2>
-      <p>در این مقیاس، log ساده برای پیدا کردن مسئله کافی نیست. هر درخواست باید شناسه قابل ردیابی داشته باشد و متریک‌های latency، نرخ خطا، عمق queue و وضعیت سرویس‌های وابسته در کنار هم دیده شوند.</p>
-      <p>این داده‌ها کمک می‌کردند تفاوت میان کندی API خارجی، کمبود worker و یک query ناکارآمد پایگاه داده سریع‌تر مشخص شود. monitoring چیزی نبود که بعداً به سیستم اضافه شود؛ بخشی از خود معماری بود.</p>
-
-      <h2>چیزهایی که از مقیاس یاد گرفتم</h2>
-      <ul>
-        <li>بخش ورودی باید بتواند موج ترافیک را بدون وابستگی مستقیم به پردازش کامل جذب کند.</li>
-        <li>retry بدون محدودیت و backoff می‌تواند از خود خطای اولیه خطرناک‌تر باشد.</li>
-        <li>cache فقط زمانی مفید است که invalidation و رفتار هنگام miss روشن باشند.</li>
-        <li>متریک و tracing باید قبل از اولین incident جدی وجود داشته باشند.</li>
-        <li>بهینه‌سازی باید براساس داده واقعی انجام شود، نه حدس درباره bottleneck.</li>
-      </ul>
-
-      <p>کد این پروژه به‌دلیل ماهیت تجاری آن عمومی نیست.</p>
-      <nav class="article-nav" aria-label="پروژه‌ها"><a href="/projects/">→ همه پروژه‌ها</a><a href="/yarplus/">پروژه بعدی: یارپلاس ←</a></nav>
-    </article>
-  </main>
-  <footer class="site-footer"><div class="container"><span>© ۱۴۰۵ آرش فولادی</span><a href="/">صفحه اصلی</a></div></footer>
+<body class="project-page">
+<a class="skip-link" href="#project">رفتن به متن پروژه</a><header class="site-header"><nav class="container nav" aria-label="ناوبری اصلی"><a class="brand" href="/" aria-label="صفحه اصلی آرش فولادی"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"></a><ul><li><a href="/">خانه</a></li><li><a href="/projects/" aria-current="page">پروژه‌ها</a></li><li><a href="/journal/">نوشته‌ها</a></li></ul></nav></header><main><header class="page-heading case-heading">
+<div class="container">
+<nav aria-label="مسیر صفحه" class="breadcrumbs"><a href="/">خانه</a><span aria-hidden="true">/</span><a href="/projects/">پروژه‌ها</a><span aria-hidden="true">/</span><span aria-current="page">زیرساخت ربات تلگرام</span></nav>
+<p class="kicker">مطالعه موردی زیرساخت</p>
+<h1>زیرساخت ربات تلگرام</h1>
+<p class="lead">بیش از ۳۰۰ هزار کاربر و ۱۰ میلیون درخواست پردازش‌شده.</p>
+<ul class="tag-list" dir="ltr" lang="en" translate="no"><li>Backend</li><li>Telegram Bot</li><li>Queues</li><li>Monitoring</li></ul>
+</div>
+</header><div class="container reading-layout"><aside class="reading-sidebar"><nav aria-label="فهرست صفحه"><p>در این صفحه</p><ul><li><a href="#section-1">بیش از ۱۰ میلیون درخواست</a></li><li><a href="#section-2">طراحی برای بار واقعی</a></li><li><a href="#section-3">پایش و ردیابی درخواست‌ها</a></li><li><a href="#section-4">چیزهایی که از مقیاس یاد گرفتم</a></li></ul></nav></aside><article class="prose case-copy" id="project" tabindex="-1">
+<ul aria-label="آمار پروژه" class="facts"><li><strong>+۳۰۰ هزار</strong><span>کاربر یکتا</span></li><li><strong>۴۰ هزار</strong><span>کاربر فعال ماهانه در اوج</span></li><li><strong>+۳ هزار</strong><span>کاربر فعال روزانه</span></li></ul>
+<h2 id="section-1">بیش از ۱۰ میلیون درخواست</h2>
+<p>این ربات باید در دوره‌های پرترافیک هم به درخواست‌ها پاسخ می‌داد. زمان پاسخ و وضعیت صف‌ها معیارهای اصلی برای بررسی عملکرد بودند.</p>
+<p>در طول فعالیت سامانه بیش از ۱۰ میلیون درخواست پردازش شد. زیر بار واقعی، صف‌های انباشته، پایان مهلت پاسخ سرویس‌های وابسته و تلاش‌های مجدد هم‌زمان از مسائل اصلی بودند.</p>
+<h2 id="section-2">طراحی برای بار واقعی</h2>
+<p>مسیر دریافت update از پردازش اصلی جدا شد تا ورود ناگهانی درخواست‌ها باعث قفل شدن workerها نشود. کارهای سنگین‌تر به صف منتقل شدند و عملیات کوتاه با کمترین وابستگی پاسخ داده می‌شدند.</p>
+<p>برای عملیات تکرارشونده cache در نظر گرفته شد و timeoutها مرز مشخص داشتند. retry بدون backoff می‌تواند یک اختلال کوچک را به موج درخواست تبدیل کند؛ بنابراین تلاش مجدد باید محدود، قابل مشاهده و همراه با فاصله افزایشی باشد.</p>
+<h2 id="section-3">پایش و ردیابی درخواست‌ها</h2>
+<p>در این مقیاس، log ساده برای پیدا کردن مسئله کافی نیست. هر درخواست باید شناسه قابل ردیابی داشته باشد و متریک‌های latency، نرخ خطا، عمق queue و وضعیت سرویس‌های وابسته در کنار هم دیده شوند.</p>
+<p>این داده‌ها کمک می‌کردند تفاوت میان کندی API خارجی، کمبود worker و یک query ناکارآمد پایگاه داده سریع‌تر مشخص شود. monitoring چیزی نبود که بعداً به سیستم اضافه شود؛ بخشی از خود معماری بود.</p>
+<h2 id="section-4">چیزهایی که از مقیاس یاد گرفتم</h2>
+<ul>
+<li>بخش ورودی باید بتواند موج ترافیک را بدون وابستگی مستقیم به پردازش کامل جذب کند.</li>
+<li>retry بدون محدودیت و backoff می‌تواند از خود خطای اولیه خطرناک‌تر باشد.</li>
+<li>cache فقط زمانی مفید است که invalidation و رفتار هنگام miss روشن باشند.</li>
+<li>متریک و tracing باید قبل از اولین incident جدی وجود داشته باشند.</li>
+<li>بهینه‌سازی باید براساس داده واقعی انجام شود، نه حدس درباره bottleneck.</li>
+</ul>
+<p>کد این پروژه به‌دلیل ماهیت تجاری آن عمومی نیست.</p>
+<nav aria-label="پروژه‌ها" class="article-nav"><a href="/projects/">→ همه پروژه‌ها</a><a href="/yarplus/">پروژه بعدی: یارپلاس ←</a></nav>
+</article></div></main><footer class="site-footer"><div class="container footer-main"><a class="footer-brand" href="/"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"><span>آرش فولادی</span></a><div class="footer-links"><a href="https://github.com/arashfooladi" rel="me noopener noreferrer">گیت‌هاب</a><a href="https://t.me/onewith_aklilighalb" rel="me noopener noreferrer">تلگرام</a><a href="/feed.xml">RSS</a></div></div><div class="container footer-bottom"><span>طراحی وب و توسعه نرم‌افزار</span><span>© ۱۴۰۵ آرش فولادی</span></div></footer>
 </body>
 </html>

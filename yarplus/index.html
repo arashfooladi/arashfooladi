@@ -18,8 +18,8 @@
   <meta property="og:image" content="https://arashfooladi.ir/assets/images/social/yarplus.png">
   <meta property="og:image:alt" content="یارپلاس — آرش فولادی">
   <link rel="preload" href="/assets/fonts/vazirmatn-arabic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/css/fonts.css">
-  <link rel="stylesheet" href="/assets/css/site.css">
+
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="یارپلاس؛ اشتراک محتوا و پرداخت | آرش فولادی">
   <meta name="twitter:description" content="پروژه یارپلاس آرش فولادی؛ پلتفرم اشتراک محتوا و حمایت مالی، با بک‌اند، درگاه پرداخت داخلی و کنترل دسترسی کاربران.">
@@ -149,49 +149,40 @@
   ]
 }
   </script>
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/projects.css">
 </head>
-<body>
-  <a class="skip-link" href="#project">رفتن به متن پروژه</a>
-  <header class="site-header"><nav class="container nav" aria-label="ناوبری اصلی"><a class="brand" href="/">آرش فولادی</a><ul><li><a href="/">خانه</a></li><li><a href="/projects/" aria-current="page">پروژه‌ها</a></li><li><a href="/journal/">نوشته‌ها</a></li></ul></nav></header>
-  <main>
-    <header class="article-header">
-      <div class="inner">
-      <nav class="breadcrumbs" aria-label="مسیر صفحه"><a href="/">خانه</a><span aria-hidden="true">/</span><a href="/projects/">پروژه‌ها</a><span aria-hidden="true">/</span><span aria-current="page">یارپلاس</span></nav>
-
-
-        <p class="kicker">مطالعه موردی محصول</p>
-        <h1>یارپلاس</h1>
-        <p class="lead">پلتفرمی برای دریافت حمایت مالی و فروش اشتراک محتوا، با پرداخت از طریق درگاه‌های داخلی.</p>
-        <ul class="tag-list"><li>Next.js</li><li>Node.js</li><li>PostgreSQL</li><li>TypeScript</li><li>Microservices</li></ul>
-        <picture><source type="image/webp" srcset="/yarplus/images/main.webp"><img class="project-hero-image" src="/yarplus/images/main.png" width="1600" height="900" alt="نمای کلی داشبورد پلتفرم یارپلاس" fetchpriority="high" decoding="async"></picture>
-      </div>
-    </header>
-    <article class="article-body prose" id="project">
-      <h2>مسئله</h2>
-      <p>تولیدکنندگان محتوای ایرانی به‌دلیل تحریم و محدودیت پرداخت به پلتفرم‌های جهانی درآمدزایی دسترسی پایدار ندارند. استفاده از راه‌حل‌های موقت هم ریسک بسته شدن حساب، مشکل تسویه و تجربه نامطمئن برای مخاطب را ایجاد می‌کند.</p>
-      <p>نیاز مشخص بود: یک جایگزین بومی که سازنده بتواند سطح اشتراک تعریف کند، محتوای انحصاری منتشر کند، پرداخت داخلی بگیرد و ارتباط خود با مشترکان را مدیریت کند.</p>
-
-      <h2>راه‌حل</h2>
-      <p>یارپلاس این جریان را در یک محصول جمع می‌کند. داشبورد سازنده، مدیریت مشترکان، دسترسی سطح‌بندی‌شده، صورت‌حساب و بخش کشف محتوا بخش‌های اصلی آن هستند. در بک‌اند، دامنه‌های مهم مانند پرداخت، احراز هویت و محتوا مرز مشخص دارند.</p>
-      <p>درگاه‌های داخلی پشت یک رابط مشترک قرار می‌گیرند تا تغییر درگاه، منطق اشتراک را تغییر ندهد.</p>
-      <picture><source type="image/webp" srcset="/yarplus/images/mini1.webp"><img class="content-image" src="/yarplus/images/mini1.png" width="1600" height="900" loading="lazy" decoding="async" alt="بخشی از رابط کاربری و امکانات یارپلاس"></picture>
-
-      <h2>معماری و کنترل دسترسی</h2>
-      <p>دسترسی به محتوا فقط یک شرط ساده در رابط کاربری نیست. سطح اشتراک، مالکیت محتوا و وضعیت پرداخت در بک‌اند بررسی می‌شوند. مدل نقش‌محور نیز مسئولیت سازنده، مشترک و مدیریت سیستم را از هم جدا می‌کند.</p>
-      <p>در طول توسعه، معماری میکروسرویس امکان جداسازی خطاها را فراهم کرد اما سربار عملیاتی واقعی داشت. تجربه همین پروژه باعث شد بعدها درباره شروع با <a href="/journal/microservices-solo-project/">مونولیت ماژولار و استخراج تدریجی سرویس‌ها</a> بیشتر فکر کنم.</p>
-
-      <h2>درس‌های اصلی</h2>
-      <ul>
-        <li>سیستم پرداخت باید از ابتدا برای retry، duplicate callback و reconciliation طراحی شود.</li>
-        <li>مرزهای معماری فقط وقتی ارزش دارند که یک ریسک یا نیاز مقیاس‌پذیری مشخص را حل کنند.</li>
-        <li>کنترل دسترسی باید در سرور هم بررسی شود.</li>
-        <li>ابزارهای توسعه می‌توانند سرعت را بالا ببرند، اما تصمیم‌های مربوط به پول و امنیت به بررسی دقیق نیاز دارند.</li>
-      </ul>
-
-      <p><a class="button" href="https://github.com/arashfooladi/yarplus">مشاهده مخزن یارپلاس در گیت‌هاب</a></p>
-      <nav class="article-nav" aria-label="پروژه‌ها"><a href="/telegram-bot/">→ پروژه قبلی: ربات تلگرام</a><a href="/projects/">همه پروژه‌ها ←</a></nav>
-    </article>
-  </main>
-  <footer class="site-footer"><div class="container"><span>© ۱۴۰۵ آرش فولادی</span><a href="/journal/">نوشته‌های فنی</a></div></footer>
+<body class="project-page">
+<a class="skip-link" href="#project">رفتن به متن پروژه</a><header class="site-header"><nav class="container nav" aria-label="ناوبری اصلی"><a class="brand" href="/" aria-label="صفحه اصلی آرش فولادی"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"></a><ul><li><a href="/">خانه</a></li><li><a href="/projects/" aria-current="page">پروژه‌ها</a></li><li><a href="/journal/">نوشته‌ها</a></li></ul></nav></header><main><header class="page-heading case-heading">
+<div class="container">
+<nav aria-label="مسیر صفحه" class="breadcrumbs"><a href="/">خانه</a><span aria-hidden="true">/</span><a href="/projects/">پروژه‌ها</a><span aria-hidden="true">/</span><span aria-current="page">یارپلاس</span></nav>
+<p class="kicker">مطالعه موردی محصول</p>
+<h1>یارپلاس</h1>
+<p class="lead">پلتفرمی برای دریافت حمایت مالی و فروش اشتراک محتوا، با پرداخت از طریق درگاه‌های داخلی.</p>
+<ul class="tag-list" dir="ltr" lang="en" translate="no"><li>Next.js</li><li>Node.js</li><li>PostgreSQL</li><li>TypeScript</li><li>Microservices</li></ul>
+<picture><source srcset="/yarplus/images/main.webp" type="image/webp"/><img alt="نمای صفحه اصلی یارپلاس" class="project-hero-image" decoding="async" fetchpriority="high" height="900" src="/yarplus/images/main.png" width="1600"/></picture>
+</div>
+</header><div class="container reading-layout"><aside class="reading-sidebar"><nav aria-label="فهرست صفحه"><p>در این صفحه</p><ul><li><a href="#section-1">مسئله</a></li><li><a href="#section-2">راه‌حل</a></li><li><a href="#section-3">معماری و کنترل دسترسی</a></li><li><a href="#section-4">درس‌های اصلی</a></li></ul></nav></aside><article class="prose case-copy" id="project" tabindex="-1">
+<h2 id="section-1">مسئله</h2>
+<p>تولیدکنندگان محتوای ایرانی به‌دلیل تحریم و محدودیت پرداخت به پلتفرم‌های جهانی درآمدزایی دسترسی پایدار ندارند. استفاده از راه‌حل‌های موقت هم ریسک بسته شدن حساب، مشکل تسویه و تجربه نامطمئن برای مخاطب را ایجاد می‌کند.</p>
+<p>نیاز مشخص بود: یک جایگزین بومی که سازنده بتواند سطح اشتراک تعریف کند، محتوای انحصاری منتشر کند، پرداخت داخلی بگیرد و ارتباط خود با مشترکان را مدیریت کند.</p>
+<h2 id="section-2">راه‌حل</h2>
+<p>یارپلاس این جریان را در یک محصول جمع می‌کند. داشبورد سازنده، مدیریت مشترکان، دسترسی سطح‌بندی‌شده، صورت‌حساب و بخش کشف محتوا بخش‌های اصلی آن هستند. در بک‌اند، دامنه‌های مهم مانند پرداخت، احراز هویت و محتوا مرز مشخص دارند.</p>
+<p>درگاه‌های داخلی پشت یک رابط مشترک قرار می‌گیرند تا تغییر درگاه، منطق اشتراک را تغییر ندهد.</p>
+<picture><source srcset="/yarplus/images/mini1.webp" type="image/webp"/><img alt="بخشی از رابط کاربری و امکانات یارپلاس" class="content-image" decoding="async" height="900" loading="lazy" src="/yarplus/images/mini1.png" width="1600"/></picture>
+<h2 id="section-3">معماری و کنترل دسترسی</h2>
+<p>دسترسی به محتوا فقط یک شرط ساده در رابط کاربری نیست. سطح اشتراک، مالکیت محتوا و وضعیت پرداخت در بک‌اند بررسی می‌شوند. مدل نقش‌محور نیز مسئولیت سازنده، مشترک و مدیریت سیستم را از هم جدا می‌کند.</p>
+<p>در طول توسعه، معماری میکروسرویس امکان جداسازی خطاها را فراهم کرد اما سربار عملیاتی واقعی داشت. تجربه همین پروژه باعث شد بعدها درباره شروع با <a href="/journal/microservices-solo-project/">مونولیت ماژولار و استخراج تدریجی سرویس‌ها</a> بیشتر فکر کنم.</p>
+<h2 id="section-4">درس‌های اصلی</h2>
+<ul>
+<li>سیستم پرداخت باید از ابتدا برای retry، duplicate callback و reconciliation طراحی شود.</li>
+<li>مرزهای معماری فقط وقتی ارزش دارند که یک ریسک یا نیاز مقیاس‌پذیری مشخص را حل کنند.</li>
+<li>کنترل دسترسی باید در سرور هم بررسی شود.</li>
+<li>ابزارهای توسعه می‌توانند سرعت را بالا ببرند، اما تصمیم‌های مربوط به پول و امنیت به بررسی دقیق نیاز دارند.</li>
+</ul>
+<p><a class="button" href="https://github.com/arashfooladi/yarplus">مشاهده مخزن یارپلاس در گیت‌هاب</a></p>
+<nav aria-label="پروژه‌ها" class="article-nav"><a href="/telegram-bot/">→ پروژه قبلی: ربات تلگرام</a><a href="/projects/">همه پروژه‌ها ←</a></nav>
+</article></div></main><footer class="site-footer"><div class="container footer-main"><a class="footer-brand" href="/"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"><span>آرش فولادی</span></a><div class="footer-links"><a href="https://github.com/arashfooladi" rel="me noopener noreferrer">گیت‌هاب</a><a href="https://t.me/onewith_aklilighalb" rel="me noopener noreferrer">تلگرام</a><a href="/feed.xml">RSS</a></div></div><div class="container footer-bottom"><span>طراحی وب و توسعه نرم‌افزار</span><span>© ۱۴۰۵ آرش فولادی</span></div></footer>
 </body>
 </html>
