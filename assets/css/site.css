@@ -97,6 +97,14 @@ img { display: block; max-width: 100%; height: auto; }
 .footer-main, .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
 .footer-brand { display: inline-flex; gap: 14px; align-items: center; font-size: .85rem; text-decoration: none; }
 .footer-brand img { width: 34px; height: 34px; border-radius: 50%; }
+.footer-social { display: flex; justify-content: flex-end; flex-wrap: wrap; align-items: center; gap: 8px 24px; max-width: 780px; }
+.footer-social a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: #bdbdc5; font-size: .8rem; text-decoration: none; }
+.footer-social a:hover { color: #fff; text-decoration: underline; text-underline-offset: 6px; }
+.telegram-ascii { display: grid; place-items: center; width: 44px; height: 44px; flex-shrink: 0; color: #eeeae1; }
+.telegram-ascii pre { margin: 0; font: 400 2.6px/2.8px "JetBrains Mono",monospace; white-space: pre; direction: ltr; }
+.telegram-social:is(:hover,:focus-visible) .telegram-ascii { animation: telegram-lift .4s ease-out; }
+.footer-social .telegram-social:hover { text-decoration: none; }
+@keyframes telegram-lift { 50% { transform: translate(2px,-3px); } }
 .footer-bottom { margin-top: 32px; color: #a0a0aa; font-size: .72rem; }
 .error-page, .redirect-page { min-height: 65vh; padding-block: 70px 100px; }
 .error-number { display: block; color: #6e6e7b; font: 500 clamp(6rem, 17vw, 12rem)/1.2 "Inter", sans-serif; }
@@ -141,9 +149,11 @@ img { display: block; max-width: 100%; height: auto; }
   .facts li:first-child { border-top: 1px solid var(--line); }
   .facts strong { font-size: 1.5rem; }
   .footer-main { align-items: flex-start; }
+  .footer-social { width: 100%; justify-content: flex-start; gap: 6px 22px; }
+  .footer-social a { font-size: .8rem; }
   .footer-bottom { gap: 14px; font-size: .7rem; }
   .footer-brand { font-size: .8rem; }
   .error-page, .redirect-page { padding-block: 50px 75px; }
 }
 @media(max-width:360px) { .container, .reading-container { width: calc(100% - 32px); } .nav ul { gap: 13px; } }
-@media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } }
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } .telegram-social .telegram-ascii { animation: none; } }

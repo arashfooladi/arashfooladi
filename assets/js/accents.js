@@ -8,7 +8,7 @@ for (const element of document.querySelectorAll('[data-ascii-art]')) {
   const sources = {
     birds: new URL('../art/birds.json', import.meta.url),
     squirrel: new URL('../art/squirrel.json', import.meta.url),
-    crosshatch: new URL('../art/crosshatch.json', import.meta.url),
+    'world-map': new URL('../art/world-map.json', import.meta.url),
   };
   if (!sources[name]) continue;
   const canvas = element.querySelector('canvas');

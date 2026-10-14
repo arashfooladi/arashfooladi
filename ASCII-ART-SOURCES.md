@@ -8,17 +8,17 @@ The three installed scene assets come from [ascii.rest](https://ascii.rest/), wi
 
 ## Selected small animations
 
-The small ascii.rest pieces from the earlier shortlist were not used. The updated selection comes from the [ASCII Motion community](https://ascii-motion.app/community):
+The small ascii.rest pieces from the earlier shortlist were not used. Birds and Squirrel come from the [ASCII Motion community](https://ascii-motion.app/community); the world map uses public-domain Natural Earth land polygons:
 
 | Piece | Placement and behavior | Preview and source |
 | --- | --- | --- |
 | Birds by CameronFoxly | Homepage footer; takes off on arrival, leaves completely, then stays hidden across page visits until a full reload | [See Birds](https://ascii-motion.app/community/project/d0a249d8-acf0-4e81-939b-18053b5cdc3e) |
-| Crosshatch Noise by CameronAlt | A restrained abstract interlude after the homepage projects; runs once and settles | [See Crosshatch Noise](https://ascii-motion.app/community/project/43a6ce1e-1e12-4bcb-9f86-a333131cc107) |
+| World map | Shimmering coastline character grid below the homepage projects; runs once and settles | [Natural Earth](https://www.naturalearthdata.com/) |
 | Squirrel by CameronFoxly | Small illustration near the end of the Yarplus case study; runs once | [See Squirrel](https://ascii-motion.app/community/project/5097d8dd-9b38-4786-b7dd-dcb18754584d) |
 
-These placements are deliberately fixed rather than random on every page load. They preserve the reading flow and avoid repeating the same decorations throughout the site. Assets are compact local character grids with no external runtime requests. Together the three frame files are under 200 KB; the birds retain a locally hosted 26 KB VGA font. Full artist credits, permission details, and adaptation notes are in [assets/art/CREDITS.md](assets/art/CREDITS.md).
+These placements are deliberately fixed rather than random on every page load. They preserve the reading flow and avoid repeating the same decorations throughout the site. Assets are compact local character grids with no external runtime requests; the birds retain a locally hosted 26 KB VGA font. Full artist credits, permission details, and adaptation notes are in [assets/art/CREDITS.md](assets/art/CREDITS.md). The earlier Crosshatch Noise asset has been removed.
 
-The selected gallery had no published project matching a Telegram icon; no unsuitable substitute was added.
+The compact Telegram icon is converted from the [official Telegram SVG](https://telegram.org/img/t_logo.svg) into a 28×16 character grid, also saved as `assets/art/telegram.txt`. It appears once on the homepage's contact action and once in each other page's footer. Telegram permits this kind of logo use on [its press page](https://telegram.org/press#telegram-logos).
 
 ## More sources
 
