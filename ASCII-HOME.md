@@ -1,6 +1,6 @@
-# ASCII portfolio — local review
+# ASCII portfolio
 
-The redesign lives on `design/ascii-home`, based on public `master` commit `d8240fb`. It has not been pushed or deployed. The source remains static HTML, CSS, and JavaScript and is compatible with the existing GitHub Pages hosting configuration.
+The redesign was developed on `design/ascii-home`, based on public `master` commit `d8240fb`. GitHub Pages publishes the root of `master` to https://arashfooladi.ir/. The source remains static HTML, CSS, and JavaScript and is compatible with the existing GitHub Pages hosting configuration.
 
 ## Scope and presentation
 

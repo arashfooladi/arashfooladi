@@ -3,7 +3,7 @@
 Personal website at [arashfooladi.ir](https://arashfooladi.ir/)
 Open source and MIT licensed.
 
-This local redesign is a Farsi portfolio and journal built with static HTML, CSS, and JavaScript. It uses locally hosted Vazirmatn fonts, shared dark layouts, and self-hosted ASCII scenes. No build step or npm dependencies are required; the existing GitHub Pages configuration is retained.
+This site is a Farsi portfolio and journal built with static HTML, CSS, and JavaScript. It uses locally hosted Vazirmatn fonts, shared dark layouts, and self-hosted ASCII scenes. No build step or npm dependencies are required; the existing GitHub Pages configuration is retained.
 
 Run the preview from this directory:
 
@@ -11,7 +11,7 @@ Run the preview from this directory:
 python -m http.server 8814 --bind 127.0.0.1
 ```
 
-Visit `http://127.0.0.1:8814/`. The redesign on `design/ascii-home` has not been published.
+Visit `http://127.0.0.1:8814/`. GitHub Pages publishes the root of `master` to [arashfooladi.ir](https://arashfooladi.ir/).
 
 See [ASCII-HOME.md](ASCII-HOME.md) for the page structure, animation behavior, and verification details, and [ASCII-ART-SOURCES.md](ASCII-ART-SOURCES.md) for additional animation candidates.
 
