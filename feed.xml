@@ -5,7 +5,14 @@
     <link>https://arashfooladi.ir/journal/</link>
     <description>نوشته‌های فنی فارسی درباره توسعه بک‌اند، معماری نرم‌افزار و ابزارهای برنامه‌نویسی</description>
     <language>fa</language>
-    <lastBuildDate>Fri, 02 Oct 2026 12:00:00 +0330</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 11:35:00 +0330</lastBuildDate>
+    <item>
+      <title>یارپلاس در ایده‌آلیست؛ از ایده تا شایسته تقدیر</title>
+      <link>https://arashfooladi.ir/journal/yarplus-idealist/</link>
+      <guid isPermaLink="true">https://arashfooladi.ir/journal/yarplus-idealist/</guid>
+      <pubDate>Sat, 17 Oct 2026 11:35:00 +0330</pubDate>
+      <description>روایت ساخت نمونه اولیه یارپلاس، ارائه در رقابت ایده‌آلیست و کسب عنوان شایسته تقدیر میان حدود ۳۰ تیم؛ ایده، همکاری تیمی و سرانجام پروژه.</description>
+    </item>
     <item>
       <title>سونت ۵.۵، اپوس ۵.۵ و انتخاب روزمره من</title>
       <link>https://arashfooladi.ir/journal/sonnet-5-5-opus-5-5-gpt-6-1-sol/</link>
@@ -21,11 +28,11 @@
       <description>Reasonix، Codex و OpenCode؛ چند یادداشت درباره استفاده روزانه، هزینه و انتخاب مدل.</description>
     </item>
     <item>
-      <title>یادداشت‌هایی از اتصال یارپلاس به درگاه پرداخت</title>
+      <title>طراحی پرداخت برای یارپلاس؛ بخش اجرانشده پروژه</title>
       <link>https://arashfooladi.ir/journal/payment-system-under-sanctions/</link>
       <guid isPermaLink="true">https://arashfooladi.ir/journal/payment-system-under-sanctions/</guid>
       <pubDate>Thu, 10 Jul 2025 12:00:00 +0330</pubDate>
-      <description>تأیید پرداخت، درخواست‌های تکراری و تطبیق تراکنش‌ها در یارپلاس با درگاه‌های داخلی.</description>
+      <description>نکات طراحی پرداخت برای یارپلاس؛ تأیید تراکنش، درخواست تکراری و تطبیق وضعیت. این بخش در پروژه پیاده‌سازی نشد.</description>
     </item>
     <item>
       <title>یادداشت‌هایی درباره کدنویسی با هوش مصنوعی</title>
@@ -35,11 +42,11 @@
       <description>کارهایی که با ابزارهای هوش مصنوعی انجام می‌دهم و چیزهایی که در خروجی آن‌ها بررسی می‌کنم.</description>
     </item>
     <item>
-      <title>میکروسرویس در یارپلاس؛ چه چیزی را عوض می‌کردم</title>
+      <title>معماری یارپلاس؛ اگر دوباره شروع می‌کردم</title>
       <link>https://arashfooladi.ir/journal/microservices-solo-project/</link>
       <guid isPermaLink="true">https://arashfooladi.ir/journal/microservices-solo-project/</guid>
       <pubDate>Thu, 08 May 2025 12:00:00 +0330</pubDate>
-      <description>دلایل جدا کردن سرویس‌های یارپلاس، هزینه نگهداری آن‌ها و شروع با مونولیت ماژولار.</description>
+      <description>نگاهی به انتخاب معماری برای نمونه اولیه یارپلاس و ملاحظات شروع با یک برنامه ماژولار، پیش از جدا کردن سرویس‌ها.</description>
     </item>
     <atom:link href="https://arashfooladi.ir/feed.xml" rel="self" type="application/rss+xml" />
   </channel>

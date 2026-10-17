@@ -13,8 +13,12 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://arashfooladi.ir'
 MODIFIED = '2026-10-01'
 PAGE_MODIFIED = {
-    '/': '2026-10-02',
-    '/journal/': '2026-10-02',
+    '/journal/yarplus-idealist/': '2026-10-17',
+    '/yarplus/': '2026-10-17',
+    '/journal/payment-system-under-sanctions/': '2026-10-17',
+    '/journal/microservices-solo-project/': '2026-10-17',
+    '/': '2026-10-17',
+    '/journal/': '2026-10-17',
     '/journal/sonnet-5-5-opus-5-5-gpt-6-1-sol/': '2026-10-02',
 }
 ORDER = ['gandishiraz', 'daruham', 'computermelli', 'telegram-bot', 'yarplus']
@@ -25,7 +29,7 @@ PAGE_COPY = {
     '/daruham/': ('طراحی و ساخت وب‌سایت داروهام | آرش فولادی', 'طراحی و ساخت کامل داروهام توسط آرش فولادی؛ فروشگاه سلامت و زیبایی روی پایه اختصاصی، حساب کاربر، نوبت‌دهی و ارسال نسخه.'),
     '/computermelli/': ('ساخت فروشگاه کامپیوتر ملی | آرش فولادی', 'سابقه طراحی و ساخت کامل فروشگاه قطعات کامپیوتر ملی توسط آرش فولادی؛ قالب اختصاصی، جست‌وجوی محصول و اتصال WooCommerce. سایت اکنون غیرفعال است.'),
     '/telegram-bot/': ('زیرساخت ربات تلگرام با ۳۰۰ هزار کاربر | آرش فولادی', 'پروژه ربات تلگرام آرش فولادی با بیش از ۳۰۰ هزار کاربر و ۱۰ میلیون درخواست پردازش‌شده؛ صف کارها، کش، مدیریت درخواست و پایش.'),
-    '/yarplus/': ('یارپلاس؛ اشتراک محتوا و پرداخت | آرش فولادی', 'پروژه یارپلاس آرش فولادی؛ پلتفرم اشتراک محتوا و حمایت مالی، با بک‌اند، درگاه پرداخت داخلی و کنترل دسترسی کاربران.'),
+    '/yarplus/': ('یارپلاس؛ نمونه اولیه اشتراک محتوا | آرش فولادی', 'نمونه اولیه یارپلاس برای اشتراک محتوا؛ شایسته تقدیر رقابت ایده‌آلیست. پرداخت پیاده‌سازی نشد و توسعه پس از رقابت متوقف شد.'),
     '/journal/': ('نوشته‌های آرش فولادی | نرم‌افزار و هوش مصنوعی', 'یادداشت‌های آرش فولادی درباره نرم‌افزار، مدل‌های هوش مصنوعی، ابزارهای کدنویسی، درگاه پرداخت و تجربه ساخت یارپلاس.'),
 }
 
@@ -71,7 +75,7 @@ for route,p in pages.items():
     text,url = p['text'],p['url']
     modified = PAGE_MODIFIED.get(route, MODIFIED)
     text = re.sub(r'<title>.*?</title>', '<title>'+escape(p['title'])+'</title>',text)
-    text = re.sub(r'\s*<script type="application/ld\+json">.*?</script>', '',text,flags=re.S)
+    text = re.sub(r'<script type="application/ld\+json">.*?</script>', '<!-- SEO_GRAPH -->',text,flags=re.S)
     for key,value in [('description',p['description']),('author','آرش فولادی'),('robots','index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'),('twitter:card','summary_large_image'),('twitter:title',p['title']),('twitter:description',p['description']),('twitter:image',p['image']),('twitter:image:alt',p['headline']+' — آرش فولادی')]:
         text = meta(text,key,value)
     is_article = bool(p['published']) and route.startswith('/journal/')
@@ -113,7 +117,7 @@ for route,p in pages.items():
         blog={'@type':'Blog','@id':url+'#blog','url':url,'name':'نوشته‌های آرش فولادی','description':p['description'],'inLanguage':'fa','author':{'@id':person['@id']},'blogPost':[{'@type':'BlogPosting','@id':a['url']+'#article','headline':a['headline'],'url':a['url'],'datePublished':a['published'],'author':{'@id':person['@id']}} for a in articles]}
         graph.append(blog);page['mainEntity']={'@id':blog['@id']}
     elif is_article:
-        article_body=re.search(r'<article[^>]*>(.*?)<nav class="article-nav"',text,re.S)[1]
+        article_body=re.search(r'<article[^>]*>(.*?)<nav\b(?=[^>]*\bclass="article-nav")',text,re.S)[1]
         count=len(plain(article_body).split())
         article={'@type':'BlogPosting','@id':url+'#article','headline':p['headline'],'description':p['description'],'url':url,'mainEntityOfPage':{'@id':page['@id']},'datePublished':p['published'],'dateModified':modified,'inLanguage':'fa','author':{'@id':person['@id']},'publisher':{'@id':person['@id']},'image':{'@id':url+'#image'},'wordCount':count,'isAccessibleForFree':True}
         graph.append(article);page['mainEntity']={'@id':article['@id']}
@@ -121,7 +125,8 @@ for route,p in pages.items():
         work={'@type':'CreativeWork','@id':url+'#work','name':p['headline'],'description':p['description'],'url':url,'inLanguage':'fa','creator':{'@id':person['@id']},'author':{'@id':person['@id']},'image':{'@id':url+'#image'},'mainEntityOfPage':{'@id':page['@id']}}
         graph.append(work);page['mainEntity']={'@id':work['@id']}
     graph.append(page)
-    text=text.replace('</head>','  <script type="application/ld+json">\n'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False,indent=2)+'\n  </script>\n</head>')
+    graph_markup='<script type="application/ld+json">\n'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False,indent=2)+'\n  </script>'
+    text=text.replace('<!-- SEO_GRAPH -->',graph_markup) if '<!-- SEO_GRAPH -->' in text else text.replace('</head>','  '+graph_markup+'\n</head>')
     text='\n'.join(line.rstrip() for line in text.splitlines())+'\n'
     p['path'].write_text(text,encoding='utf-8')
 
