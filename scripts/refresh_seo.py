@@ -17,14 +17,18 @@ PAGE_MODIFIED = {
     '/yarplus/': '2026-10-17',
     '/journal/payment-system-under-sanctions/': '2026-10-17',
     '/journal/microservices-solo-project/': '2026-10-17',
-    '/': '2026-10-17',
+    '/': '2026-10-20',
+    '/projects/': '2026-10-20',
     '/journal/': '2026-10-17',
     '/journal/sonnet-5-5-opus-5-5-gpt-6-1-sol/': '2026-10-02',
 }
-ORDER = ['gandishiraz', 'daruham', 'computermelli', 'telegram-bot', 'yarplus']
+PROJECTS_BY_PAGE = {
+    '/': ['telegram-bot', 'gandishiraz', 'daruham', 'computermelli'],
+    '/projects/': ['yarplus', 'telegram-bot', 'gandishiraz', 'daruham', 'computermelli'],
+}
 PAGE_COPY = {
     '/': ('آرش فولادی | طراحی وب و توسعه نرم‌افزار', 'آرش فولادی؛ طراحی و ساخت فروشگاه‌های گاندی شیراز، داروهام و کامپیوتر ملی، توسعه بک‌اند، ربات تلگرام و یادداشت‌هایی درباره نرم‌افزار.'),
-    '/projects/': ('پروژه‌های آرش فولادی | فروشگاه‌های آنلاین و بک‌اند', 'نمونه پروژه‌های آرش فولادی؛ ساخت کامل فروشگاه‌های آنلاین روی پایه اختصاصی، زیرساخت ربات تلگرام و پلتفرم اشتراک محتوای یارپلاس.'),
+    '/projects/': ('پروژه‌های آرش فولادی | فروشگاه‌های آنلاین و بک‌اند', 'نمونه پروژه‌های آرش فولادی؛ ساخت کامل فروشگاه‌های آنلاین روی پایه اختصاصی، زیرساخت ربات تلگرام و نمونه اولیه اشتراک محتوای یارپلاس.'),
     '/gandishiraz/': ('طراحی و ساخت فروشگاه گاندی شیراز | آرش فولادی', 'ساخت کامل فروشگاه کیف و کفش گاندی شیراز توسط آرش فولادی؛ پایه و قالب اختصاصی، جست‌وجو، فیلتر محصولات، سبد خرید و نسخه موبایل.'),
     '/daruham/': ('طراحی و ساخت وب‌سایت داروهام | آرش فولادی', 'طراحی و ساخت کامل داروهام توسط آرش فولادی؛ فروشگاه سلامت و زیبایی روی پایه اختصاصی، حساب کاربر، نوبت‌دهی و ارسال نسخه.'),
     '/computermelli/': ('ساخت فروشگاه کامپیوتر ملی | آرش فولادی', 'سابقه طراحی و ساخت کامل فروشگاه قطعات کامپیوتر ملی توسط آرش فولادی؛ قالب اختصاصی، جست‌وجوی محصول و اتصال WooCommerce. سایت اکنون غیرفعال است.'),
@@ -68,7 +72,10 @@ for path in sorted(ROOT.rglob('*.html')):
     image_slug = 'home' if route == '/' else route.strip('/').replace('/', '-')
     pages[route] = dict(path=path,text=text,url=url,headline=headline,title=title,description=description,published=published[1] if published else None,image=BASE+'/assets/images/social/'+image_slug+'.png')
 
-project_list = {'@type':'ItemList','@id':BASE+'/projects/#list','name':'پروژه‌های آرش فولادی','itemListOrder':'https://schema.org/ItemListOrderAscending','numberOfItems':len(ORDER),'itemListElement':[{'@type':'ListItem','position':i,'name':pages['/'+slug+'/']['headline'],'url':BASE+'/'+slug+'/'} for i,slug in enumerate(ORDER,1)]}
+def project_list_for(route):
+    slugs = PROJECTS_BY_PAGE[route]
+    return {'@type':'ItemList','@id':BASE+route+('#projects-list' if route=='/' else '#list'),'name':'پروژه‌های آرش فولادی','itemListOrder':'https://schema.org/ItemListOrderAscending','numberOfItems':len(slugs),'itemListElement':[{'@type':'ListItem','position':i,'name':pages['/'+slug+'/']['headline'],'url':BASE+'/'+slug+'/'} for i,slug in enumerate(slugs,1)]}
+
 articles = sorted((p for route,p in pages.items() if route.startswith('/journal/') and p['published']), key=lambda p:p['published'], reverse=True)
 
 for route,p in pages.items():
@@ -108,10 +115,11 @@ for route,p in pages.items():
         header=r'(<header class="(?:article-header|archive-header)[^"]*">\s*<div class="(?:inner|container)">)'
         text=re.sub(header,lambda m:m[1]+'\n      '+visible,text,count=1)
     if route in ('/','/projects/'):
+        project_list = project_list_for(route)
         graph.append(project_list)
         if route=='/':
             page['mainEntity']={'@id':person['@id']}
-            page['hasPart']=[{'@id':BASE+'/'+slug+'/#work'} for slug in ORDER]
+            page['hasPart']=[{'@id':BASE+'/'+slug+'/#work'} for slug in PROJECTS_BY_PAGE[route]]
         else: page['mainEntity']={'@id':project_list['@id']}
     elif route=='/journal/':
         blog={'@type':'Blog','@id':url+'#blog','url':url,'name':'نوشته‌های آرش فولادی','description':p['description'],'inLanguage':'fa','author':{'@id':person['@id']},'blogPost':[{'@type':'BlogPosting','@id':a['url']+'#article','headline':a['headline'],'url':a['url'],'datePublished':a['published'],'author':{'@id':person['@id']}} for a in articles]}
