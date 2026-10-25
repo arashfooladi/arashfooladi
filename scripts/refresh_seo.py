@@ -13,13 +13,14 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://arashfooladi.ir'
 MODIFIED = '2026-10-01'
 PAGE_MODIFIED = {
+    '/journal/async-search-race-conditions/': '2026-10-25',
     '/journal/yarplus-idealist/': '2026-10-17',
     '/yarplus/': '2026-10-17',
     '/journal/payment-system-under-sanctions/': '2026-10-17',
     '/journal/microservices-solo-project/': '2026-10-17',
-    '/': '2026-10-20',
+    '/': '2026-10-25',
     '/projects/': '2026-10-20',
-    '/journal/': '2026-10-17',
+    '/journal/': '2026-10-25',
     '/journal/sonnet-5-5-opus-5-5-gpt-6-1-sol/': '2026-10-02',
 }
 PROJECTS_BY_PAGE = {
@@ -83,10 +84,11 @@ for route,p in pages.items():
     modified = PAGE_MODIFIED.get(route, MODIFIED)
     text = re.sub(r'<title>.*?</title>', '<title>'+escape(p['title'])+'</title>',text)
     text = re.sub(r'<script type="application/ld\+json">.*?</script>', '<!-- SEO_GRAPH -->',text,flags=re.S)
-    for key,value in [('description',p['description']),('author','آرش فولادی'),('robots','index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'),('twitter:card','summary_large_image'),('twitter:title',p['title']),('twitter:description',p['description']),('twitter:image',p['image']),('twitter:image:alt',p['headline']+' — آرش فولادی')]:
+    image_alt = p['title'] if route == '/' else p['headline']+' — آرش فولادی'
+    for key,value in [('description',p['description']),('author','آرش فولادی'),('robots','index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'),('twitter:card','summary_large_image'),('twitter:site','@arashfooladiorg'),('twitter:creator','@arashfooladiorg'),('twitter:title',p['title']),('twitter:description',p['description']),('twitter:image',p['image']),('twitter:image:alt',image_alt)]:
         text = meta(text,key,value)
     is_article = bool(p['published']) and route.startswith('/journal/')
-    for key,value in [('og:type','article' if is_article else 'website'),('og:title',p['title']),('og:description',p['description']),('og:url',url),('og:site_name','آرش فولادی'),('og:locale','fa_IR'),('og:image',p['image']),('og:image:secure_url',p['image']),('og:image:type','image/png'),('og:image:width','1200'),('og:image:height','630'),('og:image:alt',p['headline']+' — آرش فولادی')]:
+    for key,value in [('og:type','article' if is_article else 'website'),('og:title',p['title']),('og:description',p['description']),('og:url',url),('og:site_name','آرش فولادی'),('og:locale','fa_IR'),('og:image',p['image']),('og:image:secure_url',p['image']),('og:image:type','image/png'),('og:image:width','1200'),('og:image:height','630'),('og:image:alt',image_alt)]:
         text = meta(text,key,value,'property')
     if is_article:
         text = meta(text,'article:published_time',p['published'],'property')
@@ -128,6 +130,7 @@ for route,p in pages.items():
         article_body=re.search(r'<article[^>]*>(.*?)<nav\b(?=[^>]*\bclass="article-nav")',text,re.S)[1]
         count=len(plain(article_body).split())
         article={'@type':'BlogPosting','@id':url+'#article','headline':p['headline'],'description':p['description'],'url':url,'mainEntityOfPage':{'@id':page['@id']},'datePublished':p['published'],'dateModified':modified,'inLanguage':'fa','author':{'@id':person['@id']},'publisher':{'@id':person['@id']},'image':{'@id':url+'#image'},'wordCount':count,'isAccessibleForFree':True}
+        article['isPartOf'] = {'@type':'Blog', '@id':BASE+'/journal/#blog', 'url':BASE+'/journal/', 'name':'نوشته‌های آرش فولادی'}
         graph.append(article);page['mainEntity']={'@id':article['@id']}
     else:
         work={'@type':'CreativeWork','@id':url+'#work','name':p['headline'],'description':p['description'],'url':url,'inLanguage':'fa','creator':{'@id':person['@id']},'author':{'@id':person['@id']},'image':{'@id':url+'#image'},'mainEntityOfPage':{'@id':page['@id']}}

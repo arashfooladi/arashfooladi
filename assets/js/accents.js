@@ -67,6 +67,7 @@ for (const element of document.querySelectorAll('[data-ascii-art]')) {
 
   function tick(now) {
     if (!visible || document.hidden || motion.matches || finished) {
+      if (motion.matches && name === 'birds') canvas.hidden = true;
       stop();
       return;
     }
@@ -89,29 +90,38 @@ for (const element of document.querySelectorAll('[data-ascii-art]')) {
     animation = requestAnimationFrame(tick);
   }
 
+  function load() {
+    if (!loading) loading = Promise.all([
+      fetch(sources[name]).then(response => {
+        if (!response.ok) throw new Error('Artwork unavailable');
+        return response.json();
+      }),
+      document.fonts.load(`16px ${font}`),
+    ])
+      .then(([data]) => {
+        artwork = data;
+        resize();
+      })
+      .catch(() => { finished = true; canvas.hidden = true; });
+    return loading;
+  }
+
   async function sync() {
     if (!visible || document.hidden || finished) {
       stop();
       return;
     }
-    if (!loading) loading = fetch(sources[name])
-      .then(response => {
-        if (!response.ok) throw new Error('Artwork unavailable');
-        return response.json();
-      })
-      .then(async data => {
-        await document.fonts.load(`16px ${font}`);
-        artwork = data;
-        resize();
-        // Reduced-motion readers get quiet still accents; no birds take off.
-        canvas.hidden = motion.matches && name === 'birds';
-      })
-      .catch(() => { finished = true; canvas.hidden = true; });
-    await loading;
+    // Suppressed birds need neither their artwork nor their dedicated font.
+    if (motion.matches && name === 'birds') {
+      stop();
+      canvas.hidden = true;
+      return;
+    }
+    await load();
     if (!artwork || !visible || document.hidden || finished) return;
     if (motion.matches) {
       stop();
-      if (name === 'birds') canvas.hidden = true;
+      canvas.hidden = name === 'birds';
       return;
     }
     canvas.hidden = false;
@@ -125,10 +135,19 @@ for (const element of document.querySelectorAll('[data-ascii-art]')) {
     if (!animation) animation = requestAnimationFrame(tick);
   }
 
+  const trigger = name === 'birds' ? element.closest('.site-footer') : element;
+  if (name === 'birds') {
+    // Prepare near the footer without starting or remembering playback yet.
+    new IntersectionObserver((entries, observer) => {
+      if (!entries[0].isIntersecting) return;
+      observer.disconnect();
+      if (!motion.matches) load();
+    }, { rootMargin: '800px 0px' }).observe(trigger);
+  }
   new IntersectionObserver(entries => {
     visible = entries[0].isIntersecting;
     sync();
-  }, { threshold: name === 'birds' ? .2 : .35 }).observe(name === 'birds' ? element.closest('.site-footer') : element);
+  }, { threshold: name === 'birds' ? .2 : .35 }).observe(trigger);
   new ResizeObserver(resize).observe(element);
   document.addEventListener('visibilitychange', sync);
   motion.addEventListener('change', sync);

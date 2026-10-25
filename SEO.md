@@ -10,6 +10,7 @@ The projects archive is `/projects/`; Persian remains the only published locale.
 3. Set `PAGE_MODIFIED` entries to the actual modification date for the pages you changed. Leave dates for untouched pages and the historical `MODIFIED` fallback unchanged; do not change dates just to make content look fresh.
 4. Run `python scripts/refresh_seo.py`.
 5. Run `python scripts/generate_social_images.py` to update the 1200 × 630 share previews after title or summary changes. This optional authoring script needs Chrome and the Python `playwright` package; the website itself has no runtime dependencies.
+6. Run `python scripts/check_seo.py` before publishing. It checks canonical URLs, unique metadata, structured data, local links and fragments, share image dimensions, sitemap coverage and RSS consistency without packages or network access.
 
 The refresh script maintains a single connected JSON-LD graph per page, canonical metadata, Open Graph, Twitter previews, breadcrumbs, sitemap and RSS titles. It preserves publication dates, verification tags and redirect pages. New canonical HTML pages are discovered automatically.
 
@@ -17,6 +18,33 @@ The refresh script maintains a single connected JSON-LD graph per page, canonica
 
 Fonts are served locally with their OFL licenses in `assets/fonts/`.
 Social previews are static title cards, not screenshots or fabricated project visuals.
+
+## Review on 2026-10-25
+
+The local review found the existing crawlability basics in good shape: 14 indexable pages have unique titles and descriptions, self-referencing HTTPS canonicals, connected JSON-LD and sitemap entries. Five other HTML pages are deliberately excluded from indexing: three legacy redirects, the unfinished project page and the error page. All 436 local HTML references, including image source sets and fragments, resolve.
+
+The review made these changes:
+
+- Decorative hero posters on the homepage and both archives now use low fetch priority and asynchronous decoding. The main heading was the homepage's measured largest contentful element, so decorative downloads should yield to content resources. Posters still load eagerly and remain available without JavaScript and with reduced motion.
+- Social cards identify the existing public X account. The homepage's image description now states the name and role instead of repeating the name.
+- Each article's structured data explicitly identifies the journal it belongs to. Existing URLs, article copy, publication dates and modification dates are preserved.
+- `scripts/check_seo.py` provides repeatable, read-only checks. Its failure behavior was verified against broken canonicals, missing links, invalid structured data and incorrect sitemap coverage in temporary copies.
+
+Local mobile Lighthouse 13.0.1 runs in Chromium, served by Python's HTTP server:
+
+| Check | Before | After |
+| --- | --- | --- |
+| Performance | 92 | 97 |
+| Accessibility | 100 | 100 |
+| Best practices | 100 | 100 |
+| SEO | 100 | 100 |
+| Largest Contentful Paint | 3.2 s | 2.3 s |
+
+These are individual lab runs under simulated mobile conditions; scores vary and do not establish production Core Web Vitals or a ranking improvement. Remaining image-compression opportunities should be evaluated with visual review. Cache lifetimes and compression warnings from Python's development server do not establish a problem with the production host.
+
+Chromium checks passed for all 15 nonredirect, nonplaceholder pages at 360, 768 and 1440 pixels: 45 layouts with no horizontal overflow, JavaScript errors or failed asset requests. All images and fonts loaded. Homepage and archive scene workers ran, all three posters remained visible with JavaScript disabled and with reduced motion, and navigation from the homepage through the journal archive to an article worked. SEO generation remained repeatable, and optional social-image generation produced a 1200 × 630 card in a temporary copy.
+
+Production HTTP status, HTTPS enforcement, host redirects, search indexing and Search Console data were not verified in this review. The cloud environment's outbound policy blocked access to `arashfooladi.ir`; the proxy's 403 response was not a response from the website. Recheck the hosting follow-up below against production before changing Cloudflare or GitHub Pages settings.
 
 ## Validation on 2026-10-20
 

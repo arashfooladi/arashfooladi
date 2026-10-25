@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://arashfooladi.ir/</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-25</lastmod>
   </url>
   <url>
     <loc>https://arashfooladi.ir/computermelli/</loc>
@@ -18,11 +18,15 @@
   </url>
   <url>
     <loc>https://arashfooladi.ir/journal/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-25</lastmod>
   </url>
   <url>
     <loc>https://arashfooladi.ir/journal/ai-pair-programmer/</loc>
     <lastmod>2026-10-01</lastmod>
+  </url>
+  <url>
+    <loc>https://arashfooladi.ir/journal/async-search-race-conditions/</loc>
+    <lastmod>2026-10-25</lastmod>
   </url>
   <url>
     <loc>https://arashfooladi.ir/journal/cli-tools-i-use/</loc>

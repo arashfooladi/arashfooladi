@@ -5,7 +5,14 @@
     <link>https://arashfooladi.ir/journal/</link>
     <description>نوشته‌های فنی فارسی درباره توسعه بک‌اند، معماری نرم‌افزار و ابزارهای برنامه‌نویسی</description>
     <language>fa</language>
-    <lastBuildDate>Sat, 17 Oct 2026 11:35:00 +0330</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 15:43:39 +0330</lastBuildDate>
+    <item>
+      <title>جست‌وجوی زنده و تلهٔ پاسخ‌های دیررس</title>
+      <link>https://arashfooladi.ir/journal/async-search-race-conditions/</link>
+      <guid isPermaLink="true">https://arashfooladi.ir/journal/async-search-race-conditions/</guid>
+      <pubDate>Sun, 25 Oct 2026 15:43:39 +0330</pubDate>
+      <description>جلوگیری از نمایش نتیجه قدیمی در جست‌وجوی زنده با AbortController و شماره درخواست؛ یک مثال جاوااسکریپت، تفاوت لغو و debounce و روش تست پاسخ‌های دیررس.</description>
+    </item>
     <item>
       <title>یارپلاس در ایده‌آلیست؛ از ایده تا شایسته تقدیر</title>
       <link>https://arashfooladi.ir/journal/yarplus-idealist/</link>

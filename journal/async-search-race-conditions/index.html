@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Race Condition در جاوااسکریپت؛ جست‌وجوی زنده | آرش فولادی</title>
+  <meta name="description" content="جلوگیری از نمایش نتیجه قدیمی در جست‌وجوی زنده با AbortController و شماره درخواست؛ یک مثال جاوااسکریپت، تفاوت لغو و debounce و روش تست پاسخ‌های دیررس.">
+  <meta name="author" content="آرش فولادی">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://arashfooladi.ir/journal/async-search-race-conditions/">
+  <link rel="alternate" type="application/rss+xml" title="نوشته‌های آرش فولادی" href="https://arashfooladi.ir/feed.xml">
+  <link rel="preload" href="/assets/fonts/vazirmatn-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/fonts.css?v=ascii-20261015">
+  <link rel="stylesheet" href="/assets/css/site.css?v=ascii-20261015">
+  <link rel="stylesheet" href="/assets/css/journal.css?v=ascii-20261015">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@arashfooladiorg">
+  <meta name="twitter:creator" content="@arashfooladiorg">
+  <meta name="twitter:title" content="Race Condition در جاوااسکریپت؛ جست‌وجوی زنده | آرش فولادی">
+  <meta name="twitter:description" content="جلوگیری از نمایش نتیجه قدیمی در جست‌وجوی زنده با AbortController و شماره درخواست؛ یک مثال جاوااسکریپت، تفاوت لغو و debounce و روش تست پاسخ‌های دیررس.">
+  <meta name="twitter:image" content="https://arashfooladi.ir/assets/images/social/journal-async-search-race-conditions.png">
+  <meta name="twitter:image:alt" content="جست‌وجوی زنده و تلهٔ پاسخ‌های دیررس — آرش فولادی">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Race Condition در جاوااسکریپت؛ جست‌وجوی زنده | آرش فولادی">
+  <meta property="og:description" content="جلوگیری از نمایش نتیجه قدیمی در جست‌وجوی زنده با AbortController و شماره درخواست؛ یک مثال جاوااسکریپت، تفاوت لغو و debounce و روش تست پاسخ‌های دیررس.">
+  <meta property="og:url" content="https://arashfooladi.ir/journal/async-search-race-conditions/">
+  <meta property="og:site_name" content="آرش فولادی">
+  <meta property="og:locale" content="fa_IR">
+  <meta property="og:image" content="https://arashfooladi.ir/assets/images/social/journal-async-search-race-conditions.png">
+  <meta property="og:image:secure_url" content="https://arashfooladi.ir/assets/images/social/journal-async-search-race-conditions.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="جست‌وجوی زنده و تلهٔ پاسخ‌های دیررس — آرش فولادی">
+  <meta property="article:published_time" content="2026-10-25">
+  <meta property="article:modified_time" content="2026-10-25">
+  <meta property="article:author" content="https://arashfooladi.ir/">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://arashfooladi.ir/#website",
+      "url": "https://arashfooladi.ir/",
+      "name": "آرش فولادی",
+      "alternateName": "Arash Fooladi",
+      "inLanguage": "fa",
+      "publisher": {
+        "@id": "https://arashfooladi.ir/#arash-fooladi"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://arashfooladi.ir/#arash-fooladi",
+      "name": "آرش فولادی",
+      "alternateName": [
+        "Arash Fooladi",
+        "ارش فولادی"
+      ],
+      "url": "https://arashfooladi.ir/",
+      "image": "https://arashfooladi.ir/assets/images/arash-fooladi-logo.jpg",
+      "description": "طراحی و ساخت فروشگاه‌های آنلاین و توسعه نرم‌افزار؛ دانشجوی علوم کامپیوتر.",
+      "knowsLanguage": [
+        "fa",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/arashfooladi",
+        "https://www.linkedin.com/in/arashfooladi",
+        "https://x.com/arashfooladiorg",
+        "https://dev.to/arashfooladi",
+        "https://hashnode.com/@arashfooladi",
+        "https://www.instagram.com/arashfooladi_/",
+        "https://t.me/onewith_aklilighalb"
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://arashfooladi.ir/journal/async-search-race-conditions/#image",
+      "url": "https://arashfooladi.ir/assets/images/social/journal-async-search-race-conditions.png",
+      "contentUrl": "https://arashfooladi.ir/assets/images/social/journal-async-search-race-conditions.png",
+      "width": 1200,
+      "height": 630,
+      "caption": "جست‌وجوی زنده و تلهٔ پاسخ‌های دیررس"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://arashfooladi.ir/journal/async-search-race-conditions/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "خانه",
+          "item": "https://arashfooladi.ir/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "نوشته‌ها",
+          "item": "https://arashfooladi.ir/journal/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "جست‌وجوی زنده و تلهٔ پاسخ‌های دیررس",
+          "item": "https://arashfooladi.ir/journal/async-search-race-conditions/"
+        }
+      ]
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://arashfooladi.ir/journal/async-search-race-conditions/#article",
+      "headline": "جست‌وجوی زنده و تلهٔ پاسخ‌های دیررس",
+      "description": "جلوگیری از نمایش نتیجه قدیمی در جست‌وجوی زنده با AbortController و شماره درخواست؛ یک مثال جاوااسکریپت، تفاوت لغو و debounce و روش تست پاسخ‌های دیررس.",
+      "url": "https://arashfooladi.ir/journal/async-search-race-conditions/",
+      "mainEntityOfPage": {
+        "@id": "https://arashfooladi.ir/journal/async-search-race-conditions/#webpage"
+      },
+      "datePublished": "2026-10-25",
+      "dateModified": "2026-10-25",
+      "inLanguage": "fa",
+      "author": {
+        "@id": "https://arashfooladi.ir/#arash-fooladi"
+      },
+      "publisher": {
+        "@id": "https://arashfooladi.ir/#arash-fooladi"
+      },
+      "image": {
+        "@id": "https://arashfooladi.ir/journal/async-search-race-conditions/#image"
+      },
+      "wordCount": 927,
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://arashfooladi.ir/journal/#blog",
+        "url": "https://arashfooladi.ir/journal/",
+        "name": "نوشته‌های آرش فولادی"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://arashfooladi.ir/journal/async-search-race-conditions/#webpage",
+      "url": "https://arashfooladi.ir/journal/async-search-race-conditions/",
+      "name": "Race Condition در جاوااسکریپت؛ جست‌وجوی زنده | آرش فولادی",
+      "description": "جلوگیری از نمایش نتیجه قدیمی در جست‌وجوی زنده با AbortController و شماره درخواست؛ یک مثال جاوااسکریپت، تفاوت لغو و debounce و روش تست پاسخ‌های دیررس.",
+      "inLanguage": "fa",
+      "isPartOf": {
+        "@id": "https://arashfooladi.ir/#website"
+      },
+      "dateModified": "2026-10-25",
+      "primaryImageOfPage": {
+        "@id": "https://arashfooladi.ir/journal/async-search-race-conditions/#image"
+      },
+      "breadcrumb": {
+        "@id": "https://arashfooladi.ir/journal/async-search-race-conditions/#breadcrumbs"
+      },
+      "mainEntity": {
+        "@id": "https://arashfooladi.ir/journal/async-search-race-conditions/#article"
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body class="note-page">
+<a class="skip-link" href="#article">رفتن به متن نوشته</a><header class="site-header"><nav class="container nav" aria-label="ناوبری اصلی"><a class="brand" href="/" aria-label="صفحه اصلی آرش فولادی"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"></a><ul><li><a href="/">خانه</a></li><li><a href="/projects/">پروژه‌ها</a></li><li><a href="/journal/" aria-current="page">نوشته‌ها</a></li></ul></nav></header><main><header class="page-heading note-heading"><div class="reading-container">
+<nav aria-label="مسیر صفحه" class="breadcrumbs"><a href="/">خانه</a><span aria-hidden="true">/</span><a href="/journal/">نوشته‌ها</a><span aria-hidden="true">/</span><span aria-current="page">جست‌وجوی زنده و تلهٔ پاسخ‌های دیررس</span></nav>
+<p class="kicker">جاوااسکریپت و رابط کاربری</p>
+<h1>جست‌وجوی زنده و تلهٔ پاسخ‌های دیررس</h1>
+<div class="article-meta"><a href="/#about" rel="author">نوشته آرش فولادی</a><span>تاریخ انتشار: <time datetime="2026-10-25">۳ آبان ۱۴۰۵</time></span><span>حدود ۶ دقیقه مطالعه</span></div>
+</div></header><div class="container reading-layout note-layout"><aside class="reading-sidebar"><nav aria-label="فهرست صفحه"><p>در این صفحه</p><ul><li><a href="#section-1">دو درخواست، یک کادر نتیجه</a></li><li><a href="#section-2">چرا debounce کافی نیست؟</a></li><li><a href="#section-3">هر پاسخ اجازهٔ تغییر صفحه را ندارد</a></li><li><a href="#section-4">یک پیاده‌سازی کوچک</a></li><li><a href="#section-5">باگ را عمداً بازسازی کن</a></li><li><a href="#section-6">فراتر از کادر جست‌وجو</a></li><li><a href="#sources">منابع</a></li></ul></nav></aside><article class="prose note-copy" id="article" tabindex="-1">
+<p class="lede">کاربر «جاوا» را جست‌وجو می‌کند، بعد سریع می‌نویسد «جاوااسکریپت». نتیجهٔ عبارت دوم می‌آید و درست نمایش داده می‌شود. چند لحظه بعد، پاسخ درخواست اول از راه می‌رسد و همان نتیجهٔ درست را پاک می‌کند. کد خطا نداده؛ صفحه فقط دارد جواب سؤال قبلی را نشان می‌دهد.</p>
+<h2 id="section-1">دو درخواست، یک کادر نتیجه</h2>
+<p>اگر با هر تغییر ورودی یک <code>fetch</code> بفرستیم، ترتیب شروع درخواست‌ها را می‌دانیم. ترتیب تمام شدنشان تضمین‌شده نیست. پاسخ اول ممکن است به خاطر شبکه، کش یا زمان پردازش سرور دیرتر برسد.</p>
+<pre dir="ltr"><code>Input:    "java"       "javascript"
+Request:  A starts     B starts
+Response:             B finishes     A finishes
+Screen:               javascript     java</code></pre>
+<p>این یک نمونه از <span lang="en" dir="ltr">Race Condition</span> است: نتیجهٔ نهایی به ترتیب رخدادها وابسته شده است. برای بروز چنین باگی نیازی به چند نخ جاوااسکریپت نداریم؛ جابه‌جا شدن زمان تکمیل کارهای ناهمگام کافی است. حتی اگر هر دو پاسخ کاملاً معتبر باشند، یکی از آن‌ها دیگر به ورودی فعلی مربوط نیست.</p>
+<h2 id="section-2">چرا debounce کافی نیست؟</h2>
+<p>با <span lang="en" dir="ltr">debounce</span> کمی صبر می‌کنیم تا تایپ کاربر متوقف شود و بعد درخواست می‌فرستیم. این کار تعداد درخواست‌ها را کم می‌کند. اما فرض کن کاربر به اندازهٔ کافی مکث کرده، درخواست اول رفته و دوباره شروع به تایپ کرده است. حالا باز هم دو درخواست می‌توانند هم‌زمان در جریان باشند.</p>
+<p>تأخیر ۳۰۰ میلی‌ثانیه‌ای تضمینی برای ترتیب پاسخ‌ها نمی‌دهد. برای درستی نمایش نتیجه باید مشخص کنیم کدام درخواست هنوز اجازه دارد صفحه را تغییر بدهد.</p>
+<h2 id="section-3">هر پاسخ اجازهٔ تغییر صفحه را ندارد</h2>
+<p>دو کار مکمل داریم: با <code>AbortController</code> دریافت قبلی را لغو کنیم و برای هر جست‌وجو یک شماره بگذاریم. پیش از نمایش نتیجه، شمارهٔ آن را با آخرین شماره مقایسه کنیم. اگر قدیمی بود، پاسخ را کنار بگذاریم.</p>
+<p>لغو کردن <code>fetch</code> و خواندن بدنهٔ پاسخ را متوقف می‌کند، اما نباید فرض کنیم هر کاری که بعد از آن شروع شده هم خودکار لغو می‌شود. ممکن است پردازش دیگری یا یک لایهٔ کش، سیگنال لغو را پشتیبانی نکند. شمارهٔ درخواست، شرط تغییر رابط کاربری را روشن نگه می‌دارد. لغو درخواست در مرورگر هم تضمین نمی‌کند پردازش سمت سرور متوقف شده باشد.</p>
+<h2 id="section-4">یک پیاده‌سازی کوچک</h2>
+<p>این مثال برای یک جست‌وجوی خواندنی است. فرض می‌کنیم مسیر <code>/api/search</code> آرایه‌ای از رکوردهای دارای <code>title</code> برمی‌گرداند. HTML زیر را در یک صفحه بگذار و جاوااسکریپت را پس از آن، یا در یک اسکریپت <code>defer</code>، اجرا کن. این مقاله خودش آن API را اجرا نمی‌کند.</p>
+<pre dir="ltr"><code id="search-markup" class="language-html">&lt;label for=&quot;search&quot;&gt;جست‌وجوی مقاله&lt;/label&gt;
+&lt;input id=&quot;search&quot; type=&quot;search&quot; aria-controls=&quot;results&quot;&gt;
+&lt;p id=&quot;search-status&quot; role=&quot;status&quot;&gt;&lt;/p&gt;
+&lt;ul id=&quot;results&quot;&gt;&lt;/ul&gt;</code></pre>
+<pre dir="ltr"><code id="search-example" class="language-javascript">const input = document.querySelector(&quot;#search&quot;);
+const results = document.querySelector(&quot;#results&quot;);
+const status = document.querySelector(&quot;#search-status&quot;);
+let revision = 0;
+let controller;
+
+async function search(query) {
+  const mine = ++revision;
+  controller?.abort();
+  controller = null;
+  results.replaceChildren();
+
+  if (!query) {
+    status.textContent = &quot;&quot;;
+    return;
+  }
+
+  controller = new AbortController();
+  const { signal } = controller;
+  status.textContent = &quot;در حال جست‌وجو…&quot;;
+
+  try {
+    const response = await fetch(
+      `/api/search?q=${encodeURIComponent(query)}`,
+      { signal }
+    );
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const items = await response.json();
+    if (mine !== revision) return;
+
+    results.replaceChildren(...items.map(item =&gt; {
+      const li = document.createElement(&quot;li&quot;);
+      li.textContent = item.title;
+      return li;
+    }));
+    status.textContent = items.length
+      ? `${items.length} نتیجه`
+      : &quot;نتیجه‌ای پیدا نشد.&quot;;
+  } catch (error) {
+    if (mine !== revision || error.name === &quot;AbortError&quot;) return;
+    status.textContent = &quot;جست‌وجو انجام نشد. دوباره امتحان کن.&quot;;
+  }
+}
+
+input.addEventListener(&quot;input&quot;, () =&gt; search(input.value.trim()));</code></pre>
+<p>شمارهٔ <code>revision</code> قبل از بررسی خالی بودن عبارت تغییر می‌کند. پس اگر کاربر ورودی را پاک کند، پاسخ در راه هم اعتبارش را از دست می‌دهد و نمی‌تواند دوباره نتایج را روی صفحه بیاورد.</p>
+<p>شاخهٔ خطا هم شماره را بررسی می‌کند؛ خطای یک درخواست قدیمی نباید پیام وضعیت جست‌وجوی جدید را عوض کند. همچنین <code>fetch</code> برای پاسخ‌هایی مثل <code>404</code> و <code>500</code> به‌تنهایی خطا پرتاب نمی‌کند، برای همین <code>response.ok</code> را جداگانه می‌سنجیم.</p>
+<p>عنوان نتیجه با <code>textContent</code> وارد صفحه می‌شود تا متن API به‌عنوان HTML اجرا نشود. در این نمونه نتیجهٔ قبلی هنگام تایپ پاک می‌شود؛ این یک انتخاب برای رابط کاربری است. می‌توان آن را نگه داشت، به شرط اینکه روشن باشد نتیجه هنوز در حال به‌روزرسانی است.</p>
+<h2 id="section-5">باگ را عمداً بازسازی کن</h2>
+<p>تست کردن فقط با اینترنت سریع ممکن است این مشکل را پنهان کند. در یک پاسخ‌دهندهٔ آزمایشی، تکمیل درخواست‌ها را خودت کنترل کن. ترتیب زیر باید همیشه نتیجهٔ یکسانی بدهد:</p>
+<ol>
+<li>جست‌وجوی «جاوا» را شروع کن و پاسخ آن را نگه دار.</li>
+<li>جست‌وجوی «جاوااسکریپت» را شروع کن و پاسخ آن را زودتر برگردان.</li>
+<li>حالا پاسخ قدیمی را برگردان. صفحه باید همچنان نتایج «جاوااسکریپت» را نشان بدهد.</li>
+<li>همین سناریو را با خطای درخواست قدیمی تکرار کن؛ پیام موفقیت جست‌وجوی جدید باید باقی بماند.</li>
+<li>در میانهٔ درخواست، ورودی را خالی کن. رسیدن پاسخ دیررس نباید نتایج را دوباره ظاهر کند.</li>
+</ol>
+<p>برای آزمودن خودِ محافظ شماره، پاسخ‌دهندهٔ تست را طوری بساز که سیگنال لغو را نادیده بگیرد. با این کار مطمئن می‌شوی درست بودن صفحه فقط به لغو موفق درخواست وابسته نیست. اگر بعداً debounce اضافه کردی، اعتبار درخواست قبلی را همان لحظهٔ تغییر ورودی باطل کن؛ منتظر پایان تایمر نمان.</p>
+<h2 id="section-6">فراتر از کادر جست‌وجو</h2>
+<p>همین اتفاق در فیلتر محصولات، عوض کردن تب‌ها یا باز کردن سریع چند پروفایل هم رخ می‌دهد. پیش از نوشتن شرط‌ها، یک قاعدهٔ ساده برای صفحه تعریف کن: داده‌ای که نمایش می‌دهم باید به آخرین انتخاب کاربر مربوط باشد. بعد مسیر موفقیت، خطا و پاک شدن ورودی را با همان قاعده بررسی کن.</p>
+<p>این الگو برای تازه ماندن دادهٔ نمایشی است. در عملیاتی مثل پرداخت یا ثبت سفارش، لغو درخواست و نادیده گرفتن پاسخ برای جلوگیری از اجرای تکراری کافی نیست؛ آنجا کنترل تکرار و وضعیت عملیات باید در سرور هم انجام شود. در <a href="/journal/payment-system-under-sanctions/">یادداشت طراحی پرداخت برای یارپلاس</a> به همین ملاحظات پرداخته شده است.</p>
+<h2 id="sources">منابع</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController" lang="en" dir="ltr">MDN: AbortController</a>؛ رفتار لغو درخواست و مصرف بدنهٔ پاسخ.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" lang="en" dir="ltr">MDN: Using the Fetch API</a>؛ مدیریت خطاهای HTTP و لغو درخواست.</li>
+</ul>
+<nav aria-label="نوشته‌های مرتبط" class="article-nav"><a href="/journal/">→ همه نوشته‌ها</a><a href="/journal/ai-pair-programmer/">کدنویسی با هوش مصنوعی ←</a></nav>
+</article></div></main><footer class="site-footer"><div class="container footer-main"><a class="footer-brand" href="/"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"><span>آرش فولادی</span></a><nav class="footer-social" aria-label="راه‌های ارتباط">
+  <a class="telegram-social" href="https://t.me/onewith_aklilighalb" rel="me noopener noreferrer"><span class="telegram-ascii" aria-hidden="true"><pre dir="ltr" translate="no">         ..........
+      ................
+    ....................
+  ........................
+ ..........................
+ ...............####.......
+.............#######........
+.........#####..####........
+......#####...######........
+............#######.........
+ .............#####........
+ ...............###........
+  ........................
+    ....................
+      ................
+         ..........         </pre></span><span>تلگرام</span></a>
+  <a href="https://github.com/arashfooladi" rel="me noopener noreferrer">گیت‌هاب</a>
+  <a href="https://www.linkedin.com/in/arashfooladi" rel="me noopener noreferrer">لینکدین</a>
+  <a href="https://x.com/arashfooladiorg" rel="me noopener noreferrer">ایکس</a>
+  <a href="https://dev.to/arashfooladi" lang="en" dir="ltr" rel="me noopener noreferrer">Dev.to</a>
+  <a href="https://hashnode.com/@arashfooladi" lang="en" dir="ltr" rel="me noopener noreferrer">Hashnode</a>
+  <a href="https://www.instagram.com/arashfooladi_/" rel="me noopener noreferrer">اینستاگرام</a>
+</nav></div><div class="container footer-bottom"><span>طراحی وب و توسعه نرم‌افزار</span><span>© ۱۴۰۵ آرش فولادی</span></div></footer>
+</body>
+</html>
