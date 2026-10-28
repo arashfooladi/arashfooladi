@@ -13,9 +13,13 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://arashfooladi.ir'
 MODIFIED = '2026-10-01'
 PAGE_MODIFIED = {
+    '/telegram-bot/': '2026-10-28',
+    '/daruham/': '2026-10-28',
+    '/gandishiraz/': '2026-10-28',
+    '/computermelli/': '2026-10-28',
     '/journal/async-search-race-conditions/': '2026-10-25',
     '/journal/yarplus-idealist/': '2026-10-17',
-    '/yarplus/': '2026-10-17',
+    '/yarplus/': '2026-10-28',
     '/journal/payment-system-under-sanctions/': '2026-10-17',
     '/journal/microservices-solo-project/': '2026-10-17',
     '/': '2026-10-28',
@@ -28,13 +32,20 @@ PROJECTS_BY_PAGE = {
     '/': ['gamesage', 'telegram-bot', 'gandishiraz', 'daruham', 'computermelli'],
     '/projects/': ['gamesage', 'yarplus', 'telegram-bot', 'gandishiraz', 'daruham', 'computermelli'],
 }
+PROJECT_VISUALS = {
+    '/computermelli/': ('/computermelli/images/home.webp', 1440, 960),
+    '/gandishiraz/': ('/gandishiraz/images/home.webp', 1440, 960),
+    '/daruham/': ('/daruham/images/home.webp', 1440, 960),
+    '/gamesage/': ('/gamesage/images/home.webp', 1440, 1050),
+    '/yarplus/': ('/yarplus/images/main.webp', 1600, 900),
+}
 PAGE_COPY = {
     '/': ('آرش فولادی | طراحی وب و توسعه نرم‌افزار', 'آرش فولادی؛ توسعه فروشگاه گیم‌سیج با Next.js، فروشگاه‌های وردپرسی گاندی شیراز و داروهام، زیرساخت ربات تلگرام و یادداشت‌های نرم‌افزار.'),
     '/projects/': ('پروژه‌های آرش فولادی | فروشگاه‌های آنلاین و بک‌اند', 'نمونه پروژه‌های آرش فولادی؛ فروشگاه گیم‌سیج با Next.js، فروشگاه‌های وردپرسی، زیرساخت ربات تلگرام و نمونه اولیه یارپلاس.'),
-    '/gamesage/': ('توسعه فروشگاه گیم‌سیج با Next.js | آرش فولادی', 'طراحی و توسعه فروشگاه اکانت بازی گیم‌سیج (GameSage.ir)؛ Next.js و TypeScript، کاتالوگ بازی، سبد خرید، حساب کاربری و مدیریت سفارش و پرداخت.'),
+    '/gamesage/': ('توسعه فروشگاه گیم‌سیج با Next.js | آرش فولادی', 'نمونه‌کار گیم‌سیج؛ فروشگاه اکانت بازی با کاتالوگ، صفحه بازی، سبد خرید و پیگیری سفارش. طراحی و توسعه با Next.js و TypeScript توسط آرش فولادی.'),
     '/gandishiraz/': ('طراحی و ساخت فروشگاه گاندی شیراز | آرش فولادی', 'ساخت کامل فروشگاه کیف و کفش گاندی شیراز توسط آرش فولادی؛ پایه و قالب اختصاصی، جست‌وجو، فیلتر محصولات، سبد خرید و نسخه موبایل.'),
     '/daruham/': ('طراحی و ساخت وب‌سایت داروهام | آرش فولادی', 'طراحی و ساخت کامل داروهام توسط آرش فولادی؛ فروشگاه سلامت و زیبایی روی پایه اختصاصی، حساب کاربر، نوبت‌دهی و ارسال نسخه.'),
-    '/computermelli/': ('ساخت فروشگاه کامپیوتر ملی | آرش فولادی', 'سابقه طراحی و ساخت کامل فروشگاه قطعات کامپیوتر ملی توسط آرش فولادی؛ قالب اختصاصی، جست‌وجوی محصول و اتصال WooCommerce. سایت اکنون غیرفعال است.'),
+    '/computermelli/': ('ساخت فروشگاه کامپیوتر ملی | آرش فولادی', 'طراحی و ساخت فروشگاه کامپیوتر ملی؛ قالب اختصاصی، جست‌وجوی قطعات و تجهیزات دیجیتال، صفحات محصول و خرید فارسی با WordPress و WooCommerce.'),
     '/telegram-bot/': ('زیرساخت ربات تلگرام با ۳۰۰ هزار کاربر | آرش فولادی', 'پروژه ربات تلگرام آرش فولادی با بیش از ۳۰۰ هزار کاربر و ۱۰ میلیون درخواست پردازش‌شده؛ صف کارها، کش، مدیریت درخواست و پایش.'),
     '/yarplus/': ('یارپلاس؛ نمونه اولیه اشتراک محتوا | آرش فولادی', 'نمونه اولیه یارپلاس برای اشتراک محتوا؛ شایسته تقدیر رقابت ایده‌آلیست. پرداخت پیاده‌سازی نشد و توسعه پس از رقابت متوقف شد.'),
     '/journal/': ('نوشته‌های آرش فولادی | نرم‌افزار و هوش مصنوعی', 'یادداشت‌های آرش فولادی درباره نرم‌افزار، مدل‌های هوش مصنوعی، ابزارهای کدنویسی، درگاه پرداخت و تجربه ساخت یارپلاس.'),
@@ -104,7 +115,9 @@ for route,p in pages.items():
         text=text.replace('</head>','  <link rel="alternate" type="application/rss+xml" title="نوشته‌های آرش فولادی" href="/feed.xml">\n</head>')
     graph=[website,person]
     page={'@type':'ProfilePage' if route=='/' else 'CollectionPage' if route in ('/projects/','/journal/') else 'WebPage','@id':url+'#webpage','url':url,'name':p['title'],'description':p['description'],'inLanguage':'fa','isPartOf':{'@id':website['@id']},'dateModified':modified,'primaryImageOfPage':{'@id':url+'#image'}}
-    graph.append({'@type':'ImageObject','@id':url+'#image','url':p['image'],'contentUrl':p['image'],'width':1200,'height':630,'caption':p['headline']})
+    visual = PROJECT_VISUALS.get(route)
+    image_url, image_width, image_height = (BASE+visual[0], visual[1], visual[2]) if visual else (p['image'], 1200, 630)
+    graph.append({'@type':'ImageObject','@id':url+'#image','url':image_url,'contentUrl':image_url,'width':image_width,'height':image_height,'caption':p['headline']})
     crumbs=[('خانه',BASE+'/')]
     if route in ('/projects/','/journal/'):
         crumbs.append((p['headline'],url))

@@ -84,3 +84,94 @@
   .case-copy .project-section { padding-block: 28px; }
 }
 @media(max-width:360px) { .product-copy, .backend-work { padding: 20px; } .backend-scale { grid-template-columns: 1fr; gap: 4px; } }
+
+/* Project showcases put the finished work before implementation details. */
+.showcase-header { padding-block: 38px 0; }
+.showcase-eyebrow { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 30px; margin-top: 55px; font-size: .8rem; color: var(--muted); }
+.showcase-eyebrow p { margin: 0; }
+.showcase-status { display: inline-flex; align-items: center; gap: 9px; }
+.showcase-status::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--project-accent); }
+.showcase-header h1 { margin: 15px 0 10px; font-size: clamp(2.8rem, 6.7vw, 6rem); line-height: 1.6; font-weight: 550; }
+.showcase-lead { margin: 0; font-size: clamp(1.15rem, 2.1vw, 1.7rem); line-height: 1.9; color: #c4c3cc; }
+.showcase-header .project-actions { margin-top: 26px; }
+.showcase-visit { border-color: var(--project-accent); }
+.showcase-body { padding-bottom: 85px; }
+.showcase-intro { max-width: 790px; margin: 38px 0 50px; font-size: 1rem; color: var(--muted); line-height: 2.2; }
+.showcase-intro p { margin: 0; }
+.showcase-desktop { margin: 0; }
+.showcase-screen-label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; padding: 15px 22px; border: 1px solid #333338; border-bottom: 0; border-radius: 6px 6px 0 0; background: #151517; font-size: .72rem; color: #bdbdc4; }
+.showcase-screen-label [dir="ltr"] { font-family: Inter, sans-serif; color: #9898a3; }
+.showcase-desktop > img { width: 100%; border: 1px solid #333338; border-top: 0; border-radius: 0 0 6px 6px; }
+.showcase-desktop figcaption, .showcase-mobile figcaption, .showcase-secondary figcaption { margin-top: 13px; font-size: .72rem; color: #a2a2ad; }
+.showcase-details { display: grid; grid-template-columns: 1.2fr .8fr; gap: 100px; align-items: center; margin-block: 100px 80px; }
+.showcase-details-text { grid-template-columns: 1fr; max-width: 900px; }
+.showcase-label { margin: 0 0 10px; color: var(--project-accent); font-size: .8rem; }
+.showcase-highlights h2 { font-size: clamp(1.6rem, 2.9vw, 2.5rem); line-height: 1.85; margin: 0 0 35px; }
+.showcase-highlights ol { list-style: none; padding: 0; margin: 0; }
+.showcase-highlights li { display: grid; grid-template-columns: 28px 1fr; gap: 20px; padding-block: 22px; border-top: 1px solid var(--line); }
+.showcase-feature-number { padding-top: 3px; color: #81818b; font-size: .78rem; }
+.showcase-highlights h3 { font-size: 1.04rem; margin: 0 0 7px; }
+.showcase-highlights li p { margin: 0; color: #aaaab5; font-size: .92rem; line-height: 2; }
+.showcase-mobile { width: min(100%, 290px); margin: 0; justify-self: center; }
+.showcase-mobile img { width: 100%; border: 1px solid #36363c; border-radius: 12px; box-shadow: 0 28px 75px #0006; }
+.showcase-secondary { margin: 0; min-width: 0; }
+.showcase-secondary img { border: 1px solid #36363c; border-radius: 4px; }
+.showcase-colophon { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px 50px; border-block: 1px solid var(--line); padding-block: 26px; }
+.showcase-colophon h2 { margin: 0; font-size: .85rem; font-weight: 500; color: #bdbdc6; }
+.showcase-colophon p { margin: 5px 0 0; color: #90909d; font-size: .8rem; }
+.showcase-colophon .tag-list { margin: 0; gap: 6px 20px; }
+.showcase-note { max-width: 850px; margin-top: 44px; }
+.showcase-note h2 { font-size: 1.1rem; margin: 0 0 12px; }
+.showcase-note p, .showcase-source-note { color: var(--muted); font-size: .92rem; line-height: 2.1; }
+.showcase-source-note { margin-top: 28px; }
+.showcase-next { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 24px; margin-top: 75px; }
+.showcase-next > a:first-child { text-decoration: none; }
+.showcase-next > a:first-child > span { display: block; font-size: .8rem; color: var(--muted); }
+.showcase-next strong { display: block; margin-top: 12px; font-weight: 500; font-size: clamp(1.5rem, 3vw, 2.3rem); }
+.showcase-next strong span { display: inline-block; margin-inline-start: 18px; color: #8f8f9b; }
+.showcase-next a:hover strong { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 10px; }
+.showcase-numbers { padding: 55px; border: 1px solid #343b45; border-radius: 6px; background: linear-gradient(135deg, #171d24, #101114); }
+.showcase-numbers > p { margin: 0 0 35px; color: #bcc4ce; font-size: .86rem; }
+.showcase-numbers > div { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+.showcase-numbers > div p { margin: 0; }
+.showcase-numbers strong { display: block; font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 500; color: #f1f3f5; line-height: 1.8; }
+.showcase-numbers > div span { display: block; color: #aab6c5; margin-top: 10px; font-size: .9rem; }
+.showcase-numbers > span { display: block; margin-top: 45px; padding-top: 23px; border-top: 1px solid #343b45; color: #9ca9ba; font-size: .8rem; }
+.store-gallery { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
+.store-gallery li { min-width: 0; }
+.store-card { display: block; height: 100%; border: 1px solid #303036; border-radius: 6px; overflow: hidden; background: #101013; text-decoration: none; }
+.store-card > img { width: 100%; }
+.store-card > div { padding: 25px; }
+.store-card p { color: var(--muted); font-size: .76rem; margin: 0; }
+.store-card h3 { margin: 8px 0 25px; font-size: 1.45rem; font-weight: 500; }
+.store-card .work-link { font-size: .8rem; }
+@media(max-width:1000px) {
+  .showcase-details { gap: 50px; }
+  .store-gallery { gap: 18px; }
+  .store-card > div { padding: 20px; }
+}
+@media(max-width:800px) {
+  .showcase-details { grid-template-columns: 1fr; gap: 45px; margin-block: 65px 55px; }
+  .showcase-mobile { width: 250px; }
+  .showcase-secondary { max-width: 650px; }
+  .store-gallery { grid-template-columns: 1fr; gap: 28px; }
+}
+@media(max-width:600px) {
+  .showcase-header { padding-top: 24px; }
+  .showcase-eyebrow { margin-top: 35px; font-size: .72rem; gap: 10px 20px; }
+  .showcase-header h1 { margin-top: 20px; font-size: clamp(2.4rem, 11vw, 3.5rem); }
+  .showcase-lead { font-size: 1.12rem; }
+  .showcase-header .project-actions { gap: 18px; }
+  .showcase-intro { margin-block: 30px 35px; font-size: .92rem; }
+  .showcase-screen-label { padding: 10px 12px; font-size: .62rem; }
+  .showcase-highlights h2 { font-size: 1.65rem; margin-bottom: 25px; }
+  .showcase-highlights li { gap: 12px; padding-block: 20px; }
+  .showcase-highlights li p { font-size: .89rem; }
+  .showcase-colophon { gap: 20px; }
+  .showcase-next { margin-top: 50px; }
+  .showcase-body { padding-bottom: 55px; }
+  .showcase-numbers { padding: 26px 22px; }
+  .showcase-numbers > div { grid-template-columns: 1fr; gap: 32px; }
+  .showcase-numbers strong { font-size: 2.7rem; }
+  .showcase-numbers > span { margin-top: 30px; }
+}

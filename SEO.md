@@ -16,8 +16,20 @@ The refresh script maintains a single connected JSON-LD graph per page, canonica
 
 `PROJECTS_BY_PAGE` controls the project list in structured data. Keep its entries in the same order as the project cards visible on each page, and include only projects actually shown there.
 
+`PROJECT_VISUALS` identifies the actual project screenshot and its dimensions for each visual showcase's structured data. Social cards remain separate 1200 × 630 images. Update this mapping when replacing a primary project screenshot.
+
 Fonts are served locally with their OFL licenses in `assets/fonts/`.
 Social previews are static title cards, not screenshots or fabricated project visuals.
+
+## Project showcases on 2026-10-28
+
+All six project pages now present the work as showcases: a short introduction, prominent visuals or existing project metrics, three concise highlights, a compact technology summary and links to more work. Existing canonical URLs and section anchors are preserved. Yarplus remains explicitly identified as a stopped prototype with payments not implemented; no new business or performance metrics were added.
+
+Computer Melli was verified live at `https://computermelli.com/` with an HTTP 200 response. Its showcase, homepage listing, archive listing, metadata and share preview no longer identify it as inactive. Its public-site link is restored. The implementation summary was checked against the theme source and public storefront.
+
+Real public desktop screenshots of Computer Melli, Gandi Shiraz and Daruham, plus mobile screenshots of all four active stores, were captured on 2026-10-28 and saved locally as WebP images. GameSage's existing desktop capture and Yarplus's existing prototype images are retained. The archive's three additional store entries now have screenshot cards. Screenshot dimensions are reflected in project structured data; social cards remain separately generated title cards.
+
+Validation passed for 16 canonical pages, 481 local references, structured data, social images, sitemap and seven RSS articles. Chromium checks passed for all six showcases, the homepage and projects archive at 360, 768 and 1440 pixels (24 layouts), including image loading, overflow, navigation, Computer Melli's live-site link and the Yarplus status text. All six showcases remain readable without JavaScript. Existing journal pages and RSS are unchanged.
 
 ## GameSage addition on 2026-10-28
 
