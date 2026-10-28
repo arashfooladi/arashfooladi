@@ -36,6 +36,9 @@
 .project-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 25px; margin-top: 28px; }
 .project-actions > a:not(.button) { color: #c2c2ce; font-size: .88rem; }
 .case-heading .project-hero-image { margin-top: 35px; margin-bottom: 0; }
+.project-visual { margin: 35px 0 0; }
+.project-visual .project-hero-image { display: block; margin: 0; }
+.project-visual figcaption { margin-top: 12px; color: var(--muted); font-size: .8rem; line-height: 1.9; }
 .case-copy .project-section { border-bottom: 1px solid var(--line); padding-block: 35px; }
 .case-copy .project-section:first-child { padding-top: 0; }
 .case-copy .project-section h2 { margin: 0 0 20px; }

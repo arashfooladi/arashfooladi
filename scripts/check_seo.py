@@ -29,6 +29,7 @@ class Page(HTMLParser):
         self.meta = {}
         self.links = []
         self.refs = []
+        self.project_links = []
         self.ids = []
         self.h1 = []
         self.title = ''
@@ -47,6 +48,8 @@ class Page(HTMLParser):
             self.meta.setdefault(key, []).append(attrs.get('content', ''))
         if tag == 'link':
             self.links.append(attrs)
+        if tag == 'a' and set(attrs.get('class', '').split()) & {'work-entry', 'site-snippet'}:
+            self.project_links.append(urljoin(self.url, attrs.get('href', '')))
         if attrs.get('id'):
             self.ids.append(attrs['id'])
         for field in ('href', 'src', 'poster'):
@@ -143,6 +146,14 @@ def main():
             check(entity['name'] == page.title and entity['description'] == page.value('description'), f'{label}: stale structured-data copy')
             author = nodes[BASE + '/#arash-fooladi']
             check(author['@type'] == 'Person' and author['url'] == BASE + '/', f'{label}: missing author identity')
+            for listing in (node for node in graph if node['@type'] == 'ItemList'):
+                items = listing['itemListElement']
+                check([item['url'] for item in items] == page.project_links,
+                      f'{label}: structured project list differs from visible cards or their order')
+                check(listing['numberOfItems'] == len(page.project_links),
+                      f'{label}: structured project count differs from visible cards')
+                check([item['position'] for item in items] == list(range(1, len(items) + 1)),
+                      f'{label}: project list positions must be sequential')
             article = nodes.get(page.url + '#article')
             if article:
                 articles[page.url] = (page, article)

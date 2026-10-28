@@ -19,6 +19,14 @@ The refresh script maintains a single connected JSON-LD graph per page, canonica
 Fonts are served locally with their OFL licenses in `assets/fonts/`.
 Social previews are static title cards, not screenshots or fabricated project visuals.
 
+## GameSage addition on 2026-10-28
+
+Added `/gamesage/` with a Persian project description grounded in the live storefront and the reviewed source snapshot. The page covers the catalog, order and delivery states, payment implementation, management tools and technical stack. It makes no traffic, sales, performance or security certification claims. Private source repositories are not linked from the public page.
+
+The storefront screenshot was captured from the public homepage on 2026-10-28 and saved as a local 1440 × 1050 WebP. Its caption records that date. The homepage and projects archive feature the new project; the archive now contains six projects. Project lists, metadata, share previews and sitemap were updated together. Modification dates changed only for the homepage, projects archive and new project page; existing articles and RSS were unchanged.
+
+Validation passed for 16 canonical pages, 500 local references, structured data, share images, sitemap and seven RSS articles. The SEO check now verifies project list order and counts against visible cards. SEO generation was checked for repeatability. Chromium checks passed at 360, 768 and 1440 pixels for the homepage, projects archive and GameSage page, including navigation, screenshot loading, breadcrumbs, anchors, overflow and browser errors. The new project remains readable without JavaScript.
+
 ## Review on 2026-10-25
 
 The local review found the existing crawlability basics in good shape: 14 indexable pages have unique titles and descriptions, self-referencing HTTPS canonicals, connected JSON-LD and sitemap entries. Five other HTML pages are deliberately excluded from indexing: three legacy redirects, the unfinished project page and the error page. All 436 local HTML references, including image source sets and fragments, resolve.

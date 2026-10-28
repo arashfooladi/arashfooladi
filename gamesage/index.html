@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>توسعه فروشگاه گیم‌سیج با Next.js | آرش فولادی</title>
+  <meta name="description" content="طراحی و توسعه فروشگاه اکانت بازی گیم‌سیج (GameSage.ir)؛ Next.js و TypeScript، کاتالوگ بازی، سبد خرید، حساب کاربری و مدیریت سفارش و پرداخت.">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://arashfooladi.ir/gamesage/">
+  <link rel="preload" href="/assets/fonts/vazirmatn-arabic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/fonts.css?v=ascii-20261015">
+  <link rel="stylesheet" href="/assets/css/site.css?v=ascii-20261015">
+  <link rel="stylesheet" href="/assets/css/projects.css?v=gamesage-20261028">
+  <meta name="author" content="آرش فولادی">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@arashfooladiorg">
+  <meta name="twitter:creator" content="@arashfooladiorg">
+  <meta name="twitter:title" content="توسعه فروشگاه گیم‌سیج با Next.js | آرش فولادی">
+  <meta name="twitter:description" content="طراحی و توسعه فروشگاه اکانت بازی گیم‌سیج (GameSage.ir)؛ Next.js و TypeScript، کاتالوگ بازی، سبد خرید، حساب کاربری و مدیریت سفارش و پرداخت.">
+  <meta name="twitter:image" content="https://arashfooladi.ir/assets/images/social/gamesage.png">
+  <meta name="twitter:image:alt" content="گیم‌سیج — آرش فولادی">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="توسعه فروشگاه گیم‌سیج با Next.js | آرش فولادی">
+  <meta property="og:description" content="طراحی و توسعه فروشگاه اکانت بازی گیم‌سیج (GameSage.ir)؛ Next.js و TypeScript، کاتالوگ بازی، سبد خرید، حساب کاربری و مدیریت سفارش و پرداخت.">
+  <meta property="og:url" content="https://arashfooladi.ir/gamesage/">
+  <meta property="og:site_name" content="آرش فولادی">
+  <meta property="og:locale" content="fa_IR">
+  <meta property="og:image" content="https://arashfooladi.ir/assets/images/social/gamesage.png">
+  <meta property="og:image:secure_url" content="https://arashfooladi.ir/assets/images/social/gamesage.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="گیم‌سیج — آرش فولادی">
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="alternate" type="application/rss+xml" title="نوشته‌های آرش فولادی" href="/feed.xml">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://arashfooladi.ir/#website",
+      "url": "https://arashfooladi.ir/",
+      "name": "آرش فولادی",
+      "alternateName": "Arash Fooladi",
+      "inLanguage": "fa",
+      "publisher": {
+        "@id": "https://arashfooladi.ir/#arash-fooladi"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://arashfooladi.ir/#arash-fooladi",
+      "name": "آرش فولادی",
+      "alternateName": [
+        "Arash Fooladi",
+        "ارش فولادی"
+      ],
+      "url": "https://arashfooladi.ir/",
+      "image": "https://arashfooladi.ir/assets/images/arash-fooladi-logo.jpg",
+      "description": "طراحی و ساخت فروشگاه‌های آنلاین و توسعه نرم‌افزار؛ دانشجوی علوم کامپیوتر.",
+      "knowsLanguage": [
+        "fa",
+        "en"
+      ],
+      "sameAs": [
+        "https://github.com/arashfooladi",
+        "https://www.linkedin.com/in/arashfooladi",
+        "https://x.com/arashfooladiorg",
+        "https://dev.to/arashfooladi",
+        "https://hashnode.com/@arashfooladi",
+        "https://www.instagram.com/arashfooladi_/",
+        "https://t.me/onewith_aklilighalb"
+      ]
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://arashfooladi.ir/gamesage/#image",
+      "url": "https://arashfooladi.ir/assets/images/social/gamesage.png",
+      "contentUrl": "https://arashfooladi.ir/assets/images/social/gamesage.png",
+      "width": 1200,
+      "height": 630,
+      "caption": "گیم‌سیج"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://arashfooladi.ir/gamesage/#breadcrumbs",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "خانه",
+          "item": "https://arashfooladi.ir/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "پروژه‌ها",
+          "item": "https://arashfooladi.ir/projects/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "گیم‌سیج",
+          "item": "https://arashfooladi.ir/gamesage/"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://arashfooladi.ir/gamesage/#work",
+      "name": "گیم‌سیج",
+      "description": "طراحی و توسعه فروشگاه اکانت بازی گیم‌سیج (GameSage.ir)؛ Next.js و TypeScript، کاتالوگ بازی، سبد خرید، حساب کاربری و مدیریت سفارش و پرداخت.",
+      "url": "https://arashfooladi.ir/gamesage/",
+      "inLanguage": "fa",
+      "creator": {
+        "@id": "https://arashfooladi.ir/#arash-fooladi"
+      },
+      "author": {
+        "@id": "https://arashfooladi.ir/#arash-fooladi"
+      },
+      "image": {
+        "@id": "https://arashfooladi.ir/gamesage/#image"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://arashfooladi.ir/gamesage/#webpage"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://arashfooladi.ir/gamesage/#webpage",
+      "url": "https://arashfooladi.ir/gamesage/",
+      "name": "توسعه فروشگاه گیم‌سیج با Next.js | آرش فولادی",
+      "description": "طراحی و توسعه فروشگاه اکانت بازی گیم‌سیج (GameSage.ir)؛ Next.js و TypeScript، کاتالوگ بازی، سبد خرید، حساب کاربری و مدیریت سفارش و پرداخت.",
+      "inLanguage": "fa",
+      "isPartOf": {
+        "@id": "https://arashfooladi.ir/#website"
+      },
+      "dateModified": "2026-10-28",
+      "primaryImageOfPage": {
+        "@id": "https://arashfooladi.ir/gamesage/#image"
+      },
+      "breadcrumb": {
+        "@id": "https://arashfooladi.ir/gamesage/#breadcrumbs"
+      },
+      "mainEntity": {
+        "@id": "https://arashfooladi.ir/gamesage/#work"
+      }
+    }
+  ]
+}
+  </script>
+</head>
+<body class="project-page">
+<a class="skip-link" href="#project">رفتن به متن پروژه</a><header class="site-header"><nav class="container nav" aria-label="ناوبری اصلی"><a class="brand" href="/" aria-label="صفحه اصلی آرش فولادی"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"></a><ul><li><a href="/">خانه</a></li><li><a href="/projects/" aria-current="page">پروژه‌ها</a></li><li><a href="/journal/">نوشته‌ها</a></li></ul></nav></header><main><header class="page-heading case-heading"><div class="container">
+<nav aria-label="مسیر صفحه" class="breadcrumbs"><a href="/">خانه</a><span aria-hidden="true">/</span><a href="/projects/">پروژه‌ها</a><span aria-hidden="true">/</span><span aria-current="page">گیم‌سیج</span></nav>
+<p class="kicker">فروشگاه آنلاین · <span lang="en" dir="ltr" translate="no">GameSage.ir</span></p>
+<h1>گیم‌سیج</h1>
+<p class="lead">فروشگاه اکانت بازی؛ از کاتالوگ و انتخاب محصول تا سبد خرید، پرداخت و پیگیری سفارش.</p>
+<dl class="project-facts">
+  <div><dt>حوزه پروژه</dt><dd>فروشگاه محصولات دیجیتال</dd></div>
+  <div><dt>ساختار</dt><dd>رابط وب و منطق سمت سرور با Next.js</dd></div>
+  <div><dt>وضعیت</dt><dd>وب‌سایت فعال</dd></div>
+</dl>
+<ul class="tag-list" dir="ltr" lang="en" translate="no"><li>Next.js</li><li>React</li><li>TypeScript</li><li>Tailwind CSS</li><li>Prisma</li></ul>
+<div class="project-actions"><a class="button" href="https://gamesage.ir/" rel="noopener noreferrer">مشاهده گیم‌سیج ↗</a><a href="/projects/">همه پروژه‌ها ←</a></div>
+<figure class="project-visual">
+  <img class="project-hero-image" src="/gamesage/images/home.webp" width="1440" height="1050" decoding="async" fetchpriority="high" alt="صفحه اصلی فروشگاه گیم‌سیج با جست‌وجو، بنر و دسته‌بندی بازی‌ها">
+  <figcaption>نمای صفحه اصلی گیم‌سیج، ثبت‌شده در ۶ آبان ۱۴۰۵.</figcaption>
+</figure>
+</div></header>
+<div class="container reading-layout">
+<aside class="reading-sidebar"><nav aria-label="فهرست صفحه"><p>در این صفحه</p><ul>
+  <li><a href="#digital-store">فروش محصول دیجیتال</a></li>
+  <li><a href="#catalog">کاتالوگ و انتخاب بازی</a></li>
+  <li><a href="#orders">سفارش، پرداخت و تحویل</a></li>
+  <li><a href="#management">مدیریت فروشگاه</a></li>
+  <li><a href="#architecture">ساختار فنی</a></li>
+</ul></nav></aside>
+<article class="prose case-copy" id="project" tabindex="-1">
+<section class="project-section"><h2 id="digital-store">فروش محصول دیجیتال</h2>
+<p>گیم‌سیج یک فروشگاه فارسی برای اکانت بازی است. در این پروژه، مسیر خرید به نمایش نام و قیمت محصول محدود نمی‌شود؛ نوع دسترسی، ریجن، موجودی و زمان تحویل هم بخشی از اطلاعاتی هستند که خریدار باید پیش از ثبت سفارش ببیند.</p>
+<p>رابط فروشگاه، حساب کاربری و بخش مدیریت در یک برنامه وب کنار هم قرار گرفته‌اند. کاربر از کاتالوگ به صفحه بازی و سبد خرید می‌رسد و برای دنبال کردن وضعیت سفارش به حساب خود برمی‌گردد.</p>
+</section>
+<section class="project-section"><h2 id="catalog">کاتالوگ و انتخاب بازی</h2>
+<p>صفحه اصلی، جست‌وجو و دسته‌بندی‌ها راه‌های مختلف رسیدن به یک بازی را فراهم می‌کنند. صفحه هر بازی اطلاعات محصول، تصاویر، شرایط دسترسی و گزینه‌های خرید را در کنار هم نمایش می‌دهد.</p>
+<ul>
+  <li>جست‌وجوی بازی و مرور دسته‌بندی‌ها.</li>
+  <li>صفحه اختصاصی هر بازی با توضیحات، تصاویر و اطلاعات محصول.</li>
+  <li>نمایش نوع سفارش و زمان تحویل در مسیر انتخاب محصول.</li>
+  <li>سبد خرید و حساب کاربری برای ادامه خرید و پیگیری سفارش.</li>
+</ul>
+<p>بخش مجله و راهنمای خرید نیز کنار فروشگاه قرار دارند تا محتوای توضیحی از صفحات اصلی خرید جدا باشد و در عین حال در دسترس بماند.</p>
+</section>
+<section class="project-section"><h2 id="orders">سفارش، پرداخت و تحویل</h2>
+<p>در ساختار سفارش، تحویل از موجودی با سفارش زمان‌دار یکسان نیست. برای حالت اول، اکانت موجود به سفارش متصل می‌شود؛ برای حالت دوم، سفارش در انتظار تحویل می‌ماند تا از بخش مدیریت تکمیل شود.</p>
+<p>بخش پرداخت، مسیر درخواست و تأیید تراکنش زرین‌پال را در سمت سرور پیاده می‌کند. اطلاعات پرداخت و وضعیت سفارش جدا ثبت می‌شوند تا بازگشت کاربر از درگاه و مرحله تحویل، دو بخش قابل پیگیری از فرایند خرید باشند.</p>
+<p>حساب کاربری و بخش تیکت، مسیر پیگیری پس از خرید را تشکیل می‌دهند. این بخش از پروژه به همان اندازه صفحه محصول به وضعیت سفارش و ارتباط با خریدار وابسته است.</p>
+</section>
+<section class="project-section"><h2 id="management">مدیریت فروشگاه</h2>
+<p>بخش مدیریت برای کارهای روزمره فروشگاه در نظر گرفته شده است: مدیریت بازی‌ها و موجودی اکانت‌ها، بررسی سفارش‌ها، پاسخ به تیکت‌ها و مدیریت محتوای مجله.</p>
+<p>ابزار درون‌ریزی اطلاعات بازی از استیم و قیمت‌گذاری براساس قیمت دلاری نیز در کد پروژه وجود دارد. نرخ تبدیل و تنظیمات قیمت‌گذاری از بخش مدیریت کنترل می‌شوند؛ قیمت هر محصول صرفاً یک عدد ثابت در رابط کاربری نیست.</p>
+</section>
+<section class="project-section"><h2 id="architecture">ساختار فنی</h2>
+<p>گیم‌سیج با <span lang="en" dir="ltr">Next.js</span>، <span lang="en" dir="ltr">React</span> و <span lang="en" dir="ltr">TypeScript</span> توسعه پیدا کرده است. <span lang="en" dir="ltr">Tailwind CSS</span> در رابط کاربری و <span lang="en" dir="ltr">Prisma</span> برای مدل‌سازی و دسترسی به داده‌ها استفاده می‌شوند.</p>
+<p>صفحات فروشگاه و مسیرهای سمت سرور در ساختار برنامه کنار هم قرار دارند. مدل داده، بازی و موجودی اکانت را از سفارش و پرداخت جدا می‌کند؛ این تفکیک، مبنای بخش‌های مدیریت و پیگیری خرید است.</p>
+<p>این پروژه در کنار <a href="/gandishiraz/">فروشگاه گاندی شیراز</a> و <a href="/daruham/">داروهام</a>، بخش دیگری از کار من روی فروشگاه‌های آنلاین است؛ این بار با Next.js به‌جای WordPress و WooCommerce.</p>
+</section>
+<nav aria-label="پروژه‌های مرتبط" class="article-nav"><a href="/gandishiraz/">فروشگاه گاندی شیراز ←</a><a href="/projects/">همه پروژه‌ها ←</a></nav>
+</article></div></main><footer class="site-footer"><div class="container footer-main"><a class="footer-brand" href="/"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"><span>آرش فولادی</span></a><nav class="footer-social" aria-label="راه‌های ارتباط">
+  <a class="telegram-social" href="https://t.me/onewith_aklilighalb" rel="me noopener noreferrer"><span class="telegram-ascii" aria-hidden="true"><pre dir="ltr" translate="no">         ..........
+      ................
+    ....................
+  ........................
+ ..........................
+ ...............####.......
+.............#######........
+.........#####..####........
+......#####...######........
+............#######.........
+ .............#####........
+ ...............###........
+  ........................
+    ....................
+      ................
+         ..........         </pre></span><span>تلگرام</span></a>
+  <a href="https://github.com/arashfooladi" rel="me noopener noreferrer">گیت‌هاب</a>
+  <a href="https://www.linkedin.com/in/arashfooladi" rel="me noopener noreferrer">لینکدین</a>
+  <a href="https://x.com/arashfooladiorg" rel="me noopener noreferrer">ایکس</a>
+  <a href="https://dev.to/arashfooladi" lang="en" dir="ltr" rel="me noopener noreferrer">Dev.to</a>
+  <a href="https://hashnode.com/@arashfooladi" lang="en" dir="ltr" rel="me noopener noreferrer">Hashnode</a>
+  <a href="https://www.instagram.com/arashfooladi_/" rel="me noopener noreferrer">اینستاگرام</a>
+</nav></div><div class="container footer-bottom"><span>طراحی وب و توسعه نرم‌افزار</span><span>© ۱۴۰۵ آرش فولادی</span></div></footer>
+</body>
+</html>

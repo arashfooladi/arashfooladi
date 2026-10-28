@@ -5,6 +5,8 @@ Open source and MIT licensed.
 
 This site is a Farsi portfolio and journal built with static HTML, CSS, and JavaScript. It uses locally hosted Vazirmatn fonts, shared dark layouts, and self-hosted ASCII scenes. No build step or npm dependencies are required; the existing GitHub Pages configuration is retained.
 
+The [projects archive](https://arashfooladi.ir/projects/) includes a [GameSage case study](https://arashfooladi.ir/gamesage/) with a dated screenshot of the live storefront and its implementation overview.
+
 Run the preview from this directory:
 
 ```powershell
