@@ -16,15 +16,15 @@ PAGE_MODIFIED = {
     '/telegram-bot/': '2026-10-28',
     '/daruham/': '2026-10-28',
     '/gandishiraz/': '2026-10-28',
-    '/computermelli/': '2026-10-28',
+    '/computermelli/': '2026-11-02',
     '/journal/async-search-race-conditions/': '2026-10-25',
     '/journal/yarplus-idealist/': '2026-10-17',
     '/yarplus/': '2026-10-28',
     '/journal/payment-system-under-sanctions/': '2026-10-17',
     '/journal/microservices-solo-project/': '2026-10-17',
-    '/': '2026-10-28',
-    '/projects/': '2026-10-28',
-    '/gamesage/': '2026-10-28',
+    '/': '2026-11-02',
+    '/projects/': '2026-11-02',
+    '/gamesage/': '2026-11-02',
     '/journal/': '2026-10-25',
     '/journal/sonnet-5-5-opus-5-5-gpt-6-1-sol/': '2026-10-02',
 }
@@ -33,10 +33,10 @@ PROJECTS_BY_PAGE = {
     '/projects/': ['gamesage', 'yarplus', 'telegram-bot', 'gandishiraz', 'daruham', 'computermelli'],
 }
 PROJECT_VISUALS = {
-    '/computermelli/': ('/computermelli/images/home.webp', 1440, 960),
+    '/computermelli/': ('/computermelli/images/home-20261102.webp', 1440, 960),
     '/gandishiraz/': ('/gandishiraz/images/home.webp', 1440, 960),
     '/daruham/': ('/daruham/images/home.webp', 1440, 960),
-    '/gamesage/': ('/gamesage/images/home.webp', 1440, 1050),
+    '/gamesage/': ('/gamesage/images/home-20261102.webp', 1440, 1050),
     '/yarplus/': ('/yarplus/images/main.webp', 1600, 900),
 }
 PAGE_COPY = {

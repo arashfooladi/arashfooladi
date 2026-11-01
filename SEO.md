@@ -21,6 +21,10 @@ The refresh script maintains a single connected JSON-LD graph per page, canonica
 Fonts are served locally with their OFL licenses in `assets/fonts/`.
 Social previews are static title cards, not screenshots or fabricated project visuals.
 
+## Screenshot refresh on 2026-11-02
+
+GameSage and Computer Melli have fresh public-homepage captures in desktop and mobile sizes. The project pages, homepage and project archive reference dated WebP filenames so cached older images do not mask the update. Capture captions and modification dates were updated only for the affected pages, along with the primary-image structured data and sitemap. The earlier image files remain available for existing direct links. Project descriptions, layout, social title cards and journal content are unchanged.
+
 ## Project showcases on 2026-10-28
 
 All six project pages now present the work as showcases: a short introduction, prominent visuals or existing project metrics, three concise highlights, a compact technology summary and links to more work. Existing canonical URLs and section anchors are preserved. Yarplus remains explicitly identified as a stopped prototype with payments not implemented; no new business or performance metrics were added.
