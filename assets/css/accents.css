@@ -6,7 +6,7 @@
 .world-map-interlude { width: min(calc(100% - 112px),900px); aspect-ratio: 112 / 44; margin: 0 auto 82px; color: #99958b; opacity: .8; }
 .bird-footer { position: relative; isolation: isolate; }
 .bird-footer .footer-main, .bird-footer .footer-bottom { position: relative; z-index: 1; }
-.bird-flight { position: absolute; z-index: 0; width: min(100%,1000px); height: min(78vw,760px); bottom: calc(100% - 1px); left: 50%; transform: translateX(-50%); color: #d4c9b4; }
+.bird-flight { position: absolute; z-index: 0; width: min(100%,1000px); height: min(78vw,760px); bottom: calc(100% - 1px); left: 50%; transform: translateX(-50%); color: #f1e4cb; }
 .squirrel-accent { width: min(100%,300px); aspect-ratio: 81 / 26; margin: 62px auto 10px; color: #b5a28a; }
 @media(max-width:600px) {
   .world-map-interlude { width: calc(100% - 40px); margin-bottom: 50px; }

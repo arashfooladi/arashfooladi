@@ -70,7 +70,6 @@
 
 /* Restore the full-screen Cloud Sea opening from 821a969 on the homepage. */
 .home .hero { min-height: 100svh; }
-.home .hero::before { background: linear-gradient(270deg,rgba(8,8,8,.72),rgba(8,8,8,.18) 50%,rgba(8,8,8,.02)),linear-gradient(180deg,rgba(8,8,8,.42),transparent 35%,transparent 65%,rgba(8,8,8,.74)); }
 .home .hero-layout { min-height: max(720px,100svh); padding-block: 165px; }
 .home .hero h1 { font-size: clamp(4.4rem,8.2vw,7.7rem); }
 .home .home-work { padding-top: 104px; }
@@ -82,7 +81,6 @@
 @media(max-width:800px) {
   .home .hero-layout { align-items: flex-start; padding-block: 165px 200px; }
   .home .hero-content { width: 100%; max-width: 560px; text-shadow: 0 2px 16px #080808; }
-  .home .hero::before { background: linear-gradient(180deg,rgba(8,8,8,.72),rgba(8,8,8,.95) 17%,rgba(8,8,8,.95) 37%,rgba(8,8,8,.16) 55%,rgba(8,8,8,.08) 76%,rgba(8,8,8,.75)); }
   .home .hero h1 { font-size: clamp(3.6rem,10vw,5.5rem); color: #fff; font-weight: 650; }
   .home .hero-role { color: #fff; font-size: 1rem; font-weight: 500; line-height: 1.9; text-shadow: 0 1px 4px #000,0 2px 15px #000; }
 }
