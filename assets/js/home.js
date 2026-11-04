@@ -1,5 +1,5 @@
 import { createSeaRenderer } from './sea-renderer.js';
-import { isPaused, toggleMotion, observeMotion } from './motion.js';
+import { isPaused, observeMotion } from './motion.js?v=system-motion-v1';
 
 // Pages stay readable without JavaScript. Only the decorative scene animates.
 const canvas = document.querySelector('.sea-canvas');
@@ -13,7 +13,6 @@ if (canvas && poster && sea) {
     'edge-orbit': () => import('./vendor/edge-orbit.js'),
   };
   const sceneName = sceneLoaders[sea.dataset.scene] ? sea.dataset.scene : 'cloud-sea';
-  const toggle = document.querySelector('.motion-toggle');
   let paused = true;
   let visible = false;
   let frame = null;
@@ -114,7 +113,6 @@ if (canvas && poster && sea) {
       ready = false;
       canvas.hidden = true;
       poster.hidden = false;
-      if (toggle) toggle.hidden = true;
       return false;
     });
     return loading;
@@ -133,16 +131,8 @@ if (canvas && poster && sea) {
   }
 
   if (canAnimate) {
-    if (toggle) {
-      toggle.hidden = false;
-      toggle.addEventListener('click', toggleMotion);
-    }
     observeMotion(() => {
       paused = isPaused();
-      if (toggle) {
-        toggle.setAttribute('aria-pressed', String(paused));
-        toggle.querySelector('span').textContent = paused ? 'پخش پویانمایی' : 'توقف پویانمایی';
-      }
       sync();
     });
     document.addEventListener('visibilitychange', sync);

@@ -1,6 +1,6 @@
 // Curated community artwork. Sources and adaptation notes: assets/art/CREDITS.md.
 // Each accent plays once on entry; the birds also remember across page visits.
-import { isPaused, observeMotion } from './motion.js';
+import { isPaused, observeMotion } from './motion.js?v=system-motion-v1';
 const reload = performance.getEntriesByType('navigation')[0]?.type === 'reload';
 
 for (const element of document.querySelectorAll('[data-ascii-art]')) {

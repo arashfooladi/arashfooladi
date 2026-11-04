@@ -15,10 +15,6 @@
 .hero-role { margin: 18px 0 0; font-size: 1.05rem; color: #ddd9dd; }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px 28px; margin-top: 32px; pointer-events: auto; }
 .hero-actions .text-link { min-height: 48px; }
-.motion-toggle { position: absolute; z-index: 3; inset-inline-end: max(56px,calc((100vw - var(--max))/2)); bottom: 24px; display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 8px 12px; border: 1px solid #616166; border-radius: 4px; background: #080808e8; color: #d8d7d4; font-size: .75rem; cursor: pointer; }
-.motion-toggle[hidden], .motion-play, .motion-toggle[aria-pressed="true"] .motion-pause { display: none; }
-.motion-toggle[aria-pressed="true"] .motion-play { display: block; }
-.motion-toggle:hover { color: #fff; border-color: #a9a9b0; background: #17171a; }
 .home .home-work { padding-top: 48px; }
 .archive-page .hero, .archive-page .hero-layout { min-height: 350px; }
 .archive-page .hero-layout { padding-block: 130px 55px; }
@@ -26,14 +22,12 @@
 .archive-page .hero-role { margin-top: 10px; }
 .archive-page .hero-content { text-shadow: 0 2px 8px #05080f; }
 .archive-page .latin-signature { display: none; }
-.archive-page .motion-toggle { bottom: 20px; }
 .journal-page .hero { background: #080b12; }
 .journal-page .sea-picture :is(img,canvas), .projects-page .sea-picture :is(img,canvas) { transform: none; object-position: 20% center; }
 .journal-page .hero::before, .projects-page .hero::before { background: linear-gradient(270deg,rgba(5,8,15,.72),rgba(5,8,15,.42) 35%,rgba(5,8,15,.02) 70%),linear-gradient(180deg,rgba(5,8,15,.25),transparent 55%,rgba(5,8,15,.4)); }
 .journal-page .hero-role { color: #f0edf1; }
 @media(max-width:1100px) {
   .hero-content { width: min(100%,560px); }
-  .motion-toggle { inset-inline-end: 40px; }
 }
 @media(max-width:800px) {
   .hero, .hero-layout { min-height: 580px; }
@@ -42,7 +36,6 @@
   .sea-picture :is(img,canvas) { transform: none; object-position: 82% center; }
   .home .hero::before { background: linear-gradient(180deg,rgba(8,8,8,.44),rgba(8,8,8,.82) 17%,rgba(8,8,8,.82) 37%,rgba(8,8,8,.08) 55%,rgba(8,8,8,.03) 76%,rgba(8,8,8,.45)); }
   .hero h1 { font-size: clamp(3rem,10vw,5rem); }
-  .motion-toggle { inset-inline-end: 28px; }
   .archive-page .hero, .archive-page .hero-layout { min-height: 340px; }
   .archive-page .hero-layout { padding-block: 130px 80px; }
   .archive-page .hero::before { background: linear-gradient(270deg,rgba(5,8,15,.78),rgba(5,8,15,.24)),linear-gradient(180deg,rgba(5,8,15,.35),transparent 45%,rgba(5,8,15,.35)); }
@@ -56,11 +49,9 @@
   .hero-actions { gap: 12px 20px; margin-top: 26px; }
   .hero-actions .archive-button { min-height: 48px; padding: 8px 16px; gap: 15px; font-size: .88rem; }
   .hero-actions .text-link { font-size: .82rem; }
-  .motion-toggle { inset-inline-end: 20px; bottom: 18px; }
   .archive-page .hero, .archive-page .hero-layout { min-height: 320px; }
   .archive-page .hero-layout { padding-block: 115px 80px; }
   .archive-page .hero h1 { font-size: 2.6rem; }
   .archive-page .hero-role { max-width: 30ch; font-size: .86rem; }
   .home .home-work { padding-top: 32px; }
 }
-@media(max-width:360px) { .motion-toggle { inset-inline-end: 16px; } }
