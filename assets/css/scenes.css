@@ -7,7 +7,7 @@
 .sea-picture { position: absolute; inset: 0; overflow: hidden; }
 .sea-picture :is(img,canvas) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scaleX(-1); }
 .sea-picture [hidden] { display: none; }
-.hero::before { position: absolute; inset: 0; z-index: 1; content: ""; pointer-events: none; background: linear-gradient(270deg,rgba(8,8,8,.55),rgba(8,8,8,.08) 50%,rgba(8,8,8,0)),linear-gradient(180deg,rgba(8,8,8,.3),transparent 35%,transparent 65%,rgba(8,8,8,.5)); }
+.hero::before { position: absolute; inset: 0; z-index: 1; content: ""; pointer-events: none; background: linear-gradient(270deg,rgba(8,8,8,.48),rgba(8,8,8,.03) 50%,rgba(8,8,8,0)),linear-gradient(180deg,rgba(8,8,8,.25),transparent 35%,transparent 65%,rgba(8,8,8,.4)); }
 .hero-layout { position: relative; z-index: 2; min-height: 660px; display: flex; align-items: center; padding-block: 150px 110px; pointer-events: none; }
 .hero-content { width: min(100%,620px); }
 .latin-signature { width: fit-content; margin: 0 0 14px; font: 400 12px/1.8 "JetBrains Mono",monospace; color: #c2bfc0; }
@@ -24,7 +24,7 @@
 .archive-page .latin-signature { display: none; }
 .journal-page .hero { background: #080b12; }
 .journal-page .sea-picture :is(img,canvas), .projects-page .sea-picture :is(img,canvas) { transform: none; object-position: 20% center; }
-.journal-page .hero::before, .projects-page .hero::before { background: linear-gradient(270deg,rgba(5,8,15,.72),rgba(5,8,15,.42) 35%,rgba(5,8,15,.02) 70%),linear-gradient(180deg,rgba(5,8,15,.25),transparent 55%,rgba(5,8,15,.4)); }
+.journal-page .hero::before, .projects-page .hero::before { background: linear-gradient(270deg,rgba(5,8,15,.62),rgba(5,8,15,.25) 35%,rgba(5,8,15,0) 70%),linear-gradient(180deg,rgba(5,8,15,.2),transparent 55%,rgba(5,8,15,.25)); }
 .journal-page .hero-role { color: #f0edf1; }
 @media(max-width:1100px) {
   .hero-content { width: min(100%,560px); }
@@ -34,11 +34,16 @@
   .hero-layout { align-items: flex-start; padding-block: 150px 110px; }
   .hero-content { width: 100%; max-width: 560px; }
   .sea-picture :is(img,canvas) { transform: none; object-position: 82% center; }
-  .home .hero::before { background: linear-gradient(180deg,rgba(8,8,8,.44),rgba(8,8,8,.82) 17%,rgba(8,8,8,.82) 37%,rgba(8,8,8,.08) 55%,rgba(8,8,8,.03) 76%,rgba(8,8,8,.45)); }
+  .home .hero::before { background: linear-gradient(180deg,rgba(8,8,8,.4),rgba(8,8,8,.82) 17%,rgba(8,8,8,.82) 37%,rgba(8,8,8,.04) 55%,rgba(8,8,8,0) 76%,rgba(8,8,8,.3)); }
   .hero h1 { font-size: clamp(3rem,10vw,5rem); }
-  .archive-page .hero, .archive-page .hero-layout { min-height: 340px; }
-  .archive-page .hero-layout { padding-block: 130px 80px; }
-  .archive-page .hero::before { background: linear-gradient(270deg,rgba(5,8,15,.78),rgba(5,8,15,.24)),linear-gradient(180deg,rgba(5,8,15,.35),transparent 45%,rgba(5,8,15,.35)); }
+  .archive-page .hero { min-height: 100svh; }
+  .archive-page .hero-layout { min-height: max(720px,100svh); padding-block: 165px 200px; }
+  .archive-page .hero h1 { font-size: clamp(3.6rem,10vw,5.5rem); }
+  .archive-page .hero-role { margin-top: 18px; font-size: 1.05rem; }
+  .archive-page .latin-signature { display: block; }
+  .archive-page .hero::before { background: linear-gradient(180deg,rgba(5,8,15,.4),rgba(5,8,15,.78) 18%,rgba(5,8,15,.78) 36%,rgba(5,8,15,.14) 52%,rgba(5,8,15,.01) 68%,rgba(5,8,15,.35)); }
+  .journal-page .sea-picture :is(img,canvas) { object-position: 14% center; }
+  .projects-page .sea-picture :is(img,canvas) { object-position: 22% center; }
 }
 @media(max-width:600px) {
   .hero, .hero-layout { min-height: 530px; }
@@ -49,9 +54,10 @@
   .hero-actions { gap: 12px 20px; margin-top: 26px; }
   .hero-actions .archive-button { min-height: 48px; padding: 8px 16px; gap: 15px; font-size: .88rem; }
   .hero-actions .text-link { font-size: .82rem; }
-  .archive-page .hero, .archive-page .hero-layout { min-height: 320px; }
-  .archive-page .hero-layout { padding-block: 115px 80px; }
-  .archive-page .hero h1 { font-size: 2.6rem; }
-  .archive-page .hero-role { max-width: 30ch; font-size: .86rem; }
+  .archive-page .hero-layout { min-height: max(700px,100svh); padding-block: 145px 200px; }
+  .archive-page .hero-content { text-align: center; }
+  .archive-page .latin-signature { margin: 0 auto 12px; font-size: 10px; }
+  .archive-page .hero h1 { font-size: clamp(2.8rem,12.7vw,4.4rem); line-height: 1.55; }
+  .archive-page .hero-role { max-width: none; margin-top: 13px; font-size: .9rem; }
   .home .home-work { padding-top: 32px; }
 }
