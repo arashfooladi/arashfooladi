@@ -12,7 +12,7 @@
   <link rel="alternate" type="application/rss+xml" title="نوشته‌های آرش فولادی" href="https://arashfooladi.ir/feed.xml">
   <link rel="preload" href="/assets/fonts/vazirmatn-arabic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/fonts.css?v=ascii-20261015">
-  <link rel="stylesheet" href="/assets/css/site.css?v=ascii-20261015">
+  <link rel="stylesheet" href="/assets/css/site.css?v=review-20261104">
   <link rel="stylesheet" href="/assets/css/journal.css?v=ascii-20261015">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@arashfooladiorg">
@@ -172,11 +172,11 @@
 <p class="kicker">جاوااسکریپت و رابط کاربری</p>
 <h1>جست‌وجوی زنده و تلهٔ پاسخ‌های دیررس</h1>
 <div class="article-meta"><a href="/#about" rel="author">نوشته آرش فولادی</a><span>تاریخ انتشار: <time datetime="2026-10-25">۳ آبان ۱۴۰۵</time></span><span>حدود ۶ دقیقه مطالعه</span></div>
-</div></header><div class="container reading-layout note-layout"><aside class="reading-sidebar"><nav aria-label="فهرست صفحه"><p>در این صفحه</p><ul><li><a href="#section-1">دو درخواست، یک کادر نتیجه</a></li><li><a href="#section-2">چرا debounce کافی نیست؟</a></li><li><a href="#section-3">هر پاسخ اجازهٔ تغییر صفحه را ندارد</a></li><li><a href="#section-4">یک پیاده‌سازی کوچک</a></li><li><a href="#section-5">باگ را عمداً بازسازی کن</a></li><li><a href="#section-6">فراتر از کادر جست‌وجو</a></li><li><a href="#sources">منابع</a></li></ul></nav></aside><article class="prose note-copy" id="article" tabindex="-1">
+</div></header><div class="container reading-layout note-layout"><aside class="reading-sidebar"><nav aria-label="فهرست صفحه"><details class="page-contents" open><summary>در این صفحه</summary><ul><li><a href="#section-1">دو درخواست، یک کادر نتیجه</a></li><li><a href="#section-2">چرا debounce کافی نیست؟</a></li><li><a href="#section-3">هر پاسخ اجازهٔ تغییر صفحه را ندارد</a></li><li><a href="#section-4">یک پیاده‌سازی کوچک</a></li><li><a href="#section-5">باگ را عمداً بازسازی کن</a></li><li><a href="#section-6">فراتر از کادر جست‌وجو</a></li><li><a href="#sources">منابع</a></li></ul></details></nav></aside><article class="prose note-copy" id="article" tabindex="-1">
 <p class="lede">کاربر «جاوا» را جست‌وجو می‌کند، بعد سریع می‌نویسد «جاوااسکریپت». نتیجهٔ عبارت دوم می‌آید و درست نمایش داده می‌شود. چند لحظه بعد، پاسخ درخواست اول از راه می‌رسد و همان نتیجهٔ درست را پاک می‌کند. کد خطا نداده؛ صفحه فقط دارد جواب سؤال قبلی را نشان می‌دهد.</p>
 <h2 id="section-1">دو درخواست، یک کادر نتیجه</h2>
 <p>اگر با هر تغییر ورودی یک <code>fetch</code> بفرستیم، ترتیب شروع درخواست‌ها را می‌دانیم. ترتیب تمام شدنشان تضمین‌شده نیست. پاسخ اول ممکن است به خاطر شبکه، کش یا زمان پردازش سرور دیرتر برسد.</p>
-<pre dir="ltr"><code>Input:    "java"       "javascript"
+<pre dir="ltr" tabindex="0" aria-label="نمونه کد؛ برای پیمایش افقی از کلیدهای جهت استفاده کنید"><code>Input:    "java"       "javascript"
 Request:  A starts     B starts
 Response:             B finishes     A finishes
 Screen:               javascript     java</code></pre>
@@ -189,11 +189,11 @@ Screen:               javascript     java</code></pre>
 <p>لغو کردن <code>fetch</code> و خواندن بدنهٔ پاسخ را متوقف می‌کند، اما نباید فرض کنیم هر کاری که بعد از آن شروع شده هم خودکار لغو می‌شود. ممکن است پردازش دیگری یا یک لایهٔ کش، سیگنال لغو را پشتیبانی نکند. شمارهٔ درخواست، شرط تغییر رابط کاربری را روشن نگه می‌دارد. لغو درخواست در مرورگر هم تضمین نمی‌کند پردازش سمت سرور متوقف شده باشد.</p>
 <h2 id="section-4">یک پیاده‌سازی کوچک</h2>
 <p>این مثال برای یک جست‌وجوی خواندنی است. فرض می‌کنیم مسیر <code>/api/search</code> آرایه‌ای از رکوردهای دارای <code>title</code> برمی‌گرداند. HTML زیر را در یک صفحه بگذار و جاوااسکریپت را پس از آن، یا در یک اسکریپت <code>defer</code>، اجرا کن. این مقاله خودش آن API را اجرا نمی‌کند.</p>
-<pre dir="ltr"><code id="search-markup" class="language-html">&lt;label for=&quot;search&quot;&gt;جست‌وجوی مقاله&lt;/label&gt;
+<pre dir="ltr" tabindex="0" aria-label="نمونه کد؛ برای پیمایش افقی از کلیدهای جهت استفاده کنید"><code id="search-markup" class="language-html">&lt;label for=&quot;search&quot;&gt;جست‌وجوی مقاله&lt;/label&gt;
 &lt;input id=&quot;search&quot; type=&quot;search&quot; aria-controls=&quot;results&quot;&gt;
 &lt;p id=&quot;search-status&quot; role=&quot;status&quot;&gt;&lt;/p&gt;
 &lt;ul id=&quot;results&quot;&gt;&lt;/ul&gt;</code></pre>
-<pre dir="ltr"><code id="search-example" class="language-javascript">const input = document.querySelector(&quot;#search&quot;);
+<pre dir="ltr" tabindex="0" aria-label="نمونه کد؛ برای پیمایش افقی از کلیدهای جهت استفاده کنید"><code id="search-example" class="language-javascript">const input = document.querySelector(&quot;#search&quot;);
 const results = document.querySelector(&quot;#results&quot;);
 const status = document.querySelector(&quot;#search-status&quot;);
 let revision = 0;
@@ -261,6 +261,7 @@ input.addEventListener(&quot;input&quot;, () =&gt; search(input.value.trim()));<
 </ul>
 <nav aria-label="نوشته‌های مرتبط" class="article-nav"><a href="/journal/">→ همه نوشته‌ها</a><a href="/journal/ai-pair-programmer/">کدنویسی با هوش مصنوعی ←</a></nav>
 </article></div></main><footer class="site-footer"><div class="container footer-main"><a class="footer-brand" href="/"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"><span>آرش فولادی</span></a><nav class="footer-social" aria-label="راه‌های ارتباط">
+  <a href="mailto:arashfooladi123@gmail.com" dir="ltr" lang="en">arashfooladi123@gmail.com</a>
   <a class="telegram-social" href="https://t.me/onewith_aklilighalb" rel="me noopener noreferrer"><span class="telegram-ascii" aria-hidden="true"><pre dir="ltr" translate="no">         ..........
       ................
     ....................
@@ -284,5 +285,6 @@ input.addEventListener(&quot;input&quot;, () =&gt; search(input.value.trim()));<
   <a href="https://hashnode.com/@arashfooladi" lang="en" dir="ltr" rel="me noopener noreferrer">Hashnode</a>
   <a href="https://www.instagram.com/arashfooladi_/" rel="me noopener noreferrer">اینستاگرام</a>
 </nav></div><div class="container footer-bottom"><span>طراحی وب و توسعه نرم‌افزار</span><span>© ۱۴۰۵ آرش فولادی</span></div></footer>
+<script type="module" src="/assets/js/reading.js?v=review-20261104"></script>
 </body>
 </html>

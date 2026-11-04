@@ -58,3 +58,12 @@
   .site-snippet { border: 0; padding-block: 13px; min-height: 65px; }
   .contact-link { gap: 12px; }
 }
+
+.contact-layout > div:first-child { max-width: 540px; }
+.contact-layout .contact-guidance { font-size: .86rem; }
+.contact-methods { display: grid; gap: 16px; }
+.contact-email { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding-block: 8px; text-decoration: none; }
+.contact-email > span { color: var(--muted); font-size: .8rem; }
+.contact-email bdi { font-family: Inter, sans-serif; font-size: clamp(.9rem, 3.8vw, 1.2rem); text-decoration: underline; text-decoration-color: #6c6c7a; text-underline-offset: 7px; }
+.contact-email:hover bdi { text-decoration-color: #fff; }
+.contact-methods .contact-link { font-size: 1rem; }

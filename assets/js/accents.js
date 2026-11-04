@@ -1,6 +1,6 @@
 // Curated community artwork. Sources and adaptation notes: assets/art/CREDITS.md.
 // Each accent plays once on entry; the birds also remember across page visits.
-const motion = matchMedia('(prefers-reduced-motion: reduce)');
+import { isPaused, observeMotion } from './motion.js';
 const reload = performance.getEntriesByType('navigation')[0]?.type === 'reload';
 
 for (const element of document.querySelectorAll('[data-ascii-art]')) {
@@ -66,8 +66,8 @@ for (const element of document.querySelectorAll('[data-ascii-art]')) {
   }
 
   function tick(now) {
-    if (!visible || document.hidden || motion.matches || finished) {
-      if (motion.matches && name === 'birds') canvas.hidden = true;
+    if (!visible || document.hidden || isPaused() || finished) {
+      if (isPaused() && name === 'birds') canvas.hidden = true;
       stop();
       return;
     }
@@ -112,14 +112,14 @@ for (const element of document.querySelectorAll('[data-ascii-art]')) {
       return;
     }
     // Suppressed birds need neither their artwork nor their dedicated font.
-    if (motion.matches && name === 'birds') {
+    if (isPaused() && name === 'birds') {
       stop();
       canvas.hidden = true;
       return;
     }
     await load();
     if (!artwork || !visible || document.hidden || finished) return;
-    if (motion.matches) {
+    if (isPaused()) {
       stop();
       canvas.hidden = name === 'birds';
       return;
@@ -141,7 +141,7 @@ for (const element of document.querySelectorAll('[data-ascii-art]')) {
     new IntersectionObserver((entries, observer) => {
       if (!entries[0].isIntersecting) return;
       observer.disconnect();
-      if (!motion.matches) load();
+      if (!isPaused()) load();
     }, { rootMargin: '800px 0px' }).observe(trigger);
   }
   new IntersectionObserver(entries => {
@@ -150,7 +150,7 @@ for (const element of document.querySelectorAll('[data-ascii-art]')) {
   }, { threshold: name === 'birds' ? .2 : .35 }).observe(trigger);
   new ResizeObserver(resize).observe(element);
   document.addEventListener('visibilitychange', sync);
-  motion.addEventListener('change', sync);
+  observeMotion(sync);
   addEventListener('pagehide', stop);
   addEventListener('pageshow', sync);
 }

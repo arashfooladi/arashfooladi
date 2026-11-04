@@ -25,6 +25,7 @@ img { display: block; max-width: 100%; height: auto; }
 .container { width: min(calc(100% - 112px), var(--max)); margin-inline: auto; }
 .reading-container { width: min(calc(100% - 112px), 960px); margin-inline: auto; }
 .skip-link { position: fixed; top: 14px; right: 20px; z-index: 100; padding: 10px 18px; background: #fff; color: #000; border-radius: 3px; }
+.skip-link:hover { color: #000; }
 .skip-link:not(:focus) { width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .site-header { position: relative; z-index: 10; }
 .nav { min-height: 104px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
@@ -138,7 +139,7 @@ img { display: block; max-width: 100%; height: auto; }
   .page-heading > .container > p, .page-heading .lead { font-size: 1rem; }
   .breadcrumbs { font-size: .7rem; gap: 8px; }
   .tag-list { gap: 8px 16px; }
-  .tag-list li { font-size: 10px; }
+  .tag-list li { font-size: .75rem; }
   .reading-layout { padding-block: 34px 64px; }
   .prose { font-size: 1rem; line-height: 2.15; }
   .prose h2 { font-size: 1.5rem; margin-top: 45px; }
@@ -157,3 +158,15 @@ img { display: block; max-width: 100%; height: auto; }
 }
 @media(max-width:360px) { .container, .reading-container { width: calc(100% - 32px); } .nav ul { gap: 13px; } }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } .telegram-social .telegram-ascii { animation: none; } }
+
+::selection { color: #080808; background: var(--warm); }
+html { scrollbar-color: #616166 var(--bg); }
+html[data-motion="paused"] { scroll-behavior: auto; }
+html[data-motion="paused"] .telegram-ascii { animation: none; }
+.page-contents summary { color: var(--text); font-size: .86rem; cursor: pointer; min-height: 44px; padding-block: 9px; }
+.page-contents > ul { margin-top: 12px; }
+.prose pre:focus-visible, .prose [tabindex="-1"]:focus-visible { outline: 2px solid var(--warm); outline-offset: 5px; }
+@media(max-width:900px) {
+  .reading-sidebar { display: block; margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+  .page-contents a { font-size: .85rem; min-height: 44px; }
+}

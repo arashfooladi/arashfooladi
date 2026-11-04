@@ -1,4 +1,5 @@
 import { createSeaRenderer } from './sea-renderer.js';
+import { isPaused, toggleMotion, observeMotion } from './motion.js';
 
 // Pages stay readable without JavaScript. Only the decorative scene animates.
 const canvas = document.querySelector('.sea-canvas');
@@ -12,7 +13,7 @@ if (canvas && poster && sea) {
     'edge-orbit': () => import('./vendor/edge-orbit.js'),
   };
   const sceneName = sceneLoaders[sea.dataset.scene] ? sea.dataset.scene : 'cloud-sea';
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const toggle = document.querySelector('.motion-toggle');
   let paused = true;
   let visible = false;
   let frame = null;
@@ -21,6 +22,7 @@ if (canvas && poster && sea) {
   let colors = null;
   let palette = [];
   let loading = null;
+  let ready = false;
   let animationId = 0;
   let lastPaint = 0;
   let sceneTime = 0;
@@ -101,19 +103,26 @@ if (canvas && poster && sea) {
         paint(frame(sceneTime, { color: colors }), colors);
       });
     loading = initialize.then(() => {
-      canvas.hidden = false;
-      poster.hidden = true;
+      ready = true;
+      canvas.hidden = paused;
+      poster.hidden = !paused;
       return true;
     }).catch(() => {
       // Keep the local still image if the animation cannot load.
       worker?.terminate();
       worker = null;
+      ready = false;
+      canvas.hidden = true;
+      poster.hidden = false;
+      if (toggle) toggle.hidden = true;
       return false;
     });
     return loading;
   }
 
   async function sync() {
+    canvas.hidden = paused || !ready;
+    poster.hidden = !canvas.hidden;
     if (paused || !visible || document.hidden) {
       stop();
       return;
@@ -124,9 +133,16 @@ if (canvas && poster && sea) {
   }
 
   if (canAnimate) {
-    paused = reducedMotion.matches;
-    reducedMotion.addEventListener('change', event => {
-      paused = event.matches;
+    if (toggle) {
+      toggle.hidden = false;
+      toggle.addEventListener('click', toggleMotion);
+    }
+    observeMotion(() => {
+      paused = isPaused();
+      if (toggle) {
+        toggle.setAttribute('aria-pressed', String(paused));
+        toggle.querySelector('span').textContent = paused ? 'پخش پویانمایی' : 'توقف پویانمایی';
+      }
       sync();
     });
     document.addEventListener('visibilitychange', sync);
