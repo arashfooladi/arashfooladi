@@ -25,3 +25,9 @@
   .note-heading { padding-block: 27px 35px; }
   .note-heading h1 { font-size: clamp(1.95rem,7.8vw,2.4rem); }
 }
+.journal-topics { margin-block: 0 28px; color: var(--muted); }
+.journal-topics summary { width: fit-content; min-height: 44px; align-content: center; cursor: pointer; }
+.journal-topics section { margin-inline-start: 1em; scroll-margin-top: 24px; }
+.journal-topics h3 { color: var(--text); font-size: 1rem; margin-block: 14px 6px; }
+.journal-topics ul { margin-block: 0 18px; }
+.journal-topics li { margin-block: 6px; }

@@ -21,8 +21,12 @@ with sync_playwright() as p:
     page=browser.new_page(viewport={'width':1200,'height':630},device_scale_factor=1)
     count=0
     for path in sorted(root.rglob('*.html')):
+        if any(part.startswith('.') for part in path.relative_to(root).parts):
+            continue
         text=path.read_text(encoding='utf-8')
-        if 'noindex' in text or 'http-equiv="refresh"' in text:continue
+        head = text.partition('</head>')[0]
+        if re.search(r'<meta\b[^>]*(?:name="robots"[^>]*noindex|http-equiv="refresh")[^>]*>', head):
+            continue
         title=html.unescape(re.search(r'<title>(.*?)</title>',text)[1]).split(' | ')[0]
         description=html.unescape(re.search(r'<meta name="description" content="([^"]+)"',text)[1])
         route=re.search(r'<link rel="canonical" href="https://arashfooladi.ir([^"]+)"',text)[1]

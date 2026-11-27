@@ -3,15 +3,17 @@
   <channel>
     <title>نوشته‌های آرش فولادی</title>
     <link>https://arashfooladi.ir/journal/</link>
-    <description>نوشته‌های فنی فارسی درباره توسعه بک‌اند، معماری نرم‌افزار و ابزارهای برنامه‌نویسی</description>
+    <description>دفتر یادداشت آرش فولادی درباره برنامه‌نویسی، هوش مصنوعی، فناوری و علایق شخصی، نوشته‌هایی از تجربه ساختن و یاد گرفتن.</description>
     <language>fa</language>
-    <lastBuildDate>Sun, 25 Oct 2026 15:43:39 +0330</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 00:00:00 +0330</lastBuildDate>
+    <atom:link href="https://arashfooladi.ir/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>جست‌وجوی زنده و تلهٔ پاسخ‌های دیررس</title>
       <link>https://arashfooladi.ir/journal/async-search-race-conditions/</link>
       <guid isPermaLink="true">https://arashfooladi.ir/journal/async-search-race-conditions/</guid>
       <pubDate>Sun, 25 Oct 2026 15:43:39 +0330</pubDate>
       <description>جلوگیری از نمایش نتیجه قدیمی در جست‌وجوی زنده با AbortController و شماره درخواست؛ یک مثال جاوااسکریپت، تفاوت لغو و debounce و روش تست پاسخ‌های دیررس.</description>
+      <category>نرم‌افزار</category>
     </item>
     <item>
       <title>یارپلاس در ایده‌آلیست؛ از ایده تا شایسته تقدیر</title>
@@ -19,6 +21,7 @@
       <guid isPermaLink="true">https://arashfooladi.ir/journal/yarplus-idealist/</guid>
       <pubDate>Sat, 17 Oct 2026 11:35:00 +0330</pubDate>
       <description>روایت ساخت نمونه اولیه یارپلاس، ارائه در رقابت ایده‌آلیست و کسب عنوان شایسته تقدیر میان حدود ۳۰ تیم؛ ایده، همکاری تیمی و سرانجام پروژه.</description>
+      <category>نرم‌افزار</category>
     </item>
     <item>
       <title>سونت ۵.۵، اپوس ۵.۵ و انتخاب روزمره من</title>
@@ -26,6 +29,7 @@
       <guid isPermaLink="true">https://arashfooladi.ir/journal/sonnet-5-5-opus-5-5-gpt-6-1-sol/</guid>
       <pubDate>Fri, 02 Oct 2026 12:00:00 +0330</pubDate>
       <description>تجربه شخصی من با Sonnet 5.5، Opus 5.5 و GPT-6.1 Sol؛ چرا سونت را باحوصله‌تر می‌دانم و Sol، با وجود توانایی‌اش، گاهی به ساده‌ترین راه‌حل بسنده می‌کند.</description>
+      <category>هوش مصنوعی</category>
     </item>
     <item>
       <title>سه ابزار کدنویسی که در ترمینال استفاده می‌کنم</title>
@@ -33,6 +37,7 @@
       <guid isPermaLink="true">https://arashfooladi.ir/journal/cli-tools-i-use/</guid>
       <pubDate>Fri, 14 Aug 2026 10:00:00 +0330</pubDate>
       <description>Reasonix، Codex و OpenCode؛ چند یادداشت درباره استفاده روزانه، هزینه و انتخاب مدل.</description>
+      <category>نرم‌افزار</category>
     </item>
     <item>
       <title>طراحی پرداخت برای یارپلاس؛ بخش اجرانشده پروژه</title>
@@ -40,6 +45,7 @@
       <guid isPermaLink="true">https://arashfooladi.ir/journal/payment-system-under-sanctions/</guid>
       <pubDate>Thu, 10 Jul 2025 12:00:00 +0330</pubDate>
       <description>نکات طراحی پرداخت برای یارپلاس؛ تأیید تراکنش، درخواست تکراری و تطبیق وضعیت. این بخش در پروژه پیاده‌سازی نشد.</description>
+      <category>نرم‌افزار</category>
     </item>
     <item>
       <title>یادداشت‌هایی درباره کدنویسی با هوش مصنوعی</title>
@@ -47,6 +53,7 @@
       <guid isPermaLink="true">https://arashfooladi.ir/journal/ai-pair-programmer/</guid>
       <pubDate>Sun, 22 Jun 2025 12:00:00 +0330</pubDate>
       <description>کارهایی که با ابزارهای هوش مصنوعی انجام می‌دهم و چیزهایی که در خروجی آن‌ها بررسی می‌کنم.</description>
+      <category>هوش مصنوعی</category>
     </item>
     <item>
       <title>معماری یارپلاس؛ اگر دوباره شروع می‌کردم</title>
@@ -54,7 +61,7 @@
       <guid isPermaLink="true">https://arashfooladi.ir/journal/microservices-solo-project/</guid>
       <pubDate>Thu, 08 May 2025 12:00:00 +0330</pubDate>
       <description>نگاهی به انتخاب معماری برای نمونه اولیه یارپلاس و ملاحظات شروع با یک برنامه ماژولار، پیش از جدا کردن سرویس‌ها.</description>
+      <category>نرم‌افزار</category>
     </item>
-    <atom:link href="https://arashfooladi.ir/feed.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

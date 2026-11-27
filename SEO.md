@@ -1,25 +1,81 @@
+# SEO and publishing
 
-
-The site serves complete static HTML. Existing project and article URLs are preserved.
-The projects archive is `/projects/`; Persian remains the only published locale.
+The site serves Persian RTL HTML directly from GitHub Pages. Project case studies, collaboration pages under `/services/`, and the journal have their own roles and share the existing styles.
 
 ## Editing
 
-1. Edit the visible HTML content. Article headlines live in the page's `h1`.
-2. Update `PAGE_COPY` in `scripts/refresh_seo.py` for homepage, archive and project search titles and descriptions. Journal metadata uses the article's existing title and description.
-3. Set `PAGE_MODIFIED` entries to the actual modification date for the pages you changed. Leave dates for untouched pages and the historical `MODIFIED` fallback unchanged; do not change dates just to make content look fresh.
-4. Run `python scripts/refresh_seo.py`.
-5. Run `python scripts/generate_social_images.py` to update the 1200 × 630 share previews after title or summary changes. This optional authoring script needs Chrome and the Python `playwright` package; the website itself has no runtime dependencies.
-6. Run `python scripts/check_seo.py` before publishing. It checks canonical URLs, unique metadata, structured data, local links and fragments, share image dimensions, sitemap coverage and RSS consistency without packages or network access.
+1. Edit the visible HTML. Keep the search title and description in the page's `<title>` and `<meta name="description">`.
+2. Record the date of substantive edits to hand-written HTML in `PAGE_MODIFIED` in `scripts/refresh_seo.py`. Markdown notes carry their dates in the source file.
+3. Run `python scripts/refresh_seo.py` to regenerate social metadata, JSON-LD, journal listings, sitemap and RSS.
+4. For a changed search title or description, optionally regenerate its title card with `python scripts/generate_social_images.py --route /example/`. This tool uses Chromium and Python Playwright. Run the refresh again if you create a dedicated card for a Markdown note.
+5. Run `python scripts/check_seo.py` and preview with `python -m http.server 8814 --bind 127.0.0.1`.
 
-The refresh script maintains a single connected JSON-LD graph per page, canonical metadata, Open Graph, Twitter previews, breadcrumbs, sitemap and RSS titles. It preserves publication dates, verification tags and redirect pages. New canonical HTML pages are discovered automatically.
+`PROJECTS_BY_PAGE` controls the project list in structured data. Keep its entries in the visible card order. `PROJECT_VISUALS` maps each visual case study to the actual primary screenshot and its dimensions. Social previews use separate 1200 × 630 title cards.
 
-`PROJECTS_BY_PAGE` controls the project list in structured data. Keep its entries in the same order as the project cards visible on each page, and include only projects actually shown there.
+## Publish a journal note
 
-`PROJECT_VISUALS` identifies the actual project screenshot and its dimensions for each visual showcase's structured data. Social cards remain separate 1200 × 630 images. Update this mapping when replacing a primary project screenshot.
+Install the Markdown parser in a local virtual environment once. The generated site still runs as static files.
 
-Fonts are served locally with their OFL licenses in `assets/fonts/`.
-Social previews are static title cards, not screenshots or fabricated project visuals.
+```sh
+python -m venv .venv
+.venv/bin/python -m pip install -r scripts/requirements-journal.txt
+```
+
+Save a finished note at `journal/_posts/your-note-slug.md`. The filename becomes `/journal/your-note-slug/`. Keep private drafts outside that directory. Write the note in Markdown after the second `---` line. Start body headings at `##`.
+
+```text
+---
+title: <عنوان نوشته>
+description: <خلاصهٔ کوتاه نوشته>
+date: YYYY-MM-DD
+date-label: <تاریخ شمسی دلخواه>
+category: personal
+---
+```
+
+`date` and the optional `modified` use Gregorian ISO dates. `date-label` is optional and can supply a Persian calendar display date. Category values are `software`, `ai`, `hardware`, `gaming`, `music`, and `personal`. Rust fits under `gaming`. Metal, Buckethead, and electric guitar fit under `music`. The journal lists topics that have published notes.
+
+```sh
+.venv/bin/python scripts/refresh_seo.py
+.venv/bin/python scripts/check_seo.py
+```
+
+Review the generated HTML, homepage and journal listings, sitemap, and RSS before committing those files with the source note. Each existing HTML article keeps its current URL and text. A new Markdown note uses the shared journal preview until it has a dedicated title card.
+
+## Search and growth plan
+
+Persian search results reviewed in November 2026 suggest the following long-tail intents. Use the queries that actually surface in Search Console to decide which explanations to expand.
+
+| Search intent | Example queries | Where it belongs |
+| --- | --- | --- |
+| Commission a site or estimate scope | طراحی سایت اختصاصی برای معرفی خدمات، هزینه طراحی سایت با قالب اختصاصی | [Custom websites](services/custom-website/index.html) |
+| Choose an online store approach | طراحی سایت فروشگاهی با ووکامرس، طراحی فروشگاه با قالب اختصاصی، هزینه ساخت فروشگاه اینترنتی | [E-commerce](services/ecommerce/index.html) and the relevant store case study |
+| Commission a bot | طراحی ربات تلگرام اختصاصی، ساخت ربات تلگرام برای ثبت درخواست | [Telegram bots](services/telegram-bot/index.html) and the infrastructure case study |
+| Learn how to implement a bot | ساخت ربات تلگرام با پایتون، استفاده از وب‌هوک تلگرام | A future hands-on journal note when there is original code or implementation experience to share |
+| Commission a web app | طراحی وب‌اپلیکیشن اختصاصی، ساخت پنل وب برای پیگیری درخواست، توسعه نرم‌افزار تحت وب | [Web applications](services/web-app/index.html) and the Yarplus case study |
+
+Observed examples include scope and price pages, bot commissioning pages, and a separate Python tutorial intent. [Website pricing example](https://irantarah.com/services/web-design/pricing/) · [Web application scope example](https://lumosagency.org/services/web-app) · [Bot service example](https://rahkarstudio.ir/services/telegram-bot/) · [Python tutorial example](https://taha-heidaryfard.ir/blog/python/telegram-bot)
+
+- After publishing, submit the sitemap and inspect the five new URLs. Compare consecutive 28-day windows in Search Console, starting with the service paths and an Iran segment where the sample supports it. Use the non-branded filter when available or exclude variations of آرش فولادی, Arash Fooladi, the domain and project names with a query regex. Track impressions, new relevant queries, clicks and genuine project inquiries received through Telegram. Keep a small tally of inquiries that mention search or a specific service page. Review query and page pairs before changing titles or copy. [Search Console reports](https://developers.google.com/search/docs/monitor-debug/search-console-start) · [Branded-query filter](https://developers.google.com/search/blog/2025/11/search-console-branded-filter)
+- Ask clients such as Gandi Shiraz, Daruham or Computer Melli whether an existing credits, about or launch page could link to the matching case study. A contextual credit is useful when it explains who built the work.
+- Write from work already done. Possible subjects include how Computer Melli handles Persian digits in filters, how delivery rules affect a Next.js product page in GameSage, and a small Python bot example with polling versus webhooks if you build it yourself.
+- Publish reusable code that you own, with an example, license and README linking to the corresponding explanation. The public portfolio source and Yarplus are natural starting points for linking code to a real case study.
+- Participate where an answer or example fits an existing discussion. Share the relevant article when it answers the question. [Persian Python community on Virgool](https://virgool.io/python-community) · [Quera on Virgool](https://virgool.io/@Quera)
+
+## SEO update on 2026-11-27
+
+The collaboration pages link to actual work, and the six project pages link back to the relevant collaboration page. The journal retains its chronological archive and shows a compact list of topics with published notes. The homepage verification tag, case study URLs, article URLs, legacy aliases, and seven published notes are retained.
+
+Chromium ran desktop and mobile checks of the 21 canonical pages and extra narrow checks of the five new pages. The service links, mobile table of contents, journal category links, redirects, and three animated scenes were exercised. A temp-copy Markdown note verified generation of the article, journal and homepage entries, structured data, sitemap, and RSS.
+
+| Asset served in the mobile preview | Before | After |
+| --- | ---: | ---: |
+| Homepage scene poster | 161 kB | 109 kB |
+| Projects scene poster | 85 kB | 53 kB |
+| Journal scene poster | 420 kB | 318 kB |
+| Yarplus thumbnail in Projects | 695 kB | 24 kB |
+
+The poster dimensions are unchanged. The project archive uses a responsive thumbnail and the case study keeps its full-size image. Local LCP readings varied across runs. Use Search Console for field Core Web Vitals after deployment.
 
 ## Screenshot refresh on 2026-11-02
 
@@ -92,14 +148,12 @@ The homepage project list measured 629 pixels high at the desktop viewport. Yarp
 
 ## Hosting follow-up
 
-An audit on 2026-10-01 found both `http://arashfooladi.ir/` and `https://arashfooladi.ir/` responding with HTTP 200 through Cloudflare. All canonical URLs and internal references use HTTPS, but a permanent redirect should also be configured at the edge.
+A production check on 2026-11-27 found the apex HTTP URL, `/index.html`, and `/journal/index.html` serving duplicate content with HTTP 200. The GitHub Pages host redirected to the HTTP apex. The `www` host failed hostname certificate verification. The site advertises HTTPS directory URLs in its canonical tags, internal links, and sitemap.
 
-- In Cloudflare, verify the SSL mode and the origin certificate first. Enable an HTTP-to-HTTPS edge redirect (301 or 308) for this domain.
-- Redirect `/index.html` to `/`, and each `/<path>/index.html` to `/<path>/`, while preserving query strings. These are server redirects; GitHub Pages HTML cannot emit HTTP redirect status codes.
-- Verify the `www` hostname resolves before redirecting it to the apex domain. Do not assume its DNS is configured.
-- Submit `https://arashfooladi.ir/sitemap.xml` in the existing Google Search Console property. The Google verification meta tag is retained.
-
-Changing GitHub Pages HTTPS enforcement without checking Cloudflare's origin connection can introduce a redirect loop. The repository update does not change these hosting settings.
+- Verify the Cloudflare TLS mode and origin certificate. Then redirect the HTTP apex to HTTPS and verify the GitHub Pages host ultimately lands on the HTTPS apex.
+- Redirect the explicit `index.html` forms to their corresponding directory URLs while preserving query strings.
+- Provision a valid certificate for `www` before redirecting that hostname to the apex.
+- Recheck the status codes on the legacy aliases after any edge rule change. They currently use static HTML refreshes and canonical targets.
 
 Google documentation: [canonical URLs](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls), [sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), [article markup](https://developers.google.com/search/docs/appearance/structured-data/article).
 

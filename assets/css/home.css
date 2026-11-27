@@ -20,10 +20,10 @@
 .snippet-heading h3 { color: #b9b9c4; font-size: .88rem; font-weight: 400; margin: 0 0 18px; }
 .site-snippets { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 28px; }
 .site-snippet { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding-block: 18px; border-block: 1px solid var(--line); text-decoration: none; min-height: 88px; }
-.site-snippet h3 { margin: 0; font-size: 1rem; font-weight: 500; }
+.site-snippet strong { margin: 0; font-size: 1rem; font-weight: 500; }
 .site-snippet p { color: var(--muted); font-size: .75rem; margin: 5px 0 0; }
 .site-snippet > span { color: #9b9baa; }
-.site-snippet:hover :is(h3,span) { color: #fff; }
+.site-snippet:hover :is(strong,span) { color: #fff; }
 @media(max-width:900px) { .about-layout { gap: 50px; } }
 @media(max-width:700px) {
   .about-layout { grid-template-columns: 1fr; gap: 28px; }
@@ -62,10 +62,6 @@
 .contact-layout > div:first-child { max-width: 540px; }
 .contact-layout .contact-guidance { font-size: .86rem; }
 .contact-methods { display: grid; gap: 16px; }
-.contact-email { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; padding-block: 8px; text-decoration: none; }
-.contact-email > span { color: var(--muted); font-size: .8rem; }
-.contact-email bdi { font-family: Inter, sans-serif; font-size: clamp(.9rem, 3.8vw, 1.2rem); text-decoration: underline; text-decoration-color: #6c6c7a; text-underline-offset: 7px; }
-.contact-email:hover bdi { text-decoration-color: #fff; }
 .contact-methods .contact-link { font-size: 1rem; }
 
 /* Restore the full-screen Cloud Sea opening from 821a969 on the homepage. */

@@ -11,3 +11,7 @@ Thumbs.db
 # Temp files
 *.tmp
 *.log
+
+# Local authoring tools
+__pycache__/
+.venv/

@@ -34,7 +34,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="جست‌وجوی زنده و تلهٔ پاسخ‌های دیررس — آرش فولادی">
   <meta property="article:published_time" content="2026-10-25">
-  <meta property="article:modified_time" content="2026-10-25">
+  <meta property="article:modified_time" content="2026-11-27">
   <meta property="article:author" content="https://arashfooladi.ir/">
   <link rel="icon" type="image/png" sizes="48x48" href="/assets/images/favicon-48.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
@@ -121,7 +121,7 @@
         "@id": "https://arashfooladi.ir/journal/async-search-race-conditions/#webpage"
       },
       "datePublished": "2026-10-25",
-      "dateModified": "2026-10-25",
+      "dateModified": "2026-11-27",
       "inLanguage": "fa",
       "author": {
         "@id": "https://arashfooladi.ir/#arash-fooladi"
@@ -132,8 +132,9 @@
       "image": {
         "@id": "https://arashfooladi.ir/journal/async-search-race-conditions/#image"
       },
-      "wordCount": 927,
+      "wordCount": 942,
       "isAccessibleForFree": true,
+      "articleSection": "نرم‌افزار",
       "isPartOf": {
         "@type": "Blog",
         "@id": "https://arashfooladi.ir/journal/#blog",
@@ -151,7 +152,7 @@
       "isPartOf": {
         "@id": "https://arashfooladi.ir/#website"
       },
-      "dateModified": "2026-10-25",
+      "dateModified": "2026-11-27",
       "primaryImageOfPage": {
         "@id": "https://arashfooladi.ir/journal/async-search-race-conditions/#image"
       },
@@ -165,13 +166,14 @@
   ]
 }
   </script>
+  <meta property="article:section" content="نرم‌افزار">
 </head>
 <body class="note-page">
 <a class="skip-link" href="#article">رفتن به متن نوشته</a><header class="site-header"><nav class="container nav" aria-label="ناوبری اصلی"><a class="brand" href="/" aria-label="صفحه اصلی آرش فولادی"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"></a><ul><li><a href="/">خانه</a></li><li><a href="/projects/">پروژه‌ها</a></li><li><a href="/journal/" aria-current="page">نوشته‌ها</a></li></ul></nav></header><main><header class="page-heading note-heading"><div class="reading-container">
 <nav aria-label="مسیر صفحه" class="breadcrumbs"><a href="/">خانه</a><span aria-hidden="true">/</span><a href="/journal/">نوشته‌ها</a><span aria-hidden="true">/</span><span aria-current="page">جست‌وجوی زنده و تلهٔ پاسخ‌های دیررس</span></nav>
 <p class="kicker">جاوااسکریپت و رابط کاربری</p>
 <h1>جست‌وجوی زنده و تلهٔ پاسخ‌های دیررس</h1>
-<div class="article-meta"><a href="/#about" rel="author">نوشته آرش فولادی</a><span>تاریخ انتشار: <time datetime="2026-10-25">۳ آبان ۱۴۰۵</time></span><span>حدود ۶ دقیقه مطالعه</span></div>
+<div class="article-meta"><a href="/#about" rel="author">نوشته آرش فولادی</a><span>تاریخ انتشار: <time datetime="2026-10-25">۳ آبان ۱۴۰۵</time></span><span>حدود ۶ دقیقه مطالعه</span><a href="/journal/#topic-software">نرم‌افزار</a></div>
 </div></header><div class="container reading-layout note-layout"><aside class="reading-sidebar"><nav aria-label="فهرست صفحه"><details class="page-contents" open><summary>در این صفحه</summary><ul><li><a href="#section-1">دو درخواست، یک کادر نتیجه</a></li><li><a href="#section-2">چرا debounce کافی نیست؟</a></li><li><a href="#section-3">هر پاسخ اجازهٔ تغییر صفحه را ندارد</a></li><li><a href="#section-4">یک پیاده‌سازی کوچک</a></li><li><a href="#section-5">باگ را عمداً بازسازی کن</a></li><li><a href="#section-6">فراتر از کادر جست‌وجو</a></li><li><a href="#sources">منابع</a></li></ul></details></nav></aside><article class="prose note-copy" id="article" tabindex="-1">
 <p class="lede">کاربر «جاوا» را جست‌وجو می‌کند، بعد سریع می‌نویسد «جاوااسکریپت». نتیجهٔ عبارت دوم می‌آید و درست نمایش داده می‌شود. چند لحظه بعد، پاسخ درخواست اول از راه می‌رسد و همان نتیجهٔ درست را پاک می‌کند. کد خطا نداده؛ صفحه فقط دارد جواب سؤال قبلی را نشان می‌دهد.</p>
 <h2 id="section-1">دو درخواست، یک کادر نتیجه</h2>
@@ -259,9 +261,9 @@ input.addEventListener(&quot;input&quot;, () =&gt; search(input.value.trim()));<
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/AbortController" lang="en" dir="ltr">MDN: AbortController</a>؛ رفتار لغو درخواست و مصرف بدنهٔ پاسخ.</li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" lang="en" dir="ltr">MDN: Using the Fetch API</a>؛ مدیریت خطاهای HTTP و لغو درخواست.</li>
 </ul>
+<p>برای دیدن نمونهٔ جست‌وجوی زنده در یک فروشگاه فارسی، به <a href="/gandishiraz/">نمونه‌کار گاندی شیراز</a> نگاه کنید.</p>
 <nav aria-label="نوشته‌های مرتبط" class="article-nav"><a href="/journal/">→ همه نوشته‌ها</a><a href="/journal/ai-pair-programmer/">کدنویسی با هوش مصنوعی ←</a></nav>
 </article></div></main><footer class="site-footer"><div class="container footer-main"><a class="footer-brand" href="/"><img src="/assets/images/icon-192.png" width="44" height="44" alt="آرش فولادی"><span>آرش فولادی</span></a><nav class="footer-social" aria-label="راه‌های ارتباط">
-  <a href="mailto:arashfooladi123@gmail.com" dir="ltr" lang="en">arashfooladi123@gmail.com</a>
   <a class="telegram-social" href="https://t.me/onewith_aklilighalb" rel="me noopener noreferrer"><span class="telegram-ascii" aria-hidden="true"><pre dir="ltr" translate="no">         ..........
       ................
     ....................

@@ -14,6 +14,7 @@ import re
 import struct
 import sys
 from urllib.parse import unquote, urljoin, urlsplit
+from urllib.robotparser import RobotFileParser
 import xml.etree.ElementTree as ET
 
 BASE = 'https://arashfooladi.ir'
@@ -29,6 +30,9 @@ class Page(HTMLParser):
         self.meta = {}
         self.links = []
         self.refs = []
+        self.anchors = []
+        self.images_without_alt = 0
+        self.refreshes = []
         self.project_links = []
         self.ids = []
         self.h1 = []
@@ -46,8 +50,14 @@ class Page(HTMLParser):
         if tag == 'meta':
             key = attrs.get('name', attrs.get('property', ''))
             self.meta.setdefault(key, []).append(attrs.get('content', ''))
+            if attrs.get('http-equiv', '').lower() == 'refresh':
+                self.refreshes.append(attrs.get('content', ''))
         if tag == 'link':
             self.links.append(attrs)
+        if tag == 'a' and attrs.get('href'):
+            self.anchors.append(urljoin(self.url, attrs['href']))
+        if tag == 'img' and attrs.get('alt') is None:
+            self.images_without_alt += 1
         if tag == 'a' and set(attrs.get('class', '').split()) & {'work-entry', 'site-snippet'}:
             self.project_links.append(urljoin(self.url, attrs.get('href', '')))
         if attrs.get('id'):
@@ -88,14 +98,19 @@ def main():
         if not condition:
             errors.append(message)
 
-    pages = {path: Page(path) for path in sorted(ROOT.rglob('*.html')) if '.git' not in path.parts}
+    pages = {path: Page(path) for path in sorted(ROOT.rglob('*.html'))
+             if not any(part.startswith('.') for part in path.relative_to(ROOT).parts)}
     indexable = {}
     articles = {}
     page_nodes = {}
     titles, descriptions = [], []
     references = 0
+    robots = RobotFileParser()
+    robots_text = (ROOT / 'robots.txt').read_text(encoding='utf-8')
+    robots.parse(robots_text.splitlines())
     for path, page in pages.items():
         label = path.relative_to(ROOT).as_posix()
+        check(page.images_without_alt == 0, f'{label}: every image needs an alt attribute')
         for identity, count in Counter(page.ids).items():
             check(count == 1, f'{label}: duplicate id {identity!r}')
         for ref in page.refs:
@@ -110,6 +125,12 @@ def main():
             if target in pages and url.fragment:
                 check(unquote(url.fragment) in pages[target].ids, f'{label}: missing fragment {ref}')
         if 'noindex' in page.value('robots'):
+            if page.refreshes:
+                canonicals = [link.get('href') for link in page.links if link.get('rel') == 'canonical']
+                destination = re.fullmatch(r'0;\s*url=(.+)', page.refreshes[0], re.I)
+                check(len(page.refreshes) == 1 and destination is not None
+                      and canonicals == [destination[1]] and destination[1] in page.anchors
+                      and destination[1] != page.url, f'{label}: redirect, fallback and canonical disagree')
             continue
         indexable[page.url] = page
         check((page.lang, page.direction) == ('fa', 'rtl'), f'{label}: expected Persian RTL document')
@@ -119,6 +140,7 @@ def main():
         canonical = [link.get('href') for link in page.links if link.get('rel') == 'canonical']
         check(canonical == [page.url], f'{label}: canonical must be exactly {page.url}')
         check('noindex' not in page.value('robots') and 'index' in page.value('robots'), f'{label}: indexing is not enabled')
+        check(robots.can_fetch('Googlebot', page.url), f'{label}: robots.txt blocks canonical page')
         for name in ('description', 'og:title', 'og:description', 'og:url', 'og:image', 'og:image:alt',
                      'twitter:card', 'twitter:title', 'twitter:description', 'twitter:image', 'twitter:image:alt'):
             check(len(page.meta.get(name, [])) == 1 and bool(page.value(name).strip()), f'{label}: missing or duplicate {name}')
@@ -139,6 +161,7 @@ def main():
             check(len(page.json_text) == 1, f'{label}: expected one JSON-LD graph')
             graph = json.loads(page.json_text[0])['@graph']
             nodes = {node['@id']: node for node in graph}
+            check(len(nodes) == len(graph), f'{label}: duplicate nodes in the structured-data graph')
             page_nodes[page.url] = nodes
             entity = nodes[page.url + '#webpage']
             modified = date.fromisoformat(entity['dateModified'])
@@ -146,6 +169,13 @@ def main():
             check(entity['name'] == page.title and entity['description'] == page.value('description'), f'{label}: stale structured-data copy')
             author = nodes[BASE + '/#arash-fooladi']
             check(author['@type'] == 'Person' and author['url'] == BASE + '/', f'{label}: missing author identity')
+            for key in ('mainEntity', 'primaryImageOfPage', 'breadcrumb'):
+                if key in entity:
+                    check(entity[key]['@id'] in nodes, f'{label}: unresolved {key}')
+            if page.route.startswith('/services/') and page.route != '/services/':
+                service = nodes[entity['mainEntity']['@id']]
+                check(service['@type'] == 'Service' and service['provider']['@id'] == author['@id'],
+                      f'{label}: service must identify its provider')
             for listing in (node for node in graph if node['@type'] == 'ItemList'):
                 items = listing['itemListElement']
                 check([item['url'] for item in items] == page.project_links,
@@ -163,11 +193,27 @@ def main():
                 check(page.value('article:modified_time') == entity['dateModified'], f'{label}: modification dates disagree')
                 check(article['author']['@id'] in nodes, f'{label}: unresolved author')
                 check(article['isPartOf']['@id'] == BASE + '/journal/#blog', f'{label}: missing journal association')
+                check(page.value('article:section') == article.get('articleSection', ''),
+                      f'{label}: article category differs between metadata and structured data')
         except (ValueError, KeyError, IndexError, TypeError) as error:
             check(False, f'{label}: invalid or incomplete structured data ({error})')
     for label, values in (('title', titles), ('description', descriptions)):
         for value, count in Counter(values).items():
             check(count == 1, f'Duplicate {label}: {value}')
+
+    reached = set()
+    check(BASE + '/' in indexable, 'Homepage must be indexable')
+    pending = [BASE + '/'] if BASE + '/' in indexable else []
+    while pending:
+        url = pending.pop()
+        if url in reached:
+            continue
+        reached.add(url)
+        for href in indexable[url].anchors:
+            target = urlsplit(href)._replace(query='', fragment='').geturl()
+            if target in indexable and target not in reached:
+                pending.append(target)
+    check(reached == set(indexable), f'Pages unreachable through internal links: {sorted(set(indexable) - reached)}')
 
     sitemap = ET.parse(ROOT / 'sitemap.xml')
     ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
@@ -181,7 +227,7 @@ def main():
         if 'dateModified' in entity:
             modified = entity['dateModified']
             check(entry.findtext('s:lastmod', namespaces=ns) == modified, f'Sitemap date differs for {url}')
-    check(f'Sitemap: {BASE}/sitemap.xml' in (ROOT / 'robots.txt').read_text(), 'robots.txt does not advertise the sitemap')
+    check(f'{BASE}/sitemap.xml' in (robots.site_maps() or []), 'robots.txt does not advertise the sitemap')
 
     items = ET.parse(ROOT / 'feed.xml').findall('channel/item')
     feed_urls = [item.findtext('link') for item in items]
@@ -193,6 +239,7 @@ def main():
             check(item.findtext('title') == article['headline'], f'RSS title differs for {url}')
             check(item.findtext('description') == page.value('description'), f'RSS description differs for {url}')
             check(parsedate_to_datetime(item.findtext('pubDate')).date().isoformat() == article['datePublished'], f'RSS publication date differs for {url}')
+            check(item.findtext('category') == article.get('articleSection'), f'RSS category differs for {url}')
     for path in (ROOT / 'assets/css').rglob('*.css'):
         for ref in re.findall(r'url\([\'\"]?([^\s)\'\"]+)', path.read_text()):
             url = urlsplit(urljoin(BASE + '/' + path.relative_to(ROOT).as_posix(), ref))

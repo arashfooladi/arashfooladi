@@ -1,31 +1,37 @@
 """Refresh static SEO metadata, structured data, sitemap and RSS from page content.
 
-Run with Python 3 from any directory. No packages or network calls are required.
-Publication dates and page URLs remain unchanged.
+Run with Python 3 from any directory. Markdown rendering uses the optional
+authoring dependency in requirements-journal.txt.
 """
-from pathlib import Path
+from datetime import date, datetime, time, timedelta, timezone
+from email.utils import format_datetime, parsedate_to_datetime
 from html import escape, unescape
 import json
 import re
 import xml.etree.ElementTree as ET
 
-ROOT = Path(__file__).resolve().parents[1]
-BASE = 'https://arashfooladi.ir'
+from build_journal import (
+    BASE, ROOT, LEGACY_EXCERPTS, LEGACY_TOPICS, TOPICS, render_sources, topic_link, update_listings,
+)
+
+SERVICE_HUB = '/services/'
+SITE_UPDATED = '2026-11-27'
 MODIFIED = '2026-10-01'
 PAGE_MODIFIED = {
-    '/telegram-bot/': '2026-10-28',
-    '/daruham/': '2026-10-28',
-    '/gandishiraz/': '2026-10-28',
-    '/computermelli/': '2026-11-26',
-    '/journal/async-search-race-conditions/': '2026-10-25',
+    '/telegram-bot/': SITE_UPDATED,
+    '/daruham/': SITE_UPDATED,
+    '/gandishiraz/': SITE_UPDATED,
+    '/computermelli/': SITE_UPDATED,
+    '/journal/async-search-race-conditions/': SITE_UPDATED,
+    '/journal/cli-tools-i-use/': SITE_UPDATED,
     '/journal/yarplus-idealist/': '2026-10-17',
-    '/yarplus/': '2026-10-28',
+    '/yarplus/': SITE_UPDATED,
     '/journal/payment-system-under-sanctions/': '2026-10-17',
     '/journal/microservices-solo-project/': '2026-10-17',
-    '/': '2026-11-02',
-    '/projects/': '2026-11-26',
-    '/gamesage/': '2026-11-02',
-    '/journal/': '2026-10-25',
+    '/': SITE_UPDATED,
+    '/projects/': SITE_UPDATED,
+    '/gamesage/': SITE_UPDATED,
+    '/journal/': SITE_UPDATED,
     '/journal/sonnet-5-5-opus-5-5-gpt-6-1-sol/': '2026-10-02',
 }
 PROJECTS_BY_PAGE = {
@@ -39,17 +45,6 @@ PROJECT_VISUALS = {
     '/gamesage/': ('/gamesage/images/home-20261102.webp', 1440, 1050),
     '/yarplus/': ('/yarplus/images/main.webp', 1600, 900),
 }
-PAGE_COPY = {
-    '/': ('آرش فولادی | طراحی وب و توسعه نرم‌افزار', 'آرش فولادی؛ توسعه فروشگاه گیم‌سیج با Next.js، فروشگاه‌های وردپرسی گاندی شیراز و داروهام، زیرساخت ربات تلگرام و یادداشت‌های نرم‌افزار.'),
-    '/projects/': ('پروژه‌های آرش فولادی | فروشگاه‌های آنلاین و بک‌اند', 'نمونه پروژه‌های آرش فولادی؛ فروشگاه گیم‌سیج با Next.js، فروشگاه‌های وردپرسی، زیرساخت ربات تلگرام و نمونه اولیه یارپلاس.'),
-    '/gamesage/': ('توسعه فروشگاه گیم‌سیج با Next.js | آرش فولادی', 'نمونه‌کار گیم‌سیج؛ فروشگاه اکانت بازی با کاتالوگ، صفحه بازی، سبد خرید و پیگیری سفارش. طراحی و توسعه با Next.js و TypeScript توسط آرش فولادی.'),
-    '/gandishiraz/': ('طراحی و ساخت فروشگاه گاندی شیراز | آرش فولادی', 'ساخت کامل فروشگاه کیف و کفش گاندی شیراز توسط آرش فولادی؛ پایه و قالب اختصاصی، جست‌وجو، فیلتر محصولات، سبد خرید و نسخه موبایل.'),
-    '/daruham/': ('طراحی و ساخت وب‌سایت داروهام | آرش فولادی', 'طراحی و ساخت کامل داروهام توسط آرش فولادی؛ فروشگاه سلامت و زیبایی روی پایه اختصاصی، حساب کاربر، نوبت‌دهی و ارسال نسخه.'),
-    '/computermelli/': ('ساخت فروشگاه کامپیوتر ملی | آرش فولادی', 'طراحی و ساخت فروشگاه کامپیوتر ملی؛ قالب اختصاصی، جست‌وجوی قطعات و تجهیزات دیجیتال، صفحات محصول و خرید فارسی با WordPress و WooCommerce.'),
-    '/telegram-bot/': ('زیرساخت ربات تلگرام با ۳۰۰ هزار کاربر | آرش فولادی', 'پروژه ربات تلگرام آرش فولادی با بیش از ۳۰۰ هزار کاربر و ۱۰ میلیون درخواست پردازش‌شده؛ صف کارها، کش، مدیریت درخواست و پایش.'),
-    '/yarplus/': ('یارپلاس؛ نمونه اولیه اشتراک محتوا | آرش فولادی', 'نمونه اولیه یارپلاس برای اشتراک محتوا؛ شایسته تقدیر رقابت ایده‌آلیست. پرداخت پیاده‌سازی نشد و توسعه پس از رقابت متوقف شد.'),
-    '/journal/': ('نوشته‌های آرش فولادی | نرم‌افزار و هوش مصنوعی', 'یادداشت‌های آرش فولادی درباره نرم‌افزار، مدل‌های هوش مصنوعی، ابزارهای کدنویسی، درگاه پرداخت و تجربه ساخت یارپلاس.'),
-}
 
 def plain(text):
     return unescape(re.sub(r'<[^>]+>', ' ', text)).strip()
@@ -57,7 +52,7 @@ def plain(text):
 def meta(text, key, value, attr='name'):
     tag = f'<meta {attr}="{key}" content="{escape(value, quote=True)}">'
     pattern = rf'<meta\s+{attr}="{re.escape(key)}"[^>]*>'
-    return re.sub(pattern, tag, text) if re.search(pattern, text) else text.replace('</head>', '  '+tag+'\n</head>')
+    return re.sub(pattern, lambda _: tag, text) if re.search(pattern, text) else text.replace('</head>', '  '+tag+'\n</head>')
 
 person = {
     '@type':'Person', '@id':BASE+'/#arash-fooladi', 'name':'آرش فولادی',
@@ -69,44 +64,78 @@ person = {
 }
 website = {'@type':'WebSite','@id':BASE+'/#website','url':BASE+'/','name':'آرش فولادی','alternateName':'Arash Fooladi','inLanguage':'fa','publisher':{'@id':person['@id']}}
 
+markdown_notes = render_sources()
 pages = {}
 for path in sorted(ROOT.rglob('*.html')):
+    if any(part.startswith('.') for part in path.relative_to(ROOT).parts):
+        continue
     text = path.read_text(encoding='utf-8')
-    if 'noindex' in text or 'http-equiv="refresh"' in text: continue
+    head = text.partition('</head>')[0]
+    if re.search(r'<meta\b[^>]*(?:name="robots"[^>]*noindex|http-equiv="refresh")[^>]*>', head):
+        continue
     canonical = re.search(r'<link rel="canonical" href="([^"]+)">', text)
     if not canonical: raise ValueError(f'Missing canonical: {path}')
-    url = canonical[1]; route = url.removeprefix(BASE)
+    url = canonical[1]
+    route = '/' + path.relative_to(ROOT).as_posix().removesuffix('index.html')
+    if url != BASE + route or route in pages:
+        raise ValueError(f'Invalid or duplicate canonical in {path}: {url}')
     headline = plain(re.search(r'<h1[^>]*>(.*?)</h1>', text, re.S)[1])
     # Homepage has a bilingual display name; use the person's primary name.
     if route == '/': headline = 'آرش فولادی'
     title = unescape(re.search(r'<title>(.*?)</title>', text)[1])
     description = unescape(re.search(r'<meta name="description" content="([^"]*)">', text)[1])
-    title, description = PAGE_COPY.get(route, (title, description))
-    published = re.search(r'<time datetime="([^"]+)"', text) if route.startswith('/journal/') and route != '/journal/' else None
+    note = markdown_notes.get(route, {})
+    published = re.search(r'<time datetime="([^"]+)">(.*?)</time>', text, re.S) if route.startswith('/journal/') and route != '/journal/' else None
+    slug = route.strip('/').rsplit('/', 1)[-1]
     image_slug = 'home' if route == '/' else route.strip('/').replace('/', '-')
-    pages[route] = dict(path=path,text=text,url=url,headline=headline,title=title,description=description,published=published[1] if published else None,image=BASE+'/assets/images/social/'+image_slug+'.png')
+    image_path = f'/assets/images/social/{image_slug}.png'
+    if route in markdown_notes and not (ROOT / image_path.lstrip('/')).is_file():
+        image_path = '/assets/images/social/journal.png'
+    default_modified = SITE_UPDATED if route.startswith(SERVICE_HUB) else MODIFIED
+    modified = note.get('modified', note.get('date')) or PAGE_MODIFIED.get(route, default_modified)
+    topic = note.get('category', LEGACY_TOPICS.get(slug))
+    excerpt = description if note else LEGACY_EXCERPTS.get(slug, '')
+    pages[route] = dict(path=path, text=text, route=route, url=url, headline=headline, title=title,
+                        description=description, published=published[1] if published else None,
+                        date_label=plain(published[2]) if published else None, modified=modified,
+                        topic=topic, excerpt=excerpt, image=BASE + image_path)
 
 def project_list_for(route):
     slugs = PROJECTS_BY_PAGE[route]
     return {'@type':'ItemList','@id':BASE+route+('#projects-list' if route=='/' else '#list'),'name':'پروژه‌های آرش فولادی','itemListOrder':'https://schema.org/ItemListOrderAscending','numberOfItems':len(slugs),'itemListElement':[{'@type':'ListItem','position':i,'name':pages['/'+slug+'/']['headline'],'url':BASE+'/'+slug+'/'} for i,slug in enumerate(slugs,1)]}
 
-articles = sorted((p for route,p in pages.items() if route.startswith('/journal/') and p['published']), key=lambda p:p['published'], reverse=True)
+article_pages = [page for page in pages.values() if page['published']]
+articles = sorted(article_pages, key=lambda page: (page['published'], page['route']), reverse=True)
+update_listings(pages, articles)
+for route, listing in (('/', articles[:2]), ('/journal/', articles)):
+    pages[route]['modified'] = max([pages[route]['modified'], *(article['modified'] for article in listing)])
 
 for route,p in pages.items():
     text,url = p['text'],p['url']
-    modified = PAGE_MODIFIED.get(route, MODIFIED)
-    text = re.sub(r'<title>.*?</title>', '<title>'+escape(p['title'])+'</title>',text)
+    modified = p['modified']
+    text = re.sub(r'<title>.*?</title>', lambda _: '<title>'+escape(p['title'])+'</title>', text)
     text = re.sub(r'<script type="application/ld\+json">.*?</script>', '<!-- SEO_GRAPH -->',text,flags=re.S)
-    image_alt = p['title'] if route == '/' else p['headline']+' — آرش فولادی'
+    uses_journal_card = route != '/journal/' and p['image'].endswith('/social/journal.png')
+    image_alt = 'نوشته‌های آرش فولادی' if uses_journal_card else p['title'] if route == '/' else p['headline']+' — آرش فولادی'
     for key,value in [('description',p['description']),('author','آرش فولادی'),('robots','index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'),('twitter:card','summary_large_image'),('twitter:site','@arashfooladiorg'),('twitter:creator','@arashfooladiorg'),('twitter:title',p['title']),('twitter:description',p['description']),('twitter:image',p['image']),('twitter:image:alt',image_alt)]:
         text = meta(text,key,value)
-    is_article = bool(p['published']) and route.startswith('/journal/')
+    is_article = bool(p['published'])
+    is_service = route.startswith(SERVICE_HUB) and route != SERVICE_HUB
+    is_collection = route in ('/projects/', '/journal/', SERVICE_HUB)
+    topic = p['topic']
     for key,value in [('og:type','article' if is_article else 'website'),('og:title',p['title']),('og:description',p['description']),('og:url',url),('og:site_name','آرش فولادی'),('og:locale','fa_IR'),('og:image',p['image']),('og:image:secure_url',p['image']),('og:image:type','image/png'),('og:image:width','1200'),('og:image:height','630'),('og:image:alt',image_alt)]:
         text = meta(text,key,value,'property')
     if is_article:
         text = meta(text,'article:published_time',p['published'],'property')
         text = meta(text,'article:modified_time',modified,'property')
         text = meta(text,'article:author',BASE+'/','property')
+        if topic:
+            text = meta(text, 'article:section', TOPICS[topic], 'property')
+            if route not in markdown_notes:
+                link = topic_link(topic)
+                if link not in text:
+                    text = re.sub(r'(<div class="article-meta">.*?)(</div>)',
+                                  lambda match: match[1] + link + match[2], text, count=1, flags=re.S)
     else:
         text = re.sub(r'\s*<meta property="article:[^"]+"[^>]*>', '', text)
     if 'rel="icon"' not in text:
@@ -114,23 +143,27 @@ for route,p in pages.items():
     if 'type="application/rss+xml"' not in text:
         text=text.replace('</head>','  <link rel="alternate" type="application/rss+xml" title="نوشته‌های آرش فولادی" href="/feed.xml">\n</head>')
     graph=[website,person]
-    page={'@type':'ProfilePage' if route=='/' else 'CollectionPage' if route in ('/projects/','/journal/') else 'WebPage','@id':url+'#webpage','url':url,'name':p['title'],'description':p['description'],'inLanguage':'fa','isPartOf':{'@id':website['@id']},'dateModified':modified,'primaryImageOfPage':{'@id':url+'#image'}}
+    page={'@type':'ProfilePage' if route=='/' else 'CollectionPage' if is_collection else 'WebPage','@id':url+'#webpage','url':url,'name':p['title'],'description':p['description'],'inLanguage':'fa','isPartOf':{'@id':website['@id']},'dateModified':modified,'primaryImageOfPage':{'@id':url+'#image'}}
     visual = PROJECT_VISUALS.get(route)
     image_url, image_width, image_height = (BASE+visual[0], visual[1], visual[2]) if visual else (p['image'], 1200, 630)
-    graph.append({'@type':'ImageObject','@id':url+'#image','url':image_url,'contentUrl':image_url,'width':image_width,'height':image_height,'caption':p['headline']})
+    graph.append({'@type':'ImageObject','@id':url+'#image','url':image_url,'contentUrl':image_url,'width':image_width,'height':image_height,'caption':image_alt if uses_journal_card else p['headline']})
     crumbs=[('خانه',BASE+'/')]
-    if route in ('/projects/','/journal/'):
-        crumbs.append((p['headline'],url))
-    elif route!='/':
-        parent='journal' if is_article else 'projects'
-        crumbs.extend([('نوشته‌ها' if is_article else 'پروژه‌ها',BASE+'/'+parent+'/'),(p['headline'],url)])
+    if is_service:
+        crumbs.append(('همکاری', BASE + SERVICE_HUB))
+    elif not is_collection and route != '/':
+        crumbs.append(('نوشته‌ها', BASE + '/journal/') if is_article else ('پروژه‌ها', BASE + '/projects/'))
+    if route != '/':
+        crumbs.append((p['headline'], url))
     if route!='/':
         breadcrumb={'@type':'BreadcrumbList','@id':url+'#breadcrumbs','itemListElement':[{'@type':'ListItem','position':i,'name':name,'item':item} for i,(name,item) in enumerate(crumbs,1)]}
         graph.append(breadcrumb); page['breadcrumb']={'@id':breadcrumb['@id']}
-        visible='<nav class="breadcrumbs" aria-label="مسیر صفحه">'+''.join((f'<a href="{item.removeprefix(BASE)}">{escape(name)}</a><span aria-hidden="true">/</span>' if i<len(crumbs)-1 else f'<span aria-current="page">{escape(name)}</span>') for i,(name,item) in enumerate(crumbs))+'</nav>'
-        text=re.sub(r'\s*<nav class="breadcrumbs".*?</nav>','',text,flags=re.S)
-        header=r'(<header class="(?:article-header|archive-header)[^"]*">\s*<div class="(?:inner|container)">)'
-        text=re.sub(header,lambda m:m[1]+'\n      '+visible,text,count=1)
+        visible = '<nav aria-label="مسیر صفحه" class="breadcrumbs">' + ''.join(
+            f'<a href="{item.removeprefix(BASE)}">{escape(name)}</a><span aria-hidden="true">/</span>'
+            if i < len(crumbs) - 1 else f'<span aria-current="page">{escape(name)}</span>'
+            for i, (name, item) in enumerate(crumbs)
+        ) + '</nav>'
+        text = re.sub(r'<!-- BREADCRUMBS -->|<nav\b(?=[^>]*\bclass="breadcrumbs")[^>]*>.*?</nav>',
+                      lambda _: visible, text, count=1, flags=re.S)
     if route in ('/','/projects/'):
         project_list = project_list_for(route)
         graph.append(project_list)
@@ -141,17 +174,30 @@ for route,p in pages.items():
     elif route=='/journal/':
         blog={'@type':'Blog','@id':url+'#blog','url':url,'name':'نوشته‌های آرش فولادی','description':p['description'],'inLanguage':'fa','author':{'@id':person['@id']},'blogPost':[{'@type':'BlogPosting','@id':a['url']+'#article','headline':a['headline'],'url':a['url'],'datePublished':a['published'],'author':{'@id':person['@id']}} for a in articles]}
         graph.append(blog);page['mainEntity']={'@id':blog['@id']}
+    elif route == SERVICE_HUB:
+        page['hasPart'] = [{'@type': 'WebPage', '@id': entry['url'] + '#webpage',
+                            'name': entry['headline'], 'url': entry['url']}
+                           for key, entry in pages.items() if key.startswith(SERVICE_HUB) and key != SERVICE_HUB]
+    elif is_service:
+        service = {'@type': 'Service', '@id': url + '#service', 'url': url, 'name': p['headline'],
+                   'serviceType': p['headline'], 'description': p['description'],
+                   'provider': {'@id': person['@id']}, 'areaServed': {'@type': 'Country', 'name': 'ایران'},
+                   'mainEntityOfPage': {'@id': page['@id']}}
+        graph.append(service)
+        page['mainEntity'] = {'@id': service['@id']}
     elif is_article:
         article_body=re.search(r'<article[^>]*>(.*?)<nav\b(?=[^>]*\bclass="article-nav")',text,re.S)[1]
         count=len(plain(article_body).split())
         article={'@type':'BlogPosting','@id':url+'#article','headline':p['headline'],'description':p['description'],'url':url,'mainEntityOfPage':{'@id':page['@id']},'datePublished':p['published'],'dateModified':modified,'inLanguage':'fa','author':{'@id':person['@id']},'publisher':{'@id':person['@id']},'image':{'@id':url+'#image'},'wordCount':count,'isAccessibleForFree':True}
+        if topic:
+            article['articleSection'] = TOPICS[topic]
         article['isPartOf'] = {'@type':'Blog', '@id':BASE+'/journal/#blog', 'url':BASE+'/journal/', 'name':'نوشته‌های آرش فولادی'}
         graph.append(article);page['mainEntity']={'@id':article['@id']}
     else:
         work={'@type':'CreativeWork','@id':url+'#work','name':p['headline'],'description':p['description'],'url':url,'inLanguage':'fa','creator':{'@id':person['@id']},'author':{'@id':person['@id']},'image':{'@id':url+'#image'},'mainEntityOfPage':{'@id':page['@id']}}
         graph.append(work);page['mainEntity']={'@id':work['@id']}
     graph.append(page)
-    graph_markup='<script type="application/ld+json">\n'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False,indent=2)+'\n  </script>'
+    graph_markup='<script type="application/ld+json">\n'+json.dumps({'@context':'https://schema.org','@graph':graph},ensure_ascii=False,indent=2).replace('<', r'\u003c')+'\n  </script>'
     text=text.replace('<!-- SEO_GRAPH -->',graph_markup) if '<!-- SEO_GRAPH -->' in text else text.replace('</head>','  '+graph_markup+'\n</head>')
     text='\n'.join(line.rstrip() for line in text.splitlines())+'\n'
     p['path'].write_text(text,encoding='utf-8')
@@ -161,17 +207,50 @@ sitemap=ET.Element('{'+ns+'}urlset')
 for route in sorted(pages):
     node=ET.SubElement(sitemap,'{'+ns+'}url')
     ET.SubElement(node,'{'+ns+'}loc').text=pages[route]['url']
-    ET.SubElement(node,'{'+ns+'}lastmod').text=PAGE_MODIFIED.get(route, MODIFIED)
+    ET.SubElement(node,'{'+ns+'}lastmod').text=pages[route]['modified']
 ET.indent(sitemap,space='  ')
 ET.ElementTree(sitemap).write(ROOT/'sitemap.xml',encoding='utf-8',xml_declaration=True)
 
-atom='http://www.w3.org/2005/Atom';ET.register_namespace('atom',atom)
-rss=ET.parse(ROOT/'feed.xml');channel=rss.getroot().find('channel')
-if channel.find('{'+atom+'}link') is None:
-    ET.SubElement(channel,'{'+atom+'}link',{'href':BASE+'/feed.xml','rel':'self','type':'application/rss+xml'})
-for item in channel.findall('item'):
-    route=item.findtext('link').removeprefix(BASE)
-    item.find('title').text=pages[route]['headline']
-    item.find('description').text=pages[route]['description']
-ET.indent(rss,space='  ');rss.write(ROOT/'feed.xml',encoding='utf-8',xml_declaration=True)
+atom = 'http://www.w3.org/2005/Atom'
+ET.register_namespace('atom', atom)
+feed_path = ROOT / 'feed.xml'
+previous_dates = {
+    item.findtext('link'): item.findtext('pubDate')
+    for item in ET.parse(feed_path).findall('channel/item')
+} if feed_path.exists() else {}
+iran = timezone(timedelta(hours=3, minutes=30))
+
+def published_at(article):
+    day = date.fromisoformat(article['published'])
+    if article['url'] in previous_dates:
+        previous = parsedate_to_datetime(previous_dates[article['url']])
+        if previous.date() == day:
+            return previous
+    return datetime.combine(day, time.min, tzinfo=iran)
+
+rss = ET.Element('rss', version='2.0')
+channel = ET.SubElement(rss, 'channel')
+for key, value in {
+    'title': 'نوشته‌های آرش فولادی',
+    'link': BASE + '/journal/',
+    'description': pages['/journal/']['description'],
+    'language': 'fa',
+    'lastBuildDate': format_datetime(max([
+        datetime.combine(date.fromisoformat(pages['/journal/']['modified']), time.min, tzinfo=iran),
+        *(published_at(article) for article in articles),
+    ])),
+}.items():
+    ET.SubElement(channel, key).text = value
+ET.SubElement(channel, f'{{{atom}}}link', href=BASE + '/feed.xml', rel='self', type='application/rss+xml')
+for article in sorted(articles, key=published_at, reverse=True):
+    item = ET.SubElement(channel, 'item')
+    ET.SubElement(item, 'title').text = article['headline']
+    ET.SubElement(item, 'link').text = article['url']
+    ET.SubElement(item, 'guid', isPermaLink='true').text = article['url']
+    ET.SubElement(item, 'pubDate').text = format_datetime(published_at(article))
+    ET.SubElement(item, 'description').text = article['description']
+    if article['topic']:
+        ET.SubElement(item, 'category').text = TOPICS[article['topic']]
+ET.indent(rss, space='  ')
+ET.ElementTree(rss).write(feed_path, encoding='utf-8', xml_declaration=True)
 print(f'Refreshed SEO for {len(pages)} canonical pages; sitemap and feed updated.')

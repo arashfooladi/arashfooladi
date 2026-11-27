@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /scripts/
+Disallow: /journal/_posts/
 
 Sitemap: https://arashfooladi.ir/sitemap.xml
