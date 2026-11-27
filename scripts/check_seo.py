@@ -133,7 +133,8 @@ def main():
                       and destination[1] != page.url, f'{label}: redirect, fallback and canonical disagree')
             continue
         indexable[page.url] = page
-        check((page.lang, page.direction) == ('fa', 'rtl'), f'{label}: expected Persian RTL document')
+        expected_language = ('en', 'ltr') if page.route == '/list/' else ('fa', 'rtl')
+        check((page.lang, page.direction) == expected_language, f'{label}: unexpected language or direction')
         check(len(page.h1) == 1 and bool(page.h1[0].strip()), f'{label}: expected one nonempty h1')
         check(bool(page.title.strip()), f'{label}: missing title')
         check(bool(page.value('viewport')), f'{label}: missing viewport')

@@ -29,6 +29,7 @@ PAGE_MODIFIED = {
     '/journal/payment-system-under-sanctions/': '2026-10-17',
     '/journal/microservices-solo-project/': '2026-10-17',
     '/': SITE_UPDATED,
+    '/list/': '2026-11-27',
     '/projects/': SITE_UPDATED,
     '/gamesage/': SITE_UPDATED,
     '/journal/': SITE_UPDATED,
@@ -84,6 +85,7 @@ for path in sorted(ROOT.rglob('*.html')):
     if route == '/': headline = 'آرش فولادی'
     title = unescape(re.search(r'<title>(.*?)</title>', text)[1])
     description = unescape(re.search(r'<meta name="description" content="([^"]*)">', text)[1])
+    language = re.search(r'<html\b[^>]*\blang="([^"]+)"', text)[1]
     note = markdown_notes.get(route, {})
     published = re.search(r'<time datetime="([^"]+)">(.*?)</time>', text, re.S) if route.startswith('/journal/') and route != '/journal/' else None
     slug = route.strip('/').rsplit('/', 1)[-1]
@@ -96,7 +98,7 @@ for path in sorted(ROOT.rglob('*.html')):
     topic = note.get('category', LEGACY_TOPICS.get(slug))
     excerpt = description if note else LEGACY_EXCERPTS.get(slug, '')
     pages[route] = dict(path=path, text=text, route=route, url=url, headline=headline, title=title,
-                        description=description, published=published[1] if published else None,
+                        description=description, language=language, published=published[1] if published else None,
                         date_label=plain(published[2]) if published else None, modified=modified,
                         topic=topic, excerpt=excerpt, image=BASE + image_path)
 
@@ -116,14 +118,17 @@ for route,p in pages.items():
     text = re.sub(r'<title>.*?</title>', lambda _: '<title>'+escape(p['title'])+'</title>', text)
     text = re.sub(r'<script type="application/ld\+json">.*?</script>', '<!-- SEO_GRAPH -->',text,flags=re.S)
     uses_journal_card = route != '/journal/' and p['image'].endswith('/social/journal.png')
-    image_alt = 'نوشته‌های آرش فولادی' if uses_journal_card else p['title'] if route == '/' else p['headline']+' — آرش فولادی'
+    image_alt = p['title'] if route in ('/', '/list/') else p['headline']+' — آرش فولادی'
+    if uses_journal_card:
+        image_alt = 'نوشته‌های آرش فولادی'
     for key,value in [('description',p['description']),('author','آرش فولادی'),('robots','index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'),('twitter:card','summary_large_image'),('twitter:site','@arashfooladiorg'),('twitter:creator','@arashfooladiorg'),('twitter:title',p['title']),('twitter:description',p['description']),('twitter:image',p['image']),('twitter:image:alt',image_alt)]:
         text = meta(text,key,value)
     is_article = bool(p['published'])
     is_service = route.startswith(SERVICE_HUB) and route != SERVICE_HUB
-    is_collection = route in ('/projects/', '/journal/', SERVICE_HUB)
+    is_collection = route in ('/projects/', '/journal/', '/list/', SERVICE_HUB)
+    locale = {'fa': 'fa_IR', 'en': 'en_US'}[p['language']]
     topic = p['topic']
-    for key,value in [('og:type','article' if is_article else 'website'),('og:title',p['title']),('og:description',p['description']),('og:url',url),('og:site_name','آرش فولادی'),('og:locale','fa_IR'),('og:image',p['image']),('og:image:secure_url',p['image']),('og:image:type','image/png'),('og:image:width','1200'),('og:image:height','630'),('og:image:alt',image_alt)]:
+    for key,value in [('og:type','article' if is_article else 'website'),('og:title',p['title']),('og:description',p['description']),('og:url',url),('og:site_name','آرش فولادی'),('og:locale',locale),('og:image',p['image']),('og:image:secure_url',p['image']),('og:image:type','image/png'),('og:image:width','1200'),('og:image:height','630'),('og:image:alt',image_alt)]:
         text = meta(text,key,value,'property')
     if is_article:
         text = meta(text,'article:published_time',p['published'],'property')
@@ -143,18 +148,18 @@ for route,p in pages.items():
     if 'type="application/rss+xml"' not in text:
         text=text.replace('</head>','  <link rel="alternate" type="application/rss+xml" title="نوشته‌های آرش فولادی" href="/feed.xml">\n</head>')
     graph=[website,person]
-    page={'@type':'ProfilePage' if route=='/' else 'CollectionPage' if is_collection else 'WebPage','@id':url+'#webpage','url':url,'name':p['title'],'description':p['description'],'inLanguage':'fa','isPartOf':{'@id':website['@id']},'dateModified':modified,'primaryImageOfPage':{'@id':url+'#image'}}
+    page={'@type':'ProfilePage' if route=='/' else 'CollectionPage' if is_collection else 'WebPage','@id':url+'#webpage','url':url,'name':p['title'],'description':p['description'],'inLanguage':p['language'],'isPartOf':{'@id':website['@id']},'dateModified':modified,'primaryImageOfPage':{'@id':url+'#image'}}
     visual = PROJECT_VISUALS.get(route)
     image_url, image_width, image_height = (BASE+visual[0], visual[1], visual[2]) if visual else (p['image'], 1200, 630)
     graph.append({'@type':'ImageObject','@id':url+'#image','url':image_url,'contentUrl':image_url,'width':image_width,'height':image_height,'caption':image_alt if uses_journal_card else p['headline']})
-    crumbs=[('خانه',BASE+'/')]
+    crumbs=[('Home' if p['language'] == 'en' else 'خانه',BASE+'/')]
     if is_service:
         crumbs.append(('همکاری', BASE + SERVICE_HUB))
     elif not is_collection and route != '/':
         crumbs.append(('نوشته‌ها', BASE + '/journal/') if is_article else ('پروژه‌ها', BASE + '/projects/'))
     if route != '/':
         crumbs.append((p['headline'], url))
-    if route!='/':
+    if route not in ('/', '/list/'):
         breadcrumb={'@type':'BreadcrumbList','@id':url+'#breadcrumbs','itemListElement':[{'@type':'ListItem','position':i,'name':name,'item':item} for i,(name,item) in enumerate(crumbs,1)]}
         graph.append(breadcrumb); page['breadcrumb']={'@id':breadcrumb['@id']}
         visible = '<nav aria-label="مسیر صفحه" class="breadcrumbs">' + ''.join(
@@ -174,6 +179,8 @@ for route,p in pages.items():
     elif route=='/journal/':
         blog={'@type':'Blog','@id':url+'#blog','url':url,'name':'نوشته‌های آرش فولادی','description':p['description'],'inLanguage':'fa','author':{'@id':person['@id']},'blogPost':[{'@type':'BlogPosting','@id':a['url']+'#article','headline':a['headline'],'url':a['url'],'datePublished':a['published'],'author':{'@id':person['@id']}} for a in articles]}
         graph.append(blog);page['mainEntity']={'@id':blog['@id']}
+    elif route == '/list/':
+        page['author'] = {'@id': person['@id']}
     elif route == SERVICE_HUB:
         page['hasPart'] = [{'@type': 'WebPage', '@id': entry['url'] + '#webpage',
                             'name': entry['headline'], 'url': entry['url']}
