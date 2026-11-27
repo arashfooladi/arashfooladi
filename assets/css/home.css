@@ -3,10 +3,11 @@
 .about-layout h2 { font-size: clamp(2rem,3.3vw,3.15rem); line-height: 1.95; margin: 0; }
 .about-copy { color: #c0c0cd; font-size: 1.04rem; max-width: 630px; }
 .about-copy p { margin: 0 0 24px; }
-.about-copy .about-list { padding-top: 22px; margin-top: 32px; border-top: 1px solid #33333f; font-size: .87rem; color: #aaaabb; text-align: right; }
-.site-as-work { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 25px; border-top: 1px solid #33333f; margin-top: 52px; padding-top: 29px; }
-.site-as-work h3 { font-size: 1rem; font-weight: 500; margin: 0; }
-.site-as-work p { font-size: .88rem; color: #aaaabb; margin: 10px 0 0; }
+.about-copy p:last-child { margin-bottom: 0; }
+.about-list { display: flex; justify-content: center; margin-top: clamp(28px, 4vw, 52px); padding-top: 28px; border-top: 1px solid #33333f; }
+.about-list-link { flex-direction: column; gap: 2px; max-width: 100%; padding: 10px 28px; text-align: center; line-height: 1.5; }
+.about-list-label { font-size: 1rem; font-weight: 550; }
+.about-list-address { color: var(--muted); font-size: .8125rem; }
 .contact-section { border-top: 1px solid var(--line); padding-block: 76px; }
 .contact-layout { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 30px; }
 .contact-layout h2 { font-size: clamp(2rem,3.8vw,3.2rem); margin: 0; }
@@ -29,8 +30,6 @@
   .about-layout { grid-template-columns: 1fr; gap: 28px; }
   .about-layout h2 { font-size: 2rem; }
   .about-copy { font-size: .97rem; }
-  .site-as-work { margin-top: 33px; gap: 16px; }
-  .site-as-work p { font-size: .84rem; }
   .contact-layout { flex-direction: column; align-items: flex-start; gap: 24px; }
   .contact-layout h2 { font-size: 2.1rem; }
   .contact-link { font-size: 1.16rem; }
@@ -39,10 +38,8 @@
   .home .section { padding-block: 54px; }
   .home .section-intro { margin-bottom: 25px; }
   .home .home-about, .home .contact-section, .home .site-footer { border: 0; }
-  .home .about-list, .home .site-as-work { border: 0; padding-top: 0; }
-  .home .about-copy p { margin-bottom: 18px; }
-  .home .about-copy .about-list { margin-top: 24px; }
-  .home .site-as-work { margin-top: 27px; gap: 12px; }
+  .about-list { border: 0; padding-top: 0; }
+  .about-copy p:not(:last-child) { margin-bottom: 18px; }
   .home .journal-list, .home .journal-link { border: 0; }
   .home .journal-link { padding-block: 22px; }
   .home .journal-link + .journal-link { margin-top: 15px; }
@@ -65,7 +62,11 @@
 .contact-methods .contact-link { font-size: 1rem; }
 
 /* Restore the full-screen Cloud Sea opening from 821a969 on the homepage. */
-.home .hero { min-height: 100svh; }
+.home .hero { min-height: 100svh; background: var(--bg); }
+.home .hero .sea-picture {
+  opacity: .9;
+  mask-image: linear-gradient(to bottom, #000 calc(100% - clamp(96px, 16vh, 180px)), transparent);
+}
 .home .hero-layout { min-height: max(720px,100svh); padding-block: 165px; }
 .home .hero h1 { font-size: clamp(4.4rem,8.2vw,7.7rem); }
 .home .home-work { padding-top: 104px; }

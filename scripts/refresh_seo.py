@@ -28,7 +28,7 @@ PAGE_MODIFIED = {
     '/yarplus/': SITE_UPDATED,
     '/journal/payment-system-under-sanctions/': '2026-10-17',
     '/journal/microservices-solo-project/': '2026-10-17',
-    '/': SITE_UPDATED,
+    '/': '2026-11-28',
     '/list/': '2026-11-27',
     '/projects/': SITE_UPDATED,
     '/gamesage/': SITE_UPDATED,
