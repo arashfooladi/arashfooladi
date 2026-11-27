@@ -3,8 +3,7 @@
 .about-layout h2 { font-size: clamp(2rem,3.3vw,3.15rem); line-height: 1.95; margin: 0; }
 .about-copy { color: #c0c0cd; font-size: 1.04rem; max-width: 630px; }
 .about-copy p { margin: 0 0 24px; }
-.about-copy .about-list { color: #aaaabb; font-size: .87rem; text-align: right; }
-.about-copy .about-focus { padding-top: 22px; margin-top: 32px; border-top: 1px solid #33333f; font-size: .87rem; color: #aaaabb; }
+.about-copy .about-list { padding-top: 22px; margin-top: 32px; border-top: 1px solid #33333f; font-size: .87rem; color: #aaaabb; text-align: right; }
 .site-as-work { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 25px; border-top: 1px solid #33333f; margin-top: 52px; padding-top: 29px; }
 .site-as-work h3 { font-size: 1rem; font-weight: 500; margin: 0; }
 .site-as-work p { font-size: .88rem; color: #aaaabb; margin: 10px 0 0; }
@@ -40,9 +39,9 @@
   .home .section { padding-block: 54px; }
   .home .section-intro { margin-bottom: 25px; }
   .home .home-about, .home .contact-section, .home .site-footer { border: 0; }
-  .home .about-focus, .home .site-as-work { border: 0; padding-top: 0; }
+  .home .about-list, .home .site-as-work { border: 0; padding-top: 0; }
   .home .about-copy p { margin-bottom: 18px; }
-  .home .about-copy .about-focus { margin-top: 24px; }
+  .home .about-copy .about-list { margin-top: 24px; }
   .home .site-as-work { margin-top: 27px; gap: 12px; }
   .home .journal-list, .home .journal-link { border: 0; }
   .home .journal-link { padding-block: 22px; }
