@@ -29,7 +29,7 @@ PAGE_MODIFIED = {
     '/journal/payment-system-under-sanctions/': '2026-10-17',
     '/journal/microservices-solo-project/': '2026-10-17',
     '/': '2026-11-28',
-    '/list/': '2026-11-27',
+    '/list/': '2026-11-28',
     '/projects/': SITE_UPDATED,
     '/gamesage/': SITE_UPDATED,
     '/journal/': SITE_UPDATED,
