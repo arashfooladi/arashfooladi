@@ -1,0 +1,28 @@
+.pictures-gallery {
+  width: min(640px, calc(100% - 40px));
+}
+
+.gallery-series + .gallery-series {
+  margin-top: clamp(56px, 8vw, 88px);
+}
+
+.gallery-series h2 {
+  margin: 0;
+  color: var(--list-heading);
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.4;
+}
+
+.gallery-series p {
+  margin: 3px 0 0;
+  color: var(--list-muted);
+  font-size: .875rem;
+  line-height: 1.5;
+}
+
+.gallery-stack {
+  display: grid;
+  gap: clamp(24px, 4vw, 38px);
+  margin-top: 14px;
+}
