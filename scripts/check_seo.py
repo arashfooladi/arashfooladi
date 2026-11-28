@@ -214,9 +214,7 @@ def main():
             target = urlsplit(href)._replace(query='', fragment='').geturl()
             if target in indexable and target not in reached:
                 pending.append(target)
-    # The List is discoverable by URL and through the sitemap.
-    unreachable = set(indexable) - reached - {BASE + '/list/'}
-    check(not unreachable, f'Pages unreachable through internal links: {sorted(unreachable)}')
+    check(reached == set(indexable), f'Pages unreachable through internal links: {sorted(set(indexable) - reached)}')
 
     sitemap = ET.parse(ROOT / 'sitemap.xml')
     ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
