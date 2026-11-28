@@ -14,7 +14,7 @@ from build_journal import (
     BASE, ROOT, LEGACY_EXCERPTS, LEGACY_TOPICS, TOPICS, render_sources, topic_link, update_listings,
 )
 
-SERVICE_HUB = '/services/'
+SERVICE_PREFIX = '/services/'
 SITE_UPDATED = '2026-11-27'
 MODIFIED = '2026-10-01'
 PAGE_MODIFIED = {
@@ -93,7 +93,7 @@ for path in sorted(ROOT.rglob('*.html')):
     image_path = f'/assets/images/social/{image_slug}.png'
     if route in markdown_notes and not (ROOT / image_path.lstrip('/')).is_file():
         image_path = '/assets/images/social/journal.png'
-    default_modified = SITE_UPDATED if route.startswith(SERVICE_HUB) else MODIFIED
+    default_modified = SITE_UPDATED if route.startswith(SERVICE_PREFIX) else MODIFIED
     modified = note.get('modified', note.get('date')) or PAGE_MODIFIED.get(route, default_modified)
     topic = note.get('category', LEGACY_TOPICS.get(slug))
     excerpt = description if note else LEGACY_EXCERPTS.get(slug, '')
@@ -124,8 +124,8 @@ for route,p in pages.items():
     for key,value in [('description',p['description']),('author','آرش فولادی'),('robots','index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'),('twitter:card','summary_large_image'),('twitter:site','@arashfooladiorg'),('twitter:creator','@arashfooladiorg'),('twitter:title',p['title']),('twitter:description',p['description']),('twitter:image',p['image']),('twitter:image:alt',image_alt)]:
         text = meta(text,key,value)
     is_article = bool(p['published'])
-    is_service = route.startswith(SERVICE_HUB) and route != SERVICE_HUB
-    is_collection = route in ('/projects/', '/journal/', '/list/', SERVICE_HUB)
+    is_service = route.startswith(SERVICE_PREFIX)
+    is_collection = route in ('/projects/', '/journal/', '/list/')
     locale = {'fa': 'fa_IR', 'en': 'en_US'}[p['language']]
     topic = p['topic']
     for key,value in [('og:type','article' if is_article else 'website'),('og:title',p['title']),('og:description',p['description']),('og:url',url),('og:site_name','آرش فولادی'),('og:locale',locale),('og:image',p['image']),('og:image:secure_url',p['image']),('og:image:type','image/png'),('og:image:width','1200'),('og:image:height','630'),('og:image:alt',image_alt)]:
@@ -153,9 +153,7 @@ for route,p in pages.items():
     image_url, image_width, image_height = (BASE+visual[0], visual[1], visual[2]) if visual else (p['image'], 1200, 630)
     graph.append({'@type':'ImageObject','@id':url+'#image','url':image_url,'contentUrl':image_url,'width':image_width,'height':image_height,'caption':image_alt if uses_journal_card else p['headline']})
     crumbs=[('Home' if p['language'] == 'en' else 'خانه',BASE+'/')]
-    if is_service:
-        crumbs.append(('همکاری', BASE + SERVICE_HUB))
-    elif not is_collection and route != '/':
+    if route != '/' and not is_collection and not is_service:
         crumbs.append(('نوشته‌ها', BASE + '/journal/') if is_article else ('پروژه‌ها', BASE + '/projects/'))
     if route != '/':
         crumbs.append((p['headline'], url))
@@ -181,10 +179,6 @@ for route,p in pages.items():
         graph.append(blog);page['mainEntity']={'@id':blog['@id']}
     elif route == '/list/':
         page['author'] = {'@id': person['@id']}
-    elif route == SERVICE_HUB:
-        page['hasPart'] = [{'@type': 'WebPage', '@id': entry['url'] + '#webpage',
-                            'name': entry['headline'], 'url': entry['url']}
-                           for key, entry in pages.items() if key.startswith(SERVICE_HUB) and key != SERVICE_HUB]
     elif is_service:
         service = {'@type': 'Service', '@id': url + '#service', 'url': url, 'name': p['headline'],
                    'serviceType': p['headline'], 'description': p['description'],
